@@ -174,9 +174,88 @@ export default function Admin() {
                 </div>
               )}
             </div>
+            <div className="mt-16 bg-card border border-border rounded-xl p-6 md:p-8">
+              <h2 className="text-2xl font-serif text-primary mb-4">Prompt para Criação com IA</h2>
+              <p className="text-sm text-muted-foreground mb-6">
+                Copie o prompt abaixo e cole no ChatGPT, Claude ou outra IA. Ele contém todas as instruções e regras para que a IA gere o JSON do curso estruturado com os componentes visuais que o sistema suporta.
+              </p>
+              
+              <div className="relative">
+                <button 
+                  onClick={() => {
+                    navigator.clipboard.writeText(aiPrompt);
+                    alert("Prompt copiado!");
+                  }}
+                  className="absolute top-4 right-4 bg-primary/10 text-primary hover:bg-primary/20 px-3 py-1.5 rounded text-xs font-semibold transition-colors"
+                >
+                  Copiar Prompt
+                </button>
+                <textarea 
+                  readOnly 
+                  value={aiPrompt}
+                  className="w-full h-64 font-mono text-xs p-4 pt-12 border border-border rounded-lg bg-background text-muted-foreground outline-none resize-none"
+                />
+              </div>
+            </div>
           </div>
         )}
       </main>
     </div>
   );
 }
+
+const aiPrompt = `Gere o conteúdo de um mini curso no formato JSON seguindo estritamente a estrutura definida abaixo. O JSON será importado em um sistema educacional que suporta renderização dinâmica de blocos.
+
+Crie um curso sobre [INSERIR TEMA AQUI].
+
+ESTRUTURA DO JSON:
+O JSON deve ser um objeto único contendo os detalhes do curso e um array de módulos.
+{
+  "slug": "url-amigavel-do-curso",
+  "courseName": "Nome do Curso",
+  "description": "Descrição curta do que será aprendido.",
+  "modules": [ ... ]
+}
+
+ESTRUTURA DOS MÓDULOS:
+Cada módulo dentro do array "modules" deve ter o formato:
+{
+  "id": "identificador-unico",
+  "shortTitle": "Título Curto (menu sidebar)",
+  "kicker": "MÓDULO XX · CATEGORIA (uppercase)",
+  "title": "Título Principal do Módulo",
+  "summary": "Resumo do que será ensinado no módulo.",
+  "content": [ ... array de blocos visuais ... ]
+}
+
+BLOCOS VISUAIS SUPORTADOS (ARRAY "content"):
+Você deve construir o conteúdo combinando apenas os blocos abaixo. Misture os formatos para criar uma leitura dinâmica.
+
+1. Parágrafo simples:
+{ "type": "paragraph", "text": "Texto do parágrafo." }
+
+2. Subtítulo (H2):
+{ "type": "heading", "text": "Subtítulo da seção" }
+
+3. Lista com bullets:
+{ "type": "list", "items": ["Item 1", "Item 2"] }
+
+4. Callout (Caixa de destaque com título e itens):
+{ "type": "callout", "title": "TÍTULO DO DESTAQUE", "items": ["Regra 1", "Regra 2"] }
+
+5. Citação/Frase de Impacto (Itálico com borda):
+{ "type": "highlight", "text": "Frase importante que merece destaque." }
+
+6. Timeline/Cronograma (Grade de Ano + Texto):
+{ "type": "timeline", "items": [ { "year": "2024", "text": "Evento 1" }, { "year": "2025", "text": "Evento 2" } ] }
+
+7. Checklist interativo:
+{ "type": "checklist", "items": ["Tarefa 1 para o aluno", "Tarefa 2 para o aluno"] }
+
+REGRAS VITAIS:
+- O retorno deve ser APENAS o JSON válido.
+- Não inclua markdown de código \`\`\`json em volta da resposta se isso quebrar a leitura.
+- Use tom editorial, direto e profissional.
+- O curso deve ter pelo menos 3 a 5 módulos.
+- Não crie tipos de blocos que não estão listados acima.`;
+
