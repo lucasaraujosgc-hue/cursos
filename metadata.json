@@ -1,0 +1,8 @@
+{
+  "name": "Cartilha Vírgula Contábil",
+  "description": "Manual de orientações básicas para empresas clientes da Vírgula Contábil.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
