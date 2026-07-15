@@ -52,6 +52,25 @@ export default function Admin() {
     setEditJson(JSON.stringify(course, null, 2));
   };
 
+  const handleChangeSlug = async (course: Course) => {
+    const newSlug = prompt("Digite o novo link curto (slug) para este curso:", course.slug);
+    if (!newSlug || newSlug === course.slug) return;
+    
+    // To change the slug, we just PUT the updated course object
+    const updatedCourse = { ...course, slug: newSlug };
+    try {
+      const res = await fetch(`/api/admin/courses/${course.slug}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedCourse)
+      });
+      if (!res.ok) throw new Error('Erro ao alterar o link');
+      fetchCourses();
+    } catch (err) {
+      alert('Erro ao alterar o link');
+    }
+  };
+
   const handleCreateNew = () => {
     const newCourse: Course = {
       slug: "novo-curso",
@@ -153,7 +172,12 @@ export default function Admin() {
                   <h3 className="text-xl font-serif text-primary mb-2">{course.courseName}</h3>
                   <p className="text-sm text-muted-foreground mb-4 flex-1">{course.description}</p>
                   <div className="flex justify-between items-center mt-4 pt-4 border-t border-border">
-                    <span className="text-sm font-mono text-accent bg-accent/10 px-2 py-1 rounded">/{course.slug}</span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-mono text-accent bg-accent/10 px-2 py-1 rounded">/{course.slug}</span>
+                      <button onClick={() => handleChangeSlug(course)} className="text-xs text-muted-foreground hover:text-primary underline">
+                        Alterar Link
+                      </button>
+                    </div>
                     <div className="flex gap-2">
                       <a href={`/${course.slug}`} target="_blank" rel="noreferrer" className="text-sm px-3 py-1.5 border border-border rounded-md hover:bg-secondary">
                         Ver

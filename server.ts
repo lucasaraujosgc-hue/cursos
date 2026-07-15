@@ -103,6 +103,18 @@ app.delete("/api/admin/courses/:slug", requireAuth, (req, res) => {
   res.json({ success: true });
 });
 
+// Public courses list route
+app.get("/api/courses", (req, res) => {
+  const courses = getCourses();
+  const list = courses.map((c: any) => ({
+    slug: c.slug,
+    courseName: c.courseName,
+    description: c.description,
+    moduleCount: c.modules?.length || 0
+  }));
+  res.json(list);
+});
+
 // Public course route
 app.get("/api/courses/:slug", (req, res) => {
   const courses = getCourses();
