@@ -252,6 +252,21 @@ Você deve construir o conteúdo combinando apenas os blocos abaixo. Misture os 
 7. Checklist interativo:
 { "type": "checklist", "items": ["Tarefa 1 para o aluno", "Tarefa 2 para o aluno"] }
 
+8. Fórmula Matemática (LaTeX):
+{ "type": "math", "expression": "E = mc^2", "inline": false }
+
+9. Calculadora Interativa:
+{ 
+  "type": "calculator", 
+  "fields": [
+    { "id": "receita", "label": "Receita Bruta (R$)", "type": "currency" },
+    { "id": "aliquota", "label": "Alíquota (%)", "type": "percentage" }
+  ],
+  "formula": "receita * (aliquota / 100)",
+  "resultLabel": "Imposto Estimado",
+  "resultFormat": "currency"
+}
+
 REGRAS VITAIS:
 - O retorno deve ser APENAS o JSON válido.
 - Não inclua markdown de código \`\`\`json em volta da resposta se isso quebrar a leitura.

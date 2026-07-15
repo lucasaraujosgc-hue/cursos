@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Block } from '../types';
+import { InlineMath, BlockMath } from 'react-katex';
+import 'katex/dist/katex.min.css';
 
 export const ChecklistBlock = ({ items, moduleIndex }: { items: string[], moduleIndex: number }) => {
   const [checked, setChecked] = useState<Set<number>>(new Set());
@@ -42,6 +44,63 @@ export const ChecklistBlock = ({ items, moduleIndex }: { items: string[], module
         );
       })}
     </ul>
+  );
+};
+
+export const CalculatorBlock = ({ block, moduleIndex }: { block: any, moduleIndex: number }) => {
+  const [values, setValues] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    setValues({});
+  }, [moduleIndex]);
+
+  const handleChange = (id: string, val: string) => {
+    const num = parseFloat(val.replace(',', '.'));
+    setValues(prev => ({ ...prev, [id]: isNaN(num) ? 0 : num }));
+  };
+
+  let result = 0;
+  try {
+    const keys = Object.keys(values);
+    const args = keys.map(k => values[k]);
+    // Allow basic formula execution with given field IDs
+    const func = new Function(...keys, `return ${block.formula}`);
+    result = func(...args) || 0;
+  } catch (err) {
+    // Ignore invalid formulas during typing or if incomplete
+  }
+
+  const formatResult = (val: number) => {
+    if (block.resultFormat === 'currency') return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    if (block.resultFormat === 'percentage') return val.toLocaleString('pt-BR', { maximumFractionDigits: 2 }) + '%';
+    return val.toLocaleString('pt-BR', { maximumFractionDigits: 2 });
+  };
+
+  return (
+    <div className="rounded-xl border border-border bg-card p-5 mt-8 shadow-sm">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        {block.fields.map((f: any) => (
+          <div key={f.id}>
+            <label className="block text-sm font-medium text-foreground mb-1">{f.label}</label>
+            <div className="relative">
+              {f.type === 'currency' && <span className="absolute left-3 top-2.5 text-muted-foreground">R$</span>}
+              <input 
+                type="number" 
+                step="any"
+                placeholder={f.placeholder}
+                onChange={(e) => handleChange(f.id, e.target.value)}
+                className={`w-full p-2.5 rounded-lg border border-border bg-background focus:outline-none focus:border-primary ${f.type === 'currency' ? 'pl-9' : ''}`}
+              />
+              {f.type === 'percentage' && <span className="absolute right-3 top-2.5 text-muted-foreground">%</span>}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="bg-primary/5 rounded-lg p-4 flex flex-col sm:flex-row items-center justify-between border border-primary/20">
+        <span className="font-sans font-medium text-muted-foreground">{block.resultLabel}</span>
+        <span className="font-serif font-bold text-2xl text-primary">{formatResult(result)}</span>
+      </div>
+    </div>
   );
 };
 
@@ -103,6 +162,20 @@ export const BlockRenderer: React.FC<{ block: Block, moduleIndex: number }> = ({
 
     case 'checklist':
       return <ChecklistBlock items={block.items} moduleIndex={moduleIndex} />;
+
+    case 'math':
+      return (
+        <div className={`mt-8 ${block.inline ? 'inline-block mx-2' : 'flex justify-center p-6 bg-card border border-border rounded-xl'}`}>
+          {block.inline ? (
+            <InlineMath math={block.expression} />
+          ) : (
+            <BlockMath math={block.expression} />
+          )}
+        </div>
+      );
+
+    case 'calculator':
+      return <CalculatorBlock block={block} moduleIndex={moduleIndex} />;
       
     default:
       return null;

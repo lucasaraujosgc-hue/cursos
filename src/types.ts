@@ -5,7 +5,15 @@ export type Block =
   | { type: 'callout'; title: string; items: string[] }
   | { type: 'highlight'; text: string }
   | { type: 'timeline'; items: { year: string; text: string }[] }
-  | { type: 'checklist'; items: string[] };
+  | { type: 'checklist'; items: string[] }
+  | { type: 'math'; expression: string; inline?: boolean }
+  | { 
+      type: 'calculator'; 
+      fields: { id: string; label: string; type: 'number' | 'currency' | 'percentage'; placeholder?: string }[];
+      formula: string; 
+      resultLabel: string;
+      resultFormat?: 'currency' | 'number' | 'percentage';
+    };
 
 export type Module = {
   id: string;
