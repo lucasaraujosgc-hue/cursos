@@ -291,6 +291,21 @@ Você deve construir o conteúdo combinando apenas os blocos abaixo. Misture os 
   "resultFormat": "currency"
 }
 
+10. Gráfico de Ponto de Equilíbrio:
+{ "type": "breakeven-chart", "custoFixo": 10000, "custoVariavelUnitario": 50, "precoVenda": 100, "quantidadeMaxima": 500 }
+
+11. Gráfico de Detalhamento de Custos (Pizza):
+{ "type": "breakdown-chart", "total": 15000, "parts": [ { "label": "Impostos", "value": 3000 }, { "label": "Folha", "value": 12000 } ] }
+
+12. Tabela de Comparação:
+{ "type": "comparison", "columns": [ { "label": "Prós", "tone": "positive", "items": ["Vantagem 1"] }, { "label": "Contras", "tone": "negative", "items": ["Desvantagem 1"] } ] }
+
+13. Exercício de Classificação:
+{ "type": "classify-exercise", "items": ["Aluguel", "Comissão"], "categories": ["Fixo", "Variável"], "answerKey": { "Aluguel": "Fixo", "Comissão": "Variável" } }
+
+14. Gráfico de Cenários:
+{ "type": "scenario-chart", "custoFixo": 5000, "custoVariavelUnitario": 20, "qtdMin": 100, "qtdMax": 1000 }
+
 REGRAS VITAIS:
 - O retorno deve ser APENAS o JSON válido.
 - Não inclua markdown de código \`\`\`json em volta da resposta se isso quebrar a leitura.

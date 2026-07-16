@@ -13,7 +13,12 @@ export type Block =
       formula: string; 
       resultLabel: string;
       resultFormat?: 'currency' | 'number' | 'percentage';
-    };
+    }
+  | { type: 'breakeven-chart'; custoFixo: number; custoVariavelUnitario: number; precoVenda: number; quantidadeMaxima?: number }
+  | { type: 'breakdown-chart'; total: number; parts: { label: string; value: number; color?: string }[] }
+  | { type: 'comparison'; columns: { label: string; tone: 'negative' | 'positive' | 'neutral'; items: string[] }[] }
+  | { type: 'classify-exercise'; items: string[]; categories: string[]; answerKey: Record<string, string> }
+  | { type: 'scenario-chart'; custoFixo: number; custoVariavelUnitario: number; qtdMin: number; qtdMax: number };
 
 export type Module = {
   id: string;
