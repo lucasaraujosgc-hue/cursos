@@ -15,6 +15,7 @@ app.use(express.json({ limit: "50mb" }));
 app.use(cookieParser());
 
 const DATA_FILE = path.join(process.cwd(), "data", "courses.json");
+const LEADS_FILE = path.join(process.cwd(), "data", "leads.json");
 
 // Simple helper to read/write JSON
 function getCourses() {
@@ -31,6 +32,22 @@ function saveCourses(courses: any) {
     fs.mkdirSync(dir, { recursive: true });
   }
   fs.writeFileSync(DATA_FILE, JSON.stringify(courses, null, 2), "utf-8");
+}
+
+function getLeads() {
+  if (!fs.existsSync(LEADS_FILE)) {
+    return [];
+  }
+  const data = fs.readFileSync(LEADS_FILE, "utf-8");
+  return JSON.parse(data);
+}
+
+function saveLeads(leads: any) {
+  const dir = path.dirname(LEADS_FILE);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+  fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), "utf-8");
 }
 
 // Authentication middleware
@@ -103,6 +120,11 @@ app.delete("/api/admin/courses/:slug", requireAuth, (req, res) => {
   res.json({ success: true });
 });
 
+app.get("/api/admin/leads", requireAuth, (req, res) => {
+  const leads = getLeads();
+  res.json(leads);
+});
+
 // Public courses list route
 app.get("/api/courses", (req, res) => {
   const courses = getCourses();
@@ -126,6 +148,17 @@ app.get("/api/courses/:slug", (req, res) => {
   }
 });
 
+// Public lead route
+app.post("/api/leads", (req, res) => {
+  const leads = getLeads();
+  const newLead = {
+    ...req.body,
+    timestamp: new Date().toISOString()
+  };
+  leads.push(newLead);
+  saveLeads(leads);
+  res.json(newLead);
+});
 
 // Vite middleware for development
 async function setupVite() {

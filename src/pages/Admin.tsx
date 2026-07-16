@@ -5,13 +5,15 @@ import { Course } from '../types';
 
 export default function Admin() {
   const [courses, setCourses] = useState<Course[]>([]);
+  const [leads, setLeads] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingCourse, setEditingCourse] = useState<Course | null>(null);
   const [editJson, setEditJson] = useState('');
   const [error, setError] = useState('');
+  const [activeTab, setActiveTab] = useState<'courses' | 'leads'>('courses');
   const navigate = useNavigate();
 
-  const fetchCourses = async () => {
+  const fetchCoursesAndLeads = async () => {
     try {
       const res = await fetch('/api/admin/courses');
       if (res.status === 401) {
@@ -21,6 +23,13 @@ export default function Admin() {
       if (!res.ok) throw new Error('Erro ao buscar cursos');
       const data = await res.json();
       setCourses(data);
+
+      const resLeads = await fetch('/api/admin/leads');
+      if (resLeads.ok) {
+        const leadsData = await resLeads.json();
+        setLeads(leadsData);
+      }
+
       setLoading(false);
     } catch (err: any) {
       setError(err.message);
@@ -29,7 +38,7 @@ export default function Admin() {
   };
 
   useEffect(() => {
-    fetchCourses();
+    fetchCoursesAndLeads();
   }, []);
 
   const handleLogout = async () => {
@@ -41,7 +50,7 @@ export default function Admin() {
     if (!confirm(`Tem certeza que deseja excluir o curso "${slug}"?`)) return;
     try {
       await fetch(`/api/admin/courses/${slug}`, { method: 'DELETE' });
-      fetchCourses();
+      fetchCoursesAndLeads();
     } catch (err) {
       alert('Erro ao excluir curso');
     }
@@ -65,7 +74,7 @@ export default function Admin() {
         body: JSON.stringify(updatedCourse)
       });
       if (!res.ok) throw new Error('Erro ao alterar o link');
-      fetchCourses();
+      fetchCoursesAndLeads();
     } catch (err) {
       alert('Erro ao alterar o link');
     }
@@ -102,7 +111,7 @@ export default function Admin() {
       
       setEditingCourse(null);
       setEditJson('');
-      fetchCourses();
+      fetchCoursesAndLeads();
     } catch (err: any) {
       alert('JSON Inválido ou erro na requisição: ' + err.message);
     }
@@ -116,7 +125,19 @@ export default function Admin() {
         <div className="w-full max-w-6xl mx-auto flex justify-between items-center">
           <Logo />
           <div className="flex gap-4">
-            <button onClick={handleLogout} className="text-sm font-medium text-muted-foreground hover:text-foreground">
+            <button 
+              onClick={() => setActiveTab('courses')}
+              className={`text-sm font-medium ${activeTab === 'courses' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`}
+            >
+              Cursos
+            </button>
+            <button 
+              onClick={() => setActiveTab('leads')}
+              className={`text-sm font-medium ${activeTab === 'leads' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`}
+            >
+              Leads
+            </button>
+            <button onClick={handleLogout} className="text-sm font-medium text-red-500 hover:text-red-700 ml-4">
               Sair
             </button>
           </div>
@@ -124,7 +145,44 @@ export default function Admin() {
       </header>
 
       <main className="w-full max-w-6xl mx-auto px-5 py-8 flex-1">
-        {editingCourse ? (
+        {activeTab === 'leads' ? (
+          <div>
+            <h1 className="text-3xl font-serif text-primary mb-8">Leads (Acessos)</h1>
+            <div className="bg-card border border-border rounded-xl overflow-hidden shadow-sm">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-sm">
+                  <thead className="bg-secondary/50 text-muted-foreground font-medium border-b border-border">
+                    <tr>
+                      <th className="p-4">Nome</th>
+                      <th className="p-4">Telefone</th>
+                      <th className="p-4">Curso (Slug)</th>
+                      <th className="p-4">Data/Hora</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border">
+                    {leads.map((lead, idx) => (
+                      <tr key={idx} className="hover:bg-secondary/30 transition-colors">
+                        <td className="p-4 text-foreground">{lead.name}</td>
+                        <td className="p-4 text-foreground">{lead.phone}</td>
+                        <td className="p-4 text-foreground">{lead.courseSlug}</td>
+                        <td className="p-4 text-muted-foreground">
+                          {new Date(lead.timestamp).toLocaleString('pt-BR')}
+                        </td>
+                      </tr>
+                    ))}
+                    {leads.length === 0 && (
+                      <tr>
+                        <td colSpan={4} className="p-8 text-center text-muted-foreground">
+                          Nenhum lead capturado ainda.
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        ) : editingCourse ? (
           <div className="bg-card border border-border rounded-xl p-6 shadow-sm">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-serif text-primary">Editor de Curso (JSON)</h2>

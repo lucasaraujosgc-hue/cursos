@@ -57,13 +57,14 @@ export const BreakdownChartBlock = ({ block }: { block: any }) => {
               outerRadius={100}
               paddingAngle={2}
               dataKey="value"
+              nameKey="label"
             >
               {block.parts.map((entry: any, index: number) => (
                 <Cell key={`cell-${index}`} fill={entry.color || COLORS[index % COLORS.length]} />
               ))}
             </Pie>
             <Tooltip formatter={(value: number) => formatCurrency(value)} />
-            <Legend layout="horizontal" verticalAlign="bottom" align="center" />
+            <Legend layout="horizontal" verticalAlign="bottom" align="center" formatter={(value, entry: any) => entry.payload.label} />
           </PieChart>
         </ResponsiveContainer>
       </div>

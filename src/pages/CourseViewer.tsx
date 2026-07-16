@@ -36,6 +36,10 @@ export default function CourseViewer() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [completed, setCompleted] = useState<Set<number>>(new Set());
   const [isLoaded, setIsLoaded] = useState(false);
+  
+  const [leadName, setLeadName] = useState('');
+  const [leadPhone, setLeadPhone] = useState('');
+  const [isSubmittingLead, setIsSubmittingLead] = useState(false);
 
   useEffect(() => {
     fetch(`/api/courses/${slug}`)
@@ -92,6 +96,27 @@ export default function CourseViewer() {
 
   const courseModules = course.modules;
 
+  const handleStartCourse = async () => {
+    if (!leadName.trim() || !leadPhone.trim()) return;
+    setIsSubmittingLead(true);
+    try {
+      await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: leadName.trim(),
+          phone: leadPhone.trim(),
+          courseSlug: slug
+        })
+      });
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsSubmittingLead(false);
+      setStarted(true);
+    }
+  };
+
   if (!started) {
     return (
       <div className="min-h-screen bg-background flex flex-col items-center">
@@ -116,12 +141,38 @@ export default function CourseViewer() {
             ))}
           </div>
 
-          <button 
-            onClick={() => setStarted(true)}
-            className="bg-primary text-primary-foreground px-7 py-3.5 rounded-lg text-base font-semibold shadow-sm hover:-translate-y-0.5 transition-transform"
-          >
-            Começar o curso →
-          </button>
+          <div className="w-full max-w-sm mt-4 bg-card border border-border p-5 rounded-xl shadow-sm">
+            <h3 className="font-serif font-semibold text-lg text-primary mb-3">Antes de começar...</h3>
+            <div className="space-y-3 mb-4">
+              <div>
+                <label className="block text-[13px] font-medium text-muted-foreground mb-1">Seu Nome</label>
+                <input 
+                  type="text" 
+                  value={leadName}
+                  onChange={e => setLeadName(e.target.value)}
+                  className="w-full border border-border rounded-lg px-3 py-2 text-[14px] bg-background text-foreground outline-none focus:border-primary"
+                  placeholder="Ex: João da Silva"
+                />
+              </div>
+              <div>
+                <label className="block text-[13px] font-medium text-muted-foreground mb-1">Seu Telefone / WhatsApp</label>
+                <input 
+                  type="text" 
+                  value={leadPhone}
+                  onChange={e => setLeadPhone(e.target.value)}
+                  className="w-full border border-border rounded-lg px-3 py-2 text-[14px] bg-background text-foreground outline-none focus:border-primary"
+                  placeholder="Ex: (11) 99999-9999"
+                />
+              </div>
+            </div>
+            <button 
+              onClick={handleStartCourse}
+              disabled={!leadName.trim() || !leadPhone.trim() || isSubmittingLead}
+              className="w-full bg-primary text-primary-foreground px-4 py-2.5 rounded-lg text-[15px] font-semibold shadow-sm hover:-translate-y-0.5 transition-transform disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+            >
+              {isSubmittingLead ? "Carregando..." : "Começar o curso →"}
+            </button>
+          </div>
           <p className="mt-4 text-[12px] text-muted-foreground">Seu progresso fica salvo neste navegador</p>
         </div>
       </div>
