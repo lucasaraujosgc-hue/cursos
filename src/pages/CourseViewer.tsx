@@ -227,7 +227,7 @@ export default function CourseViewer() {
       <div className="w-full max-w-6xl mx-auto px-5 md:px-8 py-8 flex-1 flex flex-col md:flex-row gap-8">
         
         {/* Sidebar */}
-        <aside className="md:w-[240px] md:shrink-0 md:sticky md:top-24 md:h-fit">
+        <aside className="md:w-[240px] md:shrink-0 md:sticky md:top-24 md:h-fit order-2 md:order-1">
           <h3 className="font-sans font-semibold uppercase text-[12px] tracking-[0.14em] text-muted-foreground mb-4 pl-3">
             Módulos
           </h3>
@@ -266,7 +266,7 @@ export default function CourseViewer() {
         </aside>
 
         {/* Module Content */}
-        <main className="flex-1 flex flex-col pb-16 min-w-0">
+        <main className="flex-1 flex flex-col pb-16 min-w-0 order-1 md:order-2">
           
           {allCompleted && (
             <CertificateBlock courseName={course.courseName} />
