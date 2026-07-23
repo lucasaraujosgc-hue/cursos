@@ -125,6 +125,17 @@ app.get("/api/admin/leads", requireAuth, (req, res) => {
   res.json(leads);
 });
 
+app.delete("/api/admin/leads", requireAuth, (req, res) => {
+  const { timestamps } = req.body;
+  if (!Array.isArray(timestamps)) {
+    return res.status(400).json({ error: "Invalid data" });
+  }
+  let leads = getLeads();
+  leads = leads.filter((lead: any) => !timestamps.includes(lead.timestamp));
+  saveLeads(leads);
+  res.json({ success: true });
+});
+
 // Public courses list route
 app.get("/api/courses", (req, res) => {
   const courses = getCourses();

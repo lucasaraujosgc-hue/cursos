@@ -11,6 +11,7 @@ export default function Admin() {
   const [editJson, setEditJson] = useState('');
   const [error, setError] = useState('');
   const [activeTab, setActiveTab] = useState<'courses' | 'leads'>('courses');
+  const [selectedLeads, setSelectedLeads] = useState<string[]>([]);
   const navigate = useNavigate();
 
   const fetchCoursesAndLeads = async () => {
@@ -117,6 +118,37 @@ export default function Admin() {
     }
   };
 
+  const toggleLead = (timestamp: string) => {
+    setSelectedLeads(prev => 
+      prev.includes(timestamp) ? prev.filter(t => t !== timestamp) : [...prev, timestamp]
+    );
+  };
+
+  const toggleAllLeads = () => {
+    if (selectedLeads.length === leads.length && leads.length > 0) {
+      setSelectedLeads([]);
+    } else {
+      setSelectedLeads(leads.map(l => l.timestamp));
+    }
+  };
+
+  const handleDeleteSelectedLeads = async () => {
+    if (selectedLeads.length === 0) return;
+    if (!confirm(`Tem certeza que deseja excluir ${selectedLeads.length} lead(s)?`)) return;
+    try {
+      const res = await fetch('/api/admin/leads', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ timestamps: selectedLeads })
+      });
+      if (!res.ok) throw new Error('Erro ao excluir leads');
+      setSelectedLeads([]);
+      fetchCoursesAndLeads();
+    } catch (err) {
+      alert('Erro ao excluir leads');
+    }
+  };
+
   if (loading) return <div className="p-8">Carregando admin...</div>;
 
   return (
@@ -147,12 +179,30 @@ export default function Admin() {
       <main className="w-full max-w-6xl mx-auto px-5 py-8 flex-1">
         {activeTab === 'leads' ? (
           <div>
-            <h1 className="text-3xl font-serif text-primary mb-8">Leads (Acessos)</h1>
+            <div className="flex justify-between items-center mb-8">
+              <h1 className="text-3xl font-serif text-primary">Leads (Acessos)</h1>
+              {selectedLeads.length > 0 && (
+                <button 
+                  onClick={handleDeleteSelectedLeads}
+                  className="bg-red-500 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-sm hover:bg-red-600 transition-colors"
+                >
+                  Excluir Selecionados ({selectedLeads.length})
+                </button>
+              )}
+            </div>
             <div className="bg-card border border-border rounded-xl overflow-hidden shadow-sm">
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-sm">
                   <thead className="bg-secondary/50 text-muted-foreground font-medium border-b border-border">
                     <tr>
+                      <th className="p-4 w-12 text-center">
+                        <input 
+                          type="checkbox" 
+                          checked={leads.length > 0 && selectedLeads.length === leads.length}
+                          onChange={toggleAllLeads}
+                          className="rounded border-border text-primary focus:ring-primary"
+                        />
+                      </th>
                       <th className="p-4">Nome</th>
                       <th className="p-4">Telefone</th>
                       <th className="p-4">Curso (Slug)</th>
@@ -161,7 +211,15 @@ export default function Admin() {
                   </thead>
                   <tbody className="divide-y divide-border">
                     {leads.map((lead, idx) => (
-                      <tr key={idx} className="hover:bg-secondary/30 transition-colors">
+                      <tr key={idx} className={`hover:bg-secondary/30 transition-colors ${selectedLeads.includes(lead.timestamp) ? 'bg-primary/5' : ''}`}>
+                        <td className="p-4 text-center">
+                          <input 
+                            type="checkbox" 
+                            checked={selectedLeads.includes(lead.timestamp)}
+                            onChange={() => toggleLead(lead.timestamp)}
+                            className="rounded border-border text-primary focus:ring-primary"
+                          />
+                        </td>
                         <td className="p-4 text-foreground">{lead.name}</td>
                         <td className="p-4 text-foreground">{lead.phone}</td>
                         <td className="p-4 text-foreground">{lead.courseSlug}</td>
@@ -172,7 +230,7 @@ export default function Admin() {
                     ))}
                     {leads.length === 0 && (
                       <tr>
-                        <td colSpan={4} className="p-8 text-center text-muted-foreground">
+                        <td colSpan={5} className="p-8 text-center text-muted-foreground">
                           Nenhum lead capturado ainda.
                         </td>
                       </tr>
