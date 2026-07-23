@@ -57,6 +57,17 @@ export default function CourseViewer() {
       });
   }, [slug]);
 
+  useEffect(() => {
+    if (course && course.courseName) {
+      document.title = `${course.courseName} - Vírgula Contábil`;
+    } else {
+      document.title = "Vírgula Contábil - Mini curso";
+    }
+    return () => {
+      document.title = "Vírgula Contábil - Mini curso";
+    };
+  }, [course]);
+
   // Load from LocalStorage
   useEffect(() => {
     if (slug) {
