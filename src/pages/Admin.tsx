@@ -262,6 +262,33 @@ export default function Admin() {
             <p className="text-sm text-muted-foreground mb-4">
               O "slug" define o caminho da URL (ex: meu.site.com.br/<b>slug</b>). Certifique-se de que o JSON é válido.
             </p>
+            <div className="flex gap-3 mb-4">
+              <label className="cursor-pointer bg-secondary text-secondary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-secondary/80 inline-block border border-border">
+                Upload JSON
+                <input 
+                  type="file" 
+                  accept=".json"
+                  className="hidden"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      const reader = new FileReader();
+                      reader.onload = (evt) => {
+                        const content = evt.target?.result as string;
+                        setEditJson(content);
+                      };
+                      reader.readAsText(file);
+                    }
+                  }}
+                />
+              </label>
+              <button 
+                onClick={() => setEditJson('')}
+                className="bg-secondary text-secondary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-secondary/80 border border-border"
+              >
+                Limpar Texto
+              </button>
+            </div>
             <textarea 
               value={editJson}
               onChange={(e) => setEditJson(e.target.value)}
