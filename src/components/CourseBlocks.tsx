@@ -4,6 +4,23 @@ import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, ReferenceLine } from 'recharts';
 
+const renderTextWithLinks = (text: string) => {
+  if (!text || typeof text !== 'string') return text;
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const parts = text.split(urlRegex);
+  
+  return parts.map((part, i) => {
+    if (part.match(urlRegex)) {
+      return (
+        <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:text-emerald-700 underline font-medium">
+          {part}
+        </a>
+      );
+    }
+    return part;
+  });
+};
+
 export const BreakevenChartBlock = ({ block }: { block: any }) => {
   const data = [];
   const qtyMax = block.quantidadeMaxima || 1000;
@@ -94,7 +111,7 @@ export const ComparisonBlock = ({ block }: { block: any }) => {
             {col.items.map((item: string, i: number) => (
               <li key={i} className="flex gap-3 items-start">
                 <span className="font-bold opacity-50 mt-0.5">{getToneIcon(col.tone)}</span>
-                <span className="text-[15px] leading-relaxed">{item}</span>
+                <span className="text-[15px] leading-relaxed">{renderTextWithLinks(item)}</span>
               </li>
             ))}
           </ul>
@@ -271,7 +288,7 @@ export const ChecklistBlock = ({ items, moduleIndex }: { items: string[], module
               <span className={`text-[15px] leading-relaxed transition-colors ${
                 isChecked ? 'text-muted-foreground line-through' : 'text-foreground/90'
               }`}>
-                {item}
+                {renderTextWithLinks(item)}
               </span>
             </button>
           </li>
@@ -341,10 +358,10 @@ export const CalculatorBlock = ({ block, moduleIndex }: { block: any, moduleInde
 export const BlockRenderer: React.FC<{ block: Block, moduleIndex: number }> = ({ block, moduleIndex }) => {
   switch (block.type) {
     case 'paragraph':
-      return <p className="text-[17px] leading-relaxed text-foreground/90">{block.text}</p>;
+      return <p className="text-[17px] leading-relaxed text-foreground/90">{renderTextWithLinks(block.text)}</p>;
     
     case 'heading':
-      return <h2 className="font-serif font-semibold text-[20px] text-primary pt-2">{block.text}</h2>;
+      return <h2 className="font-serif font-semibold text-[20px] text-primary pt-2">{renderTextWithLinks(block.text)}</h2>;
     
     case 'list':
       return (
@@ -352,7 +369,7 @@ export const BlockRenderer: React.FC<{ block: Block, moduleIndex: number }> = ({
           {block.items.map((item, i) => (
             <li key={i} className="flex gap-3 items-baseline">
               <div className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-              <span className="text-[17px] leading-relaxed text-foreground/90">{item}</span>
+              <span className="text-[17px] leading-relaxed text-foreground/90">{renderTextWithLinks(item)}</span>
             </li>
           ))}
         </ul>
@@ -362,13 +379,13 @@ export const BlockRenderer: React.FC<{ block: Block, moduleIndex: number }> = ({
       return (
         <div className="rounded-xl border-l-4 border-accent bg-accent/10 p-5 mt-8">
           <h3 className="font-sans font-semibold uppercase text-[14px] tracking-wider text-accent-foreground/80 mb-3">
-            {block.title}
+            {renderTextWithLinks(block.title)}
           </h3>
           <ul className="space-y-2.5">
             {block.items.map((item, i) => (
               <li key={i} className="flex gap-2.5 items-baseline">
                 <span className="text-accent text-sm">•</span>
-                <span className="text-[15px] text-foreground/90">{item}</span>
+                <span className="text-[15px] text-foreground/90">{renderTextWithLinks(item)}</span>
               </li>
             ))}
           </ul>
@@ -378,7 +395,7 @@ export const BlockRenderer: React.FC<{ block: Block, moduleIndex: number }> = ({
     case 'highlight':
       return (
         <div className="border-l-4 border-primary bg-primary/5 px-5 py-4 mt-8">
-          <p className="text-[17px] italic text-primary leading-relaxed">{block.text}</p>
+          <p className="text-[17px] italic text-primary leading-relaxed">{renderTextWithLinks(block.text)}</p>
         </div>
       );
     
@@ -388,7 +405,7 @@ export const BlockRenderer: React.FC<{ block: Block, moduleIndex: number }> = ({
           {block.items.map((item, i) => (
             <div key={i} className="grid grid-cols-[90px_1fr] items-start gap-4 rounded-lg border border-border bg-secondary/40 p-4">
               <span className="font-serif font-bold text-[24px] text-primary">{item.year}</span>
-              <span className="font-sans text-[15px] leading-relaxed text-foreground/90">{item.text}</span>
+              <span className="font-sans text-[15px] leading-relaxed text-foreground/90">{renderTextWithLinks(item.text)}</span>
             </div>
           ))}
         </div>
