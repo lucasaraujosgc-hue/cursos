@@ -173,20 +173,78 @@ app.post("/api/leads", (req, res) => {
 
 // Vite middleware for development
 async function setupVite() {
+  let vite: any;
   if (process.env.NODE_ENV !== "production") {
-    const vite = await createViteServer({
+    vite = await createViteServer({
       server: { middlewareMode: true, allowedHosts: true },
-      appType: "spa",
+      appType: "custom", // Use custom so Vite doesn't serve the HTML itself
     });
     app.use(vite.middlewares);
   } else {
     const distPath = path.join(process.cwd(), "dist");
-    app.use(express.static(distPath));
-    // Support SPA routing (Express v5 friendly)
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(distPath, "index.html"));
-    });
+    // Serve static assets, but skip index.html so our catch-all below can handle it
+    app.use(express.static(distPath, { index: false }));
   }
+
+  // Catch-all route to serve index.html with injected SEO tags
+  app.use("*", async (req, res, next) => {
+    // Skip API routes and static files with extensions
+    if (req.originalUrl.startsWith("/api/") || req.originalUrl.match(/\.[a-zA-Z0-9]+$/)) {
+      return next();
+    }
+
+    try {
+      let template;
+      
+      if (process.env.NODE_ENV !== "production") {
+        template = fs.readFileSync(path.resolve(process.cwd(), "index.html"), "utf-8");
+        template = await vite.transformIndexHtml(req.originalUrl, template);
+      } else {
+        template = fs.readFileSync(path.resolve(process.cwd(), "dist", "index.html"), "utf-8");
+      }
+
+      // Identify if we're on a course page (/slug)
+      const urlParts = req.originalUrl.split("?")[0].split("/");
+      let title = "Vírgula Contábil - Mini curso";
+      let description = "Acesse os mini cursos da Vírgula Contábil.";
+      let ogImage = "https://www.virgulacontabil.com.br/wp-content/uploads/2026/04/favicon.png"; // Fallback image
+
+      if (urlParts.length >= 2 && urlParts[1] && urlParts[1] !== "admin") {
+        const slug = urlParts[1];
+        const courses = getCourses();
+        const course = courses.find((c: any) => c.slug === slug);
+        if (course) {
+          title = `${course.courseName} - Vírgula Contábil`;
+          if (course.description) {
+            description = course.description;
+          }
+        }
+      }
+
+      // Inject SEO tags
+      const metaTags = `
+    <title>${title}</title>
+    <meta property="og:title" content="${title}" />
+    <meta property="og:description" content="${description}" />
+    <meta name="description" content="${description}" />
+    <meta property="og:image" content="${ogImage}" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${title}" />
+    <meta name="twitter:description" content="${description}" />
+      `;
+
+      // Replace existing title or inject before </head>
+      template = template.replace(/<title>.*?<\/title>/, metaTags);
+
+      res.status(200).set({ "Content-Type": "text/html" }).end(template);
+    } catch (e: any) {
+      if (vite) {
+        vite.ssrFixStacktrace(e);
+      }
+      next(e);
+    }
+  });
 
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on port ${PORT}`);
