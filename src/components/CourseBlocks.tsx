@@ -299,15 +299,27 @@ export const ChecklistBlock = ({ items, moduleIndex }: { items: string[], module
 };
 
 export const CalculatorBlock = ({ block, moduleIndex }: { block: any, moduleIndex: number }) => {
-  const [values, setValues] = useState<Record<string, number>>({});
+  const [values, setValues] = useState<Record<string, any>>({});
 
   useEffect(() => {
-    setValues({});
-  }, [moduleIndex]);
+    const initVals: Record<string, any> = {};
+    if (block.fields) {
+      block.fields.forEach((f: any) => {
+        if (f.type === 'select' && f.options && f.options.length > 0) {
+          initVals[f.id] = f.options[0];
+        }
+      });
+    }
+    setValues(initVals);
+  }, [moduleIndex, block.fields]);
 
-  const handleChange = (id: string, val: string) => {
-    const num = parseFloat(val.replace(',', '.'));
-    setValues(prev => ({ ...prev, [id]: isNaN(num) ? 0 : num }));
+  const handleChange = (id: string, val: string, type: string) => {
+    if (type === 'select' || type === 'text') {
+      setValues(prev => ({ ...prev, [id]: val }));
+    } else {
+      const num = parseFloat(val.replace(',', '.'));
+      setValues(prev => ({ ...prev, [id]: isNaN(num) ? 0 : num }));
+    }
   };
 
   let result = 0;
@@ -324,6 +336,7 @@ export const CalculatorBlock = ({ block, moduleIndex }: { block: any, moduleInde
   const formatResult = (val: number) => {
     if (block.resultFormat === 'currency') return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     if (block.resultFormat === 'percentage') return val.toLocaleString('pt-BR', { maximumFractionDigits: 2 }) + '%';
+    if (block.resultFormat === 'number') return val.toLocaleString('pt-BR', { maximumFractionDigits: 2 });
     return val.toLocaleString('pt-BR', { maximumFractionDigits: 2 });
   };
 
@@ -335,14 +348,34 @@ export const CalculatorBlock = ({ block, moduleIndex }: { block: any, moduleInde
             <label className="block text-sm font-medium text-foreground mb-1">{f.label}</label>
             <div className="relative">
               {f.type === 'currency' && <span className="absolute left-3 top-2.5 text-muted-foreground">R$</span>}
-              <input 
-                type="number" 
-                step="any"
-                placeholder={f.placeholder}
-                onChange={(e) => handleChange(f.id, e.target.value)}
-                className={`w-full p-2.5 rounded-lg border border-border bg-background focus:outline-none focus:border-primary ${f.type === 'currency' ? 'pl-9' : ''}`}
-              />
+              
+              {f.type === 'select' ? (
+                <select
+                  value={values[f.id] || ''}
+                  onChange={(e) => handleChange(f.id, e.target.value, f.type)}
+                  className="w-full p-2.5 rounded-lg border border-border bg-background focus:outline-none focus:border-primary appearance-none"
+                >
+                  {f.options?.map((opt: string) => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
+              ) : (
+                <input 
+                  type="number" 
+                  step="any"
+                  placeholder={f.placeholder}
+                  onChange={(e) => handleChange(f.id, e.target.value, f.type)}
+                  className={`w-full p-2.5 rounded-lg border border-border bg-background focus:outline-none focus:border-primary ${f.type === 'currency' ? 'pl-9' : ''}`}
+                />
+              )}
               {f.type === 'percentage' && <span className="absolute right-3 top-2.5 text-muted-foreground">%</span>}
+              {f.type === 'select' && (
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-muted-foreground">
+                  <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                  </svg>
+                </div>
+              )}
             </div>
           </div>
         ))}
