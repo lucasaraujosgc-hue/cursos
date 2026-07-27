@@ -207,7 +207,7 @@ async function setupVite() {
       const urlParts = req.originalUrl.split("?")[0].split("/");
       let title = "Vírgula Contábil - Mini curso";
       let description = "Acesse os mini cursos da Vírgula Contábil.";
-      let ogImage = "https://www.virgulacontabil.com.br/wp-content/uploads/2026/04/favicon.png"; // Fallback image
+      let ogImage = "https://www.virgulacontabil.com.br/wp-content/uploads/2026/07/icon-192.png"; // Fallback image
 
       if (urlParts.length >= 2 && urlParts[1] && urlParts[1] !== "admin") {
         const slug = urlParts[1];
