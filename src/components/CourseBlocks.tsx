@@ -298,6 +298,71 @@ export const ChecklistBlock = ({ items, moduleIndex }: { items: string[], module
   );
 };
 
+// Turns "aliquotaEfetiva" into "Aliquota Efetiva" for keys the course JSON didn't
+// explicitly label via `resultFields`.
+const humanizeKey = (key: string) => key
+  .replace(/([A-Z])/g, ' $1')
+  .replace(/^./, (s: string) => s.toUpperCase())
+  .trim();
+
+// A calculator's `formula` can be either a bare expression ("a * b / 100", the
+// original/simple case) or a multi-statement function body that already ends
+// in its own `return` (used by calculators with resultFormat: 'object', e.g.
+// "const base = ...; const inss = ...; return { base, inss };"). Blindly
+// prefixing every formula with `return ` breaks the second case with a
+// SyntaxError, so detect which kind it is before building the Function.
+const buildCalculatorFn = (keys: string[], formula: string) => {
+  const trimmed = (formula || '').trim();
+  const isStatementBlock = /;|\breturn\b/.test(trimmed);
+  const body = isStatementBlock ? trimmed : `return ${trimmed};`;
+  return new Function(...keys, body);
+};
+
+const formatByType = (val: any, format?: string) => {
+  if (typeof val === 'string') return val;
+  if (typeof val !== 'number' || isNaN(val)) return String(val ?? '—');
+  if (format === 'currency') return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  if (format === 'percentage') return val.toLocaleString('pt-BR', { maximumFractionDigits: 2 }) + '%';
+  return val.toLocaleString('pt-BR', { maximumFractionDigits: 2 });
+};
+
+// Renders the multi-value result of a calculator whose formula returns an object
+// instead of a single number (resultFormat: 'object'). If the object contains an
+// "aviso" key, that takes over as a single full-width warning message instead of
+// the usual result grid — used for out-of-range / edge-case messages.
+const CalculatorObjectResult = ({ block, result }: { block: any; result: Record<string, any> }) => {
+  if (typeof result.aviso === 'string') {
+    return (
+      <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-[15px] leading-relaxed text-amber-900">
+        {result.aviso}
+      </div>
+    );
+  }
+
+  const resultFields: { key: string; label: string; format?: string }[] = block.resultFields || [];
+
+  return (
+    <div>
+      {block.resultLabel && (
+        <span className="block font-sans font-medium text-muted-foreground mb-3">{block.resultLabel}</span>
+      )}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {Object.keys(result).map((key) => {
+          const fieldDef = resultFields.find((r) => r.key === key);
+          const label = fieldDef?.label || humanizeKey(key);
+          const display = formatByType(result[key], fieldDef?.format);
+          return (
+            <div key={key} className="rounded-lg border border-primary/20 bg-primary/5 p-3 flex flex-col">
+              <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{label}</span>
+              <span className="font-serif font-bold text-lg text-primary">{display}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
 export const CalculatorBlock = ({ block, moduleIndex }: { block: any, moduleIndex: number }) => {
   const [values, setValues] = useState<Record<string, any>>({});
 
@@ -322,13 +387,21 @@ export const CalculatorBlock = ({ block, moduleIndex }: { block: any, moduleInde
     }
   };
 
-  let result = 0;
+  const isObjectResult = block.resultFormat === 'object';
+
+  let numericResult = 0;
+  let objectResult: Record<string, any> | null = null;
   try {
     const keys = Object.keys(values);
     const args = keys.map(k => values[k]);
     // Allow basic formula execution with given field IDs
-    const func = new Function(...keys, `return ${block.formula}`);
-    result = func(...args) || 0;
+    const func = buildCalculatorFn(keys, block.formula);
+    const raw = func(...args);
+    if (isObjectResult) {
+      objectResult = raw && typeof raw === 'object' ? raw : null;
+    } else {
+      numericResult = raw || 0;
+    }
   } catch (err) {
     // Ignore invalid formulas during typing or if incomplete
   }
@@ -380,10 +453,21 @@ export const CalculatorBlock = ({ block, moduleIndex }: { block: any, moduleInde
           </div>
         ))}
       </div>
-      <div className="bg-primary/5 rounded-lg p-4 flex flex-col sm:flex-row items-center justify-between border border-primary/20">
-        <span className="font-sans font-medium text-muted-foreground">{block.resultLabel}</span>
-        <span className="font-serif font-bold text-2xl text-primary">{formatResult(result)}</span>
-      </div>
+
+      {isObjectResult ? (
+        objectResult ? (
+          <CalculatorObjectResult block={block} result={objectResult} />
+        ) : (
+          <div className="rounded-lg border border-border bg-secondary/40 p-4 text-center text-sm text-muted-foreground">
+            Preencha os campos acima para ver o resultado da simulação.
+          </div>
+        )
+      ) : (
+        <div className="bg-primary/5 rounded-lg p-4 flex flex-col sm:flex-row items-center justify-between border border-primary/20">
+          <span className="font-sans font-medium text-muted-foreground">{block.resultLabel}</span>
+          <span className="font-serif font-bold text-2xl text-primary">{formatResult(numericResult)}</span>
+        </div>
+      )}
     </div>
   );
 };

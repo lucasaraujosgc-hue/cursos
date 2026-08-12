@@ -9,10 +9,15 @@ export type Block =
   | { type: 'math'; expression: string; inline?: boolean }
   | { 
       type: 'calculator'; 
-      fields: { id: string; label: string; type: 'number' | 'currency' | 'percentage'; placeholder?: string }[];
+      fields: { id: string; label: string; type: 'number' | 'currency' | 'percentage' | 'select' | 'text'; placeholder?: string; options?: string[] }[];
       formula: string; 
       resultLabel: string;
-      resultFormat?: 'currency' | 'number' | 'percentage';
+      resultFormat?: 'currency' | 'number' | 'percentage' | 'object';
+      // Only used when resultFormat === 'object'. The formula's return object's keys are matched
+      // against `key` here to pick a label + display format. Any returned key not listed here
+      // falls back to a humanized version of the key name, formatted as a plain number.
+      // A returned key named "aviso" is always treated as a full-width warning message.
+      resultFields?: { key: string; label: string; format?: 'currency' | 'number' | 'percentage' | 'text' }[];
     }
   | { type: 'breakeven-chart'; custoFixo: number; custoVariavelUnitario: number; precoVenda: number; quantidadeMaxima?: number }
   | { type: 'breakdown-chart'; total: number; parts: { label: string; value: number; color?: string }[] }

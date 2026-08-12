@@ -11,12 +11,22 @@
         "title": "Separação de Contas",
         "summary": "O patrimônio da empresa (Pessoa Jurídica) é independente do patrimônio dos sócios (Pessoa Física).",
         "content": [
-          { "type": "paragraph", "text": "A mistura de contas é o erro mais comum e perigoso na gestão de pequenos negócios, podendo levar à desconsideração da personalidade jurídica da sua empresa." },
-          { "type": "highlight", "text": "O dinheiro da empresa não é o seu dinheiro. O seu dinheiro não é o dinheiro da empresa." },
-          { "type": "callout", "title": "Regra Prática", "items": [
-            "Nunca pague despesas pessoais (fatura de cartão de crédito, boletos, contas de casa) com a conta da empresa.",
-            "Nunca pague despesas da empresa com sua conta pessoal."
-          ]}
+          {
+            "type": "paragraph",
+            "text": "A mistura de contas é o erro mais comum e perigoso na gestão de pequenos negócios, podendo levar à desconsideração da personalidade jurídica da sua empresa."
+          },
+          {
+            "type": "highlight",
+            "text": "O dinheiro da empresa não é o seu dinheiro. O seu dinheiro não é o dinheiro da empresa."
+          },
+          {
+            "type": "callout",
+            "title": "Regra Prática",
+            "items": [
+              "Nunca pague despesas pessoais (fatura de cartão de crédito, boletos, contas de casa) com a conta da empresa.",
+              "Nunca pague despesas da empresa com sua conta pessoal."
+            ]
+          }
         ]
       },
       {
@@ -26,14 +36,24 @@
         "title": "Pagamentos a Pessoa Física",
         "summary": "Ao contratar serviços de autônomos (Pessoa Física - RPA), existem incidências tributárias obrigatórias que a sua empresa deve recolher.",
         "content": [
-          { "type": "paragraph", "text": "O pagamento direto a autônomos sem a devida retenção configura sonegação e expõe a empresa a multas e passivos trabalhistas." },
-          { "type": "list", "items": [
-            "Há retenção de 11% de INSS do prestador.",
-            "Para empresas fora do Simples Nacional, soma-se o encargo patronal (geralmente 20%)."
-          ]},
-          { "type": "callout", "title": "Ação Exigida", "items": [
-            "Sempre consulte a contabilidade ANTES de fechar o serviço com pessoa física para calcular o custo real."
-          ]}
+          {
+            "type": "paragraph",
+            "text": "O pagamento direto a autônomos sem a devida retenção configura sonegação e expõe a empresa a multas e passivos trabalhistas."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Há retenção de 11% de INSS do prestador.",
+              "Para empresas fora do Simples Nacional, soma-se o encargo patronal (geralmente 20%)."
+            ]
+          },
+          {
+            "type": "callout",
+            "title": "Ação Exigida",
+            "items": [
+              "Sempre consulte a contabilidade ANTES de fechar o serviço com pessoa física para calcular o custo real."
+            ]
+          }
         ]
       },
       {
@@ -43,12 +63,21 @@
         "title": "Exigência de Nota Fiscal",
         "summary": "A Nota Fiscal é o único documento oficial que comprova a legalidade de uma despesa perante a Receita Federal.",
         "content": [
-          { "type": "paragraph", "text": "Sem nota fiscal válida, a saída de caixa pode ser interpretada como distribuição de lucro disfarçada pelo Fisco, gerando tributação e multas pesadas." },
-          { "type": "highlight", "text": "Recibos simples, na grande maioria das vezes, não têm validade fiscal para dedução de despesas da sua empresa." },
-          { "type": "list", "items": [
-            "Solicite Nota Fiscal para TODA e qualquer despesa da empresa.",
-            "Guarde os comprovantes de pagamento atrelados às respectivas notas."
-          ]}
+          {
+            "type": "paragraph",
+            "text": "Sem nota fiscal válida, a saída de caixa pode ser interpretada como distribuição de lucro disfarçada pelo Fisco, gerando tributação e multas pesadas."
+          },
+          {
+            "type": "highlight",
+            "text": "Recibos simples, na grande maioria das vezes, não têm validade fiscal para dedução de despesas da sua empresa."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Solicite Nota Fiscal para TODA e qualquer despesa da empresa.",
+              "Guarde os comprovantes de pagamento atrelados às respectivas notas."
+            ]
+          }
         ]
       },
       {
@@ -58,11 +87,18 @@
         "title": "Conta Bancária Exclusiva",
         "summary": "Toda a movimentação financeira da empresa deve ser transparente, rastreável e estar estritamente vinculada ao seu CNPJ.",
         "content": [
-          { "type": "paragraph", "text": "A conta PJ é o reflexo exato da contabilidade. Tudo que acontece na empresa deve obrigatoriamente passar por ela." },
-          { "type": "callout", "title": "Fluxo de Caixa", "items": [
-            "Todas as despesas devem ser pagas através da conta bancária PJ.",
-            "Recebimentos de clientes devem entrar exclusivamente nesta conta, sem atalhos ou desvios para contas pessoais."
-          ]}
+          {
+            "type": "paragraph",
+            "text": "A conta PJ é o reflexo exato da contabilidade. Tudo que acontece na empresa deve obrigatoriamente passar por ela."
+          },
+          {
+            "type": "callout",
+            "title": "Fluxo de Caixa",
+            "items": [
+              "Todas as despesas devem ser pagas através da conta bancária PJ.",
+              "Recebimentos de clientes devem entrar exclusivamente nesta conta, sem atalhos ou desvios para contas pessoais."
+            ]
+          }
         ]
       },
       {
@@ -72,12 +108,21 @@
         "title": "Como retirar recursos corretamente",
         "summary": "Existem apenas duas vias formais e legais para o sócio retirar dinheiro da empresa.",
         "content": [
-          { "type": "heading", "text": "As Duas Vias Oficiais" },
-          { "type": "list", "items": [
-            "Pró-labore: remuneração mensal fixa do sócio pela atuação na empresa, com retenção de INSS e IRRF.",
-            "Distribuição de lucros: retirada do lucro apurado, isenta de IR quando dentro das regras vigentes e respaldada por apuração contábil."
-          ]},
-          { "type": "highlight", "text": "Qualquer valor que o sócio precise usar para fins pessoais deve primeiro sair da empresa por uma dessas duas vias — e só depois ser gasto." }
+          {
+            "type": "heading",
+            "text": "As Duas Vias Oficiais"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Pró-labore: remuneração mensal fixa do sócio pela atuação na empresa, com retenção de INSS e IRRF.",
+              "Distribuição de lucros: retirada do lucro apurado, isenta de IR quando dentro das regras vigentes e respaldada por apuração contábil."
+            ]
+          },
+          {
+            "type": "highlight",
+            "text": "Qualquer valor que o sócio precise usar para fins pessoais deve primeiro sair da empresa por uma dessas duas vias — e só depois ser gasto."
+          }
         ]
       },
       {
@@ -87,12 +132,27 @@
         "title": "Impactos da Reforma Tributária",
         "summary": "Cronograma de transição para os novos impostos IBS e CBS que substituirão ICMS, ISS, PIS, COFINS e IPI.",
         "content": [
-          { "type": "timeline", "items": [
-            { "year": "2026", "text": "Início da transição com alíquota teste de 0,9% para a CBS e 0,1% para o IBS. Compensação com PIS/COFINS." },
-            { "year": "2027", "text": "Extinção completa do PIS e da COFINS. Redução a zero da alíquota do IPI (exceto itens da Zona Franca de Manaus)." },
-            { "year": "2029", "text": "Início da redução gradual das alíquotas do ICMS e do ISS (1/10 ao ano)." },
-            { "year": "2033", "text": "Vigência integral do novo sistema. ICMS e ISS são completamente extintos." }
-          ]}
+          {
+            "type": "timeline",
+            "items": [
+              {
+                "year": "2026",
+                "text": "Início da transição com alíquota teste de 0,9% para a CBS e 0,1% para o IBS. Compensação com PIS/COFINS."
+              },
+              {
+                "year": "2027",
+                "text": "Extinção completa do PIS e da COFINS. Redução a zero da alíquota do IPI (exceto itens da Zona Franca de Manaus)."
+              },
+              {
+                "year": "2029",
+                "text": "Início da redução gradual das alíquotas do ICMS e do ISS (1/10 ao ano)."
+              },
+              {
+                "year": "2033",
+                "text": "Vigência integral do novo sistema. ICMS e ISS são completamente extintos."
+              }
+            ]
+          }
         ]
       },
       {
@@ -102,13 +162,662 @@
         "title": "Checklist de Fechamento",
         "summary": "Garanta que sua empresa envie todas as informações necessárias para a contabilidade no prazo correto.",
         "content": [
-          { "type": "checklist", "items": [
-            "Extrato bancário da conta PJ exportado em formato OFX.",
-            "Comprovantes de pagamento anexados e identificados.",
-            "Notas fiscais de serviços tomados (fornecedores) enviadas.",
-            "Notas fiscais de serviços prestados (clientes) emitidas e conferidas.",
-            "Informações sobre faltas, atestados e férias de funcionários enviadas ao DP."
-          ]}
+          {
+            "type": "checklist",
+            "items": [
+              "Extrato bancário da conta PJ exportado em formato OFX.",
+              "Comprovantes de pagamento anexados e identificados.",
+              "Notas fiscais de serviços tomados (fornecedores) enviadas.",
+              "Notas fiscais de serviços prestados (clientes) emitidas e conferidas.",
+              "Informações sobre faltas, atestados e férias de funcionários enviadas ao DP."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "jornada-fiscal-do-empreendedor",
+    "courseName": "Jornada Fiscal do Empreendedor: Do Pró-labore ao DAS",
+    "description": "Um curso prático e direto para você, empresário, entender como funciona a tributação no Simples Nacional. Começamos pelo pró-labore e INSS, passamos pelo enquadramento nos Anexos, entendemos o Fator R para atividades sujeitas a essa regra e chegamos ao cálculo da alíquota efetiva e do DAS.",
+    "modules": [
+      {
+        "id": "modulo-01-pro-labore-inss",
+        "shortTitle": "Pró-labore e INSS",
+        "kicker": "MÓDULO 1 · O CUSTO DO SÓCIO",
+        "title": "Pró-labore e INSS: o primeiro custo do sócio que trabalha na empresa",
+        "summary": "Entenda o que é o pró-labore, como funciona o INSS do sócio e por que essa remuneração pode influenciar o Fator R.",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Pró-labore é a remuneração paga ao sócio que efetivamente trabalha na empresa. Ele não é a mesma coisa que distribuição de lucros. O pró-labore remunera o trabalho do sócio e, quando devido, sofre incidência de contribuição previdenciária."
+          },
+          {
+            "type": "heading",
+            "text": "Pró-labore x distribuição de lucros"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Pró-labore remunera o trabalho realizado pelo sócio na empresa.",
+              "Distribuição de lucros representa a retirada de resultados efetivamente apurados pela empresa.",
+              "Pró-labore e distribuição de lucros possuem tratamentos tributários e previdenciários diferentes.",
+              "A distribuição de lucros não deve ser utilizada simplesmente para substituir a remuneração pelo trabalho do sócio."
+            ]
+          },
+          {
+            "type": "callout",
+            "title": "ATENÇÃO À DISTRIBUIÇÃO DE LUCROS EM 2026",
+            "items": [
+              "A distribuição de lucros não deve ser tratada como automaticamente isenta em qualquer situação.",
+              "A partir de janeiro de 2026, lucros e dividendos pagos por uma mesma pessoa jurídica a uma mesma pessoa física residente no Brasil em valor superior a R$ 50.000,00 no mesmo mês ficam sujeitos, em regra, à retenção de IRRF de 10% sobre o valor total pago.",
+              "Existem regras específicas de transição para determinados lucros apurados até 2025 e aprovados até 31/12/2025.",
+              "A distribuição deve estar respaldada pela apuração dos resultados e pela documentação contábil adequada."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "INSS sobre o pró-labore"
+          },
+          {
+            "type": "paragraph",
+            "text": "Para o sócio contribuinte individual que recebe pró-labore de uma empresa, a contribuição previdenciária do segurado é, em regra, de 11% sobre a remuneração, respeitado o limite máximo do salário de contribuição."
+          },
+          {
+            "type": "math",
+            "expression": "INSS_{\\text{sócio}} = \\min(\\text{Pró-labore},\\ \\text{Teto INSS}) \\times 11\\%",
+            "inline": false
+          },
+          {
+            "type": "list",
+            "items": [
+              "Teto do INSS em 2026: R$ 8.475,55.",
+              "Contribuição máxima do sócio: R$ 932,31.",
+              "Para pró-labore de R$ 3.500,00: INSS do sócio = R$ 385,00.",
+              "O cálculo considera também situações de múltiplos vínculos e outras particularidades previdenciárias quando aplicáveis."
+            ]
+          },
+          {
+            "type": "calculator",
+            "fields": [
+              {
+                "id": "prolaboreValor",
+                "label": "Valor do Pró-labore (R$)",
+                "type": "currency",
+                "placeholder": "3500"
+              }
+            ],
+            "formula": "const base = Math.min(Math.max(prolaboreValor || 0, 0), 8475.55); const inss = base * 0.11; return { baseINSS: base, inssSocio: inss };",
+            "resultLabel": "INSS do Sócio",
+            "resultFormat": "object",
+            "resultFields": [
+              {
+                "key": "baseINSS",
+                "label": "Base de Cálculo do INSS",
+                "format": "currency"
+              },
+              {
+                "key": "inssSocio",
+                "label": "INSS do Sócio",
+                "format": "currency"
+              }
+            ]
+          },
+          {
+            "type": "callout",
+            "title": "IMPORTANTE",
+            "items": [
+              "O cálculo acima é uma simulação simplificada do desconto previdenciário do sócio.",
+              "O pró-labore pode ter outras repercussões, como IRRF, dependendo do valor e da situação do contribuinte.",
+              "No Simples Nacional, o tratamento da contribuição patronal depende do Anexo da atividade."
+            ]
+          },
+          {
+            "type": "checklist",
+            "items": [
+              "Definir uma remuneração compatível com o trabalho efetivamente exercido pelo sócio.",
+              "Formalizar e registrar corretamente o pró-labore.",
+              "Calcular e recolher corretamente as contribuições e retenções aplicáveis.",
+              "Verificar o impacto do pró-labore no Fator R quando a atividade estiver sujeita a essa regra."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "modulo-02-simples-nacional",
+        "shortTitle": "O que é o Simples",
+        "kicker": "MÓDULO 2 · O REGIME",
+        "title": "Simples Nacional: vários tributos reunidos em um único documento",
+        "summary": "Entenda o Simples Nacional, seus limites e os principais tributos que podem ser recolhidos por meio do DAS.",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "O Simples Nacional é um regime tributário destinado às microempresas e empresas de pequeno porte. Ele permite o recolhimento de diversos tributos por meio do Documento de Arrecadação do Simples Nacional, o DAS, observadas as regras de cada atividade."
+          },
+          {
+            "type": "heading",
+            "text": "Quais tributos podem estar no DAS?"
+          },
+          {
+            "type": "list",
+            "items": [
+              "IRPJ – Imposto sobre a Renda da Pessoa Jurídica.",
+              "CSLL – Contribuição Social sobre o Lucro Líquido.",
+              "PIS/Pasep.",
+              "COFINS.",
+              "CPP – Contribuição Patronal Previdenciária, quando incluída no Simples.",
+              "ICMS – para receitas sujeitas ao imposto estadual.",
+              "ISS – para receitas de serviços sujeitas ao imposto municipal.",
+              "IPI – para receitas de industrialização sujeitas ao imposto."
+            ]
+          },
+          {
+            "type": "callout",
+            "title": "NEM TODO TRIBUTO DA EMPRESA ESTÁ NECESSARIAMENTE NO DAS",
+            "items": [
+              "Existem tributos e situações específicas que podem ser recolhidos separadamente.",
+              "Exemplos incluem determinadas operações sujeitas a ICMS-ST, tributação monofásica, retenções, CPP do Anexo IV e outras hipóteses previstas na legislação.",
+              "Por isso, não basta olhar apenas a alíquota do Anexo para conhecer toda a carga tributária da empresa."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Quem pode optar pelo Simples Nacional?"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Microempresa (ME): receita bruta anual de até R$ 360.000,00.",
+              "Empresa de Pequeno Porte (EPP): receita bruta anual superior a R$ 360.000,00 e igual ou inferior a R$ 4.800.000,00.",
+              "A empresa precisa atender aos requisitos legais para opção pelo regime.",
+              "A existência de débitos tributários ou outras vedações legais pode impedir a opção ou a permanência no regime."
+            ]
+          },
+          {
+            "type": "callout",
+            "title": "LIMITE DE R$ 4,8 MILHÕES",
+            "items": [
+              "O limite geral do Simples Nacional é de R$ 4.800.000,00 de receita bruta anual.",
+              "A ultrapassagem do limite não deve ser tratada simplesmente como 'exclusão automática no ano seguinte', pois os efeitos dependem do valor e do percentual de excesso e das regras aplicáveis.",
+              "Além do limite geral, existem regras específicas para sublimites de ICMS e ISS."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "modulo-03-anexos",
+        "shortTitle": "Os 5 Anexos",
+        "kicker": "MÓDULO 3 · ENQUADRAMENTO",
+        "title": "Os 5 Anexos: onde sua empresa se encaixa?",
+        "summary": "Conheça os Anexos do Simples Nacional e entenda por que o CNAE, a atividade efetivamente exercida e as regras específicas determinam a tributação.",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "O Simples Nacional possui cinco Anexos de tributação. O enquadramento não deve ser determinado exclusivamente pelo CNAE principal: é necessário verificar a atividade efetivamente exercida e as regras da Lei Complementar nº 123/2006 e da regulamentação do Simples Nacional."
+          },
+          {
+            "type": "heading",
+            "text": "Resumo dos Anexos"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Anexo I – Comércio: alíquotas de 4% a 19%, conforme a faixa.",
+              "Anexo II – Indústria: alíquotas de 4,5% a 30%, conforme a faixa.",
+              "Anexo III – Serviços sujeitos a esse Anexo: alíquotas de 6% a 33%.",
+              "Anexo IV – Serviços sujeitos a esse Anexo: alíquotas de 4,5% a 33%, com a CPP patronal fora do DAS.",
+              "Anexo V – Serviços sujeitos a esse Anexo: alíquotas de 15,5% a 30,5%."
+            ]
+          },
+          {
+            "type": "callout",
+            "title": "ATENÇÃO",
+            "items": [
+              "Nem todo serviço intelectual pertence automaticamente ao Anexo V.",
+              "Algumas atividades estão sujeitas ao Fator R e podem ser tributadas pelo Anexo III ou V.",
+              "Outras atividades possuem enquadramento específico no Anexo III ou IV.",
+              "A análise deve considerar o CNAE, a atividade efetivamente realizada e as regras específicas da legislação."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Exemplos didáticos"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Comércio varejista → normalmente Anexo I.",
+              "Indústria → normalmente Anexo II.",
+              "Atividade sujeita ao Fator R com Fator R ≥ 28% → Anexo III.",
+              "Atividade sujeita ao Fator R com Fator R < 28% → Anexo V.",
+              "Atividade expressamente enquadrada no Anexo IV → Anexo IV."
+            ]
+          },
+          {
+            "type": "classify-exercise",
+            "items": [
+              "Mercearia de bairro",
+              "Fábrica de papel",
+              "Consultoria com Fator R de 30%",
+              "Empresa cuja atividade esteja expressamente prevista no Anexo IV",
+              "Serviço sujeito ao Fator R com Fator R inferior a 28%"
+            ],
+            "categories": [
+              "Anexo I",
+              "Anexo II",
+              "Anexo III",
+              "Anexo IV",
+              "Anexo V"
+            ],
+            "answerKey": {
+              "Mercearia de bairro": "Anexo I",
+              "Fábrica de papel": "Anexo II",
+              "Consultoria com Fator R de 30%": "Anexo III",
+              "Empresa cuja atividade esteja expressamente prevista no Anexo IV": "Anexo IV",
+              "Serviço sujeito ao Fator R com Fator R inferior a 28%": "Anexo V"
+            }
+          },
+          {
+            "type": "checklist",
+            "items": [
+              "Identificar o CNAE e a atividade efetivamente exercida.",
+              "Verificar se existe regra específica de enquadramento.",
+              "Verificar se a atividade está sujeita ao Fator R.",
+              "Confirmar o Anexo aplicável antes de calcular o DAS."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "modulo-04-tabelas",
+        "shortTitle": "Tabelas Anexo III e V",
+        "kicker": "MÓDULO 4 · CONSULTA RÁPIDA",
+        "title": "Tabelas dos Anexos III e V",
+        "summary": "Consulte as faixas de receita, alíquotas nominais e parcelas a deduzir utilizadas no cálculo da alíquota efetiva.",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "As tabelas dos Anexos III e V utilizadas neste curso correspondem às regras vigentes para 2026. A alíquota efetiva não é simplesmente a alíquota nominal da faixa: é necessário aplicar a fórmula prevista na legislação."
+          },
+          {
+            "type": "callout",
+            "title": "TABELAS DE 2026",
+            "items": [
+              "Os valores abaixo são os utilizados para o cálculo do Simples Nacional em 2026.",
+              "A Reforma Tributária altera a composição e as regras do Simples Nacional a partir de 2027, portanto as tabelas deste curso devem ser revisadas para exercícios futuros."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "ANEXO III"
+          },
+          {
+            "type": "list",
+            "items": [
+              "1ª Faixa: até R$ 180.000,00 | 6,00% | PD R$ 0,00",
+              "2ª Faixa: de R$ 180.000,01 a R$ 360.000,00 | 11,20% | PD R$ 9.360,00",
+              "3ª Faixa: de R$ 360.000,01 a R$ 720.000,00 | 13,50% | PD R$ 17.640,00",
+              "4ª Faixa: de R$ 720.000,01 a R$ 1.800.000,00 | 16,00% | PD R$ 35.640,00",
+              "5ª Faixa: de R$ 1.800.000,01 a R$ 3.600.000,00 | 21,00% | PD R$ 125.640,00",
+              "6ª Faixa: de R$ 3.600.000,01 a R$ 4.800.000,00 | 33,00% | PD R$ 648.000,00"
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "ANEXO V"
+          },
+          {
+            "type": "list",
+            "items": [
+              "1ª Faixa: até R$ 180.000,00 | 15,50% | PD R$ 0,00",
+              "2ª Faixa: de R$ 180.000,01 a R$ 360.000,00 | 18,00% | PD R$ 4.500,00",
+              "3ª Faixa: de R$ 360.000,01 a R$ 720.000,00 | 19,50% | PD R$ 9.900,00",
+              "4ª Faixa: de R$ 720.000,01 a R$ 1.800.000,00 | 20,50% | PD R$ 17.100,00",
+              "5ª Faixa: de R$ 1.800.000,01 a R$ 3.600.000,00 | 23,00% | PD R$ 62.100,00",
+              "6ª Faixa: de R$ 3.600.000,01 a R$ 4.800.000,00 | 30,50% | PD R$ 540.000,00"
+            ]
+          },
+          {
+            "type": "highlight",
+            "text": "Na primeira faixa, a diferença entre o Anexo III e o Anexo V é de 9,5 pontos percentuais: 6% contra 15,5%. Por isso, para atividades sujeitas ao Fator R, alcançar 28% pode representar uma diferença tributária relevante."
+          },
+          {
+            "type": "checklist",
+            "items": [
+              "Identificar o Anexo correto.",
+              "Identificar a faixa correspondente ao RBT12.",
+              "Anotar a alíquota nominal.",
+              "Anotar a parcela a deduzir.",
+              "Aplicar a fórmula da alíquota efetiva."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "modulo-05-fator-r-e-aliquota",
+        "shortTitle": "Fator R e Alíquota",
+        "kicker": "MÓDULO 5 · CÁLCULO COMPLETO",
+        "title": "Fator R + Alíquota Efetiva: do faturamento ao DAS",
+        "summary": "Calcule o Fator R, identifique o Anexo aplicável, encontre a alíquota efetiva e estime o DAS e o INSS do sócio.",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "O Fator R é utilizado para determinadas atividades de serviços previstas na legislação. Quando a atividade estiver sujeita ao Fator R, o resultado determina se a receita será tributada pelo Anexo III ou pelo Anexo V."
+          },
+          {
+            "type": "heading",
+            "text": "Como funciona o Fator R?"
+          },
+          {
+            "type": "math",
+            "expression": "\\text{Fator R} = \\dfrac{FS_{12}}{RBT_{12}}",
+            "inline": false
+          },
+          {
+            "type": "list",
+            "items": [
+              "Fator R ≥ 0,28 (28%) → Anexo III.",
+              "Fator R < 0,28 (28%) → Anexo V.",
+              "FS12 corresponde à folha de salários, incluídos os encargos considerados pela legislação, dos 12 meses anteriores ao período de apuração.",
+              "RBT12 corresponde à receita bruta acumulada nos 12 meses anteriores ao período de apuração.",
+              "A FS12 pode incluir salários, pró-labore, 13º e encargos efetivamente recolhidos de CPP e FGTS, conforme as regras aplicáveis.",
+              "Distribuição de lucros, aluguéis e outras parcelas não relacionadas à remuneração pelo trabalho não integram a FS12."
+            ]
+          },
+          {
+            "type": "callout",
+            "title": "IMPORTANTE SOBRE O CÁLCULO",
+            "items": [
+              "O Fator R não deve ser calculado simplesmente multiplicando uma folha mensal atual por 12 quando existem valores históricos diferentes.",
+              "Para um cálculo real, devem ser utilizados os valores efetivamente pagos/recolhidos nos 12 meses anteriores.",
+              "A legislação também possui regras específicas para empresas com menos de 13 meses de atividade."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Alíquota Efetiva"
+          },
+          {
+            "type": "math",
+            "expression": "AE = \\dfrac{\\left(RBT_{12} \\times \\text{Alíquota Nominal}\\right) - \\text{Parcela a Deduzir}}{RBT_{12}}",
+            "inline": false
+          },
+          {
+            "type": "heading",
+            "text": "Calculadora Simplificada"
+          },
+          {
+            "type": "paragraph",
+            "text": "Esta calculadora utiliza uma média mensal apenas para fins didáticos. Em uma apuração real, utilize os valores históricos efetivos dos 12 meses anteriores."
+          },
+          {
+            "type": "calculator",
+            "fields": [
+              {
+                "id": "faturamentoMedioMensal",
+                "label": "Faturamento Médio Mensal (R$)",
+                "type": "currency",
+                "placeholder": "25000"
+              },
+              {
+                "id": "folhaMensal",
+                "label": "Folha Média Mensal para fins didáticos (R$)",
+                "type": "currency",
+                "placeholder": "7000"
+              },
+              {
+                "id": "prolaboreMensal",
+                "label": "Pró-labore Mensal do Sócio (R$)",
+                "type": "currency",
+                "placeholder": "3500"
+              }
+            ],
+            "formula": "const faturamento = Math.max(faturamentoMedioMensal || 0, 0); const folha = Math.max(folhaMensal || 0, 0); const prolabore = Math.max(prolaboreMensal || 0, 0); const rbt12 = faturamento * 12; const fs12 = folha * 12; const fatorR = rbt12 > 0 ? fs12 / rbt12 : 0; const anexo = fatorR >= 0.28 ? 3 : 5; const tabelas = { 3: [[180000,6.00,0],[360000,11.20,9360],[720000,13.50,17640],[1800000,16.00,35640],[3600000,21.00,125640],[4800000,33.00,648000]], 5: [[180000,15.50,0],[360000,18.00,4500],[720000,19.50,9900],[1800000,20.50,17100],[3600000,23.00,62100],[4800000,30.50,540000]] }; const faixa = tabelas[anexo].find(f => rbt12 <= f[0]); if (!faixa) return { aviso: 'RBT12 acima de R$ 4.800.000,00: esta calculadora não calcula o DAS.' }; const nominal = faixa[1]; const pd = faixa[2]; const aliquotaEfetiva = rbt12 > 0 ? (((rbt12 * (nominal / 100)) - pd) / rbt12) * 100 : 0; const dasMensal = faturamento * (aliquotaEfetiva / 100); const inssSocio = Math.min(prolabore, 8475.55) * 0.11; return { fatorR: fatorR * 100, anexo: anexo === 3 ? 'Anexo III' : 'Anexo V', aliquotaNominal: nominal, parcelaDeduzir: pd, aliquotaEfetiva: aliquotaEfetiva, dasEstimado: dasMensal, inssSocio: inssSocio };",
+            "resultLabel": "Resultados da simulação:",
+            "resultFormat": "object",
+            "resultFields": [
+              {
+                "key": "fatorR",
+                "label": "Fator R",
+                "format": "percentage"
+              },
+              {
+                "key": "anexo",
+                "label": "Anexo Aplicável",
+                "format": "text"
+              },
+              {
+                "key": "aliquotaNominal",
+                "label": "Alíquota Nominal",
+                "format": "percentage"
+              },
+              {
+                "key": "parcelaDeduzir",
+                "label": "Parcela a Deduzir",
+                "format": "currency"
+              },
+              {
+                "key": "aliquotaEfetiva",
+                "label": "Alíquota Efetiva",
+                "format": "percentage"
+              },
+              {
+                "key": "dasEstimado",
+                "label": "DAS Estimado (mensal)",
+                "format": "currency"
+              },
+              {
+                "key": "inssSocio",
+                "label": "INSS do Sócio",
+                "format": "currency"
+              }
+            ]
+          },
+          {
+            "type": "highlight",
+            "text": "O aumento do pró-labore pode elevar o Fator R, mas isso não significa automaticamente que aumentar o pró-labore seja vantajoso. É necessário comparar o custo adicional da remuneração e dos encargos com a possível economia tributária."
+          },
+          {
+            "type": "callout",
+            "title": "ESTRATÉGIA TRIBUTÁRIA",
+            "items": [
+              "Se a atividade estiver sujeita ao Fator R, simule cenários antes de alterar o pró-labore.",
+              "Compare a economia potencial no DAS com o aumento de INSS e demais custos.",
+              "Considere que a FS12 possui regras próprias e não corresponde simplesmente ao pró-labore.",
+              "A decisão deve ser baseada nos números reais da empresa."
+            ]
+          },
+          {
+            "type": "checklist",
+            "items": [
+              "Verificar se a atividade está sujeita ao Fator R.",
+              "Calcular a FS12 corretamente.",
+              "Calcular o RBT12 corretamente.",
+              "Calcular o Fator R.",
+              "Identificar o Anexo III ou V.",
+              "Calcular a alíquota efetiva.",
+              "Simular o DAS e os custos previdenciários."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "modulo-06-atividades-mistas",
+        "shortTitle": "Atividades Mistas",
+        "kicker": "MÓDULO 6 · SEGREGAÇÃO",
+        "title": "Empresas com mais de uma atividade: como calcular o DAS?",
+        "summary": "Aprenda por que a receita deve ser segregada e como calcular a tributação quando a empresa possui receitas submetidas a regras diferentes.",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Uma mesma empresa pode possuir receitas sujeitas a diferentes Anexos ou tratamentos tributários. Nesses casos, é necessário segregar corretamente as receitas para que cada parcela seja tributada conforme a regra correspondente."
+          },
+          {
+            "type": "heading",
+            "text": "Regra fundamental"
+          },
+          {
+            "type": "list",
+            "items": [
+              "As receitas devem ser segregadas de acordo com sua natureza e tratamento tributário.",
+              "A receita de cada atividade deve ser informada corretamente no cálculo do Simples Nacional.",
+              "Para determinar a faixa de tributação, o RBT12 é considerado conforme as regras do Simples Nacional e, em regra, corresponde à receita bruta total da empresa.",
+              "A alíquota efetiva de cada Anexo é aplicada sobre a receita correspondente àquele Anexo.",
+              "O DAS total resulta da soma dos valores calculados para as receitas segregadas, observadas as regras específicas."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Exemplo didático"
+          },
+          {
+            "type": "paragraph",
+            "text": "Considere uma empresa com RBT12 total de R$ 500.000,00. No mês, ela possui R$ 20.000,00 de receita de comércio e R$ 10.000,00 de receita de serviço sujeita ao Anexo III."
+          },
+          {
+            "type": "math",
+            "expression": "\\text{Anexo I: } AE = \\dfrac{(500000 \\times 9{,}50\\%) - 13860}{500000} = 6{,}728\\%",
+            "inline": false
+          },
+          {
+            "type": "math",
+            "expression": "\\text{Anexo III: } AE = \\dfrac{(500000 \\times 13{,}50\\%) - 17640}{500000} = 9{,}972\\%",
+            "inline": false
+          },
+          {
+            "type": "math",
+            "expression": "DAS = (20000 \\times 6{,}728\\%) + (10000 \\times 9{,}972\\%) \\approx \\text{R\\$ } 2343{,}00",
+            "inline": false
+          },
+          {
+            "type": "callout",
+            "title": "E SE EXISTIR ATIVIDADE SUJEITA AO FATOR R?",
+            "items": [
+              "Quando houver atividade sujeita ao Fator R, o cálculo deve seguir as regras específicas para essa atividade.",
+              "A FS12 e o RBT12 devem ser apurados corretamente conforme a legislação.",
+              "A segregação das receitas não significa simplesmente dividir a folha proporcionalmente entre atividades."
+            ]
+          },
+          {
+            "type": "checklist",
+            "items": [
+              "Identificar todas as atividades efetivamente exercidas.",
+              "Verificar o tratamento tributário de cada atividade.",
+              "Segregar corretamente as receitas.",
+              "Calcular o RBT12 conforme as regras aplicáveis.",
+              "Calcular o Fator R quando necessário.",
+              "Calcular a alíquota efetiva de cada receita.",
+              "Somar os valores para chegar ao DAS."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "modulo-07-desafio-final",
+        "shortTitle": "Desafio Final",
+        "kicker": "MÓDULO 7 · PRÁTICA",
+        "title": "Desafio Final: calcule o DAS e o INSS da sua empresa de serviço",
+        "summary": "Coloque em prática o que aprendeu e faça uma simulação do Fator R, Anexo, alíquota efetiva, DAS e INSS do sócio.",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Agora você pode fazer uma simulação com os números do seu negócio. Tenha em mãos seu faturamento, sua folha e seu pró-labore. Para uma apuração real, lembre-se de utilizar os valores históricos efetivamente pagos e recolhidos nos 12 meses anteriores."
+          },
+          {
+            "type": "calculator",
+            "fields": [
+              {
+                "id": "desafioFaturamento",
+                "label": "Faturamento Médio Mensal (R$)",
+                "type": "currency",
+                "placeholder": "25000"
+              },
+              {
+                "id": "desafioFolha",
+                "label": "Folha Média Mensal para fins didáticos (R$)",
+                "type": "currency",
+                "placeholder": "7000"
+              },
+              {
+                "id": "desafioProlabore",
+                "label": "Pró-labore Mensal do Sócio (R$)",
+                "type": "currency",
+                "placeholder": "3500"
+              }
+            ],
+            "formula": "const faturamento = Math.max(desafioFaturamento || 0, 0); const folha = Math.max(desafioFolha || 0, 0); const prolabore = Math.max(desafioProlabore || 0, 0); const rbt12 = faturamento * 12; const fs12 = folha * 12; const fatorR = rbt12 > 0 ? fs12 / rbt12 : 0; const anexo = fatorR >= 0.28 ? 3 : 5; const tabelas = { 3: [[180000,6.00,0],[360000,11.20,9360],[720000,13.50,17640],[1800000,16.00,35640],[3600000,21.00,125640],[4800000,33.00,648000]], 5: [[180000,15.50,0],[360000,18.00,4500],[720000,19.50,9900],[1800000,20.50,17100],[3600000,23.00,62100],[4800000,30.50,540000]] }; const faixa = tabelas[anexo].find(f => rbt12 <= f[0]); if (!faixa) return { aviso: 'RBT12 acima de R$ 4.800.000,00: procure seu contador para avaliar o enquadramento tributário.' }; const nominal = faixa[1]; const pd = faixa[2]; const aliquotaEfetiva = rbt12 > 0 ? (((rbt12 * (nominal / 100)) - pd) / rbt12) * 100 : 0; const dasMensal = faturamento * (aliquotaEfetiva / 100); const inssSocio = Math.min(prolabore, 8475.55) * 0.11; return { fatorR: fatorR * 100, anexo: anexo === 3 ? 'Anexo III' : 'Anexo V', aliquotaNominal: nominal, parcelaDeduzir: pd, aliquotaEfetiva: aliquotaEfetiva, dasEstimado: dasMensal, inssSocio: inssSocio };",
+            "resultLabel": "Resultado da sua simulação:",
+            "resultFormat": "object",
+            "resultFields": [
+              {
+                "key": "fatorR",
+                "label": "Fator R",
+                "format": "percentage"
+              },
+              {
+                "key": "anexo",
+                "label": "Anexo Aplicável",
+                "format": "text"
+              },
+              {
+                "key": "aliquotaNominal",
+                "label": "Alíquota Nominal",
+                "format": "percentage"
+              },
+              {
+                "key": "parcelaDeduzir",
+                "label": "Parcela a Deduzir",
+                "format": "currency"
+              },
+              {
+                "key": "aliquotaEfetiva",
+                "label": "Alíquota Efetiva",
+                "format": "percentage"
+              },
+              {
+                "key": "dasEstimado",
+                "label": "DAS Estimado (mensal)",
+                "format": "currency"
+              },
+              {
+                "key": "inssSocio",
+                "label": "INSS do Sócio",
+                "format": "currency"
+              }
+            ]
+          },
+          {
+            "type": "callout",
+            "title": "COMO INTERPRETAR",
+            "items": [
+              "Fator R: indica a relação entre a FS12 e o RBT12 para atividades sujeitas a essa regra.",
+              "Anexo: indica o Anexo aplicável conforme o resultado do Fator R.",
+              "Alíquota Efetiva: representa o percentual calculado pela fórmula do Simples Nacional para a faixa encontrada.",
+              "DAS estimado: é uma estimativa baseada nas informações fornecidas e não substitui a apuração oficial.",
+              "INSS do Sócio: representa a contribuição previdenciária estimada sobre o pró-labore, respeitado o teto de 2026."
+            ]
+          },
+          {
+            "type": "callout",
+            "title": "ATENÇÃO: A CALCULADORA É DIDÁTICA",
+            "items": [
+              "O cálculo real do Simples Nacional pode envolver segregação de receitas, retenções, substituição tributária, tributação monofásica, exportações, sublimites e outras particularidades.",
+              "O Fator R real deve utilizar os valores efetivamente apurados nos 12 meses anteriores.",
+              "O DAS oficial deve ser apurado no sistema do Simples Nacional com os dados fiscais reais da empresa."
+            ]
+          },
+          {
+            "type": "checklist",
+            "items": [
+              "Refazer a simulação com os dados reais da empresa.",
+              "Conferir a atividade e o Anexo aplicável.",
+              "Conferir o RBT12.",
+              "Apurar corretamente a FS12 quando houver Fator R.",
+              "Simular cenários de pró-labore antes de tomar decisões.",
+              "Comparar economia tributária e aumento dos custos previdenciários.",
+              "Validar a apuração com o contador."
+            ]
+          }
         ]
       }
     ]
