@@ -33,6 +33,8 @@ export interface AnalyticsStore {
   add(event: NewEvent): Promise<void>;
   /** Events inside the range, oldest first. `to` is exclusive. */
   range(from: Date, to: Date): Promise<StoredEvent[]>;
+  /** Todos os eventos destes navegadores, sem recorte de data. */
+  byVisitors(ids: string[]): Promise<StoredEvent[]>;
   readonly kind: "postgres" | "file";
 }
 
@@ -90,6 +92,10 @@ class PostgresAnalyticsStore implements AnalyticsStore {
     await this.pool.query(
       `CREATE INDEX IF NOT EXISTS course_events_slug_idx ON course_events (course_slug, created_at)`
     );
+    // Usado ao montar o histórico de um lead a partir do id do navegador dele.
+    await this.pool.query(
+      `CREATE INDEX IF NOT EXISTS course_events_visitor_idx ON course_events (visitor_id)`
+    );
   }
 
   async add(event: NewEvent): Promise<void> {
@@ -125,6 +131,20 @@ class PostgresAnalyticsStore implements AnalyticsStore {
     );
     return res.rows.map(rowToEvent);
   }
+
+  async byVisitors(ids: string[]): Promise<StoredEvent[]> {
+    if (!ids.length) return [];
+    const res = await this.pool.query(
+      `SELECT visitor_id, type, course_slug, module_index, module_title,
+              utm_source, utm_medium, utm_campaign, utm_content, referrer, created_at
+         FROM course_events
+        WHERE visitor_id = ANY($1::text[])
+        ORDER BY created_at
+        LIMIT ${MAX_ROWS}`,
+      [ids]
+    );
+    return res.rows.map(rowToEvent);
+  }
 }
 
 /**
@@ -155,6 +175,24 @@ class FileAnalyticsStore implements AnalyticsStore {
         if (when >= from && when < to) out.push(row);
       } catch {
         // A half-written last line is possible after a crash; skip it.
+      }
+      if (out.length >= MAX_ROWS) break;
+    }
+    out.sort((a, b) => a.timestamp.localeCompare(b.timestamp));
+    return out;
+  }
+
+  async byVisitors(ids: string[]): Promise<StoredEvent[]> {
+    if (!ids.length || !fs.existsSync(this.file)) return [];
+    const procurados = new Set(ids);
+    const out: StoredEvent[] = [];
+    for (const line of fs.readFileSync(this.file, "utf-8").split("\n")) {
+      if (!line.trim()) continue;
+      try {
+        const row = JSON.parse(line) as StoredEvent;
+        if (procurados.has(row.visitorId)) out.push(row);
+      } catch {
+        // linha pela metade após um crash
       }
       if (out.length >= MAX_ROWS) break;
     }
@@ -213,6 +251,85 @@ export type Stats = {
 };
 
 const pct = (part: number, whole: number) => (whole > 0 ? Math.round((part / whole) * 1000) / 10 : 0);
+
+/* ------------------------------------------------------------------ */
+/* Visitantes, um por um                                               */
+/* ------------------------------------------------------------------ */
+
+export type Visita = {
+  visitorId: string;
+  courseSlug: string;
+  courseName: string;
+  primeiroAcesso: string;
+  ultimoAcesso: string;
+  /** Quantas vezes esse navegador abriu este curso no período. */
+  acessos: number;
+  /** Índice do módulo mais fundo alcançado; -1 quando só abriu a capa. */
+  moduloIndice: number;
+  moduloTitulo: string;
+  totalModulos: number;
+  concluiu: boolean;
+  utmSource: string;
+  utmCampaign: string;
+  utmContent: string;
+  referrer: string;
+};
+
+/**
+ * Uma linha por navegador e curso, para ver quem abriu e não deixou contato —
+ * o grupo que nunca aparece na aba de leads. Os ids são anônimos: não há nome,
+ * telefone nem IP, só o número aleatório que o navegador guardou.
+ */
+export function listaVisitas(
+  events: StoredEvent[],
+  courses: { slug: string; courseName: string; modules: { shortTitle: string }[] }[],
+  limite = 500
+): Visita[] {
+  const porCurso = new Map(courses.map((c) => [c.slug, c]));
+  const visitas = new Map<string, Visita>();
+
+  for (const ev of events) {
+    if (!ev.visitorId || ev.type === "lead") continue;
+    const chave = `${ev.visitorId}|${ev.courseSlug}`;
+
+    let visita = visitas.get(chave);
+    if (!visita) {
+      const curso = porCurso.get(ev.courseSlug);
+      visita = {
+        visitorId: ev.visitorId,
+        courseSlug: ev.courseSlug,
+        courseName: curso?.courseName || ev.courseSlug || "(curso removido)",
+        primeiroAcesso: ev.timestamp,
+        ultimoAcesso: ev.timestamp,
+        acessos: 0,
+        moduloIndice: -1,
+        moduloTitulo: "",
+        totalModulos: curso?.modules?.length || 0,
+        concluiu: false,
+        // A atribuição fica a do primeiro evento: é a origem que trouxe a pessoa.
+        utmSource: ev.utmSource || "direto",
+        utmCampaign: ev.utmCampaign,
+        utmContent: ev.utmContent,
+        referrer: ev.referrer,
+      };
+      visitas.set(chave, visita);
+    }
+
+    if (ev.timestamp < visita.primeiroAcesso) visita.primeiroAcesso = ev.timestamp;
+    if (ev.timestamp > visita.ultimoAcesso) visita.ultimoAcesso = ev.timestamp;
+
+    if (ev.type === "course_view") visita.acessos++;
+    if (ev.type === "course_complete") visita.concluiu = true;
+    if (ev.type === "module_view" && ev.moduleIndex !== null && ev.moduleIndex > visita.moduloIndice) {
+      visita.moduloIndice = ev.moduleIndex;
+      visita.moduloTitulo = ev.moduleTitle;
+    }
+  }
+
+  return [...visitas.values()]
+    .sort((a, b) => b.ultimoAcesso.localeCompare(a.ultimoAcesso))
+    .slice(0, limite);
+}
 
 /**
  * Turns raw events into everything the dashboard shows. Done in JS for both
@@ -413,4 +530,62 @@ export function summarise(
       .filter((s) => s.views > 0 || s.leads > 0)
       .sort((a, b) => b.views - a.views),
   };
+}
+
+
+export type HistoricoVisitante = {
+  /** Cursos que este navegador abriu, do mais recente para o mais antigo. */
+  cursos: { courseSlug: string; moduloIndice: number; totalModulos: number; concluiu: boolean }[];
+  visitas: number;
+  primeiroAcesso: string;
+  ultimoAcesso: string;
+};
+
+/** Resume, por navegador, o que ele leu — para mostrar junto do lead. */
+export function historicoPorVisitante(
+  events: StoredEvent[],
+  courses: { slug: string; modules: { shortTitle: string }[] }[]
+): Map<string, HistoricoVisitante> {
+  const totalPorSlug = new Map(courses.map((c) => [c.slug, c.modules?.length || 0]));
+  const porVisitante = new Map<string, HistoricoVisitante>();
+  const fundo = new Map<string, Map<string, { indice: number; concluiu: boolean; quando: string }>>();
+
+  for (const ev of events) {
+    if (!ev.visitorId) continue;
+
+    let h = porVisitante.get(ev.visitorId);
+    if (!h) {
+      h = { cursos: [], visitas: 0, primeiroAcesso: ev.timestamp, ultimoAcesso: ev.timestamp };
+      porVisitante.set(ev.visitorId, h);
+      fundo.set(ev.visitorId, new Map());
+    }
+    if (ev.timestamp < h.primeiroAcesso) h.primeiroAcesso = ev.timestamp;
+    if (ev.timestamp > h.ultimoAcesso) h.ultimoAcesso = ev.timestamp;
+    if (ev.type === "course_view") h.visitas++;
+
+    const cursos = fundo.get(ev.visitorId)!;
+    let c = cursos.get(ev.courseSlug);
+    if (!c) {
+      c = { indice: -1, concluiu: false, quando: ev.timestamp };
+      cursos.set(ev.courseSlug, c);
+    }
+    if (ev.timestamp > c.quando) c.quando = ev.timestamp;
+    if (ev.type === "course_complete") c.concluiu = true;
+    if (ev.type === "module_view" && ev.moduleIndex !== null && ev.moduleIndex > c.indice) {
+      c.indice = ev.moduleIndex;
+    }
+  }
+
+  for (const [id, h] of porVisitante) {
+    h.cursos = [...fundo.get(id)!.entries()]
+      .sort(([, a], [, b]) => b.quando.localeCompare(a.quando))
+      .map(([courseSlug, c]) => ({
+        courseSlug,
+        moduloIndice: c.indice,
+        totalModulos: totalPorSlug.get(courseSlug) || 0,
+        concluiu: c.concluiu,
+      }));
+  }
+
+  return porVisitante;
 }

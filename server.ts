@@ -10,6 +10,8 @@ import { createLeadStore, LeadStore } from "./lead-store";
 import {
   createAnalyticsStore,
   summarise,
+  listaVisitas,
+  historicoPorVisitante,
   AnalyticsStore,
   EventType,
 } from "./analytics-store";
@@ -261,7 +263,26 @@ app.post("/api/admin/uploads", requireAuth, (req, res) => {
 
 app.get("/api/admin/leads", requireAuth, async (req, res, next) => {
   try {
-    res.json(await leadStore.list());
+    const leads = await leadStore.list();
+
+    // Anexa o rastro anônimo de cada contato, para você saber o que a pessoa
+    // leu antes de chamar no WhatsApp. Limitado aos mais recentes: é a fila de
+    // trabalho, e buscar o histórico de milhares de leads de uma vez não paga.
+    const ids = [...new Set(leads.slice(0, 200).map((l) => l.visitorId).filter(Boolean))];
+    let historico = new Map();
+    try {
+      historico = historicoPorVisitante(await analyticsStore.byVisitors(ids), getCourses());
+    } catch (err) {
+      // O histórico é um extra: se falhar, a lista de contatos ainda serve.
+      console.error("Failed to load lead history:", err);
+    }
+
+    res.json(
+      leads.map((l) => ({
+        ...l,
+        historico: (l.visitorId && historico.get(l.visitorId)) || null,
+      }))
+    );
   } catch (err) {
     next(err);
   }
@@ -321,6 +342,8 @@ app.post("/api/leads", rateLimit({ windowMs: 10 * 60 * 1000, max: 15 }), async (
 
   try {
     await leadStore.add({
+      // Liga o contato ao rastro anônimo daquele navegador.
+      visitorId: str(body.visitorId, 64),
       name,
       phone: str(body.phone, 40),
       message: str(body.message, 2000),
@@ -389,22 +412,33 @@ function parseDay(value: unknown, fallback: Date): Date {
   return fallback;
 }
 
+/**
+ * Intervalo pedido na query, em UTC. O `to` da query é o último dia que a
+ * pessoa quer ver, então o fim devolvido é exclusivo (o dia seguinte).
+ * Devolve from nulo quando o intervalo está invertido.
+ */
+function intervalo(qFrom: unknown, qTo: unknown): { from: Date | null; to: Date | null } {
+  const hoje = new Date();
+  const padraoTo = new Date(Date.UTC(hoje.getUTCFullYear(), hoje.getUTCMonth(), hoje.getUTCDate()));
+  padraoTo.setUTCDate(padraoTo.getUTCDate() + 1);
+  const padraoFrom = new Date(padraoTo);
+  padraoFrom.setUTCDate(padraoFrom.getUTCDate() - 30);
+
+  const from = parseDay(qFrom, padraoFrom);
+  let to = parseDay(qTo, padraoTo);
+  if (typeof qTo === "string") {
+    to = new Date(to);
+    to.setUTCDate(to.getUTCDate() + 1);
+  }
+
+  if (to <= from) return { from: null, to: null };
+  return { from, to };
+}
+
 app.get("/api/admin/stats", requireAuth, async (req, res, next) => {
   try {
-    const today = new Date();
-    const defaultTo = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()));
-    defaultTo.setUTCDate(defaultTo.getUTCDate() + 1); // `to` is exclusive: include today
-    const defaultFrom = new Date(defaultTo);
-    defaultFrom.setUTCDate(defaultFrom.getUTCDate() - 30);
-
-    const from = parseDay(req.query.from, defaultFrom);
-    // The query's `to` is the last day the user wants included, so add a day.
-    let to = parseDay(req.query.to, defaultTo);
-    if (typeof req.query.to === "string") {
-      to = new Date(to);
-      to.setUTCDate(to.getUTCDate() + 1);
-    }
-    if (to <= from) return res.status(400).json({ error: "Intervalo de datas inválido" });
+    const { from, to } = intervalo(req.query.from, req.query.to);
+    if (!from || !to) return res.status(400).json({ error: "Intervalo de datas inválido" });
 
     const [events, leads] = await Promise.all([
       analyticsStore.range(from, to),
@@ -434,6 +468,42 @@ app.get("/api/admin/stats", requireAuth, async (req, res, next) => {
 
     const merged = [...events, ...leadEvents].sort((a, b) => a.timestamp.localeCompare(b.timestamp));
     res.json(summarise(merged, getCourses(), from, to));
+  } catch (err) {
+    next(err);
+  }
+});
+
+/**
+ * Visitantes um por um, inclusive quem nunca deixou contato. Cada linha é um
+ * navegador anônimo num curso; quando aquele navegador virou lead, o contato
+ * vem junto para você ver o histórico antes de chamar.
+ */
+app.get("/api/admin/visitors", requireAuth, async (req, res, next) => {
+  try {
+    const { from, to } = intervalo(req.query.from, req.query.to);
+    if (!from) return res.status(400).json({ error: "Intervalo de datas inválido" });
+
+    const [events, leads] = await Promise.all([
+      analyticsStore.range(from, to!),
+      leadStore.list(),
+    ]);
+
+    const leadPorVisitante = new Map<string, any>();
+    for (const l of leads) {
+      // Um navegador pode ter deixado contato mais de uma vez; o primeiro da
+      // lista (mais recente) é o que interessa.
+      if (l.visitorId && !leadPorVisitante.has(l.visitorId)) leadPorVisitante.set(l.visitorId, l);
+    }
+
+    const visitas = listaVisitas(events, getCourses()).map((v) => {
+      const lead = leadPorVisitante.get(v.visitorId);
+      return {
+        ...v,
+        lead: lead ? { id: lead.id, name: lead.name, phone: lead.phone } : null,
+      };
+    });
+
+    res.json({ visitas, total: visitas.length });
   } catch (err) {
     next(err);
   }

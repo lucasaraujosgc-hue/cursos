@@ -11,6 +11,12 @@ import { Pool } from "pg";
 
 export type Lead = {
   id: string;
+  /**
+   * Id anônimo do navegador que virou este contato. Liga o lead ao rastro de
+   * acessos dele, para você ver o histórico antes de chamar no WhatsApp.
+   * Vazio nos leads capturados antes desta coluna existir.
+   */
+  visitorId: string;
   name: string;
   phone: string;
   message: string;
@@ -35,12 +41,13 @@ export interface LeadStore {
   readonly kind: "postgres" | "file";
 }
 
-const COLUMNS = `id, name, phone, message, course_slug, module_title,
+const COLUMNS = `id, visitor_id, name, phone, message, course_slug, module_title,
   utm_source, utm_medium, utm_campaign, utm_content, referrer, created_at`;
 
 function rowToLead(row: any): Lead {
   return {
     id: String(row.id),
+    visitorId: row.visitor_id ?? "",
     name: row.name ?? "",
     phone: row.phone ?? "",
     message: row.message ?? "",
@@ -74,6 +81,7 @@ class PostgresLeadStore implements LeadStore {
     await this.pool.query(`
       CREATE TABLE IF NOT EXISTS leads (
         id            BIGSERIAL PRIMARY KEY,
+        visitor_id    TEXT,
         name          TEXT NOT NULL,
         phone         TEXT,
         message       TEXT,
@@ -87,8 +95,13 @@ class PostgresLeadStore implements LeadStore {
         created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
       )
     `);
+    // Bancos criados antes desta coluna precisam ganhá-la sem perder os dados.
+    await this.pool.query(`ALTER TABLE leads ADD COLUMN IF NOT EXISTS visitor_id TEXT`);
     await this.pool.query(
       `CREATE INDEX IF NOT EXISTS leads_created_at_idx ON leads (created_at DESC)`
+    );
+    await this.pool.query(
+      `CREATE INDEX IF NOT EXISTS leads_visitor_idx ON leads (visitor_id)`
     );
   }
 
@@ -103,11 +116,12 @@ class PostgresLeadStore implements LeadStore {
   async add(lead: NewLead, createdAt?: string): Promise<Lead> {
     const res = await this.pool.query(
       `INSERT INTO leads
-         (name, phone, message, course_slug, module_title,
+         (visitor_id, name, phone, message, course_slug, module_title,
           utm_source, utm_medium, utm_campaign, utm_content, referrer, created_at)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10, COALESCE($11::timestamptz, now()))
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11, COALESCE($12::timestamptz, now()))
        RETURNING ${COLUMNS}`,
       [
+        lead.visitorId,
         lead.name,
         lead.phone,
         lead.message,
@@ -167,6 +181,7 @@ class FileLeadStore implements LeadStore {
     return this.read()
       .map((row) => ({
         id: String(row.id ?? row.timestamp ?? ""),
+        visitorId: row.visitorId ?? "",
         name: row.name ?? "",
         phone: row.phone ?? "",
         message: row.message ?? "",

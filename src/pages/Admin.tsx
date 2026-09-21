@@ -6,6 +6,7 @@ import { agrupaPorSerie, seriesExistentes, moveCursoNaSerie, moveSerie } from '.
 
 // Keeps recharts out of the bundle that course readers download.
 const StatsPanel = lazy(() => import('./StatsPanel'));
+const VisitorsPanel = lazy(() => import('./VisitorsPanel'));
 
 /** Turns a typed Brazilian number into a wa.me link for one-tap manual contact. */
 function leadWhatsappLink(phone: string, name: string, courseSlug: string) {
@@ -54,7 +55,7 @@ export default function Admin() {
   const [editingCourse, setEditingCourse] = useState<Course | null>(null);
   const [editJson, setEditJson] = useState('');
   const [error, setError] = useState('');
-  const [activeTab, setActiveTab] = useState<'courses' | 'stats' | 'leads'>('courses');
+  const [activeTab, setActiveTab] = useState<'courses' | 'stats' | 'visitors' | 'leads'>('courses');
   const [selectedLeads, setSelectedLeads] = useState<string[]>([]);
   const [jsonCopied, setJsonCopied] = useState(false);
   const [uploadingSlug, setUploadingSlug] = useState<string | null>(null);
@@ -312,29 +313,37 @@ export default function Admin() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col font-sans">
-      <header className="sticky top-0 z-20 w-full bg-card border-b border-border h-[64px] flex items-center px-5">
-        <div className="w-full max-w-6xl mx-auto flex justify-between items-center">
-          <Logo />
-          <div className="flex gap-4">
+      <header className="sticky top-0 z-20 w-full bg-card border-b border-border h-[64px] flex items-center px-4 sm:px-5">
+        <div className="w-full max-w-6xl mx-auto flex justify-between items-center gap-3">
+          <div className="shrink-0"><Logo /></div>
+          {/* Com quatro abas + Sair o menu estourava a largura do celular:
+              rola de lado em vez de empurrar a página. */}
+          <div className="flex gap-3 sm:gap-4 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             <button 
               onClick={() => setActiveTab('courses')}
-              className={`text-sm font-medium ${activeTab === 'courses' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`}
+              className={`text-sm font-medium shrink-0 whitespace-nowrap ${activeTab === 'courses' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`}
             >
               Cursos
             </button>
             <button 
               onClick={() => setActiveTab('stats')}
-              className={`text-sm font-medium ${activeTab === 'stats' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`}
+              className={`text-sm font-medium shrink-0 whitespace-nowrap ${activeTab === 'stats' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`}
             >
               Acessos
             </button>
             <button 
+              onClick={() => setActiveTab('visitors')}
+              className={`text-sm font-medium shrink-0 whitespace-nowrap ${activeTab === 'visitors' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`}
+            >
+              Visitantes
+            </button>
+            <button 
               onClick={() => setActiveTab('leads')}
-              className={`text-sm font-medium ${activeTab === 'leads' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`}
+              className={`text-sm font-medium shrink-0 whitespace-nowrap ${activeTab === 'leads' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`}
             >
               Leads
             </button>
-            <button onClick={handleLogout} className="text-sm font-medium text-red-500 hover:text-red-700 ml-4">
+            <button onClick={handleLogout} className="text-sm font-medium text-red-500 hover:text-red-700 shrink-0 whitespace-nowrap">
               Sair
             </button>
           </div>
@@ -345,6 +354,10 @@ export default function Admin() {
         {activeTab === 'stats' ? (
           <Suspense fallback={<div className="py-20 text-center text-muted-foreground">Carregando painel...</div>}>
             <StatsPanel />
+          </Suspense>
+        ) : activeTab === 'visitors' ? (
+          <Suspense fallback={<div className="py-20 text-center text-muted-foreground">Carregando visitantes...</div>}>
+            <VisitorsPanel />
           </Suspense>
         ) : activeTab === 'leads' ? (
           <div>
@@ -430,6 +443,35 @@ export default function Admin() {
                           <p className="mt-2.5 text-[15px] leading-relaxed text-foreground/90 border-l-2 border-accent pl-3 whitespace-pre-wrap">
                             {lead.message}
                           </p>
+                        )}
+
+                        {lead.historico && lead.historico.cursos?.length > 0 && (
+                          <div className="mt-3 rounded-lg border border-border bg-secondary/30 px-3 py-2.5">
+                            <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5">
+                              Antes de deixar contato
+                            </div>
+                            <ul className="space-y-1">
+                              {lead.historico.cursos.map((c: any) => (
+                                <li key={c.courseSlug} className="text-[13px] text-foreground/90">
+                                  <span className="font-mono text-accent">/{c.courseSlug}</span>
+                                  {' — '}
+                                  {c.concluiu ? (
+                                    <span className="text-emerald-600 font-medium">concluiu</span>
+                                  ) : c.moduloIndice < 0 ? (
+                                    'só abriu'
+                                  ) : (
+                                    `leu até o módulo ${c.moduloIndice + 1}${c.totalModulos ? ` de ${c.totalModulos}` : ''}`
+                                  )}
+                                </li>
+                              ))}
+                            </ul>
+                            <div className="mt-1.5 text-[12px] text-muted-foreground">
+                              {lead.historico.visitas} {lead.historico.visitas === 1 ? 'visita' : 'visitas'}
+                              {lead.historico.primeiroAcesso !== lead.historico.ultimoAcesso && (
+                                <> · primeira em {new Date(lead.historico.primeiroAcesso).toLocaleDateString('pt-BR')}</>
+                              )}
+                            </div>
+                          </div>
                         )}
 
                         <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
@@ -656,8 +698,10 @@ export default function Admin() {
                   </div>
                   <h3 className="text-xl font-serif text-primary mb-2">{course.courseName}</h3>
                   <p className="text-sm text-muted-foreground mb-4 flex-1">{course.description}</p>
-                  <div className="flex justify-between items-center mt-4 pt-4 border-t border-border">
-                    <div className="flex items-center gap-2">
+                  {/* No celular a linha do slug + os três botões não cabia
+                      lado a lado: quebra em vez de empurrar a página. */}
+                  <div className="flex flex-wrap justify-between items-center gap-x-3 gap-y-2 mt-4 pt-4 border-t border-border">
+                    <div className="flex items-center gap-2 min-w-0">
                       <span className="text-sm font-mono text-accent bg-accent/10 px-2 py-1 rounded">/{course.slug}</span>
                       <button onClick={() => handleChangeSlug(course)} className="text-xs text-muted-foreground hover:text-primary underline">
                         Alterar Link

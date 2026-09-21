@@ -4,7 +4,7 @@ import Logo from '../components/Logo';
 import { BlockRenderer } from '../components/CourseBlocks';
 import { Course } from '../types';
 import { buildWhatsappLink, CONTACT_WHATSAPP_LABEL } from '../config';
-import { track } from '../analytics';
+import { track, getVisitorId } from '../analytics';
 
 /**
  * Where the visitor came from. Read once from the URL (?utm_source=ig&...) and
@@ -100,6 +100,8 @@ const FeedbackCard = ({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          // Liga o contato ao rastro anônimo deste navegador.
+          visitorId: getVisitorId(),
           name: name.trim(),
           phone: phone.trim(),
           message: message.trim(),
@@ -252,6 +254,7 @@ const RegistrationGate = ({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          visitorId: getVisitorId(),
           name: name.trim(),
           phone: phone.trim(),
           courseSlug: course.slug,
