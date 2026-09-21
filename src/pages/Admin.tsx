@@ -43,6 +43,7 @@ export default function Admin() {
   const [error, setError] = useState('');
   const [activeTab, setActiveTab] = useState<'courses' | 'leads'>('courses');
   const [selectedLeads, setSelectedLeads] = useState<string[]>([]);
+  const [jsonCopied, setJsonCopied] = useState(false);
   const navigate = useNavigate();
 
   const fetchCoursesAndLeads = async () => {
@@ -147,6 +148,47 @@ export default function Admin() {
     } catch (err: any) {
       alert('JSON Inválido ou erro na requisição: ' + err.message);
     }
+  };
+
+  /** Name the downloaded file after the course's slug, when the JSON parses. */
+  const editJsonFilename = () => {
+    try {
+      const slug = JSON.parse(editJson)?.slug;
+      if (typeof slug === 'string' && slug.trim()) return `${slug.trim()}.json`;
+    } catch {
+      /* invalid JSON is still worth downloading as a draft */
+    }
+    return 'curso.json';
+  };
+
+  const handleCopyJson = async () => {
+    if (!editJson) return;
+    try {
+      await navigator.clipboard.writeText(editJson);
+    } catch {
+      // clipboard API needs a secure context; fall back to a temporary selection
+      const el = document.createElement('textarea');
+      el.value = editJson;
+      el.style.position = 'fixed';
+      el.style.opacity = '0';
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+    }
+    setJsonCopied(true);
+    setTimeout(() => setJsonCopied(false), 2000);
+  };
+
+  const handleDownloadJson = () => {
+    if (!editJson) return;
+    const blob = new Blob([editJson], { type: 'application/json;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = editJsonFilename();
+    a.click();
+    URL.revokeObjectURL(url);
   };
 
   const toggleLead = (timestamp: string) => {
@@ -362,7 +404,7 @@ export default function Admin() {
             <p className="text-sm text-muted-foreground mb-4">
               O "slug" define o caminho da URL (ex: meu.site.com.br/<b>slug</b>). Certifique-se de que o JSON é válido.
             </p>
-            <div className="flex gap-3 mb-4">
+            <div className="flex flex-wrap gap-3 mb-4">
               <label className="cursor-pointer bg-secondary text-secondary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-secondary/80 inline-block border border-border">
                 Upload JSON
                 <input 
@@ -382,11 +424,25 @@ export default function Admin() {
                   }}
                 />
               </label>
-              <button 
+              <button
                 onClick={() => setEditJson('')}
                 className="bg-secondary text-secondary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-secondary/80 border border-border"
               >
                 Limpar Texto
+              </button>
+              <button
+                onClick={handleCopyJson}
+                disabled={!editJson}
+                className="bg-secondary text-secondary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-secondary/80 border border-border disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                {jsonCopied ? 'Copiado!' : 'Copiar JSON'}
+              </button>
+              <button
+                onClick={handleDownloadJson}
+                disabled={!editJson}
+                className="bg-secondary text-secondary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-secondary/80 border border-border disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                Baixar JSON
               </button>
             </div>
             <textarea 
