@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import fs from "fs";
+import crypto from "crypto";
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 import { createServer as createViteServer } from "vite";
@@ -24,6 +25,8 @@ const DATA_DIR = process.env.DATA_DIR
 
 const DATA_FILE = path.join(DATA_DIR, "courses.json");
 const LEADS_FILE = path.join(DATA_DIR, "leads.json");
+/** Course cover images uploaded from the admin, served at /uploads/<file>. */
+const UPLOADS_DIR = path.join(DATA_DIR, "uploads");
 
 const JWT_SECRET = process.env.JWT_SECRET;
 if (IS_PROD && (!JWT_SECRET || JWT_SECRET.length < 16)) {
@@ -35,6 +38,12 @@ if (IS_PROD && (!process.env.ADMIN_USERNAME || !process.env.ADMIN_PASSWORD)) {
 }
 const SIGNING_SECRET = JWT_SECRET || "dev-only-insecure-secret";
 
+// Image uploads arrive as a raw body, so they are handled before the JSON
+// parsers, which would otherwise try (and fail) to parse the bytes.
+app.use(
+  "/api/admin/uploads",
+  express.raw({ type: ["image/png", "image/jpeg", "image/webp", "image/gif"], limit: "8mb" })
+);
 // Admin payloads carry whole course JSONs, so they get a generous limit; every
 // other route gets a small one so a public endpoint can't be used to fill the disk.
 app.use("/api/admin", express.json({ limit: "25mb" }));
@@ -184,6 +193,39 @@ app.delete("/api/admin/courses/:slug", requireAuth, (req, res) => {
   res.json({ success: true });
 });
 
+/**
+ * Accepted image types, each with the magic bytes that actually prove it. The
+ * declared Content-Type is not trusted on its own: a file that merely claims to
+ * be a PNG would otherwise end up served from our own origin.
+ */
+const IMAGE_TYPES: { mime: string; ext: string; matches: (b: Buffer) => boolean }[] = [
+  { mime: "image/png", ext: "png", matches: (b) => b.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])) },
+  { mime: "image/jpeg", ext: "jpg", matches: (b) => b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff },
+  { mime: "image/webp", ext: "webp", matches: (b) => b.subarray(0, 4).toString() === "RIFF" && b.subarray(8, 12).toString() === "WEBP" },
+  { mime: "image/gif", ext: "gif", matches: (b) => b.subarray(0, 6).toString() === "GIF87a" || b.subarray(0, 6).toString() === "GIF89a" },
+];
+
+// Upload a course cover image. SVG is deliberately not accepted: it can carry
+// scripts and would run on our own origin.
+app.post("/api/admin/uploads", requireAuth, (req, res) => {
+  const body = req.body;
+  if (!Buffer.isBuffer(body) || body.length < 12) {
+    return res.status(400).json({ error: "Envie um arquivo de imagem (PNG, JPG, WEBP ou GIF)." });
+  }
+
+  const type = IMAGE_TYPES.find((t) => t.matches(body));
+  if (!type) {
+    return res.status(415).json({ error: "Formato não suportado. Use PNG, JPG, WEBP ou GIF." });
+  }
+
+  // The name is generated here, so nothing the client sends can steer the path.
+  const name = `${Date.now().toString(36)}-${crypto.randomBytes(8).toString("hex")}.${type.ext}`;
+  fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+  fs.writeFileSync(path.join(UPLOADS_DIR, name), body);
+
+  res.json({ url: `/uploads/${name}` });
+});
+
 app.get("/api/admin/leads", requireAuth, async (req, res, next) => {
   try {
     res.json(await leadStore.list());
@@ -214,6 +256,7 @@ app.get("/api/courses", (req, res) => {
     slug: c.slug,
     courseName: c.courseName,
     description: c.description,
+    image: c.image || "",
     moduleCount: c.modules?.length || 0,
   }));
   res.json(list);
@@ -271,12 +314,31 @@ function escapeHtml(value: string) {
     .replace(/'/g, "&#39;");
 }
 
+/**
+ * Public address of the site, used to turn an uploaded cover into the absolute
+ * URL that WhatsApp and Instagram need. Without it we fall back to the request
+ * headers, which is wrong behind a proxy that terminates HTTPS.
+ */
+const PUBLIC_URL = process.env.PUBLIC_URL?.replace(/\/+$/, "");
+
 const DEFAULT_OG_IMAGE =
   process.env.DEFAULT_OG_IMAGE ||
   "https://www.virgulacontabil.com.br/wp-content/uploads/2026/07/icon-192.png";
 
 // Vite middleware for development
 async function setupVite() {
+  // Uploaded covers live in DATA_DIR, outside the build, so they survive a
+  // redeploy along with the rest of the data.
+  app.use(
+    "/uploads",
+    express.static(UPLOADS_DIR, {
+      maxAge: "30d",
+      index: false,
+      dotfiles: "deny",
+setHeaders: (res) => res.setHeader("X-Content-Type-Options", "nosniff"),
+    })
+  );
+
   let vite: any;
   if (!IS_PROD) {
     vite = await createViteServer({
@@ -322,9 +384,14 @@ async function setupVite() {
           if (course.description) {
             description = course.description;
           }
-          // Courses can carry their own 1200x630 share image.
-          if (course.ogImage) {
-            ogImage = course.ogImage;
+          // Courses can carry their own 1200x630 share image; otherwise the
+          // uploaded cover doubles as the link preview.
+          const courseImage = course.ogImage || course.image;
+          if (courseImage) {
+            // og:image has to be absolute for WhatsApp and Instagram to fetch it.
+            ogImage = /^https?:\/\//.test(courseImage)
+              ? courseImage
+              : `${PUBLIC_URL || `${req.protocol}://${req.get("host")}`}${courseImage}`;
           }
         }
       }

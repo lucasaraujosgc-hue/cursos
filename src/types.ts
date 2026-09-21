@@ -73,4 +73,10 @@ export type Course = {
   leadCaptureAfter?: number;
   /** Absolute URL used for the link preview on WhatsApp/Instagram (1200x630). */
   ogImage?: string;
+  /**
+   * Cover image shown on the course card. Uploaded from the admin, so it is
+   * normally a local path like /uploads/abc.png. Doubles as the link preview
+   * image when ogImage is not set.
+   */
+  image?: string;
 };

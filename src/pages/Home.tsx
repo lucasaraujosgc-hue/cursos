@@ -6,6 +6,7 @@ type CourseOverview = {
   slug: string;
   courseName: string;
   description: string;
+  image?: string;
   moduleCount: number;
 };
 
@@ -40,11 +41,8 @@ export default function Home() {
 
       <main className="w-full max-w-6xl mx-auto px-4 sm:px-5 py-10 sm:py-14 flex-1 flex flex-col">
         <div className="flex flex-col items-center text-center mb-10 sm:mb-14">
-          <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.1em] text-accent-foreground/80 mb-5">
-            Gratuito · sem cadastro
-          </span>
           <h1 className="font-serif text-[34px] sm:text-5xl text-primary mb-4 leading-[1.08] tracking-[-0.02em] max-w-3xl">
-            Entenda a contabilidade da sua empresa em 10 minutos
+            Entenda sua empresa em 10 min por dia
           </h1>
           <p className="text-[17px] sm:text-lg text-muted-foreground max-w-2xl leading-relaxed">
             Cursos curtos, em linguagem de gente. Você lê pelo celular, no seu tempo,
@@ -62,8 +60,17 @@ export default function Home() {
               <Link
                 key={course.slug}
                 to={`/${course.slug}`}
-                className="bg-card border border-border rounded-xl p-5 sm:p-6 flex flex-col hover:border-primary/50 transition-colors shadow-sm hover:shadow-md active:scale-[0.99]"
+                className="bg-card border border-border rounded-xl overflow-hidden flex flex-col hover:border-primary/50 transition-colors shadow-sm hover:shadow-md active:scale-[0.99]"
               >
+                {course.image && (
+                  <img
+                    src={course.image}
+                    alt=""
+                    loading="lazy"
+                    className="w-full aspect-[16/9] object-cover bg-secondary"
+                  />
+                )}
+                <div className="p-5 sm:p-6 flex flex-col flex-1">
                 <div className="text-xs font-semibold uppercase tracking-wider text-accent mb-3">
                   {course.moduleCount} {course.moduleCount === 1 ? 'Módulo' : 'Módulos'} · leitura rápida
                 </div>
@@ -76,6 +83,7 @@ export default function Home() {
                 <div className="mt-6 pt-4 border-t border-border flex items-center justify-between text-primary font-semibold text-[15px] group">
                   Começar agora
                   <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                </div>
                 </div>
               </Link>
             ))}

@@ -53,6 +53,7 @@ export default function Admin() {
   const [activeTab, setActiveTab] = useState<'courses' | 'leads'>('courses');
   const [selectedLeads, setSelectedLeads] = useState<string[]>([]);
   const [jsonCopied, setJsonCopied] = useState(false);
+  const [uploadingSlug, setUploadingSlug] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const fetchCoursesAndLeads = async () => {
@@ -122,8 +123,8 @@ export default function Admin() {
     }
   };
 
-  /** Saves the lead-capture setting of one course without opening the editor. */
-  const handleUpdateCapture = async (course: Course, patch: Partial<Course>) => {
+  /** Saves a field of one course without opening the JSON editor. */
+  const handleUpdateCourse = async (course: Course, patch: Partial<Course>) => {
     const updated = { ...course, ...patch };
     // Optimistic: the control reflects the choice while the request is in flight.
     setCourses(prev => prev.map(c => (c.slug === course.slug ? updated : c)));
@@ -135,8 +136,37 @@ export default function Admin() {
       });
       if (!res.ok) throw new Error('Erro ao salvar');
     } catch (err) {
-      alert('Não foi possível salvar a configuração de cadastro.');
+      alert('Não foi possível salvar a alteração no curso.');
       fetchCoursesAndLeads();
+    }
+  };
+
+  /** Uploads the picked file and attaches the returned URL to the course. */
+  const handleUploadImage = async (course: Course, file: File) => {
+    if (!file.type.startsWith('image/')) {
+      alert('Selecione uma imagem (PNG, JPG, WEBP ou GIF).');
+      return;
+    }
+    if (file.size > 8 * 1024 * 1024) {
+      alert('A imagem passa de 8 MB. Reduza o arquivo e tente de novo.');
+      return;
+    }
+
+    setUploadingSlug(course.slug);
+    try {
+      // Sent as raw bytes — no multipart, no base64 inflating the payload.
+      const res = await fetch('/api/admin/uploads', {
+        method: 'POST',
+        headers: { 'Content-Type': file.type },
+        body: file,
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Falha no envio');
+      await handleUpdateCourse(course, { image: data.url });
+    } catch (err: any) {
+      alert(err.message || 'Não foi possível enviar a imagem.');
+    } finally {
+      setUploadingSlug(null);
     }
   };
 
@@ -495,6 +525,58 @@ export default function Admin() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {courses.map(course => (
                 <div key={course.slug} className="bg-card border border-border rounded-xl p-6 flex flex-col">
+                  <div className="mb-4">
+                    {course.image ? (
+                      <div className="relative">
+                        <img
+                          src={course.image}
+                          alt=""
+                          className="w-full aspect-[16/9] object-cover rounded-lg border border-border bg-secondary"
+                        />
+                        <div className="absolute top-2 right-2 flex gap-2">
+                          <label className="cursor-pointer bg-card/95 backdrop-blur border border-border px-3 py-1.5 rounded-md text-xs font-medium hover:bg-secondary">
+                            Trocar
+                            <input
+                              type="file"
+                              accept="image/png,image/jpeg,image/webp,image/gif"
+                              className="hidden"
+                              onChange={(e) => {
+                                const file = e.target.files?.[0];
+                                if (file) handleUploadImage(course, file);
+                                e.target.value = '';
+                              }}
+                            />
+                          </label>
+                          <button
+                            onClick={() => handleUpdateCourse(course, { image: '' })}
+                            className="bg-card/95 backdrop-blur border border-red-200 text-red-600 px-3 py-1.5 rounded-md text-xs font-medium hover:bg-red-50"
+                          >
+                            Remover
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      <label className="cursor-pointer w-full aspect-[16/9] rounded-lg border border-dashed border-border bg-secondary/30 flex flex-col items-center justify-center gap-1 hover:border-primary/50 hover:bg-secondary/50 transition-colors">
+                        <span className="text-sm font-medium text-muted-foreground">
+                          {uploadingSlug === course.slug ? 'Enviando...' : '+ Imagem do curso'}
+                        </span>
+                        <span className="text-xs text-muted-foreground">
+                          PNG, JPG, WEBP ou GIF · ideal 1200×630
+                        </span>
+                        <input
+                          type="file"
+                          accept="image/png,image/jpeg,image/webp,image/gif"
+                          className="hidden"
+                          disabled={uploadingSlug === course.slug}
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) handleUploadImage(course, file);
+                            e.target.value = '';
+                          }}
+                        />
+                      </label>
+                    )}
+                  </div>
                   <h3 className="text-xl font-serif text-primary mb-2">{course.courseName}</h3>
                   <p className="text-sm text-muted-foreground mb-4 flex-1">{course.description}</p>
                   <div className="flex justify-between items-center mt-4 pt-4 border-t border-border">
@@ -529,7 +611,7 @@ export default function Admin() {
                         id={`capture-${course.slug}`}
                         value={course.leadCapture || 'end'}
                         onChange={(e) =>
-                          handleUpdateCapture(course, {
+                          handleUpdateCourse(course, {
                             leadCapture: e.target.value as Course['leadCapture'],
                           })
                         }
@@ -550,7 +632,7 @@ export default function Admin() {
                             max={Math.max(1, course.modules?.length || 1)}
                             value={course.leadCaptureAfter ?? 2}
                             onChange={(e) =>
-                              handleUpdateCapture(course, {
+                              handleUpdateCourse(course, {
                                 leadCaptureAfter: Math.max(1, Number(e.target.value) || 1),
                               })
                             }
@@ -620,6 +702,7 @@ ESTRUTURA DO JSON
   "slug": "url-amigavel-do-curso",
   "courseName": "Nome do Curso",
   "description": "Uma frase dizendo o que a pessoa sai sabendo fazer.",
+  "image": "/uploads/capa.png",                  // capa do curso (envie pelo painel)
   "ogImage": "https://.../capa-1200x630.png",   // opcional: imagem do preview do link
   "leadCapture": "end",                          // "end" (padrão), "middle", "start" ou "none"
   "leadCaptureAfter": 2,                         // só com "middle": módulos abertos antes do cadastro
