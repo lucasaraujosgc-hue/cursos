@@ -184,6 +184,31 @@ app.post("/api/admin/courses", requireAuth, (req, res) => {
   res.json(newCourse);
 });
 
+/**
+ * Reordena os cursos. O corpo traz todos os slugs na ordem desejada; a ordem
+ * do array em courses.json é a ordem que a home usa, então basta reescrevê-lo.
+ * Caminho próprio (não /courses/order) para não colidir com :slug.
+ */
+app.put("/api/admin/course-order", requireAuth, (req, res) => {
+  const { slugs } = req.body || {};
+  if (!Array.isArray(slugs)) {
+    return res.status(400).json({ error: "Envie a lista de slugs na nova ordem" });
+  }
+
+  const courses = getCourses();
+  const porSlug = new Map(courses.map((c: any) => [c.slug, c]));
+  const ordenados = slugs.map((s: any) => porSlug.get(String(s))).filter(Boolean);
+
+  // Um curso criado em outra aba não pode sumir por não estar na lista enviada.
+  const faltantes = courses.filter((c: any) => !slugs.includes(c.slug));
+  if (ordenados.length + faltantes.length !== courses.length) {
+    return res.status(400).json({ error: "Lista de ordem inválida" });
+  }
+
+  saveCourses([...ordenados, ...faltantes]);
+  res.json({ success: true });
+});
+
 app.put("/api/admin/courses/:slug", requireAuth, (req, res) => {
   const courses = getCourses();
   const index = courses.findIndex((c: any) => c.slug === req.params.slug);
@@ -265,6 +290,7 @@ app.get("/api/courses", (req, res) => {
     courseName: c.courseName,
     description: c.description,
     image: c.image || "",
+    category: c.category || "",
     moduleCount: c.modules?.length || 0,
   }));
   res.json(list);

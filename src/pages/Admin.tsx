@@ -1,7 +1,8 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect, useMemo, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../components/Logo';
 import { Course } from '../types';
+import { agrupaPorSerie, seriesExistentes, moveCursoNaSerie, moveSerie } from '../lib/grupos';
 
 // Keeps recharts out of the bundle that course readers download.
 const StatsPanel = lazy(() => import('./StatsPanel'));
@@ -57,6 +58,7 @@ export default function Admin() {
   const [selectedLeads, setSelectedLeads] = useState<string[]>([]);
   const [jsonCopied, setJsonCopied] = useState(false);
   const [uploadingSlug, setUploadingSlug] = useState<string | null>(null);
+  const [salvandoOrdem, setSalvandoOrdem] = useState(false);
   const navigate = useNavigate();
 
   const fetchCoursesAndLeads = async () => {
@@ -170,6 +172,30 @@ export default function Admin() {
       alert(err.message || 'Não foi possível enviar a imagem.');
     } finally {
       setUploadingSlug(null);
+    }
+  };
+
+  const gruposAdmin = useMemo(() => agrupaPorSerie(courses), [courses]);
+  const series = useMemo(() => seriesExistentes(courses), [courses]);
+
+  /** Grava a nova ordem. A ordem do array no servidor é a ordem da home. */
+  const reordenar = async (novaOrdem: Course[]) => {
+    if (salvandoOrdem) return;
+    const anterior = courses;
+    setCourses(novaOrdem);          // otimista: a seta responde na hora
+    setSalvandoOrdem(true);
+    try {
+      const res = await fetch('/api/admin/course-order', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slugs: novaOrdem.map(c => c.slug) }),
+      });
+      if (!res.ok) throw new Error('Erro ao salvar a ordem');
+    } catch (err) {
+      setCourses(anterior);
+      alert('Não foi possível salvar a nova ordem.');
+    } finally {
+      setSalvandoOrdem(false);
     }
   };
 
@@ -535,8 +561,46 @@ export default function Admin() {
 
             {error && <div className="text-red-500 mb-4">{error}</div>}
 
+            <datalist id="series-existentes">
+              {series.map(nome => <option key={nome} value={nome} />)}
+            </datalist>
+
+            <p className="text-sm text-muted-foreground mb-6">
+              A home mostra os cursos nesta mesma ordem, agrupados por série. Use as setas
+              para reordenar e o campo "Série" para agrupar.
+            </p>
+
+            {gruposAdmin.map((grupo, gi) => (
+            <section key={grupo.nome} className="mb-10">
+              <div className="flex items-center justify-between gap-3 mb-3 pb-2 border-b border-border">
+                <h2 className="font-serif text-xl text-primary">
+                  {grupo.nome}
+                  <span className="ml-2 text-sm font-sans text-muted-foreground">
+                    ({grupo.cursos.length})
+                  </span>
+                </h2>
+                <div className="flex gap-1">
+                  <button
+                    onClick={() => reordenar(moveSerie(courses, grupo.nome, -1))}
+                    disabled={gi === 0 || salvandoOrdem}
+                    aria-label={`Mover a série ${grupo.nome} para cima`}
+                    className="h-9 w-9 rounded-lg border border-border bg-card text-sm disabled:opacity-30 hover:bg-secondary"
+                  >
+                    ↑
+                  </button>
+                  <button
+                    onClick={() => reordenar(moveSerie(courses, grupo.nome, 1))}
+                    disabled={gi === gruposAdmin.length - 1 || salvandoOrdem}
+                    aria-label={`Mover a série ${grupo.nome} para baixo`}
+                    className="h-9 w-9 rounded-lg border border-border bg-card text-sm disabled:opacity-30 hover:bg-secondary"
+                  >
+                    ↓
+                  </button>
+                </div>
+              </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {courses.map(course => (
+              {grupo.cursos.map((course, ci) => (
                 <div key={course.slug} className="bg-card border border-border rounded-xl p-6 flex flex-col">
                   <div className="mb-4">
                     {course.image ? (
@@ -614,6 +678,50 @@ export default function Admin() {
 
                   <div className="mt-4 pt-4 border-t border-border">
                     <label
+                      htmlFor={`serie-${course.slug}`}
+                      className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2"
+                    >
+                      Série e posição
+                    </label>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <input
+                        id={`serie-${course.slug}`}
+                        list="series-existentes"
+                        defaultValue={course.category || ''}
+                        placeholder="Ex: Como Precificar"
+                        onBlur={(e) => {
+                          const valor = e.target.value.trim();
+                          if (valor !== (course.category || '')) {
+                            handleUpdateCourse(course, { category: valor });
+                          }
+                        }}
+                        className="flex-1 min-w-[160px] border border-border rounded-lg px-3 py-2 text-sm bg-background text-foreground outline-none focus:border-primary"
+                      />
+                      <button
+                        onClick={() => reordenar(moveCursoNaSerie(courses, course.slug, -1))}
+                        disabled={ci === 0 || salvandoOrdem}
+                        aria-label={`Mover ${course.courseName} para cima`}
+                        className="h-9 w-9 shrink-0 rounded-lg border border-border bg-card text-sm disabled:opacity-30 hover:bg-secondary"
+                      >
+                        ↑
+                      </button>
+                      <button
+                        onClick={() => reordenar(moveCursoNaSerie(courses, course.slug, 1))}
+                        disabled={ci === grupo.cursos.length - 1 || salvandoOrdem}
+                        aria-label={`Mover ${course.courseName} para baixo`}
+                        className="h-9 w-9 shrink-0 rounded-lg border border-border bg-card text-sm disabled:opacity-30 hover:bg-secondary"
+                      >
+                        ↓
+                      </button>
+                    </div>
+                    <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                      Deixe em branco para o curso cair em "Outros cursos". Para mudar de
+                      série, troque o nome aqui.
+                    </p>
+                  </div>
+
+                  <div className="mt-4 pt-4 border-t border-border">
+                    <label
                       htmlFor={`capture-${course.slug}`}
                       className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2"
                     >
@@ -661,12 +769,15 @@ export default function Admin() {
                   </div>
                 </div>
               ))}
-              {courses.length === 0 && (
-                <div className="col-span-full text-center py-12 text-muted-foreground border border-dashed border-border rounded-xl">
-                  Nenhum curso encontrado. Crie o seu primeiro curso!
-                </div>
-              )}
             </div>
+            </section>
+            ))}
+
+            {courses.length === 0 && (
+              <div className="text-center py-12 text-muted-foreground border border-dashed border-border rounded-xl">
+                Nenhum curso encontrado. Crie o seu primeiro curso!
+              </div>
+            )}
             <div className="mt-16 bg-card border border-border rounded-xl p-6 md:p-8">
               <h2 className="text-2xl font-serif text-primary mb-4">Prompt para Criação com IA</h2>
               <p className="text-sm text-muted-foreground mb-6">
@@ -715,6 +826,7 @@ ESTRUTURA DO JSON
   "slug": "url-amigavel-do-curso",
   "courseName": "Nome do Curso",
   "description": "Uma frase dizendo o que a pessoa sai sabendo fazer.",
+  "category": "Como Precificar",                 // série: a home agrupa os cursos por esse nome
   "image": "/uploads/capa.png",                  // capa do curso (envie pelo painel)
   "ogImage": "https://.../capa-1200x630.png",   // opcional: imagem do preview do link
   "leadCapture": "end",                          // "end" (padrão), "middle", "start" ou "none"

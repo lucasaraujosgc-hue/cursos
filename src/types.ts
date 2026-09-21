@@ -79,4 +79,13 @@ export type Course = {
    * image when ogImage is not set.
    */
   image?: string;
+  /**
+   * Série a que o curso pertence, ex: "Como Precificar". A home agrupa os
+   * cursos por esse nome. Vazio = aparece no grupo "Outros cursos".
+   *
+   * A ORDEM dos cursos é a ordem do array em courses.json — dentro da série e
+   * entre as séries, que aparecem na ordem do seu primeiro curso. O painel
+   * reordena o array; não existe campo de posição para sair do lugar.
+   */
+  category?: string;
 };
