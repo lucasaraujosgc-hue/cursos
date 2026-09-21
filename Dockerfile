@@ -12,6 +12,13 @@ COPY . .
 # Build the application
 RUN npm run build
 
+# Courses and leads live here. Mount a volume on /data in production
+# (ex: docker run -v cursos-data:/data ...) — sem isso os leads capturados
+# somem a cada deploy. Na primeira subida o servidor copia os cursos do
+# repositório para dentro do volume.
+ENV DATA_DIR=/data
+VOLUME ["/data"]
+
 # Expose the port
 EXPOSE 3000
 

@@ -1,8 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Block } from '../types';
-import { InlineMath, BlockMath } from 'react-katex';
-import 'katex/dist/katex.min.css';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, ReferenceLine } from 'recharts';
+
+// Charts (recharts) and formulas (KaTeX) are the two heavy dependencies here.
+// Loading them on demand keeps the first paint of a text-only module small,
+// which is what most visitors coming from Instagram on mobile data will hit.
+const Charts = {
+  Breakeven: lazy(() => import('./blocks/Charts').then(m => ({ default: m.BreakevenChartBlock }))),
+  Breakdown: lazy(() => import('./blocks/Charts').then(m => ({ default: m.BreakdownChartBlock }))),
+  Scenario: lazy(() => import('./blocks/Charts').then(m => ({ default: m.ScenarioChartBlock }))),
+};
+const MathBlock = lazy(() => import('./blocks/MathBlock'));
+
+const LazyFallback = ({ height }: { height: string }) => (
+  <div className={`mt-8 w-full ${height} rounded-xl border border-border bg-secondary/30 animate-pulse`} />
+);
 
 const renderTextWithLinks = (text: string) => {
   if (!text || typeof text !== 'string') return text;
@@ -21,73 +32,7 @@ const renderTextWithLinks = (text: string) => {
   });
 };
 
-export const BreakevenChartBlock = ({ block }: { block: any }) => {
-  const data = [];
-  const qtyMax = block.quantidadeMaxima || 1000;
-  for (let i = 0; i <= qtyMax; i += Math.max(1, Math.floor(qtyMax / 10))) {
-    const custoTotal = block.custoFixo + (block.custoVariavelUnitario * i);
-    const receitaTotal = block.precoVenda * i;
-    data.push({
-      quantidade: i,
-      custoTotal,
-      receitaTotal
-    });
-  }
 
-  const formatCurrency = (value: number) => `R$ ${value.toLocaleString('pt-BR')}`;
-
-  return (
-    <div className="rounded-xl border border-border bg-card p-5 mt-8 shadow-sm">
-      <h3 className="font-serif font-semibold text-[18px] text-primary mb-4 text-center">Ponto de Equilíbrio</h3>
-      <div className="h-[300px] w-full">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" opacity={0.3} />
-            <XAxis dataKey="quantidade" />
-            <YAxis tickFormatter={formatCurrency} />
-            <Tooltip formatter={(value: number) => formatCurrency(value)} />
-            <Legend />
-            <Line type="monotone" dataKey="custoTotal" name="Custo Total" stroke="#ef4444" strokeWidth={2} dot={false} />
-            <Line type="monotone" dataKey="receitaTotal" name="Receita Total" stroke="#10b981" strokeWidth={2} dot={false} />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
-    </div>
-  );
-};
-
-export const BreakdownChartBlock = ({ block }: { block: any }) => {
-  const COLORS = ['#0ea5e9', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
-  const formatCurrency = (value: number) => `R$ ${value.toLocaleString('pt-BR')}`;
-
-  return (
-    <div className="rounded-xl border border-border bg-card p-5 mt-8 shadow-sm">
-      <h3 className="font-serif font-semibold text-[18px] text-primary mb-4 text-center">Detalhamento de Custos (Total: {formatCurrency(block.total)})</h3>
-      <div className="h-[300px] w-full flex flex-col md:flex-row items-center justify-center">
-        <ResponsiveContainer width="100%" height="100%">
-          <PieChart>
-            <Pie
-              data={block.parts}
-              cx="50%"
-              cy="50%"
-              innerRadius={60}
-              outerRadius={100}
-              paddingAngle={2}
-              dataKey="value"
-              nameKey="label"
-            >
-              {block.parts.map((entry: any, index: number) => (
-                <Cell key={`cell-${index}`} fill={entry.color || COLORS[index % COLORS.length]} />
-              ))}
-            </Pie>
-            <Tooltip formatter={(value: number) => formatCurrency(value)} />
-            <Legend layout="horizontal" verticalAlign="bottom" align="center" formatter={(value, entry: any) => entry.payload.label} />
-          </PieChart>
-        </ResponsiveContainer>
-      </div>
-    </div>
-  );
-};
 
 export const ComparisonBlock = ({ block }: { block: any }) => {
   const getToneClasses = (tone: string) => {
@@ -160,7 +105,7 @@ export const ClassifyExerciseBlock = ({ block, moduleIndex }: { block: any, modu
               <div className="flex flex-wrap gap-2">
                 {block.categories.map((cat: string, j: number) => {
                   const isSelected = answers[item] === cat;
-                  let btnClass = "px-3 py-1.5 rounded-md text-sm font-medium border transition-colors ";
+                  let btnClass = "px-4 py-2.5 min-h-[44px] rounded-md text-sm font-medium border transition-colors ";
                   if (!showResult) {
                     btnClass += isSelected ? "bg-primary text-primary-foreground border-primary" : "bg-background hover:bg-secondary text-foreground border-border";
                   } else {
@@ -216,43 +161,6 @@ export const ClassifyExerciseBlock = ({ block, moduleIndex }: { block: any, modu
   );
 };
 
-export const ScenarioChartBlock = ({ block }: { block: any }) => {
-  const data = [];
-  const step = Math.max(1, Math.floor((block.qtdMax - block.qtdMin) / 10));
-  for (let i = block.qtdMin; i <= block.qtdMax; i += step) {
-    const custoVariavelTotal = block.custoVariavelUnitario * i;
-    const custoTotal = block.custoFixo + custoVariavelTotal;
-    const custoUnitario = custoTotal / i;
-    data.push({
-      quantidade: i,
-      custoTotal,
-      custoVariavelTotal,
-      custoUnitario,
-    });
-  }
-
-  const formatCurrency = (value: number) => `R$ ${value.toLocaleString('pt-BR')}`;
-
-  return (
-    <div className="rounded-xl border border-border bg-card p-5 mt-8 shadow-sm">
-      <h3 className="font-serif font-semibold text-[18px] text-primary mb-4 text-center">Análise de Cenários de Custo</h3>
-      <div className="h-[300px] w-full">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" opacity={0.3} />
-            <XAxis dataKey="quantidade" />
-            <YAxis yAxisId="left" tickFormatter={formatCurrency} />
-            <YAxis yAxisId="right" orientation="right" tickFormatter={formatCurrency} />
-            <Tooltip formatter={(value: number) => formatCurrency(value)} />
-            <Legend />
-            <Line yAxisId="left" type="monotone" dataKey="custoTotal" name="Custo Total" stroke="#ef4444" strokeWidth={2} />
-            <Line yAxisId="right" type="monotone" dataKey="custoUnitario" name="Custo Unitário" stroke="#8b5cf6" strokeWidth={2} />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
-    </div>
-  );
-};
 
 export const ChecklistBlock = ({ items, moduleIndex }: { items: string[], moduleIndex: number }) => {
   const [checked, setChecked] = useState<Set<number>>(new Set());
@@ -426,19 +334,21 @@ export const CalculatorBlock = ({ block, moduleIndex }: { block: any, moduleInde
                 <select
                   value={values[f.id] || ''}
                   onChange={(e) => handleChange(f.id, e.target.value, f.type)}
-                  className="w-full p-2.5 rounded-lg border border-border bg-background focus:outline-none focus:border-primary appearance-none"
+                  className="w-full p-3 min-h-[48px] text-[16px] rounded-lg border border-border bg-background focus:outline-none focus:border-primary appearance-none"
                 >
                   {f.options?.map((opt: string) => (
                     <option key={opt} value={opt}>{opt}</option>
                   ))}
                 </select>
               ) : (
-                <input 
-                  type="number" 
+                <input
+                  type="number"
                   step="any"
+                  inputMode="decimal"
                   placeholder={f.placeholder}
                   onChange={(e) => handleChange(f.id, e.target.value, f.type)}
-                  className={`w-full p-2.5 rounded-lg border border-border bg-background focus:outline-none focus:border-primary ${f.type === 'currency' ? 'pl-9' : ''}`}
+                  /* text-[16px]: anything smaller makes iOS Safari zoom in on focus. */
+                  className={`w-full p-3 min-h-[48px] text-[16px] rounded-lg border border-border bg-background focus:outline-none focus:border-primary ${f.type === 'currency' ? 'pl-9' : ''}`}
                 />
               )}
               {f.type === 'percentage' && <span className="absolute right-3 top-2.5 text-muted-foreground">%</span>}
@@ -472,6 +382,267 @@ export const CalculatorBlock = ({ block, moduleIndex }: { block: any, moduleInde
   );
 };
 
+export const QuizBlock = ({ block, moduleIndex }: { block: any, moduleIndex: number }) => {
+  const [picked, setPicked] = useState<number | null>(null);
+
+  useEffect(() => {
+    setPicked(null);
+  }, [moduleIndex, block.question]);
+
+  const answered = picked !== null;
+  const isRight = picked === block.correct;
+
+  return (
+    <div className="rounded-xl border border-border bg-card p-5 sm:p-6 mt-8 shadow-sm">
+      <div className="font-sans font-semibold uppercase text-[11px] tracking-[0.14em] text-accent mb-3">
+        Pergunta rápida
+      </div>
+      <p className="text-[17px] font-medium leading-relaxed text-foreground mb-5">
+        {renderTextWithLinks(block.question)}
+      </p>
+
+      <div className="space-y-2.5">
+        {block.options.map((opt: string, i: number) => {
+          let cls = 'w-full flex items-start gap-3 text-left p-3.5 min-h-[52px] rounded-lg border transition-colors ';
+          if (!answered) {
+            cls += 'border-border bg-background hover:border-primary/40 active:bg-secondary';
+          } else if (i === block.correct) {
+            cls += 'border-emerald-500 bg-emerald-50 text-emerald-900';
+          } else if (i === picked) {
+            cls += 'border-red-400 bg-red-50 text-red-900';
+          } else {
+            cls += 'border-border bg-background opacity-50';
+          }
+
+          return (
+            <button key={i} disabled={answered} onClick={() => setPicked(i)} className={cls}>
+              <span className="mt-0.5 h-5 w-5 shrink-0 rounded-full border border-current/30 text-[11px] font-bold flex items-center justify-center">
+                {answered && i === block.correct ? '✓' : answered && i === picked ? '✕' : String.fromCharCode(65 + i)}
+              </span>
+              <span className="text-[15px] leading-relaxed">{renderTextWithLinks(opt)}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {answered && (
+        <div className="mt-5 space-y-3">
+          <div className={`font-serif font-semibold text-[17px] ${isRight ? 'text-emerald-600' : 'text-primary'}`}>
+            {isRight ? 'Isso mesmo!' : 'Quase — veja o porquê:'}
+          </div>
+          {block.explanation && (
+            <p className="text-[15px] leading-relaxed text-muted-foreground">
+              {renderTextWithLinks(block.explanation)}
+            </p>
+          )}
+          <button
+            onClick={() => setPicked(null)}
+            className="text-sm font-medium text-primary underline underline-offset-4"
+          >
+            Responder de novo
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const AccordionBlock = ({ block }: { block: any }) => {
+  const [open, setOpen] = useState<number | null>(null);
+
+  return (
+    <div className="mt-8 rounded-xl border border-border bg-card divide-y divide-border overflow-hidden">
+      {block.items.map((item: any, i: number) => {
+        const isOpen = open === i;
+        return (
+          <div key={i}>
+            <button
+              onClick={() => setOpen(isOpen ? null : i)}
+              className="w-full flex items-center justify-between gap-4 p-4 min-h-[56px] text-left hover:bg-secondary/40 transition-colors"
+            >
+              <span className="text-[16px] font-medium text-foreground">{item.title}</span>
+              <span className={`shrink-0 text-muted-foreground transition-transform duration-200 ${isOpen ? 'rotate-45' : ''}`}>
+                ＋
+              </span>
+            </button>
+            {isOpen && (
+              <div className="px-4 pb-4 -mt-1">
+                <p className="text-[15px] leading-relaxed text-muted-foreground">
+                  {renderTextWithLinks(item.text)}
+                </p>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export const TableBlock = ({ block }: { block: any }) => (
+  <figure className="mt-8">
+    <div className="rounded-xl border border-border bg-card overflow-hidden shadow-sm">
+      {/* Narrow screens scroll the table sideways rather than squashing the columns. */}
+      <div className="overflow-x-auto -webkit-overflow-scrolling-touch">
+        <table className="w-full min-w-[480px] text-left border-collapse">
+          <thead className="bg-secondary/50">
+            <tr>
+              {block.headers.map((h: string, i: number) => (
+                <th key={i} className="p-3 text-[13px] font-semibold uppercase tracking-wide text-muted-foreground whitespace-nowrap">
+                  {h}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-border">
+            {block.rows.map((row: string[], i: number) => (
+              <tr key={i} className="align-top">
+                {row.map((cell, j) => (
+                  <td key={j} className={`p-3 text-[15px] leading-relaxed ${j === 0 ? 'font-medium text-foreground' : 'text-foreground/85'}`}>
+                    {renderTextWithLinks(cell)}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {block.caption && (
+      <figcaption className="mt-2 text-[13px] text-muted-foreground sm:hidden">
+        {block.caption} · arraste a tabela para o lado
+      </figcaption>
+    )}
+    {block.caption && (
+      <figcaption className="mt-2 text-[13px] text-muted-foreground hidden sm:block">{block.caption}</figcaption>
+    )}
+    {!block.caption && (
+      <figcaption className="mt-2 text-[13px] text-muted-foreground sm:hidden">Arraste a tabela para o lado</figcaption>
+    )}
+  </figure>
+);
+
+export const StepsBlock = ({ block }: { block: any }) => (
+  <ol className="mt-8 space-y-3">
+    {block.items.map((item: any, i: number) => (
+      <li key={i} className="flex gap-4 rounded-xl border border-border bg-card p-4">
+        <span className="h-8 w-8 shrink-0 rounded-full bg-primary text-primary-foreground font-serif font-bold text-[15px] flex items-center justify-center">
+          {i + 1}
+        </span>
+        <div className="min-w-0">
+          <div className="text-[16px] font-semibold text-foreground leading-snug">{item.title}</div>
+          {item.text && (
+            <p className="mt-1 text-[15px] leading-relaxed text-muted-foreground">{renderTextWithLinks(item.text)}</p>
+          )}
+        </div>
+      </li>
+    ))}
+  </ol>
+);
+
+export const StatsBlock = ({ block }: { block: any }) => (
+  <div className="mt-8 grid grid-cols-2 lg:grid-cols-3 gap-3">
+    {block.items.map((item: any, i: number) => (
+      <div key={i} className="rounded-xl border border-border bg-card p-4">
+        <div className="font-serif font-bold text-[26px] sm:text-[30px] text-primary leading-none tracking-tight">
+          {item.value}
+        </div>
+        <div className="mt-2 text-[13px] font-medium text-foreground/90 leading-snug">{item.label}</div>
+        {item.hint && <div className="mt-1 text-[12px] text-muted-foreground leading-snug">{item.hint}</div>}
+      </div>
+    ))}
+  </div>
+);
+
+// Accepts the shapes people actually paste: youtu.be/ID, watch?v=ID, /embed/ID,
+// /shorts/ID and vimeo.com/ID. Anything else renders as a plain link.
+const toEmbedUrl = (url: string): string | null => {
+  if (!url) return null;
+  const yt = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/);
+  if (yt) return `https://www.youtube.com/embed/${yt[1]}`;
+  const vimeo = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+  if (vimeo) return `https://player.vimeo.com/video/${vimeo[1]}`;
+  return null;
+};
+
+export const VideoBlock = ({ block }: { block: any }) => {
+  const embed = toEmbedUrl(block.url);
+
+  if (!embed) {
+    return (
+      <p className="mt-8 text-[15px]">
+        <a href={block.url} target="_blank" rel="noopener noreferrer" className="text-primary underline font-medium">
+          Assistir ao vídeo
+        </a>
+      </p>
+    );
+  }
+
+  return (
+    <figure className="mt-8">
+      <div className="relative w-full overflow-hidden rounded-xl border border-border bg-black aspect-video">
+        <iframe
+          src={embed}
+          title={block.caption || 'Vídeo do módulo'}
+          loading="lazy"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="absolute inset-0 h-full w-full"
+        />
+      </div>
+      {block.caption && <figcaption className="mt-2 text-[13px] text-muted-foreground">{block.caption}</figcaption>}
+    </figure>
+  );
+};
+
+export const ImageBlock = ({ block }: { block: any }) => (
+  <figure className="mt-8">
+    <img
+      src={block.url}
+      alt={block.alt || block.caption || ''}
+      loading="lazy"
+      className="w-full rounded-xl border border-border bg-card"
+    />
+    {block.caption && <figcaption className="mt-2 text-[13px] text-muted-foreground">{block.caption}</figcaption>}
+  </figure>
+);
+
+export const QuoteBlock = ({ block }: { block: any }) => (
+  <figure className="mt-8 rounded-xl border border-border bg-secondary/30 p-5 sm:p-6">
+    <blockquote className="font-serif text-[19px] sm:text-[21px] leading-relaxed text-primary">
+      “{block.text}”
+    </blockquote>
+    {(block.author || block.role) && (
+      <figcaption className="mt-3 text-[13px] text-muted-foreground">
+        {block.author}
+        {block.author && block.role ? ' · ' : ''}
+        {block.role}
+      </figcaption>
+    )}
+  </figure>
+);
+
+export const CtaBlock = ({ block }: { block: any }) => (
+  <div className="mt-8 rounded-xl border border-primary/20 bg-primary/5 p-5 flex flex-col sm:flex-row sm:items-center gap-4">
+    <p className="text-[16px] leading-relaxed text-foreground/90 flex-1">{block.text}</p>
+    <a
+      href={block.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="shrink-0 inline-flex items-center justify-center bg-primary text-primary-foreground px-5 py-3 min-h-[48px] rounded-lg text-[15px] font-semibold shadow-sm hover:opacity-90 transition-opacity"
+    >
+      {block.buttonLabel}
+    </a>
+  </div>
+);
+
+const CALLOUT_TONES: Record<string, { wrap: string; title: string; bullet: string }> = {
+  info: { wrap: 'border-accent bg-accent/10', title: 'text-accent-foreground/80', bullet: 'text-accent' },
+  warning: { wrap: 'border-amber-400 bg-amber-50', title: 'text-amber-800', bullet: 'text-amber-600' },
+  danger: { wrap: 'border-red-400 bg-red-50', title: 'text-red-800', bullet: 'text-red-500' },
+  success: { wrap: 'border-emerald-500 bg-emerald-50', title: 'text-emerald-800', bullet: 'text-emerald-600' },
+};
+
 export const BlockRenderer: React.FC<{ block: Block, moduleIndex: number }> = ({ block, moduleIndex }) => {
   switch (block.type) {
     case 'paragraph':
@@ -492,22 +663,24 @@ export const BlockRenderer: React.FC<{ block: Block, moduleIndex: number }> = ({
         </ul>
       );
     
-    case 'callout':
+    case 'callout': {
+      const tone = CALLOUT_TONES[block.tone || 'info'] || CALLOUT_TONES.info;
       return (
-        <div className="rounded-xl border-l-4 border-accent bg-accent/10 p-5 mt-8">
-          <h3 className="font-sans font-semibold uppercase text-[14px] tracking-wider text-accent-foreground/80 mb-3">
+        <div className={`rounded-xl border-l-4 p-5 mt-8 ${tone.wrap}`}>
+          <h3 className={`font-sans font-semibold uppercase text-[14px] tracking-wider mb-3 ${tone.title}`}>
             {renderTextWithLinks(block.title)}
           </h3>
           <ul className="space-y-2.5">
             {block.items.map((item, i) => (
               <li key={i} className="flex gap-2.5 items-baseline">
-                <span className="text-accent text-sm">•</span>
-                <span className="text-[15px] text-foreground/90">{renderTextWithLinks(item)}</span>
+                <span className={`text-sm ${tone.bullet}`}>•</span>
+                <span className="text-[15px] leading-relaxed text-foreground/90">{renderTextWithLinks(item)}</span>
               </li>
             ))}
           </ul>
         </div>
       );
+    }
     
     case 'highlight':
       return (
@@ -520,8 +693,8 @@ export const BlockRenderer: React.FC<{ block: Block, moduleIndex: number }> = ({
       return (
         <div className="space-y-3 mt-8">
           {block.items.map((item, i) => (
-            <div key={i} className="grid grid-cols-[90px_1fr] items-start gap-4 rounded-lg border border-border bg-secondary/40 p-4">
-              <span className="font-serif font-bold text-[24px] text-primary">{item.year}</span>
+            <div key={i} className="grid grid-cols-[64px_1fr] sm:grid-cols-[90px_1fr] items-start gap-3 sm:gap-4 rounded-lg border border-border bg-secondary/40 p-4">
+              <span className="font-serif font-bold text-[20px] sm:text-[24px] text-primary">{item.year}</span>
               <span className="font-sans text-[15px] leading-relaxed text-foreground/90">{renderTextWithLinks(item.text)}</span>
             </div>
           ))}
@@ -533,33 +706,71 @@ export const BlockRenderer: React.FC<{ block: Block, moduleIndex: number }> = ({
 
     case 'math':
       return (
-        <div className={`mt-8 ${block.inline ? 'inline-block mx-2' : 'flex justify-center p-6 bg-card border border-border rounded-xl'}`}>
-          {block.inline ? (
-            <InlineMath math={block.expression} />
-          ) : (
-            <BlockMath math={block.expression} />
-          )}
-        </div>
+        <Suspense fallback={<LazyFallback height="h-20" />}>
+          <MathBlock block={block} />
+        </Suspense>
       );
 
     case 'calculator':
       return <CalculatorBlock block={block} moduleIndex={moduleIndex} />;
       
     case 'breakeven-chart':
-      return <BreakevenChartBlock block={block} />;
-      
+      return (
+        <Suspense fallback={<LazyFallback height="h-[300px]" />}>
+          <Charts.Breakeven block={block} />
+        </Suspense>
+      );
+
     case 'breakdown-chart':
-      return <BreakdownChartBlock block={block} />;
-      
+      return (
+        <Suspense fallback={<LazyFallback height="h-[320px]" />}>
+          <Charts.Breakdown block={block} />
+        </Suspense>
+      );
+
     case 'comparison':
       return <ComparisonBlock block={block} />;
-      
+
     case 'classify-exercise':
       return <ClassifyExerciseBlock block={block} moduleIndex={moduleIndex} />;
-      
+
     case 'scenario-chart':
-      return <ScenarioChartBlock block={block} />;
-      
+      return (
+        <Suspense fallback={<LazyFallback height="h-[300px]" />}>
+          <Charts.Scenario block={block} />
+        </Suspense>
+      );
+
+    case 'quiz':
+      return <QuizBlock block={block} moduleIndex={moduleIndex} />;
+
+    case 'accordion':
+      return <AccordionBlock block={block} />;
+
+    case 'table':
+      return <TableBlock block={block} />;
+
+    case 'steps':
+      return <StepsBlock block={block} />;
+
+    case 'stats':
+      return <StatsBlock block={block} />;
+
+    case 'video':
+      return <VideoBlock block={block} />;
+
+    case 'image':
+      return <ImageBlock block={block} />;
+
+    case 'quote':
+      return <QuoteBlock block={block} />;
+
+    case 'cta':
+      return <CtaBlock block={block} />;
+
+    case 'divider':
+      return <hr className="mt-8 border-t border-border" />;
+
     default:
       return null;
   }
