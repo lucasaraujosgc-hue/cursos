@@ -4,6 +4,7 @@ import Logo from '../components/Logo';
 import { BlockRenderer } from '../components/CourseBlocks';
 import { Course } from '../types';
 import { buildWhatsappLink, CONTACT_WHATSAPP_LABEL } from '../config';
+import { track } from '../analytics';
 
 /**
  * Where the visitor came from. Read once from the URL (?utm_source=ig&...) and
@@ -319,6 +320,10 @@ export default function CourseViewer() {
   const [attribution] = useState<Attribution>(() => readAttribution());
   const chipsRef = useRef<HTMLDivElement | null>(null);
   const feedbackRef = useRef<HTMLDivElement | null>(null);
+  // Guards so a re-render never counts the same access twice.
+  const trackedView = useRef<string | null>(null);
+  const trackedModules = useRef<Set<string>>(new Set());
+  const completeTracked = useRef(false);
 
   useEffect(() => {
     fetch(`/api/courses/${slug}`)
@@ -356,6 +361,7 @@ export default function CourseViewer() {
         if (parsed.completed) setCompleted(new Set(parsed.completed));
         // `started` is the pre-existing key from the old entrance form.
         if (parsed.registered || parsed.started) setRegistered(true);
+        if (parsed.completeTracked) completeTracked.current = true;
       } catch (e) {
         console.error("Failed to parse progress", e);
       }
@@ -371,8 +377,46 @@ export default function CourseViewer() {
       started: registered,
       current: currentIndex,
       completed: Array.from(completed),
+      completeTracked: completeTracked.current,
     }));
   }, [registered, currentIndex, completed, isLoaded, slug]);
+
+  /* --- Anonymous access tracking. Counts everyone, registered or not. --- */
+
+  // One "course opened" per page load.
+  useEffect(() => {
+    if (!course || !slug || trackedView.current === slug) return;
+    trackedView.current = slug;
+    track({ type: 'course_view', courseSlug: slug, ...attribution });
+  }, [course, slug, attribution]);
+
+  // One event per module actually reached, deduped for this page load. Waits
+  // for the restore, so resuming at module 5 doesn't log module 1 on the way.
+  useEffect(() => {
+    if (!course || !slug || !isLoaded) return;
+    const mod = course.modules[currentIndex];
+    if (!mod) return;
+    const key = `${slug}:${currentIndex}`;
+    if (trackedModules.current.has(key)) return;
+    trackedModules.current.add(key);
+    track({
+      type: 'module_view',
+      courseSlug: slug,
+      moduleIndex: currentIndex,
+      moduleTitle: mod.shortTitle,
+      ...attribution,
+    });
+  }, [course, slug, currentIndex, isLoaded, attribution]);
+
+  // Completion is recorded once per browser, so reopening a finished course
+  // doesn't inflate the number.
+  useEffect(() => {
+    if (!course || !slug || !isLoaded || completeTracked.current) return;
+    const total = course.modules.length;
+    if (total === 0 || completed.size < total) return;
+    completeTracked.current = true;
+    track({ type: 'course_complete', courseSlug: slug, ...attribution });
+  }, [course, slug, completed, isLoaded, attribution]);
 
   // Keep the active chip visible in the mobile module strip.
   useEffect(() => {
@@ -711,7 +755,6 @@ export default function CourseViewer() {
 
       <footer className="mt-auto border-t border-border py-8 pb-24 md:pb-8 text-center text-[12px] text-muted-foreground space-y-1">
         <p>© {new Date().getFullYear()} Vírgula Contábil. Todos os direitos reservados.</p>
-        <p>Conteúdo gratuito e informal, para orientação básica.</p>
       </footer>
     </div>
   );

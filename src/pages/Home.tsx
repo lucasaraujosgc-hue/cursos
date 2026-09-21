@@ -99,7 +99,6 @@ export default function Home() {
 
       <footer className="mt-auto border-t border-border py-8 text-center text-[12px] text-muted-foreground space-y-1">
         <p>© {new Date().getFullYear()} Vírgula Contábil. Todos os direitos reservados.</p>
-        <p>Conteúdo gratuito e informal, para orientação básica.</p>
       </footer>
     </div>
   );

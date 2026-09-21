@@ -7,6 +7,12 @@ import cookieParser from "cookie-parser";
 import { createServer as createViteServer } from "vite";
 import * as dotenv from "dotenv";
 import { createLeadStore, LeadStore } from "./lead-store";
+import {
+  createAnalyticsStore,
+  summarise,
+  AnalyticsStore,
+  EventType,
+} from "./analytics-store";
 
 dotenv.config();
 
@@ -25,6 +31,7 @@ const DATA_DIR = process.env.DATA_DIR
 
 const DATA_FILE = path.join(DATA_DIR, "courses.json");
 const LEADS_FILE = path.join(DATA_DIR, "leads.json");
+const EVENTS_FILE = path.join(DATA_DIR, "events.jsonl");
 /** Course cover images uploaded from the admin, served at /uploads/<file>. */
 const UPLOADS_DIR = path.join(DATA_DIR, "uploads");
 
@@ -85,8 +92,9 @@ seedCoursesIfEmpty();
 const getCourses = () => readJsonFile(DATA_FILE);
 const saveCourses = (courses: any) => writeJsonFile(DATA_FILE, courses);
 
-// Postgres when DATABASE_URL is set, JSON file otherwise. Assigned in start().
+// Postgres when DATABASE_URL is set, files otherwise. Assigned in start().
 let leadStore: LeadStore;
+let analyticsStore: AnalyticsStore;
 
 // Authentication middleware
 function requireAuth(req: any, res: any, next: any) {
@@ -304,6 +312,107 @@ app.post("/api/leads", rateLimit({ windowMs: 10 * 60 * 1000, max: 15 }), async (
   }
 });
 
+const EVENT_TYPES: EventType[] = ["course_view", "module_view", "course_complete"];
+
+/**
+ * Anonymous access tracking. Open to everyone — this is what makes the numbers
+ * cover visitors who never register. The visitor id is generated in the browser
+ * and means nothing outside these counts.
+ *
+ * The limit is generous because one reader legitimately fires one event per
+ * module, plus the course view.
+ */
+app.post("/api/events", rateLimit({ windowMs: 10 * 60 * 1000, max: 200 }), async (req, res) => {
+  const body = req.body || {};
+  const type = str(body.type, 32) as EventType;
+
+  // Never fail the page over tracking: answer 204 either way.
+  if (!EVENT_TYPES.includes(type)) return res.status(204).end();
+
+  const visitorId = str(body.visitorId, 64);
+  if (!visitorId) return res.status(204).end();
+
+  const rawIndex = Number(body.moduleIndex);
+  const moduleIndex = Number.isInteger(rawIndex) && rawIndex >= 0 && rawIndex < 500 ? rawIndex : null;
+
+  try {
+    await analyticsStore.add({
+      visitorId,
+      type,
+      courseSlug: str(body.courseSlug, 120),
+      moduleIndex,
+      moduleTitle: str(body.moduleTitle, 160),
+      utmSource: str(body.utmSource, 80),
+      utmMedium: str(body.utmMedium, 80),
+      utmCampaign: str(body.utmCampaign, 120),
+      utmContent: str(body.utmContent, 120),
+      referrer: str(body.referrer, 300),
+    });
+  } catch (err) {
+    console.error("Failed to record event:", err);
+  }
+  res.status(204).end();
+});
+
+/** Parses YYYY-MM-DD as a UTC day, falling back to `fallback`. */
+function parseDay(value: unknown, fallback: Date): Date {
+  if (typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    const parsed = new Date(`${value}T00:00:00.000Z`);
+    if (!isNaN(parsed.getTime())) return parsed;
+  }
+  return fallback;
+}
+
+app.get("/api/admin/stats", requireAuth, async (req, res, next) => {
+  try {
+    const today = new Date();
+    const defaultTo = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()));
+    defaultTo.setUTCDate(defaultTo.getUTCDate() + 1); // `to` is exclusive: include today
+    const defaultFrom = new Date(defaultTo);
+    defaultFrom.setUTCDate(defaultFrom.getUTCDate() - 30);
+
+    const from = parseDay(req.query.from, defaultFrom);
+    // The query's `to` is the last day the user wants included, so add a day.
+    let to = parseDay(req.query.to, defaultTo);
+    if (typeof req.query.to === "string") {
+      to = new Date(to);
+      to.setUTCDate(to.getUTCDate() + 1);
+    }
+    if (to <= from) return res.status(400).json({ error: "Intervalo de datas inválido" });
+
+    const [events, leads] = await Promise.all([
+      analyticsStore.range(from, to),
+      leadStore.list(),
+    ]);
+
+    // Leads live in their own table; fold them in as events so the dashboard
+    // shows captures on the same timeline as the accesses.
+    const leadEvents = leads
+      .filter((l) => {
+        const when = new Date(l.timestamp);
+        return when >= from && when < to;
+      })
+      .map((l) => ({
+        visitorId: `lead:${l.id}`,
+        type: "lead" as EventType,
+        courseSlug: l.courseSlug,
+        moduleIndex: null,
+        moduleTitle: l.moduleTitle,
+        utmSource: l.utmSource,
+        utmMedium: l.utmMedium,
+        utmCampaign: l.utmCampaign,
+        utmContent: l.utmContent,
+        referrer: l.referrer,
+        timestamp: l.timestamp,
+      }));
+
+    const merged = [...events, ...leadEvents].sort((a, b) => a.timestamp.localeCompare(b.timestamp));
+    res.json(summarise(merged, getCourses(), from, to));
+  } catch (err) {
+    next(err);
+  }
+});
+
 /** Escape text before it goes inside an HTML attribute in the meta tags. */
 function escapeHtml(value: string) {
   return String(value)
@@ -443,6 +552,10 @@ async function start() {
     leadStore = await createLeadStore({
       databaseUrl: process.env.DATABASE_URL,
       file: LEADS_FILE,
+    });
+    analyticsStore = await createAnalyticsStore({
+      databaseUrl: process.env.DATABASE_URL,
+      file: EVENTS_FILE,
     });
   } catch (err) {
     // Coming up without lead storage would silently drop every capture.

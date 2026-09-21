@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../components/Logo';
 import { Course } from '../types';
+
+// Keeps recharts out of the bundle that course readers download.
+const StatsPanel = lazy(() => import('./StatsPanel'));
 
 /** Turns a typed Brazilian number into a wa.me link for one-tap manual contact. */
 function leadWhatsappLink(phone: string, name: string, courseSlug: string) {
@@ -50,7 +53,7 @@ export default function Admin() {
   const [editingCourse, setEditingCourse] = useState<Course | null>(null);
   const [editJson, setEditJson] = useState('');
   const [error, setError] = useState('');
-  const [activeTab, setActiveTab] = useState<'courses' | 'leads'>('courses');
+  const [activeTab, setActiveTab] = useState<'courses' | 'stats' | 'leads'>('courses');
   const [selectedLeads, setSelectedLeads] = useState<string[]>([]);
   const [jsonCopied, setJsonCopied] = useState(false);
   const [uploadingSlug, setUploadingSlug] = useState<string | null>(null);
@@ -294,6 +297,12 @@ export default function Admin() {
               Cursos
             </button>
             <button 
+              onClick={() => setActiveTab('stats')}
+              className={`text-sm font-medium ${activeTab === 'stats' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`}
+            >
+              Acessos
+            </button>
+            <button 
               onClick={() => setActiveTab('leads')}
               className={`text-sm font-medium ${activeTab === 'leads' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`}
             >
@@ -307,7 +316,11 @@ export default function Admin() {
       </header>
 
       <main className="w-full max-w-6xl mx-auto px-5 py-8 flex-1">
-        {activeTab === 'leads' ? (
+        {activeTab === 'stats' ? (
+          <Suspense fallback={<div className="py-20 text-center text-muted-foreground">Carregando painel...</div>}>
+            <StatsPanel />
+          </Suspense>
+        ) : activeTab === 'leads' ? (
           <div>
             <div className="flex flex-wrap justify-between items-center gap-3 mb-2">
               <h1 className="text-3xl font-serif text-primary">Leads</h1>
