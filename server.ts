@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 import { createServer as createViteServer } from "vite";
 import * as dotenv from "dotenv";
+import { createLeadStore, LeadStore } from "./lead-store";
 
 dotenv.config();
 
@@ -74,8 +75,9 @@ seedCoursesIfEmpty();
 
 const getCourses = () => readJsonFile(DATA_FILE);
 const saveCourses = (courses: any) => writeJsonFile(DATA_FILE, courses);
-const getLeads = () => readJsonFile(LEADS_FILE);
-const saveLeads = (leads: any) => writeJsonFile(LEADS_FILE, leads);
+
+// Postgres when DATABASE_URL is set, JSON file otherwise. Assigned in start().
+let leadStore: LeadStore;
 
 // Authentication middleware
 function requireAuth(req: any, res: any, next: any) {
@@ -182,20 +184,28 @@ app.delete("/api/admin/courses/:slug", requireAuth, (req, res) => {
   res.json({ success: true });
 });
 
-app.get("/api/admin/leads", requireAuth, (req, res) => {
-  // Newest first — the list is a work queue for manual follow-up.
-  const leads = getLeads().slice().reverse();
-  res.json(leads);
+app.get("/api/admin/leads", requireAuth, async (req, res, next) => {
+  try {
+    res.json(await leadStore.list());
+  } catch (err) {
+    next(err);
+  }
 });
 
-app.delete("/api/admin/leads", requireAuth, (req, res) => {
-  const { timestamps } = req.body || {};
-  if (!Array.isArray(timestamps)) {
+app.delete("/api/admin/leads", requireAuth, async (req, res, next) => {
+  // `ids` is what the admin sends now; `timestamps` stays accepted so rows
+  // captured before ids existed can still be removed.
+  const { ids, timestamps } = req.body || {};
+  const keys = Array.isArray(ids) ? ids : timestamps;
+  if (!Array.isArray(keys)) {
     return res.status(400).json({ error: "Invalid data" });
   }
-  const leads = getLeads().filter((lead: any) => !timestamps.includes(lead.timestamp));
-  saveLeads(leads);
-  res.json({ success: true });
+  try {
+    await leadStore.remove(keys.map(String));
+    res.json({ success: true });
+  } catch (err) {
+    next(err);
+  }
 });
 
 // Public courses list route
@@ -224,7 +234,7 @@ const str = (value: unknown, maxLength: number) =>
 
 // Public lead route. Only known fields are persisted — the body is never spread
 // into the stored record.
-app.post("/api/leads", rateLimit({ windowMs: 10 * 60 * 1000, max: 15 }), (req, res) => {
+app.post("/api/leads", rateLimit({ windowMs: 10 * 60 * 1000, max: 15 }), async (req, res, next) => {
   const body = req.body || {};
   const name = str(body.name, 120);
 
@@ -232,24 +242,23 @@ app.post("/api/leads", rateLimit({ windowMs: 10 * 60 * 1000, max: 15 }), (req, r
     return res.status(400).json({ error: "Informe um nome" });
   }
 
-  const newLead = {
-    name,
-    phone: str(body.phone, 40),
-    message: str(body.message, 2000),
-    courseSlug: str(body.courseSlug, 120),
-    moduleTitle: str(body.moduleTitle, 160),
-    utmSource: str(body.utmSource, 80),
-    utmMedium: str(body.utmMedium, 80),
-    utmCampaign: str(body.utmCampaign, 120),
-    utmContent: str(body.utmContent, 120),
-    referrer: str(body.referrer, 300),
-    timestamp: new Date().toISOString(),
-  };
-
-  const leads = getLeads();
-  leads.push(newLead);
-  saveLeads(leads);
-  res.json({ success: true });
+  try {
+    await leadStore.add({
+      name,
+      phone: str(body.phone, 40),
+      message: str(body.message, 2000),
+      courseSlug: str(body.courseSlug, 120),
+      moduleTitle: str(body.moduleTitle, 160),
+      utmSource: str(body.utmSource, 80),
+      utmMedium: str(body.utmMedium, 80),
+      utmCampaign: str(body.utmCampaign, 120),
+      utmContent: str(body.utmContent, 120),
+      referrer: str(body.referrer, 300),
+    });
+    res.json({ success: true });
+  } catch (err) {
+    next(err);
+  }
 });
 
 /** Escape text before it goes inside an HTML attribute in the meta tags. */
@@ -358,7 +367,22 @@ async function setupVite() {
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on port ${PORT}`);
     console.log(`Data directory: ${DATA_DIR}`);
+    console.log(`Lead storage: ${leadStore.kind}`);
   });
 }
 
-setupVite();
+async function start() {
+  try {
+    leadStore = await createLeadStore({
+      databaseUrl: process.env.DATABASE_URL,
+      file: LEADS_FILE,
+    });
+  } catch (err) {
+    // Coming up without lead storage would silently drop every capture.
+    console.error("Failed to initialise lead storage:", err);
+    process.exit(1);
+  }
+  await setupVite();
+}
+
+start();

@@ -14,6 +14,15 @@ function leadWhatsappLink(phone: string, name: string, courseSlug: string) {
   return `https://wa.me/${withCountry}?text=${encodeURIComponent(text)}`;
 }
 
+const CAPTURE_HELP: Record<string, string> = {
+  none: 'O curso não pede dados em nenhum momento. Você não captura leads por ele.',
+  end: 'Conteúdo todo aberto. O contato só é pedido no fim, junto da dúvida — menos leads, porém mais qualificados.',
+  middle:
+    'Os primeiros módulos são abertos e o curso exige o cadastro para seguir. Meio-termo entre volume e qualidade.',
+  start:
+    'Pede os dados antes de qualquer conteúdo. Captura mais gente, mas costuma perder boa parte de quem chega das redes sociais, e com dados menos confiáveis.',
+};
+
 function leadsToCsv(leads: any[]) {
   const headers = ['Data', 'Nome', 'Telefone', 'Curso', 'Mensagem', 'Origem', 'Campanha', 'Post'];
   const escape = (v: any) => `"${String(v ?? '').replace(/"/g, '""')}"`;
@@ -113,6 +122,24 @@ export default function Admin() {
     }
   };
 
+  /** Saves the lead-capture setting of one course without opening the editor. */
+  const handleUpdateCapture = async (course: Course, patch: Partial<Course>) => {
+    const updated = { ...course, ...patch };
+    // Optimistic: the control reflects the choice while the request is in flight.
+    setCourses(prev => prev.map(c => (c.slug === course.slug ? updated : c)));
+    try {
+      const res = await fetch(`/api/admin/courses/${course.slug}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updated),
+      });
+      if (!res.ok) throw new Error('Erro ao salvar');
+    } catch (err) {
+      alert('Não foi possível salvar a configuração de cadastro.');
+      fetchCoursesAndLeads();
+    }
+  };
+
   const handleCreateNew = () => {
     const newCourse: Course = {
       slug: "novo-curso",
@@ -201,7 +228,7 @@ export default function Admin() {
     if (selectedLeads.length === leads.length && leads.length > 0) {
       setSelectedLeads([]);
     } else {
-      setSelectedLeads(leads.map(l => l.timestamp));
+      setSelectedLeads(leads.map(l => l.id));
     }
   };
 
@@ -212,7 +239,7 @@ export default function Admin() {
       const res = await fetch('/api/admin/leads', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ timestamps: selectedLeads })
+        body: JSON.stringify({ ids: selectedLeads })
       });
       if (!res.ok) throw new Error('Erro ao excluir leads');
       setSelectedLeads([]);
@@ -304,7 +331,7 @@ export default function Admin() {
             <div className="space-y-3">
               {leads.map((lead, idx) => {
                 const waLink = leadWhatsappLink(lead.phone, lead.name, lead.courseSlug);
-                const isSelected = selectedLeads.includes(lead.timestamp);
+                const isSelected = selectedLeads.includes(lead.id);
                 return (
                   <div
                     key={idx}
@@ -316,7 +343,7 @@ export default function Admin() {
                       <input
                         type="checkbox"
                         checked={isSelected}
-                        onChange={() => toggleLead(lead.timestamp)}
+                        onChange={() => toggleLead(lead.id)}
                         className="mt-1.5 rounded border-border text-primary focus:ring-primary"
                       />
                       <div className="flex-1 min-w-0">
@@ -489,6 +516,54 @@ export default function Admin() {
                       </button>
                     </div>
                   </div>
+
+                  <div className="mt-4 pt-4 border-t border-border">
+                    <label
+                      htmlFor={`capture-${course.slug}`}
+                      className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2"
+                    >
+                      Cadastro (nome + telefone)
+                    </label>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <select
+                        id={`capture-${course.slug}`}
+                        value={course.leadCapture || 'end'}
+                        onChange={(e) =>
+                          handleUpdateCapture(course, {
+                            leadCapture: e.target.value as Course['leadCapture'],
+                          })
+                        }
+                        className="border border-border rounded-lg px-3 py-2 text-sm bg-background text-foreground outline-none focus:border-primary"
+                      >
+                        <option value="none">Não pedir</option>
+                        <option value="end">Só no fim (campo de dúvida)</option>
+                        <option value="middle">Obrigatório no meio do curso</option>
+                        <option value="start">Obrigatório antes de começar</option>
+                      </select>
+
+                      {course.leadCapture === 'middle' && (
+                        <label className="flex items-center gap-2 text-sm text-muted-foreground">
+                          após
+                          <input
+                            type="number"
+                            min={1}
+                            max={Math.max(1, course.modules?.length || 1)}
+                            value={course.leadCaptureAfter ?? 2}
+                            onChange={(e) =>
+                              handleUpdateCapture(course, {
+                                leadCaptureAfter: Math.max(1, Number(e.target.value) || 1),
+                              })
+                            }
+                            className="w-16 border border-border rounded-lg px-2 py-2 text-sm bg-background text-foreground outline-none focus:border-primary"
+                          />
+                          módulos
+                        </label>
+                      )}
+                    </div>
+                    <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                      {CAPTURE_HELP[course.leadCapture || 'end']}
+                    </p>
+                  </div>
                 </div>
               ))}
               {courses.length === 0 && (
@@ -546,7 +621,8 @@ ESTRUTURA DO JSON
   "courseName": "Nome do Curso",
   "description": "Uma frase dizendo o que a pessoa sai sabendo fazer.",
   "ogImage": "https://.../capa-1200x630.png",   // opcional: imagem do preview do link
-  "leadCapture": "end",                          // "end" (padrão), "none" ou "start"
+  "leadCapture": "end",                          // "end" (padrão), "middle", "start" ou "none"
+  "leadCaptureAfter": 2,                         // só com "middle": módulos abertos antes do cadastro
   "modules": [ ... ]
 }
 

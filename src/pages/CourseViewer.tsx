@@ -213,22 +213,38 @@ const FeedbackCard = ({
   );
 };
 
-/** The old pre-course form, kept for courses that opt in with leadCapture: 'start'. */
-const StartGate = ({
+/**
+ * Name + phone form. Used both before the first module (leadCapture 'start')
+ * and part-way through the course (leadCapture 'middle').
+ */
+const RegistrationGate = ({
   course,
   attribution,
+  moduleTitle,
+  title,
+  description,
+  buttonLabel,
   onDone,
 }: {
   course: Course;
   attribution: Attribution;
+  moduleTitle?: string;
+  title: string;
+  description?: string;
+  buttonLabel: string;
   onDone: () => void;
 }) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [sending, setSending] = useState(false);
 
-  const submit = async () => {
-    if (!name.trim() || !phone.trim() || sending) return;
+  // 10 digits is a landline, 11 a mobile — anything shorter is a typo.
+  const phoneOk = onlyDigits(phone).length >= 10;
+  const canSend = name.trim().length > 1 && phoneOk;
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!canSend || sending) return;
     setSending(true);
     try {
       await fetch('/api/leads', {
@@ -238,10 +254,12 @@ const StartGate = ({
           name: name.trim(),
           phone: phone.trim(),
           courseSlug: course.slug,
+          moduleTitle,
           ...attribution,
         }),
       });
     } catch (err) {
+      // Never trap the reader behind a network error.
       console.error(err);
     }
     setSending(false);
@@ -249,15 +267,18 @@ const StartGate = ({
   };
 
   return (
-    <div className="w-full max-w-sm bg-card border border-border p-5 rounded-xl shadow-sm">
-      <h3 className="font-serif font-semibold text-lg text-primary mb-3">Antes de começar...</h3>
+    <form onSubmit={submit} className="w-full max-w-md bg-card border border-border p-5 sm:p-6 rounded-xl shadow-sm">
+      <h3 className="font-serif font-semibold text-xl text-primary mb-2">{title}</h3>
+      {description && (
+        <p className="text-[15px] text-muted-foreground leading-relaxed mb-4">{description}</p>
+      )}
       <div className="space-y-3 mb-4">
         <input
           type="text"
           value={name}
           autoComplete="name"
           onChange={(e) => setName(e.target.value)}
-          className="w-full border border-border rounded-lg px-3 py-3 min-h-[48px] text-[16px] bg-background text-foreground outline-none focus:border-primary"
+          className="w-full border border-border rounded-lg px-3.5 py-3 min-h-[48px] text-[16px] bg-background text-foreground outline-none focus:border-primary"
           placeholder="Seu nome"
         />
         <input
@@ -266,18 +287,21 @@ const StartGate = ({
           autoComplete="tel"
           value={phone}
           onChange={(e) => setPhone(formatPhone(e.target.value))}
-          className="w-full border border-border rounded-lg px-3 py-3 min-h-[48px] text-[16px] bg-background text-foreground outline-none focus:border-primary"
+          className="w-full border border-border rounded-lg px-3.5 py-3 min-h-[48px] text-[16px] bg-background text-foreground outline-none focus:border-primary"
           placeholder="(00) 00000-0000"
         />
       </div>
       <button
-        onClick={submit}
-        disabled={!name.trim() || !phone.trim() || sending}
-        className="w-full bg-primary text-primary-foreground px-4 py-3 min-h-[48px] rounded-lg text-[16px] font-semibold shadow-sm disabled:opacity-50"
+        type="submit"
+        disabled={!canSend || sending}
+        className="w-full bg-primary text-primary-foreground px-4 py-3.5 min-h-[52px] rounded-lg text-[16px] font-semibold shadow-sm disabled:opacity-40"
       >
-        {sending ? 'Carregando...' : 'Começar o curso →'}
+        {sending ? 'Carregando...' : buttonLabel}
       </button>
-    </div>
+      <p className="mt-3 text-[12px] text-muted-foreground text-center">
+        É gratuito. Seus dados ficam só com a Vírgula Contábil.
+      </p>
+    </form>
   );
 };
 
@@ -287,7 +311,7 @@ export default function CourseViewer() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const [gatePassed, setGatePassed] = useState(false);
+  const [registered, setRegistered] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [completed, setCompleted] = useState<Set<number>>(new Set());
   const [isLoaded, setIsLoaded] = useState(false);
@@ -330,7 +354,8 @@ export default function CourseViewer() {
         const parsed = JSON.parse(saved);
         if (parsed.current !== undefined) setCurrentIndex(parsed.current);
         if (parsed.completed) setCompleted(new Set(parsed.completed));
-        if (parsed.started) setGatePassed(true);
+        // `started` is the pre-existing key from the old entrance form.
+        if (parsed.registered || parsed.started) setRegistered(true);
       } catch (e) {
         console.error("Failed to parse progress", e);
       }
@@ -342,11 +367,12 @@ export default function CourseViewer() {
   useEffect(() => {
     if (!isLoaded || !slug) return;
     localStorage.setItem(`virgula-course-progress-${slug}`, JSON.stringify({
-      started: gatePassed,
+      registered,
+      started: registered,
       current: currentIndex,
       completed: Array.from(completed),
     }));
-  }, [gatePassed, currentIndex, completed, isLoaded, slug]);
+  }, [registered, currentIndex, completed, isLoaded, slug]);
 
   // Keep the active chip visible in the mobile module strip.
   useEffect(() => {
@@ -377,9 +403,15 @@ export default function CourseViewer() {
 
   const courseModules = course.modules;
   const captureMode = course.leadCapture || 'end';
+  // How many modules stay open before the 'middle' gate. Always leave at least
+  // one open, and never more than the course has.
+  const freeModules = Math.min(
+    Math.max(1, course.leadCaptureAfter ?? 2),
+    courseModules.length
+  );
 
   // Opt-in only: by default the content opens immediately.
-  if (captureMode === 'start' && !gatePassed) {
+  if (captureMode === 'start' && !registered) {
     return (
       <div className="min-h-screen bg-background flex flex-col items-center">
         <div className="w-full max-w-3xl px-5 py-12 sm:py-16 flex flex-col items-start">
@@ -393,7 +425,14 @@ export default function CourseViewer() {
           <p className="text-[17px] sm:text-[18px] text-muted-foreground max-w-xl mb-10 leading-relaxed">
             {course.description}
           </p>
-          <StartGate course={course} attribution={attribution} onDone={() => setGatePassed(true)} />
+          <RegistrationGate
+            course={course}
+            attribution={attribution}
+            title="Antes de começar..."
+            description="Preencha para liberar o curso. Leva 10 segundos."
+            buttonLabel="Começar o curso →"
+            onDone={() => setRegistered(true)}
+          />
         </div>
       </div>
     );
@@ -403,6 +442,10 @@ export default function CourseViewer() {
   const allCompleted = completed.size === courseModules.length;
   const isLastModule = currentIndex === courseModules.length - 1;
   const currentMod = courseModules[currentIndex];
+
+  // The 'middle' gate: the first `freeModules` modules read freely, then the
+  // registration takes over the content area until it is filled in.
+  const gated = captureMode === 'middle' && !registered && currentIndex >= freeModules;
 
   const goTo = (index: number) => {
     setCurrentIndex(index);
@@ -532,6 +575,29 @@ export default function CourseViewer() {
             covering the last lines of a module. */}
         <main className="flex-1 flex flex-col min-w-0 pb-28 md:pb-16">
 
+          {gated ? (
+            <div className="flex flex-col items-center text-center py-6 sm:py-10">
+              <div className="font-sans font-semibold uppercase text-[11px] tracking-[0.14em] text-accent mb-3">
+                Você já leu {freeModules} de {courseModules.length} módulos
+              </div>
+              <h1 className="font-serif font-normal text-[26px] sm:text-3xl text-primary leading-[1.15] mb-3 tracking-[-0.02em] max-w-lg">
+                Continue de onde parou
+              </h1>
+              <p className="text-[16px] text-muted-foreground leading-relaxed max-w-md mb-8">
+                O restante do curso é gratuito também. Só precisamos saber com quem
+                estamos falando para liberar os próximos módulos.
+              </p>
+              <RegistrationGate
+                course={course}
+                attribution={attribution}
+                moduleTitle={courseModules[freeModules - 1]?.shortTitle}
+                title="Liberar os próximos módulos"
+                buttonLabel={`Continuar o curso →`}
+                onDone={() => setRegistered(true)}
+              />
+            </div>
+          ) : (
+          <>
           {allCompleted && (
             <div className="rounded-2xl border border-primary/20 bg-primary/5 p-5 sm:p-6 mb-6 flex flex-col sm:flex-row sm:items-center gap-4">
               <div className="flex-1">
@@ -612,11 +678,14 @@ export default function CourseViewer() {
               />
             </div>
           )}
+          </>
+          )}
         </main>
       </div>
 
-      {/* Sticky thumb-reach navigation on phones. */}
-      <div className="md:hidden fixed bottom-0 inset-x-0 z-30 bg-background/95 backdrop-blur border-t border-border px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+      {/* Sticky thumb-reach navigation on phones. Hidden behind the gate,
+          which carries its own call to action. */}
+      <div className={`${gated ? 'hidden' : 'md:hidden'} fixed bottom-0 inset-x-0 z-30 bg-background/95 backdrop-blur border-t border-border px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]`}>
         <div className="flex items-center gap-3">
           <button
             onClick={() => currentIndex > 0 && goTo(currentIndex - 1)}

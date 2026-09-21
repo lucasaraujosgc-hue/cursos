@@ -58,13 +58,19 @@ export type Course = {
   modules: Module[];
   /**
    * Where the course asks for the visitor's name and phone.
-   *  - 'end'  (default) the content is open; the ask sits at the end, in the
-   *           "dúvida ou sugestão" card, where the visitor already got value.
-   *  - 'none' never asks.
-   *  - 'start' the old behaviour: a form before the first module. Costs a lot
-   *           of traffic from social, kept only as an escape hatch.
+   *  - 'end'    (default) the content is open; the ask sits at the end, in the
+   *             "dúvida ou sugestão" card, where the visitor already got value.
+   *  - 'middle' the first `leadCaptureAfter` modules are open, then the course
+   *             requires the registration before going on.
+   *  - 'start'  a form before the first module. Costs the most traffic from
+   *             social, since nothing has been delivered yet.
+   *  - 'none'   never asks.
+   *
+   * The end-of-course question box is shown in every mode except 'none'.
    */
-  leadCapture?: 'end' | 'none' | 'start';
+  leadCapture?: 'end' | 'middle' | 'start' | 'none';
+  /** How many modules stay open before the 'middle' gate. Defaults to 2. */
+  leadCaptureAfter?: number;
   /** Absolute URL used for the link preview on WhatsApp/Instagram (1200x630). */
   ogImage?: string;
 };
