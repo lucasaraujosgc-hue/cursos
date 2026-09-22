@@ -1,0 +1,1412 @@
+{
+  "slug": "capital-de-giro",
+  "courseName": "Capital de Giro: Por Que Falta Dinheiro",
+  "description": "Entenda por que empresa lucrativa quebra. Calcule a necessidade de capital de giro do seu negócio, descubra o saldo de tesouraria, conheça as três alavancas para reduzir o dinheiro parado e saiba quanto custa de verdade antecipar recebível.",
+  "category": "Dinheiro na Empresa",
+  "leadCapture": "end",
+  "modules": [
+    {
+      "id": "lucrativa-quebra",
+      "shortTitle": "Lucrativa e quebrada",
+      "kicker": "MÓDULO 01 · O PROBLEMA",
+      "title": "Por que empresa lucrativa quebra",
+      "summary": "A maioria das empresas que fecham dava lucro. O que faltou foi dinheiro na hora certa.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Existe um tipo de falência que confunde todo mundo: a da empresa que vendia bem, tinha margem boa e ainda assim fechou. Não é contradição. Lucro é um resultado contábil; capital de giro é a quantidade de dinheiro que precisa ficar circulando para o negócio funcionar. Dá para ter o primeiro e não ter o segundo."
+        },
+        {
+          "type": "stats",
+          "items": [
+            {
+              "value": "R$ 30.800",
+              "label": "presos na operação",
+              "hint": "na Roupa Bonita"
+            },
+            {
+              "value": "51 dias",
+              "label": "de ciclo financeiro",
+              "hint": "bancados por ela"
+            },
+            {
+              "value": "−R$ 4.400",
+              "label": "de saldo em tesouraria",
+              "hint": "o buraco a cobrir"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Onde o dinheiro se esconde"
+        },
+        {
+          "type": "paragraph",
+          "text": "A Roupa Bonita tem R$ 47.000 que são dela e não estão na conta: R$ 27.000 em mercadoria na prateleira e R$ 20.000 que clientes ainda vão pagar. Em troca, deve R$ 16.200 a fornecedores. A diferença — R$ 30.800 — é o dinheiro que a operação exige que fique parado para a roda girar."
+        },
+        {
+          "type": "comparison",
+          "columns": [
+            {
+              "label": "O que o lucro mostra",
+              "tone": "positive",
+              "items": [
+                "Vendeu R$ 30.000 no mês",
+                "Margem de contribuição de 53%",
+                "Sobra de R$ 8.250 depois de tudo",
+                "O negócio faz sentido"
+              ]
+            },
+            {
+              "label": "O que o caixa sente",
+              "tone": "negative",
+              "items": [
+                "R$ 27.000 virados mercadoria",
+                "R$ 20.000 esperando o cliente pagar",
+                "Fornecedor cobrando em 45 dias",
+                "R$ 3.000 na conta no dia do vencimento"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Capital de giro não é um empréstimo que você pega. É uma quantidade de dinheiro que o seu negócio exige para existir — e ela cresce junto com as vendas."
+        },
+        {
+          "type": "quiz",
+          "question": "Uma empresa tem lucro todo mês e vive no cheque especial. O que está acontecendo?",
+          "options": [
+            "O contador está errando a conta",
+            "O lucro existe, mas está preso em estoque e em contas a receber",
+            "Ela está vendendo abaixo do custo"
+          ],
+          "correct": 1,
+          "explanation": "O lucro é real: ele só não está em dinheiro ainda. Está em mercadoria na prateleira e em vendas que o cliente ainda vai pagar. Esse descasamento tem nome, tem fórmula e tem solução — é o que este curso vai mostrar."
+        },
+        {
+          "type": "callout",
+          "title": "O QUE ESTE CURSO VAI RESOLVER",
+          "items": [
+            "Calcular quanto dinheiro o seu negócio exige para funcionar",
+            "Descobrir se você tem esse dinheiro ou está financiando com dívida",
+            "Reduzir essa necessidade mexendo em três alavancas concretas",
+            "Entender o custo real de antecipar recebível e de crescer rápido demais"
+          ]
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "Anotar quanto você tem em conta hoje",
+            "Somar quanto tem em estoque e quanto tem a receber",
+            "Somar quanto deve a fornecedores com vencimento nos próximos 30 dias"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ccl",
+      "shortTitle": "Capital de giro",
+      "kicker": "MÓDULO 02 · CONCEITO",
+      "title": "O que é capital de giro, afinal",
+      "summary": "Antes da fórmula, o conceito: é o dinheiro que fica rodando dentro da operação, sem nunca parar.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Imagine o dinheiro do seu negócio numa roda. Ele vira mercadoria, a mercadoria vira venda, a venda vira recebível, o recebível vira dinheiro de novo — e recomeça. Capital de giro é quanto precisa estar nessa roda a qualquer momento para ela não travar."
+        },
+        {
+          "type": "heading",
+          "text": "Capital de Giro Líquido (CCL)"
+        },
+        {
+          "type": "math",
+          "expression": "CCL = Ativo\\ Circulante - Passivo\\ Circulante"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ativo circulante é o que vira dinheiro em até um ano: caixa, banco, contas a receber, estoque. Passivo circulante é o que você paga em até um ano: fornecedores, impostos, salários, parcelas de empréstimo."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Roupa Bonita",
+            "Valor"
+          ],
+          "rows": [
+            [
+              "Caixa e banco",
+              "R$ 3.000"
+            ],
+            [
+              "Contas a receber",
+              "R$ 20.000"
+            ],
+            [
+              "Estoque",
+              "R$ 27.000"
+            ],
+            [
+              "= Ativo circulante",
+              "R$ 50.000"
+            ],
+            [
+              "Fornecedores",
+              "R$ 16.200"
+            ],
+            [
+              "Impostos a pagar",
+              "R$ 2.400"
+            ],
+            [
+              "Salários a pagar",
+              "R$ 5.000"
+            ],
+            [
+              "= Passivo circulante",
+              "R$ 23.600"
+            ],
+            [
+              "CCL",
+              "R$ 26.400"
+            ]
+          ],
+          "caption": "Sobra R$ 26.400 de curto prazo sobre curto prazo"
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "caixa",
+              "label": "Caixa e banco (R$)",
+              "type": "currency",
+              "placeholder": "3000"
+            },
+            {
+              "id": "receber",
+              "label": "Contas a receber (R$)",
+              "type": "currency",
+              "placeholder": "20000"
+            },
+            {
+              "id": "estoque",
+              "label": "Estoque (R$)",
+              "type": "currency",
+              "placeholder": "27000"
+            },
+            {
+              "id": "fornecedores",
+              "label": "Fornecedores a pagar (R$)",
+              "type": "currency",
+              "placeholder": "16200"
+            },
+            {
+              "id": "outros",
+              "label": "Impostos, salários e outros (R$)",
+              "type": "currency",
+              "placeholder": "7400"
+            }
+          ],
+          "formula": "const ac = caixa + receber + estoque; const pc = fornecedores + outros; const ccl = ac - pc; const leitura = ccl > 0 ? 'CCL positivo: o curto prazo cobre o curto prazo.' : 'CCL negativo: você deve mais no curto prazo do que tem para receber. Situação de risco.'; return { ac, pc, ccl, leitura };",
+          "resultLabel": "Seu capital de giro líquido",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "ac",
+              "label": "Ativo circulante",
+              "format": "currency"
+            },
+            {
+              "key": "pc",
+              "label": "Passivo circulante",
+              "format": "currency"
+            },
+            {
+              "key": "ccl",
+              "label": "CCL",
+              "format": "currency"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "CCL POSITIVO NÃO SIGNIFICA TRANQUILIDADE",
+          "items": [
+            "Ele diz que o curto prazo cobre o curto prazo, no papel",
+            "Mas boa parte do ativo circulante é estoque, que ainda precisa vender",
+            "E o fornecedor não aceita receber em camisetas",
+            "Por isso o CCL sozinho engana — falta compará-lo com o que a operação exige"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Qual destes NÃO é capital de giro?",
+          "options": [
+            "O estoque da loja",
+            "O dinheiro na conta",
+            "A van da entrega"
+          ],
+          "correct": 2,
+          "explanation": "A van é ativo imobilizado: ela não vira dinheiro na operação do dia a dia, ela é ferramenta de trabalho. Capital de giro é o que circula — entra como dinheiro, vira mercadoria, volta como dinheiro."
+        }
+      ]
+    },
+    {
+      "id": "ncg",
+      "shortTitle": "NCG",
+      "kicker": "MÓDULO 03 · NECESSIDADE",
+      "title": "NCG: quanto a sua operação exige",
+      "summary": "A conta mais importante do curso. É ela que diz de quanto dinheiro o seu negócio precisa só para funcionar.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "O CCL olha o balanço inteiro. A Necessidade de Capital de Giro olha só o que é da operação — e por isso responde a pergunta certa: de quanto dinheiro este negócio precisa, parado, para girar?"
+        },
+        {
+          "type": "math",
+          "expression": "NCG = (Contas\\ a\\ Receber + Estoques) - Fornecedores"
+        },
+        {
+          "type": "paragraph",
+          "text": "O raciocínio é direto: receber e estoque são dinheiro seu que está fora da conta. Fornecedor é dinheiro dos outros que está trabalhando para você. A diferença é o que sobra para você bancar."
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Some o que é seu e está fora do caixa",
+              "text": "Contas a receber (R$ 20.000) + estoque (R$ 27.000) = R$ 47.000."
+            },
+            {
+              "title": "Subtraia o que os outros financiam",
+              "text": "Fornecedores em aberto: R$ 16.200."
+            },
+            {
+              "title": "O resultado é a sua NCG",
+              "text": "R$ 47.000 − R$ 16.200 = R$ 30.800 que precisam estar disponíveis o tempo todo."
+            }
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "receber",
+              "label": "Contas a receber (R$)",
+              "type": "currency",
+              "placeholder": "20000"
+            },
+            {
+              "id": "estoque",
+              "label": "Estoque (R$)",
+              "type": "currency",
+              "placeholder": "27000"
+            },
+            {
+              "id": "fornecedores",
+              "label": "Fornecedores a pagar (R$)",
+              "type": "currency",
+              "placeholder": "16200"
+            },
+            {
+              "id": "faturamento",
+              "label": "Faturamento mensal (R$)",
+              "type": "currency",
+              "placeholder": "30000"
+            }
+          ],
+          "formula": "const ncg = receber + estoque - fornecedores; const emDias = faturamento > 0 ? ncg / (faturamento / 30) : 0; const leitura = ncg <= 0 ? 'NCG negativa: a operação se financia sozinha. Situação rara e excelente.' : 'A operação exige esse dinheiro parado o tempo todo.'; return { ncg, emDias, leitura };",
+          "resultLabel": "Sua necessidade de capital de giro",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "ncg",
+              "label": "NCG",
+              "format": "currency"
+            },
+            {
+              "key": "emDias",
+              "label": "Equivale a (dias de faturamento)",
+              "format": "number"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "success",
+          "title": "NCG NEGATIVA EXISTE",
+          "items": [
+            "Supermercado: vende à vista, estoque gira em 20 dias, paga fornecedor em 60",
+            "Restaurante: recebe na hora, compra insumo a prazo",
+            "Nesses casos o fornecedor financia a operação inteira e ainda sobra",
+            "É a mesma lógica do ciclo financeiro negativo do curso de fluxo de caixa"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "NCG de R$ 30.800 significa: se você tirar esse dinheiro da empresa hoje, ela não consegue operar amanhã — mesmo dando lucro."
+        },
+        {
+          "type": "quiz",
+          "question": "A loja quitou R$ 10.000 de fornecedores à vista. O que acontece com a NCG?",
+          "options": [
+            "Cai, porque a dívida diminuiu",
+            "Sobe R$ 10.000: o fornecedor parou de financiar essa parte, e agora é você quem banca",
+            "Não muda"
+          ],
+          "correct": 1,
+          "explanation": "Fornecedor entra subtraindo na fórmula. Reduzir o que você deve a ele aumenta a sua necessidade de dinheiro próprio. É contraintuitivo, mas é exatamente por isso que prazo de fornecedor é tão valioso."
+        }
+      ]
+    },
+    {
+      "id": "ciclo-ncg",
+      "shortTitle": "Ciclo e NCG",
+      "kicker": "MÓDULO 04 · LIGAÇÃO",
+      "title": "O ciclo financeiro é a causa; a NCG é o valor",
+      "summary": "Os dias do ciclo e os reais da NCG são a mesma coisa vista de dois ângulos.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Se você fez o curso de fluxo de caixa, já calculou o ciclo financeiro: PME + PMR − PMP. Na Roupa Bonita, 51 dias. A NCG é a tradução desses dias em dinheiro. Um é a causa, o outro é a consequência."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "O ciclo em dias",
+            "Vira NCG em reais"
+          ],
+          "rows": [
+            [
+              "76 dias de estoque",
+              "R$ 27.000 parados em mercadoria"
+            ],
+            [
+              "20 dias para receber",
+              "R$ 20.000 esperando o cliente"
+            ],
+            [
+              "45 dias para pagar",
+              "− R$ 16.200 financiados pelo fornecedor"
+            ],
+            [
+              "51 dias de ciclo financeiro",
+              "= R$ 30.800 de NCG"
+            ]
+          ],
+          "caption": "Mexer em qualquer linha da esquerda muda a linha da direita"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "POR QUE ISSO IMPORTA NA PRÁTICA",
+          "items": [
+            "Você não consegue \"gerenciar a NCG\" diretamente — ela é um resultado",
+            "O que dá para gerenciar são os três prazos, e cada um tem ação própria",
+            "Estoque: comprar melhor e girar mais rápido",
+            "Receber: mudar a forma de pagamento ou cobrar antes",
+            "Pagar: negociar prazo com quem te fornece"
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "pme",
+              "label": "PME — dias em estoque",
+              "type": "number",
+              "placeholder": "76"
+            },
+            {
+              "id": "pmr",
+              "label": "PMR — dias para receber",
+              "type": "number",
+              "placeholder": "20"
+            },
+            {
+              "id": "pmp",
+              "label": "PMP — dias para pagar",
+              "type": "number",
+              "placeholder": "45"
+            },
+            {
+              "id": "faturamento",
+              "label": "Faturamento mensal (R$)",
+              "type": "currency",
+              "placeholder": "30000"
+            },
+            {
+              "id": "cmvMes",
+              "label": "CMV mensal (R$)",
+              "type": "currency",
+              "placeholder": "10800"
+            }
+          ],
+          "formula": "const ciclo = pme + pmr - pmp; const vendaDia = faturamento / 30; const cmvDia = cmvMes / 30; const cmvDiaAno = (cmvMes * 12) / 365; const receber = pmr * vendaDia; const estoque = pme * cmvDiaAno; const fornecedor = pmp * cmvDia; const ncg = receber + estoque - fornecedor; return { ciclo, receber, estoque, fornecedor, ncg };",
+          "resultLabel": "Do ciclo para a NCG",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "ciclo",
+              "label": "Ciclo financeiro (dias)",
+              "format": "number"
+            },
+            {
+              "key": "estoque",
+              "label": "Parado em estoque",
+              "format": "currency"
+            },
+            {
+              "key": "receber",
+              "label": "Parado em recebíveis",
+              "format": "currency"
+            },
+            {
+              "key": "fornecedor",
+              "label": "Financiado pelo fornecedor",
+              "format": "currency"
+            },
+            {
+              "key": "ncg",
+              "label": "NCG estimada",
+              "format": "currency"
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Cada dia a menos de ciclo financeiro devolve, em média, um dia de operação para o seu caixa. Na Roupa Bonita, cerca de R$ 600 por dia cortado."
+        },
+        {
+          "type": "quiz",
+          "question": "O ciclo financeiro caiu de 51 para 30 dias. E a NCG?",
+          "options": [
+            "Fica igual, são indicadores diferentes",
+            "Cai junto — menos dias de operação descoberta significa menos dinheiro parado",
+            "Sobe, porque gira mais rápido"
+          ],
+          "correct": 1,
+          "explanation": "Os dois medem a mesma coisa. Reduzir o ciclo é a única forma estrutural de reduzir a NCG. Todo o resto — empréstimo, antecipação, aporte — só cobre o buraco, não o diminui."
+        }
+      ]
+    },
+    {
+      "id": "tesouraria",
+      "shortTitle": "Tesouraria",
+      "kicker": "MÓDULO 05 · DIAGNÓSTICO",
+      "title": "Saldo de tesouraria e o efeito tesoura",
+      "summary": "A conta que revela se o seu capital de giro cobre o que a operação exige — ou se falta.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Você já tem os dois números: quanto a operação exige (NCG) e quanto você tem de folga no curto prazo (CCL). A diferença entre eles é o diagnóstico."
+        },
+        {
+          "type": "math",
+          "expression": "Saldo\\ de\\ Tesouraria = CCL - NCG"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Roupa Bonita",
+            "Valor",
+            "Significado"
+          ],
+          "rows": [
+            [
+              "CCL",
+              "R$ 26.400",
+              "O que você tem de folga"
+            ],
+            [
+              "NCG",
+              "R$ 30.800",
+              "O que a operação exige"
+            ],
+            [
+              "Saldo de tesouraria",
+              "− R$ 4.400",
+              "Falta — coberto com dívida de curto prazo"
+            ]
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "ccl",
+              "label": "CCL (R$)",
+              "type": "currency",
+              "placeholder": "26400"
+            },
+            {
+              "id": "ncg",
+              "label": "NCG (R$)",
+              "type": "currency",
+              "placeholder": "30800"
+            }
+          ],
+          "formula": "const st = ccl - ncg; const leitura = st >= 0 ? 'Saldo positivo: o seu capital de giro cobre o que a operação exige. Há folga.' : 'Saldo negativo: a operação exige mais do que você tem. A diferença está sendo coberta por dívida de curto prazo.'; return { st, leitura };",
+          "resultLabel": "Seu saldo de tesouraria",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "st",
+              "label": "Saldo de tesouraria",
+              "format": "currency"
+            },
+            {
+              "key": "leitura",
+              "label": "Diagnóstico",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "O efeito tesoura"
+        },
+        {
+          "type": "paragraph",
+          "text": "Efeito tesoura é o nome que se dá quando a NCG cresce mais rápido que o CCL, ano após ano. No gráfico, as duas linhas se afastam como as lâminas de uma tesoura — e o espaço entre elas é dívida de curto prazo que só aumenta."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ano",
+            "Faturamento",
+            "NCG",
+            "CCL",
+            "Tesouraria"
+          ],
+          "rows": [
+            [
+              "1",
+              "R$ 360 mil",
+              "R$ 30,8 mil",
+              "R$ 26,4 mil",
+              "− R$ 4,4 mil"
+            ],
+            [
+              "2",
+              "R$ 468 mil",
+              "R$ 40,0 mil",
+              "R$ 30,0 mil",
+              "− R$ 10,0 mil"
+            ],
+            [
+              "3",
+              "R$ 608 mil",
+              "R$ 52,0 mil",
+              "R$ 33,0 mil",
+              "− R$ 19,0 mil"
+            ]
+          ],
+          "caption": "Vendendo 30% mais por ano, com o mesmo ciclo: o buraco triplica"
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "COMO A TESOURA SE FECHA",
+          "items": [
+            "O buraco vira empréstimo de curto prazo, que vira juros no resultado",
+            "O juro reduz o lucro, que reduz a geração de caixa, que aumenta o buraco",
+            "A empresa passa a trabalhar para o banco sem ter feito nada de errado na venda",
+            "Quem quebra assim quase sempre quebra crescendo"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Saldo de tesouraria negativo e piorando todo ano. Qual a saída estrutural?",
+          "options": [
+            "Pegar um empréstimo maior",
+            "Reduzir o ciclo financeiro ou crescer mais devagar até o caixa acompanhar",
+            "Aumentar as vendas o mais rápido possível"
+          ],
+          "correct": 1,
+          "explanation": "Empréstimo maior compra tempo e aumenta o juro. Vender mais, com o mesmo ciclo, aumenta a NCG e piora o quadro. As saídas reais são duas: encurtar o ciclo ou segurar o ritmo de crescimento."
+        }
+      ]
+    },
+    {
+      "id": "alavancas",
+      "shortTitle": "Três alavancas",
+      "kicker": "MÓDULO 06 · SOLUÇÃO",
+      "title": "As três alavancas para reduzir a NCG",
+      "summary": "Estoque, recebimento e pagamento. Não existe uma quarta — e é bom que sejam poucas.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Toda redução estrutural de NCG passa por uma destas três coisas. Vale medir o impacto de cada uma antes de escolher onde gastar energia."
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Girar o estoque mais rápido",
+              "text": "PME de 76 para 50 dias libera cerca de R$ 9.200. É a alavanca mais sob o seu controle: depende de comprar melhor, não de convencer terceiros."
+            },
+            {
+              "title": "Receber mais rápido",
+              "text": "PMR de 20 para 10 dias libera R$ 10.000. Desconto à vista, PIX na frente do cartão, entrada em vendas parceladas."
+            },
+            {
+              "title": "Pagar mais devagar",
+              "text": "PMP de 45 para 60 dias libera R$ 5.400. Depende de negociação, mas é a de menor custo: prazo de fornecedor costuma ser juro zero."
+            }
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "faturamento",
+              "label": "Faturamento mensal (R$)",
+              "type": "currency",
+              "placeholder": "30000"
+            },
+            {
+              "id": "cmvMes",
+              "label": "CMV mensal (R$)",
+              "type": "currency",
+              "placeholder": "10800"
+            },
+            {
+              "id": "cortePme",
+              "label": "Reduzir o PME em (dias)",
+              "type": "number",
+              "placeholder": "26"
+            },
+            {
+              "id": "cortePmr",
+              "label": "Reduzir o PMR em (dias)",
+              "type": "number",
+              "placeholder": "10"
+            },
+            {
+              "id": "ganhoPmp",
+              "label": "Aumentar o PMP em (dias)",
+              "type": "number",
+              "placeholder": "15"
+            }
+          ],
+          "formula": "const vendaDia = faturamento / 30; const cmvDia = cmvMes / 30; const cmvDiaAno = (cmvMes * 12) / 365; const porEstoque = cortePme * cmvDiaAno; const porReceber = cortePmr * vendaDia; const porPagar = ganhoPmp * cmvDia; const total = porEstoque + porReceber + porPagar; return { porEstoque, porReceber, porPagar, total };",
+          "resultLabel": "Quanto cada alavanca libera",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "porEstoque",
+              "label": "Girando o estoque",
+              "format": "currency"
+            },
+            {
+              "key": "porReceber",
+              "label": "Recebendo antes",
+              "format": "currency"
+            },
+            {
+              "key": "porPagar",
+              "label": "Pagando depois",
+              "format": "currency"
+            },
+            {
+              "key": "total",
+              "label": "Total liberado",
+              "format": "currency"
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Na Roupa Bonita, as três juntas liberam cerca de R$ 24.600 — quase 80% da NCG, sem vender uma peça a mais e sem pegar um real emprestado."
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "CADA ALAVANCA TEM UM PREÇO",
+          "items": [
+            "Estoque menor aumenta o risco de faltar produto — dimensione o estoque de segurança",
+            "Receber antes costuma custar desconto: compare o desconto com o custo do seu dinheiro",
+            "Prazo maior do fornecedor pode vir com preço maior: some as duas coisas antes de comemorar",
+            "A melhor combinação é a que reduz a NCG sem derrubar a margem"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Qual alavanca costuma ser a mais rápida de acionar?",
+          "options": [
+            "Negociar prazo com fornecedor",
+            "Liquidar o estoque que não gira — depende só de você",
+            "Mudar a forma de pagamento dos clientes"
+          ],
+          "correct": 1,
+          "explanation": "As outras duas dependem de convencer alguém: o fornecedor ou o cliente. Vender o que está encalhado é decisão interna, gera caixa na mesma semana e ainda corta o custo de manter aquele estoque parado."
+        }
+      ]
+    },
+    {
+      "id": "crescer",
+      "shortTitle": "Crescer sem caixa",
+      "kicker": "MÓDULO 07 · CRESCIMENTO",
+      "title": "O perigo de crescer rápido demais",
+      "summary": "Crescimento consome caixa antes de devolver. É por isso que empresa boa quebra no melhor momento.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Aqui está a armadilha mais cruel do capital de giro: vender mais aumenta a NCG na mesma proporção. Se o faturamento cresce 50% e o ciclo não muda, a necessidade de dinheiro cresce 50% também — e ela cresce antes do lucro chegar."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Roupa Bonita",
+            "Hoje",
+            "Crescendo 50%"
+          ],
+          "rows": [
+            [
+              "Faturamento mensal",
+              "R$ 30.000",
+              "R$ 45.000"
+            ],
+            [
+              "Contas a receber",
+              "R$ 20.000",
+              "R$ 30.000"
+            ],
+            [
+              "Estoque",
+              "R$ 27.000",
+              "R$ 40.500"
+            ],
+            [
+              "Fornecedores",
+              "− R$ 16.200",
+              "− R$ 24.300"
+            ],
+            [
+              "NCG",
+              "R$ 30.800",
+              "R$ 46.200"
+            ],
+            [
+              "Dinheiro a mais necessário",
+              "—",
+              "R$ 15.400"
+            ]
+          ],
+          "caption": "Crescer 50% exige R$ 15.400 a mais parados, antes do primeiro real de lucro extra"
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "ncgAtual",
+              "label": "NCG hoje (R$)",
+              "type": "currency",
+              "placeholder": "30800"
+            },
+            {
+              "id": "crescimento",
+              "label": "Crescimento esperado (%)",
+              "type": "percentage",
+              "placeholder": "50"
+            },
+            {
+              "id": "geracaoMes",
+              "label": "Caixa que a operação gera por mês (R$)",
+              "type": "currency",
+              "placeholder": "8250"
+            }
+          ],
+          "formula": "const ncgNova = ncgAtual * (1 + crescimento / 100); const precisa = ncgNova - ncgAtual; const meses = geracaoMes > 0 ? precisa / geracaoMes : 0; const leitura = geracaoMes <= 0 ? 'Sem geração de caixa, esse crescimento só é possível com dinheiro de fora.' : meses <= 3 ? 'A própria operação banca esse crescimento em poucos meses.' : 'Crescimento rápido demais para o caixa: vai precisar de dinheiro de fora ou de um ritmo menor.'; return { ncgNova, precisa, meses, leitura };",
+          "resultLabel": "O custo do seu crescimento",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "ncgNova",
+              "label": "NCG depois de crescer",
+              "format": "currency"
+            },
+            {
+              "key": "precisa",
+              "label": "Dinheiro a mais necessário",
+              "format": "currency"
+            },
+            {
+              "key": "meses",
+              "label": "Meses de geração para bancar",
+              "format": "number"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "O ROTEIRO DA QUEBRA POR CRESCIMENTO",
+          "items": [
+            "A empresa consegue um cliente grande e comemora",
+            "Compra estoque para atender, e o dinheiro sai",
+            "Entrega, fatura, e o cliente paga em 60 dias",
+            "No dia 30, o fornecedor cobra — e o caixa não existe",
+            "O pedido era lucrativo. O que faltou foi capital de giro para atravessá-lo"
+          ]
+        },
+        {
+          "type": "accordion",
+          "items": [
+            {
+              "title": "Então não devo crescer?",
+              "text": "Deve, mas com a conta feita antes. Sabendo que crescer 50% exige R$ 15.400 a mais parados, você decide com antecedência: crescer mais devagar, encurtar o ciclo antes de crescer, ou garantir a linha de crédito antes de aceitar o pedido — quando ela ainda é barata."
+            },
+            {
+              "title": "Como saber se aguento um pedido grande?",
+              "text": "Some o que ele exige de estoque e de prazo até o recebimento, e compare com o seu caixa livre. Se não couber, negocie: entrada de 30%, prazo menor de pagamento, ou faturamento parcelado por entrega. Pedido grande aceito sem essa conversa é a causa mais comum de sufoco."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "A empresa vai dobrar de tamanho. O que acontece com a NCG, com o mesmo ciclo?",
+          "options": [
+            "Fica igual — o ciclo não mudou",
+            "Dobra também, e o dinheiro precisa estar lá antes do lucro chegar",
+            "Cai, por ganho de escala"
+          ],
+          "correct": 1,
+          "explanation": "A NCG é proporcional ao volume. Dobrar as vendas dobra o estoque e os recebíveis. É por isso que a pergunta certa antes de crescer não é \"vou vender mais?\", e sim \"tenho caixa para bancar essa venda até ela voltar?\"."
+        }
+      ]
+    },
+    {
+      "id": "fontes",
+      "shortTitle": "De onde tirar",
+      "kicker": "MÓDULO 08 · FONTES",
+      "title": "De onde vem o dinheiro do capital de giro",
+      "summary": "Cinco fontes, da mais barata para a mais cara. A ordem importa mais do que parece.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Quando falta capital de giro, existe uma ordem natural de onde buscar. Quase todo mundo começa pela quarta ou quinta opção, quando as duas primeiras ainda estavam disponíveis e custavam zero."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Fonte",
+            "Custo típico",
+            "Quando usar"
+          ],
+          "rows": [
+            [
+              "1. Reduzir o ciclo financeiro",
+              "Zero",
+              "Sempre — é a única que resolve, e não só adia"
+            ],
+            [
+              "2. Prazo do fornecedor",
+              "Zero, se negociado",
+              "Antes de qualquer banco"
+            ],
+            [
+              "3. Lucro retido na empresa",
+              "Zero",
+              "Deixar de retirar em vez de pegar emprestado"
+            ],
+            [
+              "4. Antecipação de recebíveis",
+              "1,5% a 4% ao mês",
+              "Pontual, para atravessar uma semana"
+            ],
+            [
+              "5. Capital de giro bancário",
+              "1,5% a 5% ao mês",
+              "Com prazo casado ao ciclo, nunca rotativo"
+            ],
+            [
+              "6. Cheque especial e cartão",
+              "8% a 15% ao mês",
+              "Emergência de dias, nunca estrutura"
+            ]
+          ],
+          "caption": "Da mais barata para a mais cara — comece de cima"
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "O SINAL DE QUE A FONTE ESTÁ ERRADA",
+          "items": [
+            "Se você antecipa recebível todo mês, isso não é liquidez: é estrutura",
+            "Se o cheque especial nunca zera, ele virou capital de giro — o mais caro que existe",
+            "Se o empréstimo de 12 meses cobre um ciclo de 51 dias, o prazo está descasado",
+            "Dívida cara para problema estrutural é o caminho mais curto para a tesoura se fechar"
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "valor",
+              "label": "Valor de que você precisa (R$)",
+              "type": "currency",
+              "placeholder": "15000"
+            },
+            {
+              "id": "taxaMes",
+              "label": "Taxa ao mês (%)",
+              "type": "percentage",
+              "placeholder": "2.5"
+            },
+            {
+              "id": "meses",
+              "label": "Por quantos meses",
+              "type": "number",
+              "placeholder": "6"
+            }
+          ],
+          "formula": "if (!(meses > 0)) { return { aviso: 'Informe por quantos meses você usaria o dinheiro.' }; } const aoAno = (Math.pow(1 + taxaMes / 100, 12) - 1) * 100; const custo = valor * (Math.pow(1 + taxaMes / 100, meses) - 1); return { aoAno, custo, total: valor + custo };",
+          "resultLabel": "O custo desse dinheiro",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "aoAno",
+              "label": "Taxa equivalente ao ano",
+              "format": "percentage"
+            },
+            {
+              "key": "custo",
+              "label": "Juros no período",
+              "format": "currency"
+            },
+            {
+              "key": "total",
+              "label": "Total a devolver",
+              "format": "currency"
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "2,5% ao mês parece modesto. Ao ano são 34,5% — mais do que a margem de contribuição de muitos negócios."
+        },
+        {
+          "type": "quiz",
+          "question": "Você precisa de R$ 15.000 para bancar um ciclo de 51 dias. Qual o prazo certo do empréstimo?",
+          "options": [
+            "O mais longo possível, para a parcela ser pequena",
+            "Casado com o ciclo: 2 a 3 meses, porque o dinheiro volta nesse prazo",
+            "Tanto faz, o que importa é a taxa"
+          ],
+          "correct": 1,
+          "explanation": "Prazo longo demais parece confortável e custa muito mais juro total — e ainda deixa a empresa endividada depois que o dinheiro já voltou da operação. Dívida de giro deve ter prazo parecido com o ciclo que ela financia."
+        }
+      ]
+    },
+    {
+      "id": "antecipacao",
+      "shortTitle": "Antecipação",
+      "kicker": "MÓDULO 09 · RECEBÍVEIS",
+      "title": "Antecipar recebível: quanto custa de verdade",
+      "summary": "A taxa é anunciada ao mês, sobre o valor de face. As duas coisas escondem o custo real.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Antecipar recebível é vender hoje, com desconto, um dinheiro que você receberia depois. É rápido e não exige garantia — por isso virou o crédito mais usado do pequeno comércio. E também o mais mal calculado."
+        },
+        {
+          "type": "heading",
+          "text": "Onde a conta engana"
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "A taxa é cobrada sobre o valor de face",
+              "text": "R$ 20.000 a receber, taxa de 2% ao mês, 30 dias: desconto de R$ 400."
+            },
+            {
+              "title": "Mas você recebe o valor líquido",
+              "text": "Entram R$ 19.600 na conta, não R$ 20.000."
+            },
+            {
+              "title": "O custo real é sobre o que entrou",
+              "text": "R$ 400 ÷ R$ 19.600 = 2,04% no período, não 2,00%."
+            },
+            {
+              "title": "E ao ano, a diferença explode",
+              "text": "2,04% a cada 30 dias, compostos, dão cerca de 27,9% ao ano."
+            }
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "face",
+              "label": "Valor a receber (R$)",
+              "type": "currency",
+              "placeholder": "20000"
+            },
+            {
+              "id": "taxa",
+              "label": "Taxa cobrada (%)",
+              "type": "percentage",
+              "placeholder": "2"
+            },
+            {
+              "id": "dias",
+              "label": "Dias antecipados",
+              "type": "number",
+              "placeholder": "30"
+            }
+          ],
+          "formula": "if (!(dias > 0)) { return { aviso: 'Informe quantos dias você está antecipando.' }; } if (taxa >= 100) { return { aviso: 'Uma taxa de 100% ou mais consumiria o recebível inteiro.' }; } const desconto = face * (taxa / 100); const liquido = face - desconto; if (liquido <= 0) { return { aviso: 'O desconto consumiu todo o valor. Confira a taxa informada.' }; } const custoPeriodo = (desconto / liquido) * 100; const aoAno = (Math.pow(1 + custoPeriodo / 100, 365 / dias) - 1) * 100; return { liquido, desconto, custoPeriodo, aoAno };",
+          "resultLabel": "O custo real da antecipação",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "liquido",
+              "label": "Você recebe",
+              "format": "currency"
+            },
+            {
+              "key": "desconto",
+              "label": "Deixa de receber",
+              "format": "currency"
+            },
+            {
+              "key": "custoPeriodo",
+              "label": "Custo no período",
+              "format": "percentage"
+            },
+            {
+              "key": "aoAno",
+              "label": "Equivalente ao ano",
+              "format": "percentage"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "QUANDO ANTECIPAR VALE A PENA",
+          "items": [
+            "Para pegar um desconto de fornecedor maior que o custo da antecipação",
+            "Para atravessar uma semana pontual e evitar juro de cheque especial, que é muito pior",
+            "Para fechar uma compra de oportunidade com desconto real e verificável",
+            "Nunca: para cobrir um buraco que se repete todo mês"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Antecipar todo mês não é solução de caixa: é uma dívida cara e permanente que aparece disfarçada de desconto."
+        },
+        {
+          "type": "quiz",
+          "question": "A operadora cobra 1,8% para antecipar 30 dias. Isso é caro?",
+          "options": [
+            "É barato, menos de 2%",
+            "Ao ano equivale a cerca de 24% — caro para uso recorrente, aceitável para uso pontual",
+            "Depende do banco"
+          ],
+          "correct": 1,
+          "explanation": "A comparação certa nunca é com zero: é com as outras fontes. 24% ao ano é bem melhor que cheque especial e bem pior que negociar prazo com o fornecedor. Para atravessar uma semana, serve. Para financiar a operação, não."
+        }
+      ]
+    },
+    {
+      "id": "liquidez",
+      "shortTitle": "Liquidez",
+      "kicker": "MÓDULO 10 · INDICADORES",
+      "title": "Liquidez: dois números que o banco olha",
+      "summary": "São simples, são rápidos, e juntos revelam o que cada um sozinho esconde.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Quando você pede crédito, estes dois índices são dos primeiros que o analista calcula. Vale conhecê-los antes — não para agradar o banco, mas porque eles dizem algo útil sobre o seu negócio."
+        },
+        {
+          "type": "math",
+          "expression": "Liquidez\\ Corrente = \\frac{Ativo\\ Circulante}{Passivo\\ Circulante}"
+        },
+        {
+          "type": "math",
+          "expression": "Liquidez\\ Seca = \\frac{Ativo\\ Circulante - Estoques}{Passivo\\ Circulante}"
+        },
+        {
+          "type": "paragraph",
+          "text": "A diferença entre os dois é o estoque. A liquidez seca pergunta: se eu não conseguisse vender nenhuma mercadoria, ainda pagaria minhas contas de curto prazo?"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Roupa Bonita",
+            "Conta",
+            "Resultado",
+            "Leitura"
+          ],
+          "rows": [
+            [
+              "Liquidez corrente",
+              "50.000 ÷ 23.600",
+              "2,12",
+              "Parece confortável"
+            ],
+            [
+              "Liquidez seca",
+              "23.000 ÷ 23.600",
+              "0,97",
+              "Sem vender estoque, não fecha"
+            ]
+          ],
+          "caption": "O segundo número conta a história que o primeiro esconde"
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "ac",
+              "label": "Ativo circulante (R$)",
+              "type": "currency",
+              "placeholder": "50000"
+            },
+            {
+              "id": "estoque",
+              "label": "Estoque (R$)",
+              "type": "currency",
+              "placeholder": "27000"
+            },
+            {
+              "id": "pc",
+              "label": "Passivo circulante (R$)",
+              "type": "currency",
+              "placeholder": "23600"
+            }
+          ],
+          "formula": "if (!(pc > 0)) { return { aviso: 'Informe o passivo circulante.' }; } const lc = ac / pc; const ls = (ac - estoque) / pc; const leitura = ls >= 1 ? 'Paga o curto prazo sem depender de vender estoque.' : lc >= 1 ? 'Depende de vender o estoque para pagar o curto prazo — atenção ao giro.' : 'Não cobre o curto prazo nem contando o estoque. Situação de risco.'; return { lc, ls, leitura };",
+          "resultLabel": "Sua liquidez",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "lc",
+              "label": "Liquidez corrente",
+              "format": "number"
+            },
+            {
+              "key": "ls",
+              "label": "Liquidez seca",
+              "format": "number"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "accordion",
+          "items": [
+            {
+              "title": "Qual o número \"bom\"?",
+              "text": "Liquidez corrente acima de 1,5 e seca acima de 1,0 são referências confortáveis para comércio. Mas corrente muito alta, acima de 3, pode indicar dinheiro ocioso ou estoque inflado — nem sempre é elogio."
+            },
+            {
+              "title": "Por que a seca ignora o estoque?",
+              "text": "Porque estoque é o ativo circulante menos líquido: depende de alguém comprar. Em negócio de giro lento, uma liquidez corrente bonita pode esconder meses de mercadoria parada que não paga o boleto de sexta."
+            },
+            {
+              "title": "E quem não tem estoque, como serviço?",
+              "text": "Aí os dois índices praticamente coincidem, e o que importa passa a ser a qualidade das contas a receber: concentração em poucos clientes e histórico de inadimplência pesam mais que o índice em si."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Liquidez corrente 2,5 e seca 0,6. O que isso diz?",
+          "options": [
+            "Está tudo bem, a corrente está ótima",
+            "Quase todo o ativo circulante é estoque: sem vender mercadoria, as contas não fecham",
+            "A empresa tem muito dinheiro em caixa"
+          ],
+          "correct": 1,
+          "explanation": "A distância entre 2,5 e 0,6 é exatamente o peso do estoque. É o retrato de quem comprou demais: o balanço parece forte e o caixa vive apertado. Nesse caso, a prioridade é girar estoque, não pedir crédito."
+        }
+      ]
+    },
+    {
+      "id": "seu-giro",
+      "shortTitle": "Seu capital",
+      "kicker": "MÓDULO 11 · DESAFIO FINAL",
+      "title": "Calcule a necessidade do seu negócio",
+      "summary": "Tudo o que você viu, aplicado de uma vez aos seus números.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Preencha com os dados do seu negócio. Em uma tela você vai ver quanto a sua operação exige, quanto você tem, qual o buraco e quanto cada alavanca liberaria."
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "caixa",
+              "label": "Caixa e banco (R$)",
+              "type": "currency",
+              "placeholder": "3000"
+            },
+            {
+              "id": "receber",
+              "label": "Contas a receber (R$)",
+              "type": "currency",
+              "placeholder": "20000"
+            },
+            {
+              "id": "estoque",
+              "label": "Estoque (R$)",
+              "type": "currency",
+              "placeholder": "27000"
+            },
+            {
+              "id": "fornecedores",
+              "label": "Fornecedores a pagar (R$)",
+              "type": "currency",
+              "placeholder": "16200"
+            },
+            {
+              "id": "outrosPC",
+              "label": "Impostos, salários e outros a pagar (R$)",
+              "type": "currency",
+              "placeholder": "7400"
+            },
+            {
+              "id": "faturamento",
+              "label": "Faturamento mensal (R$)",
+              "type": "currency",
+              "placeholder": "30000"
+            }
+          ],
+          "formula": "const ac = caixa + receber + estoque; const pc = fornecedores + outrosPC; const ccl = ac - pc; const ncg = receber + estoque - fornecedores; const st = ccl - ncg; const ls = pc > 0 ? (ac - estoque) / pc : 0; const emDias = faturamento > 0 ? ncg / (faturamento / 30) : 0; const leitura = st >= 0 ? 'Folga: o seu capital de giro cobre o que a operação exige.' : 'Falta capital de giro: a diferença está sendo coberta por dívida de curto prazo.'; return { ncg, ccl, st, ls, emDias, leitura };",
+          "resultLabel": "Seu capital de giro",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "ncg",
+              "label": "NCG — o que a operação exige",
+              "format": "currency"
+            },
+            {
+              "key": "ccl",
+              "label": "CCL — o que você tem de folga",
+              "format": "currency"
+            },
+            {
+              "key": "st",
+              "label": "Saldo de tesouraria",
+              "format": "currency"
+            },
+            {
+              "key": "emDias",
+              "label": "NCG em dias de faturamento",
+              "format": "number"
+            },
+            {
+              "key": "ls",
+              "label": "Liquidez seca",
+              "format": "number"
+            },
+            {
+              "key": "leitura",
+              "label": "Diagnóstico",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "COMO LER O SEU RESULTADO",
+          "items": [
+            "Saldo de tesouraria negativo: você está financiando a operação com dívida de curto prazo",
+            "NCG em dias acima de 45: o ciclo é longo para o porte do negócio",
+            "Liquidez seca abaixo de 1: você depende de vender estoque para pagar as contas do mês",
+            "Os três juntos negativos: a prioridade é encurtar o ciclo, não buscar crédito"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Seu plano, em ordem de impacto"
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Liquide o estoque parado",
+              "text": "Vira caixa em dias e não depende de ninguém. Comece pelo que não vende há 6 meses."
+            },
+            {
+              "title": "Renegocie prazo com os três maiores fornecedores",
+              "text": "Concentre volume em quem te dá prazo. Cada 15 dias a mais valem milhares parados a menos."
+            },
+            {
+              "title": "Mexa na forma de recebimento",
+              "text": "Desconto à vista, PIX na frente do cartão, entrada nas vendas parceladas. Compare sempre o desconto com o custo do seu dinheiro."
+            },
+            {
+              "title": "Só então procure crédito",
+              "text": "E com prazo casado ao ciclo. Se depois dos três primeiros passos ainda faltar, aí o crédito é ponte, não muleta."
+            },
+            {
+              "title": "Refaça a conta em 90 dias",
+              "text": "NCG e tesouraria mudam com o volume. Acompanhar trimestralmente evita a tesoura se abrir sem você ver."
+            }
+          ]
+        },
+        {
+          "type": "accordion",
+          "items": [
+            {
+              "title": "Minha NCG é negativa. Está errado?",
+              "text": "Não, está ótimo. Significa que fornecedores e clientes financiam a sua operação: você recebe antes de pagar. É comum em supermercado, restaurante e serviço recebido à vista. O cuidado é não confundir esse caixa com lucro — ele pertence ao fornecedor e some se as vendas caírem."
+            },
+            {
+              "title": "Posso usar o capital de giro para comprar equipamento?",
+              "text": "Não deveria. Equipamento é investimento de longo prazo e deve ser financiado com prazo longo. Usar dinheiro de giro para imobilizar é uma das causas mais frequentes de aperto três meses depois de uma compra que parecia acertada."
+            },
+            {
+              "title": "Qual a relação disso com os outros cursos da série?",
+              "text": "O curso de estoque reduz o PME, o de fluxo de caixa calcula o ciclo e projeta o caixa, e este transforma tudo em um valor: quanto dinheiro o seu negócio exige. Os três resolvem o mesmo problema em pontos diferentes."
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Capital de giro não se resolve com mais crédito. Resolve-se com menos dias entre pagar e receber."
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "Calcular a sua NCG, o CCL e o saldo de tesouraria",
+            "Listar o estoque sem giro e decidir o que liquidar",
+            "Marcar conversa de renegociação com os três maiores fornecedores",
+            "Comparar o custo da sua antecipação com o desconto que ela viabiliza",
+            "Repetir esta conta daqui a 90 dias e comparar"
+          ]
+        }
+      ]
+    }
+  ]
+}

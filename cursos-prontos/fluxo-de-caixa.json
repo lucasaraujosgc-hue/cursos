@@ -1,0 +1,1438 @@
+{
+  "slug": "fluxo-de-caixa",
+  "courseName": "Fluxo de Caixa na Prática",
+  "description": "Entenda por que o mês dá lucro e a conta fica no vermelho. Monte um fluxo que você consiga manter, projete as próximas semanas, calcule seus prazos de recebimento e pagamento e descubra quanto precisa ter de reserva.",
+  "category": "Dinheiro na Empresa",
+  "leadCapture": "end",
+  "modules": [
+    {
+      "id": "lucro-nao-e-caixa",
+      "shortTitle": "Lucro ≠ dinheiro",
+      "kicker": "MÓDULO 01 · O PROBLEMA",
+      "title": "Por que o mês deu lucro e a conta ficou no vermelho",
+      "summary": "Lucro e caixa são duas contas diferentes. Empresa quebra pela segunda, não pela primeira.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "A Roupa Bonita fechou setembro com R$ 4.200 de lucro no relatório do contador. No dia 5 de outubro, faltou dinheiro para pagar o fornecedor. As duas informações estão certas ao mesmo tempo — e entender por quê é o assunto deste curso."
+        },
+        {
+          "type": "heading",
+          "text": "Duas contas, dois calendários"
+        },
+        {
+          "type": "comparison",
+          "columns": [
+            {
+              "label": "Lucro (regime de competência)",
+              "tone": "neutral",
+              "items": [
+                "Registra a venda no dia em que ela acontece",
+                "Não importa quando o cliente paga",
+                "Registra o custo no dia em que a mercadoria sai",
+                "É o que o contador usa e o Fisco cobra"
+              ]
+            },
+            {
+              "label": "Caixa (regime de caixa)",
+              "tone": "neutral",
+              "items": [
+                "Registra no dia em que o dinheiro entra na conta",
+                "Venda no cartão em 30 dias só aparece daqui a 30 dias",
+                "Registra o pagamento no dia em que sai da conta",
+                "É o que decide se o boleto de amanhã vai ser pago"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Setembro na Roupa Bonita",
+            "No lucro",
+            "No caixa"
+          ],
+          "rows": [
+            [
+              "Vendas do mês",
+              "R$ 30.000",
+              "R$ 12.000 (só o que era à vista)"
+            ],
+            [
+              "Recebimento de vendas de agosto",
+              "—",
+              "R$ 17.400"
+            ],
+            [
+              "Mercadoria vendida",
+              "R$ 10.800",
+              "—"
+            ],
+            [
+              "Pagamento de compras de julho",
+              "—",
+              "R$ 14.500"
+            ],
+            [
+              "Custo fixo",
+              "R$ 8.550",
+              "R$ 8.550"
+            ],
+            [
+              "Impostos",
+              "R$ 2.400",
+              "R$ 2.400"
+            ],
+            [
+              "Resultado",
+              "+ R$ 8.250",
+              "+ R$ 3.950"
+            ]
+          ],
+          "caption": "Os mesmos fatos, dois resultados diferentes"
+        },
+        {
+          "type": "highlight",
+          "text": "Lucro diz se o negócio faz sentido. Caixa diz se ele sobrevive até o mês que vem. Os dois importam, mas só um deles paga boleto."
+        },
+        {
+          "type": "quiz",
+          "question": "Uma loja vendeu R$ 50.000 no mês, tudo parcelado em 3× no cartão. Quanto entrou no caixa?",
+          "options": [
+            "R$ 50.000 — a venda foi feita",
+            "Cerca de R$ 16.600 — só a primeira parcela, e ainda menos a taxa",
+            "Nada, porque não foi à vista"
+          ],
+          "correct": 1,
+          "explanation": "A venda inteira entra no lucro de setembro. No caixa entra só a primeira parcela, descontada a taxa da operadora. É por isso que um mês de vendas recorde pode vir acompanhado de aperto no banco."
+        },
+        {
+          "type": "callout",
+          "title": "O QUE ESTE CURSO VAI RESOLVER",
+          "items": [
+            "Montar um fluxo de caixa que você consiga manter de verdade",
+            "Projetar as próximas semanas e enxergar o aperto antes de ele chegar",
+            "Calcular em quantos dias o seu dinheiro entra e em quantos ele sai",
+            "Descobrir quanto você precisa ter de reserva para dormir tranquilo"
+          ]
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "Anotar quanto você tem em conta hoje",
+            "Anotar quanto você acha que vai ter daqui a 30 dias",
+            "Guardar as duas respostas — vamos comparar com a projeção no fim do curso"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "estrutura",
+      "shortTitle": "A estrutura",
+      "kicker": "MÓDULO 02 · ESTRUTURA",
+      "title": "O que entra, o que sai e o que sobra",
+      "summary": "Um fluxo de caixa é uma conta de chegar. A estrutura certa é o que faz você conseguir mantê-la.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Fluxo de caixa não é planilha complicada: é saldo de ontem, mais o que entrou, menos o que saiu, igual ao saldo de hoje. O que separa quem mantém de quem abandona é a organização das linhas."
+        },
+        {
+          "type": "math",
+          "expression": "Saldo\\ Final = Saldo\\ Inicial + Entradas - Sa\\acute{i}das"
+        },
+        {
+          "type": "heading",
+          "text": "Separe por natureza, não por valor"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Grupo",
+            "O que entra aí",
+            "Por que separar"
+          ],
+          "rows": [
+            [
+              "Operacional",
+              "Vendas recebidas, fornecedores, salários, aluguel, impostos",
+              "É o que o negócio gera sozinho — o coração da conta"
+            ],
+            [
+              "Investimento",
+              "Compra de equipamento, reforma, veículo",
+              "Não é gasto do mês; some de vez em quando e distorce a leitura"
+            ],
+            [
+              "Financiamento",
+              "Empréstimo que entrou, parcela que saiu, aporte do sócio",
+              "Dinheiro que não veio da operação; misturar esconde o problema"
+            ]
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "O ERRO QUE CEGA O EMPRESÁRIO",
+          "items": [
+            "Jogar empréstimo no meio das entradas de venda",
+            "O mês fecha positivo e parece que a operação está saudável",
+            "Mas o que entrou foi dívida, não venda — e ela volta com juros",
+            "Separado, fica óbvio: operacional negativo coberto por financiamento é alarme"
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "inicial",
+              "label": "Saldo inicial (R$)",
+              "type": "currency",
+              "placeholder": "5000"
+            },
+            {
+              "id": "recebido",
+              "label": "Recebimentos de vendas (R$)",
+              "type": "currency",
+              "placeholder": "29400"
+            },
+            {
+              "id": "fornecedor",
+              "label": "Pagamento a fornecedores (R$)",
+              "type": "currency",
+              "placeholder": "14500"
+            },
+            {
+              "id": "fixo",
+              "label": "Custos fixos pagos (R$)",
+              "type": "currency",
+              "placeholder": "8550"
+            },
+            {
+              "id": "impostos",
+              "label": "Impostos pagos (R$)",
+              "type": "currency",
+              "placeholder": "2400"
+            },
+            {
+              "id": "emprestimo",
+              "label": "Empréstimos e aportes (R$)",
+              "type": "currency",
+              "placeholder": "0"
+            }
+          ],
+          "formula": "const operacional = recebido - fornecedor - fixo - impostos; const final = inicial + operacional + emprestimo; const leitura = operacional > 0 ? 'A operação gera caixa sozinha.' : 'A operação consome caixa: o negócio depende de dinheiro de fora.'; return { operacional, final, leitura };",
+          "resultLabel": "Seu mês em caixa",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "operacional",
+              "label": "Gerado pela operação",
+              "format": "currency"
+            },
+            {
+              "key": "final",
+              "label": "Saldo final",
+              "format": "currency"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Saldo final positivo com operacional negativo é o retrato de uma empresa que está vivendo de empréstimo sem perceber."
+        },
+        {
+          "type": "quiz",
+          "question": "O mês fechou com +R$ 12.000 em caixa, sendo R$ 20.000 de empréstimo que entrou. Como está a empresa?",
+          "options": [
+            "Bem, o saldo é positivo",
+            "Mal: a operação consumiu R$ 8.000 e só não faltou dinheiro por causa da dívida",
+            "Não dá para saber"
+          ],
+          "correct": 1,
+          "explanation": "Tirando o empréstimo, o mês foi de −R$ 8.000. E no mês que vem, além do buraco operacional, vão começar as parcelas. É a separação por natureza que torna isso visível."
+        }
+      ]
+    },
+    {
+      "id": "periodicidade",
+      "shortTitle": "Diário ou mensal?",
+      "kicker": "MÓDULO 03 · ROTINA",
+      "title": "Diário, semanal ou mensal: qual você consegue manter",
+      "summary": "O melhor fluxo de caixa não é o mais detalhado: é o que continua preenchido no terceiro mês.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Muita gente começa um fluxo de caixa diário, lindo, cheio de colunas — e abandona em três semanas. O fluxo que funciona é o que cabe na sua rotina."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Periodicidade",
+            "Para quem serve",
+            "Tempo por semana"
+          ],
+          "rows": [
+            [
+              "Diário",
+              "Caixa apertado, muita movimentação, risco de furo",
+              "~15 min/dia"
+            ],
+            [
+              "Semanal",
+              "A maioria dos pequenos negócios",
+              "~30 min"
+            ],
+            [
+              "Mensal",
+              "Caixa folgado e poucas movimentações",
+              "~30 min/mês"
+            ]
+          ],
+          "caption": "Comece no semanal: é o melhor equilíbrio entre utilidade e esforço"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "A REGRA DOS TRÊS HORIZONTES",
+          "items": [
+            "Próximos 7 dias, em detalhe: é aqui que você evita o cheque devolvido",
+            "Próximos 90 dias, por semana: é aqui que você enxerga o aperto chegando",
+            "Próximos 12 meses, por mês: é aqui que você planeja compra, contratação e férias"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "As três colunas que não podem faltar"
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Previsto",
+              "text": "O que você espera que entre e saia. É o que permite agir antes."
+            },
+            {
+              "title": "Realizado",
+              "text": "O que de fato aconteceu. Preenchido depois, com o extrato na mão."
+            },
+            {
+              "title": "Diferença",
+              "text": "Previsto menos realizado. É a coluna que ensina: se você sempre erra para mais nas entradas, seu otimismo tem um número."
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Fluxo sem a coluna \"previsto\" é história. Com ela, vira ferramenta de decisão."
+        },
+        {
+          "type": "accordion",
+          "items": [
+            {
+              "title": "Posso usar o extrato bancário como fluxo de caixa?",
+              "text": "Como registro do realizado, sim, e é a melhor fonte. Mas o extrato não prevê nada: ele te conta o que já aconteceu, quando não dá mais para mudar. O valor do fluxo está na parte de frente."
+            },
+            {
+              "title": "E o dinheiro que fica no caixa da loja?",
+              "text": "Entra normalmente, mas em linha separada do banco. Muita empresa pequena tem saldo em conta baixo e dinheiro em espécie na gaveta — se você só olha o banco, o retrato fica errado."
+            },
+            {
+              "title": "Preciso de um sistema?",
+              "text": "Não para começar. Uma planilha com data, descrição, grupo, entrada, saída e saldo resolve os primeiros meses. O sistema passa a compensar quando o volume de lançamentos torna a digitação o gargalo."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Qual a principal diferença entre fluxo de caixa e extrato bancário?",
+          "options": [
+            "Nenhuma, é a mesma informação",
+            "O fluxo tem a parte prevista — mostra o que vai acontecer, não só o que aconteceu",
+            "O extrato é mais confiável"
+          ],
+          "correct": 1,
+          "explanation": "O extrato é o espelho do passado. O fluxo de caixa só ganha utilidade na parte projetada: é ali que você descobre, no dia 10, que o dia 28 não fecha — com tempo de fazer algo a respeito."
+        }
+      ]
+    },
+    {
+      "id": "pmr",
+      "shortTitle": "PMR",
+      "kicker": "MÓDULO 04 · RECEBIMENTO",
+      "title": "PMR: em quantos dias o seu dinheiro entra",
+      "summary": "Vender é uma coisa, receber é outra. O prazo médio de recebimento mede a distância entre as duas.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "O Prazo Médio de Recebimento responde: entre fechar a venda e o dinheiro cair na conta, quantos dias passam? É um dos três prazos que, juntos, explicam a saúde do seu caixa."
+        },
+        {
+          "type": "math",
+          "expression": "PMR = \\frac{Contas\\ a\\ Receber}{Faturamento} \\times Dias\\ do\\ Per\\acute{i}odo"
+        },
+        {
+          "type": "paragraph",
+          "text": "Quando você conhece a forma de pagamento dos clientes, dá para calcular direto pela média ponderada — que é mais precisa e mais fácil de agir em cima."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Como a Roupa Bonita recebe",
+            "% das vendas",
+            "Prazo",
+            "Contribuição"
+          ],
+          "rows": [
+            [
+              "À vista / PIX / débito",
+              "40%",
+              "0 dias",
+              "0,0 dias"
+            ],
+            [
+              "Cartão de crédito à vista",
+              "45%",
+              "30 dias",
+              "13,5 dias"
+            ],
+            [
+              "Cartão parcelado em 2×",
+              "15%",
+              "45 dias",
+              "6,8 dias"
+            ],
+            [
+              "PMR total",
+              "100%",
+              "",
+              "20,3 dias"
+            ]
+          ],
+          "caption": "Cada fatia contribui com o seu peso × o seu prazo"
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "pctVista",
+              "label": "Vendas à vista (%)",
+              "type": "percentage",
+              "placeholder": "40"
+            },
+            {
+              "id": "pct30",
+              "label": "Vendas em 30 dias (%)",
+              "type": "percentage",
+              "placeholder": "45"
+            },
+            {
+              "id": "pct60",
+              "label": "Vendas em 60 dias ou mais (%)",
+              "type": "percentage",
+              "placeholder": "15"
+            },
+            {
+              "id": "prazoLongo",
+              "label": "Prazo médio dessa última fatia (dias)",
+              "type": "number",
+              "placeholder": "45"
+            },
+            {
+              "id": "faturamento",
+              "label": "Faturamento do mês (R$)",
+              "type": "currency",
+              "placeholder": "30000"
+            }
+          ],
+          "formula": "const soma = pctVista + pct30 + pct60; if (Math.abs(soma - 100) > 1) { return { aviso: 'Os percentuais precisam somar 100%. Hoje somam ' + soma.toFixed(0) + '%.' }; } const pmr = (pct30 / 100) * 30 + (pct60 / 100) * prazoLongo; const parado = (faturamento / 30) * pmr; return { pmr, parado };",
+          "resultLabel": "Seu prazo médio de recebimento",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "pmr",
+              "label": "PMR (dias)",
+              "format": "number"
+            },
+            {
+              "key": "parado",
+              "label": "Dinheiro esperando entrar",
+              "format": "currency"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "O PMR ESCONDE DINHEIRO PARADO",
+          "items": [
+            "Com PMR de 20 dias e R$ 30.000 de faturamento, há R$ 20.000 a receber a qualquer momento",
+            "Esse dinheiro é seu, já foi vendido, e não está na conta",
+            "Cada dia a menos de PMR devolve cerca de R$ 1.000 para o caixa",
+            "É por isso que desconto para pagamento à vista às vezes compensa"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "A loja passou a aceitar parcelamento em 6×. O que acontece com o PMR?",
+          "options": [
+            "Nada, a venda é a mesma",
+            "Sobe bastante — e o caixa vai precisar bancar mais dias entre vender e receber",
+            "Cai, porque vende mais"
+          ],
+          "correct": 1,
+          "explanation": "Parcelar aumenta a venda e aumenta o PMR ao mesmo tempo. Se a loja não tiver caixa para atravessar esses dias a mais, a venda cresce e o aperto também — situação clássica de quem cresce e quebra."
+        }
+      ]
+    },
+    {
+      "id": "pmp",
+      "shortTitle": "PMP",
+      "kicker": "MÓDULO 05 · PAGAMENTO",
+      "title": "PMP: em quantos dias o seu dinheiro sai",
+      "summary": "O prazo que o fornecedor te dá é financiamento gratuito. Poucos negociam isso com o cuidado que merece.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "O Prazo Médio de Pagamento é o espelho do PMR: quantos dias, em média, você leva para pagar quem te fornece. E aqui a lógica se inverte — quanto maior, melhor para o seu caixa."
+        },
+        {
+          "type": "math",
+          "expression": "PMP = \\frac{Contas\\ a\\ Pagar}{Compras} \\times Dias\\ do\\ Per\\acute{i}odo"
+        },
+        {
+          "type": "highlight",
+          "text": "Prazo de fornecedor é o crédito mais barato que existe: normalmente custa zero. Antes de pedir empréstimo, veja se dá para esticá-lo."
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "aPagar",
+              "label": "Contas a pagar a fornecedores (R$)",
+              "type": "currency",
+              "placeholder": "16200"
+            },
+            {
+              "id": "compras",
+              "label": "Compras do mês (R$)",
+              "type": "currency",
+              "placeholder": "10800"
+            }
+          ],
+          "formula": "if (!(compras > 0)) { return { aviso: 'Informe quanto você compra por mês.' }; } const pmp = (aPagar / compras) * 30; return { pmp, financiamento: aPagar };",
+          "resultLabel": "Seu prazo médio de pagamento",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "pmp",
+              "label": "PMP (dias)",
+              "format": "number"
+            },
+            {
+              "key": "financiamento",
+              "label": "Quanto o fornecedor te financia",
+              "format": "currency"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Desconto à vista: quando vale a pena"
+        },
+        {
+          "type": "paragraph",
+          "text": "O fornecedor oferece 3% de desconto para pagar à vista em vez de 30 dias. Parece pouco — mas 3% em 30 dias equivale a mais de 42% ao ano. Se o seu dinheiro rende menos que isso, ou se o seu empréstimo custa menos que isso, pagar à vista é bom negócio."
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "desconto",
+              "label": "Desconto oferecido à vista (%)",
+              "type": "percentage",
+              "placeholder": "3"
+            },
+            {
+              "id": "prazo",
+              "label": "Prazo que você perderia (dias)",
+              "type": "number",
+              "placeholder": "30"
+            },
+            {
+              "id": "custoDinheiro",
+              "label": "Quanto o seu dinheiro custa ao mês (%)",
+              "type": "percentage",
+              "placeholder": "2"
+            }
+          ],
+          "formula": "if (!(prazo > 0)) { return { aviso: 'Informe o prazo que você deixaria de usar.' }; } if (desconto >= 100) { return { aviso: 'Um desconto de 100% ou mais não faz sentido.' }; } const ganhoPeriodo = desconto / (100 - desconto); const aoAno = (Math.pow(1 + ganhoPeriodo, 365 / prazo) - 1) * 100; const custoAno = (Math.pow(1 + custoDinheiro / 100, 12) - 1) * 100; const vale = aoAno > custoAno ? 'Vale pagar à vista: o desconto rende mais do que o seu dinheiro custa.' : 'Melhor usar o prazo: o desconto não paga o custo do seu dinheiro.'; return { aoAno, custoAno, vale };",
+          "resultLabel": "Desconto à vista compensa?",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "aoAno",
+              "label": "O desconto equivale a (ao ano)",
+              "format": "percentage"
+            },
+            {
+              "key": "custoAno",
+              "label": "Seu dinheiro custa (ao ano)",
+              "format": "percentage"
+            },
+            {
+              "key": "vale",
+              "label": "Conclusão",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "ESTICAR PRAZO TEM LIMITE",
+          "items": [
+            "Atrasar sem combinar queima o relacionamento e some com o desconto de bom pagador",
+            "Fornecedor com medo de calote reduz prazo, e aí o remédio piora a doença",
+            "O caminho é negociar antes: volume concentrado, pagamento pontual e prazo maior em troca"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Seu fornecedor oferece 2% de desconto para pagar em 30 dias em vez de 60. Vale?",
+          "options": [
+            "Sempre, 2% é dinheiro",
+            "Depende: 2% em 30 dias equivalem a ~27% ao ano — compare com o custo do seu dinheiro",
+            "Nunca, prazo é sempre melhor"
+          ],
+          "correct": 1,
+          "explanation": "A conta é sempre a mesma: transforme o desconto em taxa anual e compare com o que o seu dinheiro custa ou rende. Se você está no cheque especial a 8% ao mês, usar o prazo é muito melhor. Se tem caixa sobrando, o desconto ganha."
+        }
+      ]
+    },
+    {
+      "id": "ciclo",
+      "shortTitle": "Ciclo financeiro",
+      "kicker": "MÓDULO 06 · CICLO",
+      "title": "O ciclo financeiro: os dias que você banca sozinho",
+      "summary": "Junte PME, PMR e PMP e você descobre por quantos dias o dinheiro fica fora do seu caixa.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Este é o módulo em que as peças se encaixam. Você compra, guarda, vende e recebe — e paga o fornecedor em algum ponto dessa linha. O ciclo financeiro mede quantos dias ficam descobertos."
+        },
+        {
+          "type": "math",
+          "expression": "Ciclo\\ Operacional = PME + PMR"
+        },
+        {
+          "type": "math",
+          "expression": "Ciclo\\ Financeiro = PME + PMR - PMP"
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Dia 0 — você compra",
+              "text": "A mercadoria chega e entra no estoque. Ainda não saiu dinheiro."
+            },
+            {
+              "title": "Dia 45 — você paga o fornecedor",
+              "text": "É o PMP. O dinheiro sai da sua conta aqui."
+            },
+            {
+              "title": "Dia 76 — a peça vende",
+              "text": "É o PME. A mercadoria finalmente saiu da prateleira."
+            },
+            {
+              "title": "Dia 96 — o cliente paga",
+              "text": "É o PMR somado ao PME. Só agora o dinheiro volta."
+            },
+            {
+              "title": "Do dia 45 ao 96: 51 dias no vermelho",
+              "text": "Esse é o ciclo financeiro. São 51 dias bancando a operação com dinheiro seu ou de banco."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Roupa Bonita",
+            "Dias"
+          ],
+          "rows": [
+            [
+              "PME — estoque",
+              "76"
+            ],
+            [
+              "+ PMR — recebimento",
+              "+ 20"
+            ],
+            [
+              "= Ciclo operacional",
+              "96"
+            ],
+            [
+              "− PMP — pagamento",
+              "− 45"
+            ],
+            [
+              "= Ciclo financeiro",
+              "51"
+            ]
+          ],
+          "caption": "51 dias de operação financiados por você"
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "pme",
+              "label": "PME — dias em estoque",
+              "type": "number",
+              "placeholder": "76"
+            },
+            {
+              "id": "pmr",
+              "label": "PMR — dias para receber",
+              "type": "number",
+              "placeholder": "20"
+            },
+            {
+              "id": "pmp",
+              "label": "PMP — dias para pagar",
+              "type": "number",
+              "placeholder": "45"
+            },
+            {
+              "id": "faturamento",
+              "label": "Faturamento do mês (R$)",
+              "type": "currency",
+              "placeholder": "30000"
+            }
+          ],
+          "formula": "const operacional = pme + pmr; const financeiro = operacional - pmp; const diario = faturamento / 30; const necessidade = Math.max(0, financeiro) * diario; const leitura = financeiro <= 0 ? 'Ciclo negativo: você recebe antes de pagar. É a situação mais confortável que existe.' : 'Cada dia de ciclo exige dinheiro parado na operação.'; return { operacional, financeiro, necessidade, leitura };",
+          "resultLabel": "Seu ciclo",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "operacional",
+              "label": "Ciclo operacional (dias)",
+              "format": "number"
+            },
+            {
+              "key": "financeiro",
+              "label": "Ciclo financeiro (dias)",
+              "format": "number"
+            },
+            {
+              "key": "necessidade",
+              "label": "Dinheiro preso na operação",
+              "format": "currency"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "success",
+          "title": "CICLO NEGATIVO EXISTE, E É O SONHO",
+          "items": [
+            "Supermercado: vende à vista em 20 dias e paga o fornecedor em 60",
+            "Recebe antes de pagar — o fornecedor financia a operação inteira",
+            "Sobra dinheiro em caixa mesmo com margem apertada",
+            "É por isso que grandes varejistas conseguem operar com margem baixa"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Como reduzir o ciclo financeiro sem vender mais?",
+          "options": [
+            "Não tem jeito, depende da venda",
+            "Girando o estoque mais rápido, recebendo mais rápido ou pagando mais devagar",
+            "Aumentando o preço"
+          ],
+          "correct": 1,
+          "explanation": "São exatamente três alavancas, e as três são negociação e processo, não venda. Reduzir 10 dias de PME, 5 de PMR e ganhar 10 de PMP, na Roupa Bonita, tira 25 dias do ciclo e devolve R$ 25.000 ao caixa."
+        }
+      ]
+    },
+    {
+      "id": "projecao",
+      "shortTitle": "Projeção",
+      "kicker": "MÓDULO 07 · PROJEÇÃO",
+      "title": "Projetar: enxergar o aperto antes de ele chegar",
+      "summary": "O valor do fluxo de caixa está na parte que ainda não aconteceu.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Registrar o passado é contabilidade. Projetar o futuro é gestão. A projeção é o que te dá tempo de agir — pedir prazo, antecipar recebível, adiar uma compra — enquanto ainda existem opções."
+        },
+        {
+          "type": "heading",
+          "text": "Como montar em quatro passos"
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Comece pelo saldo de hoje",
+              "text": "O que está no banco mais o que está no caixa, agora. Esse é o ponto de partida honesto."
+            },
+            {
+              "title": "Liste o que já está contratado",
+              "text": "Recebíveis com data certa, boletos emitidos, salários, aluguel, parcelas. Isso não é previsão: é compromisso."
+            },
+            {
+              "title": "Estime o que é variável",
+              "text": "Vendas futuras, compras. Use a média dos últimos três meses, não o seu melhor mês."
+            },
+            {
+              "title": "Some semana a semana",
+              "text": "O saldo final de uma semana é o inicial da seguinte. É aqui que o buraco aparece."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Semana",
+            "Entradas",
+            "Saídas",
+            "Saldo final"
+          ],
+          "rows": [
+            [
+              "Atual",
+              "—",
+              "—",
+              "R$ 5.000"
+            ],
+            [
+              "Semana 1",
+              "R$ 7.400",
+              "R$ 3.200",
+              "R$ 9.200"
+            ],
+            [
+              "Semana 2",
+              "R$ 7.400",
+              "R$ 8.550",
+              "R$ 8.050"
+            ],
+            [
+              "Semana 3",
+              "R$ 7.400",
+              "R$ 14.500",
+              "R$ 950"
+            ],
+            [
+              "Semana 4",
+              "R$ 7.400",
+              "R$ 2.400",
+              "R$ 5.950"
+            ]
+          ],
+          "caption": "A semana 3 é o aperto — e dá para vê-la com 20 dias de antecedência"
+        },
+        {
+          "type": "highlight",
+          "text": "Descobrir no dia 5 que o dia 25 não fecha é um problema administrável. Descobrir no dia 25 é uma emergência cara."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "O QUE FAZER QUANDO A PROJEÇÃO ACUSA BURACO",
+          "items": [
+            "Antecipar recebível — rápido, mas tem custo (veja o curso de capital de giro)",
+            "Negociar prazo com o fornecedor daquela semana — de graça, se pedido com antecedência",
+            "Adiar uma compra não essencial para a semana seguinte",
+            "Puxar venda com condição especial para entrar dinheiro antes"
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "saldo",
+              "label": "Saldo de hoje (R$)",
+              "type": "currency",
+              "placeholder": "5000"
+            },
+            {
+              "id": "entradaSemana",
+              "label": "Entrada média por semana (R$)",
+              "type": "currency",
+              "placeholder": "7400"
+            },
+            {
+              "id": "saidaSemana",
+              "label": "Saída média por semana (R$)",
+              "type": "currency",
+              "placeholder": "7200"
+            },
+            {
+              "id": "semanas",
+              "label": "Projetar quantas semanas",
+              "type": "number",
+              "placeholder": "8"
+            }
+          ],
+          "formula": "if (!(semanas > 0)) { return { aviso: 'Informe quantas semanas você quer projetar.' }; } const liquido = entradaSemana - saidaSemana; const final = saldo + liquido * semanas; let quebra = 0; let s = saldo; for (let i = 1; i <= semanas; i++) { s += liquido; if (s < 0 && quebra === 0) quebra = i; } const leitura = quebra > 0 ? 'O caixa fica negativo na semana ' + quebra + '. Aja antes disso.' : 'O caixa se mantém positivo em todo o período projetado.'; return { liquido, final, leitura };",
+          "resultLabel": "Sua projeção",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "liquido",
+              "label": "Sobra por semana",
+              "format": "currency"
+            },
+            {
+              "key": "final",
+              "label": "Saldo ao fim do período",
+              "format": "currency"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Na projeção, qual número você deve usar para as vendas futuras?",
+          "options": [
+            "O do melhor mês, para ter uma meta",
+            "A média dos últimos meses, ou o cenário conservador",
+            "O que você espera vender se tudo der certo"
+          ],
+          "correct": 1,
+          "explanation": "Projeção otimista não protege ninguém: ela esconde exatamente o buraco que você queria enxergar. Para entrada, seja conservador. Para saída, seja realista ou pessimista. O erro barato é sobrar dinheiro."
+        }
+      ]
+    },
+    {
+      "id": "sazonalidade",
+      "shortTitle": "Sazonalidade",
+      "kicker": "MÓDULO 08 · SAZONALIDADE",
+      "title": "O mês bom que quebra a empresa",
+      "summary": "Em negócio sazonal, o perigo raramente está no mês fraco. Está no mês seguinte ao forte.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Toda loja de roupas sabe que dezembro vende muito e fevereiro vende pouco. O que pega poucos de surpresa é que o aperto costuma chegar em janeiro — logo depois do melhor mês do ano."
+        },
+        {
+          "type": "heading",
+          "text": "Por que o mês seguinte ao pico é o pior"
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Novembro: você compra muito",
+              "text": "Estoque para o pico. O dinheiro sai ou a dívida com fornecedor é assumida."
+            },
+            {
+              "title": "Dezembro: vende muito",
+              "text": "Mas boa parte é no cartão, e vai entrar em janeiro e fevereiro."
+            },
+            {
+              "title": "Janeiro: chega a conta",
+              "text": "Os fornecedores de novembro vencem, o 13º foi pago, e a venda despencou."
+            },
+            {
+              "title": "O encontro",
+              "text": "Saída de pico com entrada de vale. É aqui que empresa lucrativa entra no cheque especial."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "O SINAL DE ALERTA",
+          "items": [
+            "Se o seu melhor mês é seguido de aperto, o problema não é venda: é descasamento de prazo",
+            "A solução se prepara três meses antes, não na semana da conta",
+            "Reserva feita no pico é o que atravessa o vale"
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "pico",
+              "label": "Faturamento do melhor mês (R$)",
+              "type": "currency",
+              "placeholder": "55000"
+            },
+            {
+              "id": "vale",
+              "label": "Faturamento do pior mês (R$)",
+              "type": "currency",
+              "placeholder": "16000"
+            },
+            {
+              "id": "fixo",
+              "label": "Custo fixo mensal (R$)",
+              "type": "currency",
+              "placeholder": "8550"
+            },
+            {
+              "id": "margemPct",
+              "label": "Margem de contribuição (%)",
+              "type": "percentage",
+              "placeholder": "53"
+            }
+          ],
+          "formula": "const margemVale = vale * (margemPct / 100); const resultadoVale = margemVale - fixo; const variacao = vale > 0 ? ((pico - vale) / vale) * 100 : 0; const leitura = resultadoVale >= 0 ? 'O pior mês se paga sozinho.' : 'O pior mês dá prejuízo: precisa de reserva feita no pico.'; return { resultadoVale, variacao, reserva: Math.max(0, -resultadoVale) * 3, leitura };",
+          "resultLabel": "Seu vale sazonal",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "variacao",
+              "label": "O pico supera o vale em",
+              "format": "percentage"
+            },
+            {
+              "key": "resultadoVale",
+              "label": "Resultado do pior mês",
+              "format": "currency"
+            },
+            {
+              "key": "reserva",
+              "label": "Reserva para 3 meses fracos",
+              "format": "currency"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "accordion",
+          "items": [
+            {
+              "title": "Como me preparar para o vale?",
+              "text": "Três coisas, na ordem: separe no pico a reserva calculada acima, em conta apartada; negocie com o fornecedor prazo maior para a compra do pico, que vence justamente no vale; e evite assumir custo fixo novo no mês bom, porque ele continua no mês ruim."
+            },
+            {
+              "title": "Vale a pena fazer liquidação no vale?",
+              "text": "Quase sempre sim, desde que a margem de contribuição continue positiva. No vale, o que você precisa é transformar estoque em caixa. Vender a margem reduzida é melhor que não vender — e muito melhor que pagar juros de cheque especial."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Dezembro foi recorde. Janeiro apertou. Qual a causa mais provável?",
+          "options": [
+            "Vendeu com margem errada em dezembro",
+            "As compras de novembro venceram em janeiro, quando a venda já tinha caído",
+            "Os clientes não pagaram"
+          ],
+          "correct": 1,
+          "explanation": "É o descasamento clássico: a saída ficou no mês do pico (ou logo depois), e a entrada se espalhou pelos meses seguintes. O lucro de dezembro é real — ele só não está em dinheiro ainda."
+        }
+      ]
+    },
+    {
+      "id": "reserva",
+      "shortTitle": "Reserva",
+      "kicker": "MÓDULO 09 · RESERVA",
+      "title": "Quanto você precisa ter guardado",
+      "summary": "Existe um número para \"dormir tranquilo\", e ele se calcula a partir do seu próprio custo fixo.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "A pergunta \"quanto devo ter de reserva?\" tem uma resposta melhor que \"o máximo possível\". Ela se calcula a partir de duas coisas que você já conhece: o seu custo fixo e o seu ciclo financeiro."
+        },
+        {
+          "type": "math",
+          "expression": "Reserva\\ M\\acute{i}nima = Custo\\ Fixo\\ Mensal \\times Meses\\ de\\ Prote\\tilde{c}\\tilde{a}o"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Situação do negócio",
+            "Meses de reserva"
+          ],
+          "rows": [
+            [
+              "Receita estável, ciclo financeiro curto",
+              "2 a 3 meses"
+            ],
+            [
+              "Receita com alguma variação",
+              "3 a 4 meses"
+            ],
+            [
+              "Negócio sazonal ou ciclo financeiro longo",
+              "4 a 6 meses"
+            ],
+            [
+              "Poucos clientes respondem pela maior parte da receita",
+              "6 meses ou mais"
+            ]
+          ],
+          "caption": "Quanto mais imprevisível a entrada, maior o colchão"
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "fixo",
+              "label": "Custo fixo mensal (R$)",
+              "type": "currency",
+              "placeholder": "8550"
+            },
+            {
+              "id": "meses",
+              "label": "Meses de proteção desejados",
+              "type": "number",
+              "placeholder": "3"
+            },
+            {
+              "id": "ciclo",
+              "label": "Ciclo financeiro (dias)",
+              "type": "number",
+              "placeholder": "51"
+            },
+            {
+              "id": "faturamento",
+              "label": "Faturamento mensal (R$)",
+              "type": "currency",
+              "placeholder": "30000"
+            },
+            {
+              "id": "hoje",
+              "label": "Quanto você tem guardado hoje (R$)",
+              "type": "currency",
+              "placeholder": "5000"
+            }
+          ],
+          "formula": "const colchao = fixo * meses; const giro = Math.max(0, ciclo) * (faturamento / 30); const ideal = colchao + giro; const falta = ideal - hoje; const leitura = falta <= 0 ? 'Sua reserva já cobre o necessário.' : 'Faltam ' + falta.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + ' para chegar no ideal.'; return { colchao, giro, ideal, leitura };",
+          "resultLabel": "Sua reserva ideal",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "colchao",
+              "label": "Para o custo fixo",
+              "format": "currency"
+            },
+            {
+              "key": "giro",
+              "label": "Para bancar o ciclo",
+              "format": "currency"
+            },
+            {
+              "key": "ideal",
+              "label": "Reserva ideal total",
+              "format": "currency"
+            },
+            {
+              "key": "leitura",
+              "label": "Situação",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "DUAS RESERVAS, NÃO UMA",
+          "items": [
+            "A do ciclo é dinheiro de trabalho: ele fica girando dentro da operação, não é economia",
+            "A do custo fixo é o colchão de emergência: fica parado, em conta separada, rendendo",
+            "Misturar as duas faz você achar que tem reserva quando o dinheiro já está comprometido com a operação"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Reserva em conta separada não é preciosismo: é o que impede você de gastar, sem perceber, o dinheiro que já tem dono."
+        },
+        {
+          "type": "quiz",
+          "question": "A empresa tem R$ 40.000 em conta e custo fixo de R$ 8.550. Tem quase 5 meses de reserva?",
+          "options": [
+            "Sim, R$ 40.000 ÷ R$ 8.550 ≈ 4,7 meses",
+            "Não necessariamente: parte desse dinheiro está bancando o ciclo e não pode ser usada",
+            "Sim, se não tiver dívida"
+          ],
+          "correct": 1,
+          "explanation": "Com ciclo de 51 dias e faturamento de R$ 30.000, cerca de R$ 51.000 precisam ficar girando na operação. Os R$ 40.000 em conta não são reserva — são menos do que a operação já consome."
+        }
+      ]
+    },
+    {
+      "id": "rotina",
+      "shortTitle": "A rotina",
+      "kicker": "MÓDULO 10 · DISCIPLINA",
+      "title": "A rotina que faz o fluxo sobreviver",
+      "summary": "A maior causa de fluxo de caixa abandonado não é falta de conhecimento. É falta de rotina.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Você já sabe montar, projetar e interpretar. Falta a parte que ninguém ensina e que decide tudo: manter a coisa viva depois da terceira semana."
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Todo dia, 5 minutos",
+              "text": "Lance o que entrou e o que saiu. Só isso. Se acumular uma semana, vira tarefa grande e você abandona."
+            },
+            {
+              "title": "Toda segunda, 20 minutos",
+              "text": "Confira o realizado contra o previsto da semana passada e projete as próximas quatro."
+            },
+            {
+              "title": "Todo dia 5, 30 minutos",
+              "text": "Feche o mês anterior, compare com o lucro do contador e entenda a diferença."
+            },
+            {
+              "title": "A cada trimestre, 1 hora",
+              "text": "Recalcule PME, PMR, PMP e ciclo financeiro. São eles que explicam as tendências."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Erros que matam a rotina"
+        },
+        {
+          "type": "comparison",
+          "columns": [
+            {
+              "label": "O que faz abandonar",
+              "tone": "negative",
+              "items": [
+                "Planilha com 30 colunas que ninguém preenche",
+                "Misturar conta pessoal com a da empresa",
+                "Deixar acumular para \"organizar no fim de semana\"",
+                "Lançar só o que saiu e esquecer o que entrou"
+              ]
+            },
+            {
+              "label": "O que faz durar",
+              "tone": "positive",
+              "items": [
+                "Seis colunas: data, descrição, grupo, entrada, saída, saldo",
+                "Conta PJ separada, sempre",
+                "Cinco minutos todo dia, no mesmo horário",
+                "Conferir com o extrato uma vez por semana"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "O ERRO QUE INVALIDA TUDO",
+          "items": [
+            "Pagar despesa pessoal pela conta da empresa",
+            "O fluxo passa a mostrar um negócio que não existe",
+            "Você não sabe mais se o problema é a empresa ou o seu padrão de vida",
+            "A solução é pró-labore fixo: a empresa paga você, e você paga as suas contas"
+          ]
+        },
+        {
+          "type": "accordion",
+          "items": [
+            {
+              "title": "E se eu estiver meses atrasado?",
+              "text": "Não tente recuperar o passado inteiro. Pegue o saldo de hoje como ponto de partida e comece a projetar daqui para frente. O histórico ajuda, mas o que salva a empresa é a projeção."
+            },
+            {
+              "title": "Meu contador já faz isso?",
+              "text": "Ele faz a contabilidade, que olha para trás e por competência. Fluxo de caixa projetado é gestão, roda em outro calendário e normalmente não é escopo dele. Vale perguntar — muitos oferecem, mas não é automático."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Qual o principal motivo de fluxos de caixa serem abandonados?",
+          "options": [
+            "Falta de conhecimento técnico",
+            "Complexidade demais e frequência de menos — planilha grande e preenchimento acumulado",
+            "Falta de um sistema caro"
+          ],
+          "correct": 1,
+          "explanation": "Quase nunca é falta de saber. É a planilha ambiciosa que exige meia hora por dia e a tentação de deixar para depois. Simples e diário vence completo e mensal."
+        }
+      ]
+    },
+    {
+      "id": "seu-fluxo",
+      "shortTitle": "Seu fluxo",
+      "kicker": "MÓDULO 11 · DESAFIO FINAL",
+      "title": "Monte o fluxo do seu negócio",
+      "summary": "Seus números, o mesmo caminho: saldo, prazos, ciclo, projeção e reserva.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Preencha com os seus dados e veja, de uma vez, como está o seu caixa: quanto a operação gera, quantos dias você banca sozinho e quanto precisaria ter guardado."
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "faturamento",
+              "label": "Faturamento mensal (R$)",
+              "type": "currency",
+              "placeholder": "30000"
+            },
+            {
+              "id": "cmvMes",
+              "label": "Custo da mercadoria ou serviço no mês (R$)",
+              "type": "currency",
+              "placeholder": "10800"
+            },
+            {
+              "id": "fixo",
+              "label": "Custo fixo mensal (R$)",
+              "type": "currency",
+              "placeholder": "8550"
+            },
+            {
+              "id": "impostos",
+              "label": "Impostos e taxas no mês (R$)",
+              "type": "currency",
+              "placeholder": "2400"
+            },
+            {
+              "id": "pme",
+              "label": "PME — dias em estoque",
+              "type": "number",
+              "placeholder": "76"
+            },
+            {
+              "id": "pmr",
+              "label": "PMR — dias para receber",
+              "type": "number",
+              "placeholder": "20"
+            },
+            {
+              "id": "pmp",
+              "label": "PMP — dias para pagar",
+              "type": "number",
+              "placeholder": "45"
+            }
+          ],
+          "formula": "if (!(faturamento > 0)) { return { aviso: 'Informe o seu faturamento mensal.' }; } const geracao = faturamento - cmvMes - fixo - impostos; const ciclo = pme + pmr - pmp; const diario = faturamento / 30; const presoNaOperacao = Math.max(0, ciclo) * diario; const reserva = fixo * 3; const leitura = geracao <= 0 ? 'A operação não gera caixa: antes de prazo, reveja preço e custo.' : ciclo > 60 ? 'A operação gera caixa, mas o ciclo é longo: muito dinheiro fica preso.' : 'Operação gerando caixa e ciclo sob controle.'; return { geracao, ciclo, presoNaOperacao, precisaTer: presoNaOperacao + reserva, leitura };",
+          "resultLabel": "Seu retrato de caixa",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "geracao",
+              "label": "A operação gera por mês",
+              "format": "currency"
+            },
+            {
+              "key": "ciclo",
+              "label": "Ciclo financeiro (dias)",
+              "format": "number"
+            },
+            {
+              "key": "presoNaOperacao",
+              "label": "Preso na operação",
+              "format": "currency"
+            },
+            {
+              "key": "precisaTer",
+              "label": "Precisaria ter disponível",
+              "format": "currency"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "COMO LER",
+          "items": [
+            "Geração negativa: o problema é de preço ou custo, e prazo nenhum resolve",
+            "Geração positiva com ciclo longo: o negócio é bom e o caixa é apertado — é capital de giro que falta",
+            "\"Precisaria ter disponível\" é o dinheiro que a operação exige, somado ao colchão de três meses de custo fixo"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Seus próximos passos"
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Abra a planilha hoje",
+              "text": "Seis colunas: data, descrição, grupo, entrada, saída, saldo. Comece pelo saldo de hoje."
+            },
+            {
+              "title": "Lance os compromissos já contratados",
+              "text": "Boletos, salários, parcelas, recebíveis com data. Isso já te dá as próximas quatro semanas."
+            },
+            {
+              "title": "Marque 5 minutos por dia",
+              "text": "Mesmo horário, todo dia. É a única parte difícil do curso."
+            },
+            {
+              "title": "Na segunda-feira, projete",
+              "text": "Quatro semanas à frente. Procure a semana em que o saldo fica mais baixo."
+            },
+            {
+              "title": "Aja com antecedência",
+              "text": "Se a semana 3 não fecha, você tem 20 dias para negociar prazo, antecipar recebível ou adiar compra."
+            }
+          ]
+        },
+        {
+          "type": "accordion",
+          "items": [
+            {
+              "title": "Minha operação gera caixa mas vivo apertado. E agora?",
+              "text": "Esse é o caso mais comum e tem nome: necessidade de capital de giro. O dinheiro existe, mas está preso em estoque e em contas a receber. É exatamente o assunto do curso de capital de giro desta mesma série."
+            },
+            {
+              "title": "Vale a pena antecipar recebíveis para tapar o buraco?",
+              "text": "Como solução pontual, sim. Como rotina, é caro: uma taxa de 2% ao mês equivale a cerca de 28% ao ano. Se você antecipa todo mês, o problema não é de liquidez, é estrutural — e antecipar só adia a conversa."
+            },
+            {
+              "title": "Qual a diferença entre fluxo de caixa e DRE?",
+              "text": "A DRE mostra o lucro pelo regime de competência: registra a venda quando acontece. O fluxo mostra o dinheiro pelo regime de caixa: registra quando o dinheiro se move. Os dois são necessários, e comparar os dois todo mês é o que ensina mais rápido."
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Empresa não quebra por falta de lucro. Quebra por falta de caixa no dia do vencimento."
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "Montar a planilha com as seis colunas e o saldo de hoje",
+            "Lançar todos os compromissos já contratados das próximas 4 semanas",
+            "Calcular o seu PMR, PMP e ciclo financeiro",
+            "Definir o valor da sua reserva e abrir uma conta separada para ela",
+            "Marcar 5 minutos diários na agenda"
+          ]
+        }
+      ]
+    }
+  ]
+}

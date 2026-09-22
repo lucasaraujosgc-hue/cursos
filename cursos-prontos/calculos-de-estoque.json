@@ -1,0 +1,1336 @@
+{
+  "slug": "calculos-de-estoque",
+  "courseName": "Cálculos de Estoque: PME, Giro e Reposição",
+  "description": "Descubra quanto dinheiro está parado na sua prateleira e em quantos dias ele volta. Giro, PME, cobertura, curva ABC, ponto de pedido e lote econômico — com calculadora em cada conta e diagnóstico final do seu estoque.",
+  "category": "Dinheiro na Empresa",
+  "leadCapture": "end",
+  "modules": [
+    {
+      "id": "dinheiro-parado",
+      "shortTitle": "Dinheiro parado",
+      "kicker": "MÓDULO 01 · O PROBLEMA",
+      "title": "O dinheiro que dorme na prateleira",
+      "summary": "Estoque não é patrimônio: é dinheiro seu, comprado e ainda não vendido, esperando virar caixa.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Quase todo lojista olha para o estoque cheio e sente segurança. Mas cada peça ali é uma nota que saiu do seu caixa e ainda não voltou. Enquanto ela não vende, esse dinheiro não paga aluguel, não paga fornecedor e não vira lucro — ele só ocupa prateleira."
+        },
+        {
+          "type": "stats",
+          "items": [
+            {
+              "value": "R$ 27.000",
+              "label": "parados em estoque",
+              "hint": "na Roupa Bonita"
+            },
+            {
+              "value": "76 dias",
+              "label": "para virar venda",
+              "hint": "em média"
+            },
+            {
+              "value": "2,5 meses",
+              "label": "de dinheiro travado",
+              "hint": "que você já pagou"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Dois erros opostos, o mesmo prejuízo"
+        },
+        {
+          "type": "comparison",
+          "columns": [
+            {
+              "label": "Estoque demais",
+              "tone": "negative",
+              "items": [
+                "Dinheiro travado que faltaria para pagar contas",
+                "Risco de peça encalhar e virar liquidação",
+                "Custo de espaço, seguro e perda",
+                "Obriga a pegar empréstimo para girar"
+              ]
+            },
+            {
+              "label": "Estoque de menos",
+              "tone": "negative",
+              "items": [
+                "Cliente chega, não tem, e compra do concorrente",
+                "Venda perdida não aparece em relatório nenhum",
+                "Compras de emergência saem mais caras",
+                "Frete urgente corrói a margem"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Estoque bom não é o maior nem o menor: é o que cobre a demanda com o mínimo de dinheiro parado."
+        },
+        {
+          "type": "quiz",
+          "question": "A loja tem R$ 27.000 em mercadoria. Isso é lucro guardado?",
+          "options": [
+            "Sim, é patrimônio da empresa",
+            "Não — é dinheiro que já saiu do caixa e ainda não voltou",
+            "Depende do preço de venda"
+          ],
+          "correct": 1,
+          "explanation": "Você já pagou o fornecedor por essas peças. Até elas venderem, esse dinheiro está fora do caixa. Por isso estoque parado e conta atrasada costumam aparecer juntos no mesmo mês."
+        },
+        {
+          "type": "callout",
+          "title": "O QUE ESTE CURSO VAI RESOLVER",
+          "items": [
+            "Saber em quantos dias o seu estoque vira venda",
+            "Descobrir quais produtos merecem atenção e quais só ocupam espaço",
+            "Calcular quanto comprar e quando comprar, sem chute",
+            "Enxergar quanto o estoque está custando além do preço de compra"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Vamos acompanhar a loja Roupa Bonita do começo ao fim: R$ 10.800 de mercadoria vendida por mês, R$ 27.000 parados em estoque. No último módulo você faz o mesmo diagnóstico com os seus números."
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "Anotar quanto você tem, hoje, em mercadoria parada",
+            "Anotar se você acha que isso é muito, pouco ou o certo",
+            "Guardar as duas respostas — vamos comparar com o número calculado no fim"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bases",
+      "shortTitle": "As duas bases",
+      "kicker": "MÓDULO 02 · FUNDAMENTOS",
+      "title": "CMV e estoque médio: as duas bases de tudo",
+      "summary": "Todo indicador de estoque nasce destes dois números. Errar um deles estraga o resto.",
+      "content": [
+        {
+          "type": "heading",
+          "text": "CMV — Custo da Mercadoria Vendida"
+        },
+        {
+          "type": "paragraph",
+          "text": "É quanto você pagou ao fornecedor pelo que foi vendido no período. Atenção: é o que VENDEU, não o que comprou. Se você comprou R$ 20.000 e vendeu mercadoria que custou R$ 10.800, o CMV do mês é R$ 10.800 — os outros R$ 9.200 viraram estoque."
+        },
+        {
+          "type": "math",
+          "expression": "CMV = Estoque\\ Inicial + Compras - Estoque\\ Final"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "CMV da Roupa Bonita em setembro",
+            "Valor"
+          ],
+          "rows": [
+            [
+              "Estoque no dia 1º",
+              "R$ 25.000"
+            ],
+            [
+              "+ Compras do mês",
+              "+ R$ 13.800"
+            ],
+            [
+              "− Estoque no dia 30",
+              "− R$ 28.000"
+            ],
+            [
+              "= CMV do mês",
+              "R$ 10.800"
+            ]
+          ],
+          "caption": "O que efetivamente saiu pela porta"
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "ei",
+              "label": "Estoque inicial (R$)",
+              "type": "currency",
+              "placeholder": "25000"
+            },
+            {
+              "id": "compras",
+              "label": "Compras do período (R$)",
+              "type": "currency",
+              "placeholder": "13800"
+            },
+            {
+              "id": "ef",
+              "label": "Estoque final (R$)",
+              "type": "currency",
+              "placeholder": "28000"
+            }
+          ],
+          "formula": "const cmv = ei + compras - ef; if (cmv < 0) { return { aviso: 'O resultado ficou negativo: confira os valores. Estoque final maior que inicial + compras não acontece na prática.' }; } return { cmv, medio: (ei + ef) / 2 };",
+          "resultLabel": "Seu CMV do período",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "cmv",
+              "label": "CMV do período",
+              "format": "currency"
+            },
+            {
+              "key": "medio",
+              "label": "Estoque médio",
+              "format": "currency"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Estoque médio"
+        },
+        {
+          "type": "paragraph",
+          "text": "Usar o estoque de um dia só distorce a conta: se você mediu logo depois de uma compra grande, o número fica inflado. O estoque médio suaviza isso."
+        },
+        {
+          "type": "math",
+          "expression": "Estoque\\ M\\acute{e}dio = \\frac{Estoque\\ Inicial + Estoque\\ Final}{2}"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "QUANTO MAIS MEDIÇÕES, MELHOR",
+          "items": [
+            "Com dois pontos (início e fim), a média já serve para começar",
+            "Se você tem o saldo de cada mês, some os 12 e divida por 12: bem mais fiel",
+            "Em negócio sazonal, a média de dois pontos engana — use todos os meses que tiver"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Na Roupa Bonita: (R$ 25.000 + R$ 28.000) ÷ 2 = R$ 26.500. Vamos arredondar para R$ 27.000, que é a média dos últimos 12 meses."
+        },
+        {
+          "type": "quiz",
+          "question": "A loja comprou R$ 30.000 em mercadoria no mês. O CMV do mês é R$ 30.000?",
+          "options": [
+            "Sim, comprou é o mesmo que custou",
+            "Não — CMV é só a parte que foi vendida; o resto virou estoque",
+            "Sim, se tudo foi pago à vista"
+          ],
+          "correct": 1,
+          "explanation": "Comprar é trocar dinheiro por mercadoria. O custo só vira CMV quando a mercadoria sai pela porta. Confundir os dois faz o lucro do mês parecer menor do que é — e o estoque, invisível."
+        },
+        {
+          "type": "cta",
+          "text": "Cadastre o custo dos seus produtos uma vez e a calculadora cuida do CMV para você.",
+          "buttonLabel": "Abrir Produtos e Custos",
+          "url": "https://calculadora.virgulacontabil.com.br/custos-variaveis"
+        }
+      ]
+    },
+    {
+      "id": "giro",
+      "shortTitle": "Giro de estoque",
+      "kicker": "MÓDULO 03 · GIRO",
+      "title": "Giro: quantas vezes o estoque se renova",
+      "summary": "Quantas vezes por ano você vende e repõe todo o seu estoque. Quanto mais vezes, menos dinheiro parado.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Giro responde uma pergunta simples: quantas vezes, no período, o seu estoque inteiro foi vendido e reposto. Um giro de 4,8 significa que a loja esvaziou e encheu a prateleira quase cinco vezes no ano."
+        },
+        {
+          "type": "math",
+          "expression": "Giro = \\frac{CMV\\ do\\ per\\acute{i}odo}{Estoque\\ M\\acute{e}dio}"
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Pegue o CMV do ano",
+              "text": "Na Roupa Bonita: R$ 10.800 por mês × 12 = R$ 129.600."
+            },
+            {
+              "title": "Pegue o estoque médio",
+              "text": "R$ 27.000, a média dos saldos mensais."
+            },
+            {
+              "title": "Divida",
+              "text": "R$ 129.600 ÷ R$ 27.000 = 4,8 giros por ano."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "O ERRO QUE INVERTE O RESULTADO",
+          "items": [
+            "Use CMV no numerador, não faturamento",
+            "Faturamento embute a sua margem; estoque é avaliado a custo",
+            "Misturar os dois infla o giro e faz o estoque parecer melhor do que está",
+            "Na Roupa Bonita, usar faturamento daria 13,4 giros em vez de 4,8 — quase o triplo"
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "cmv",
+              "label": "CMV do período (R$)",
+              "type": "currency",
+              "placeholder": "129600"
+            },
+            {
+              "id": "medio",
+              "label": "Estoque médio (R$)",
+              "type": "currency",
+              "placeholder": "27000"
+            },
+            {
+              "id": "dias",
+              "label": "Dias do período",
+              "type": "number",
+              "placeholder": "365"
+            }
+          ],
+          "formula": "if (!(medio > 0)) { return { aviso: 'Informe o estoque médio para calcular o giro.' }; } if (!(dias > 0)) { return { aviso: 'Informe quantos dias tem o período (365 para um ano, 30 para um mês).' }; } const giro = cmv / medio; if (giro <= 0) { return { aviso: 'Sem CMV no período não há giro para calcular.' }; } return { giro, pme: dias / giro };",
+          "resultLabel": "Seu giro de estoque",
+          "resultFields": [
+            {
+              "key": "giro",
+              "label": "Giros no período",
+              "format": "number"
+            },
+            {
+              "key": "pme",
+              "label": "Dias por giro",
+              "format": "number"
+            }
+          ],
+          "resultFormat": "object"
+        },
+        {
+          "type": "heading",
+          "text": "Giro alto é sempre melhor?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Quase sempre, mas não sempre. Giro muito alto pode significar que você compra pouco e vive no limite — e aí a próxima venda perdida por falta de produto já apaga o ganho de ter menos dinheiro parado."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Tipo de negócio",
+            "Giro anual típico"
+          ],
+          "rows": [
+            [
+              "Hortifrúti, padaria, alimentos frescos",
+              "50 a 100"
+            ],
+            [
+              "Supermercado",
+              "12 a 20"
+            ],
+            [
+              "Vestuário e calçados",
+              "3 a 6"
+            ],
+            [
+              "Material de construção",
+              "4 a 8"
+            ],
+            [
+              "Joalheria, móveis planejados",
+              "1 a 3"
+            ]
+          ],
+          "caption": "Referência de mercado — compare com o seu setor, não com a loja do vizinho"
+        },
+        {
+          "type": "quiz",
+          "question": "Giro caiu de 6 para 4 e as vendas ficaram iguais. O que aconteceu?",
+          "options": [
+            "A loja vendeu menos",
+            "O estoque médio aumentou — tem mais dinheiro parado para o mesmo volume de venda",
+            "O fornecedor aumentou o preço"
+          ],
+          "correct": 1,
+          "explanation": "Com o CMV constante, só o denominador pode ter mudado. Estoque maior para a mesma venda significa dinheiro que saiu do caixa e foi para a prateleira — muitas vezes é isso que aperta o mês seguinte."
+        }
+      ]
+    },
+    {
+      "id": "pme",
+      "shortTitle": "PME",
+      "kicker": "MÓDULO 04 · PME",
+      "title": "PME: em quantos dias o estoque vira venda",
+      "summary": "O Prazo Médio de Estocagem traduz o giro em dias — e dias é a linguagem do seu caixa.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "O giro diz \"4,8 vezes por ano\". O PME diz a mesma coisa de um jeito muito mais útil: \"cada peça fica 76 dias na loja antes de vender\". Dias é o que você consegue comparar com o prazo do fornecedor e com o prazo que o cliente leva para pagar."
+        },
+        {
+          "type": "math",
+          "expression": "PME = \\frac{Estoque\\ M\\acute{e}dio}{CMV} \\times Dias\\ do\\ Per\\acute{i}odo"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ou, se você já calculou o giro, de forma ainda mais direta: PME = dias do período ÷ giro. Os dois caminhos dão o mesmo número."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "PME da Roupa Bonita",
+            "Conta",
+            "Resultado"
+          ],
+          "rows": [
+            [
+              "Pelo estoque",
+              "(27.000 ÷ 129.600) × 365",
+              "76 dias"
+            ],
+            [
+              "Pelo giro",
+              "365 ÷ 4,8",
+              "76 dias"
+            ]
+          ],
+          "caption": "Mesmo número, dois caminhos"
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "O QUE 76 DIAS SIGNIFICAM NO CAIXA",
+          "items": [
+            "Você paga o fornecedor em 45 dias",
+            "A mercadoria só vira venda no dia 76",
+            "São 31 dias bancando a mercadoria com dinheiro seu",
+            "É exatamente esse buraco que vira \"preciso de capital de giro\""
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "medio",
+              "label": "Estoque médio (R$)",
+              "type": "currency",
+              "placeholder": "27000"
+            },
+            {
+              "id": "cmv",
+              "label": "CMV do período (R$)",
+              "type": "currency",
+              "placeholder": "129600"
+            },
+            {
+              "id": "dias",
+              "label": "Dias do período",
+              "type": "number",
+              "placeholder": "365"
+            },
+            {
+              "id": "pmp",
+              "label": "Prazo que o fornecedor te dá (dias)",
+              "type": "number",
+              "placeholder": "45"
+            }
+          ],
+          "formula": "if (!(cmv > 0)) { return { aviso: 'Informe o CMV do período.' }; } if (!(dias > 0)) { return { aviso: 'Informe os dias do período (365 para um ano).' }; } const pme = (medio / cmv) * dias; const descoberto = pme - pmp; return { pme, descoberto, giro: dias / pme };",
+          "resultLabel": "Seu prazo médio de estocagem",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "pme",
+              "label": "PME (dias)",
+              "format": "number"
+            },
+            {
+              "key": "giro",
+              "label": "Giros no período",
+              "format": "number"
+            },
+            {
+              "key": "descoberto",
+              "label": "Dias bancando com dinheiro seu",
+              "format": "number"
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Se \"dias bancando com dinheiro seu\" der negativo, ótimo: o fornecedor está financiando o seu estoque, e não o contrário."
+        },
+        {
+          "type": "quiz",
+          "question": "O PME da loja caiu de 76 para 50 dias. O que isso libera de dinheiro?",
+          "options": [
+            "Nada, só muda o indicador",
+            "Cerca de R$ 9.200 — o estoque necessário cai de R$ 27.000 para R$ 17.800",
+            "Depende do preço de venda"
+          ],
+          "correct": 1,
+          "explanation": "Com CMV de R$ 129.600 ao ano, 50 dias de estoque valem (129.600 ÷ 365) × 50 = R$ 17.753. A diferença para os R$ 27.000 atuais são R$ 9.247 que voltam para o caixa — sem vender uma peça a mais."
+        }
+      ]
+    },
+    {
+      "id": "cobertura",
+      "shortTitle": "Cobertura",
+      "kicker": "MÓDULO 05 · COBERTURA",
+      "title": "Cobertura: quantos dias de venda você tem na mão",
+      "summary": "O PME olha para trás. A cobertura olha para frente: com o estoque de hoje, até quando você aguenta?",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "PME e cobertura parecem a mesma coisa e não são. O PME é histórico: mede o que já aconteceu, com estoque médio e CMV do período. A cobertura é uma foto do agora: pega o estoque que está na prateleira hoje e divide pelo consumo diário esperado."
+        },
+        {
+          "type": "math",
+          "expression": "Cobertura = \\frac{Estoque\\ Atual}{Consumo\\ M\\acute{e}dio\\ Di\\acute{a}rio}"
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Calcule o consumo diário",
+              "text": "CMV mensal ÷ dias do mês. Na Roupa Bonita: R$ 10.800 ÷ 30 = R$ 360 por dia."
+            },
+            {
+              "title": "Veja o estoque de hoje",
+              "text": "Não o médio — o que está na loja agora. Digamos R$ 28.000."
+            },
+            {
+              "title": "Divida",
+              "text": "R$ 28.000 ÷ R$ 360 = 78 dias de cobertura."
+            },
+            {
+              "title": "Compare com o prazo de reposição",
+              "text": "Se o fornecedor entrega em 20 dias, você tem folga. Se demora 90, já está atrasado para comprar."
+            }
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "atual",
+              "label": "Estoque de hoje (R$)",
+              "type": "currency",
+              "placeholder": "28000"
+            },
+            {
+              "id": "cmvMes",
+              "label": "CMV de um mês (R$)",
+              "type": "currency",
+              "placeholder": "10800"
+            },
+            {
+              "id": "entrega",
+              "label": "Prazo de entrega do fornecedor (dias)",
+              "type": "number",
+              "placeholder": "20"
+            }
+          ],
+          "formula": "if (!(cmvMes > 0)) { return { aviso: 'Informe o CMV de um mês para achar o consumo diário.' }; } const diario = cmvMes / 30; const cobertura = atual / diario; const folga = cobertura - entrega; return { cobertura, diario, folga };",
+          "resultLabel": "Sua cobertura de estoque",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "cobertura",
+              "label": "Dias de cobertura",
+              "format": "number"
+            },
+            {
+              "key": "diario",
+              "label": "Consumo por dia",
+              "format": "currency"
+            },
+            {
+              "key": "folga",
+              "label": "Folga além da entrega (dias)",
+              "format": "number"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "FOLGA NEGATIVA É ALARME",
+          "items": [
+            "Significa que o estoque acaba antes de a reposição chegar",
+            "Você vai passar alguns dias sem produto, perdendo venda em silêncio",
+            "É hora de comprar hoje, não na semana que vem"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "A cobertura é de 15 dias e o fornecedor entrega em 25. O que fazer?",
+          "options": [
+            "Esperar o estoque acabar para comprar",
+            "Comprar agora — vão faltar 10 dias de produto mesmo pedindo hoje",
+            "Aumentar o preço para vender menos"
+          ],
+          "correct": 1,
+          "explanation": "Mesmo pedindo neste instante, a mercadoria chega no dia 25 e o estoque termina no 15. Dez dias de prateleira vazia. É por isso que o ponto de pedido, do módulo 7, não pode ser zero."
+        }
+      ]
+    },
+    {
+      "id": "abc",
+      "shortTitle": "Curva ABC",
+      "kicker": "MÓDULO 06 · CURVA ABC",
+      "title": "Curva ABC: onde está o seu dinheiro de verdade",
+      "summary": "Poucos itens respondem pela maior parte do valor. Tratar todos igual é desperdiçar atenção.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Se você vende 300 itens diferentes, não dá para controlar os 300 com o mesmo cuidado — e nem precisa. Na maioria das lojas, algo perto de 20% dos itens responde por 80% do valor movimentado. A curva ABC separa quem é quem."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Classe",
+            "% dos itens",
+            "% do valor",
+            "Como tratar"
+          ],
+          "rows": [
+            [
+              "A",
+              "~20%",
+              "~80%",
+              "Controle apertado, contagem frequente, nunca faltar"
+            ],
+            [
+              "B",
+              "~30%",
+              "~15%",
+              "Controle moderado, revisão mensal"
+            ],
+            [
+              "C",
+              "~50%",
+              "~5%",
+              "Controle simples, comprar em lote maior e esquecer"
+            ]
+          ],
+          "caption": "As faixas são referência, não lei — o que importa é a ordem"
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Liste os itens com o valor movimentado",
+              "text": "Quantidade vendida no ano × custo unitário. É valor de saída, não de estoque parado."
+            },
+            {
+              "title": "Ordene do maior para o menor",
+              "text": "Uma planilha resolve: uma coluna de item, uma de valor."
+            },
+            {
+              "title": "Acumule o percentual",
+              "text": "Some linha a linha até cobrir 80% do total: esses são os A."
+            },
+            {
+              "title": "Continue até 95%",
+              "text": "O que estiver entre 80% e 95% são os B. O resto é C."
+            },
+            {
+              "title": "Trate cada classe de um jeito",
+              "text": "O item A merece contagem semanal. O item C pode ser comprado uma vez por semestre."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "DOIS ERROS COMUNS",
+          "items": [
+            "Classificar pelo preço unitário: um item caro que vende uma vez por ano não é classe A",
+            "Classificar pela quantidade: mil unidades de um item de R$ 2 movimentam menos que dez de R$ 500",
+            "O critério é o VALOR movimentado no período: quantidade × custo"
+          ]
+        },
+        {
+          "type": "accordion",
+          "items": [
+            {
+              "title": "E os itens que não vendem nada?",
+              "text": "Eles nem aparecem na curva, porque movimentam zero. Faça uma lista à parte: itens sem saída há mais de 6 meses. Esse dinheiro está morto na prateleira e quase sempre vale mais liquidar com desconto do que esperar."
+            },
+            {
+              "title": "Um item C pode ser importante?",
+              "text": "Pode. Um parafuso de R$ 0,50 é classe C em valor, mas se a sua montagem para sem ele, ele é crítico. Por isso muita gente cruza a ABC com uma classificação de criticidade: o item pode ser C em dinheiro e A em importância."
+            },
+            {
+              "title": "De quanto em quanto tempo refaço?",
+              "text": "A cada seis meses, e sempre depois de uma mudança grande de mix ou de sazonalidade. A curva de dezembro de uma loja de roupas não é a mesma de julho."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Um vestido custa R$ 200 e vende 4 por ano. Uma camiseta custa R$ 36 e vende 600 por ano. Qual é classe A?",
+          "options": [
+            "O vestido, porque é mais caro",
+            "A camiseta: R$ 21.600 movimentados contra R$ 800 do vestido",
+            "Os dois, porque são produtos diferentes"
+          ],
+          "correct": 1,
+          "explanation": "600 × R$ 36 = R$ 21.600. 4 × R$ 200 = R$ 800. A camiseta move 27 vezes mais dinheiro. É nela que vale contar estoque toda semana — e é dela que a falta dói no caixa."
+        }
+      ]
+    },
+    {
+      "id": "ponto-pedido",
+      "shortTitle": "Quando comprar",
+      "kicker": "MÓDULO 07 · REPOSIÇÃO",
+      "title": "Estoque mínimo e ponto de pedido",
+      "summary": "Duas contas que respondem a pergunta mais prática do estoque: quando eu preciso comprar de novo?",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Comprar quando o estoque acaba é tarde demais: a mercadoria leva dias para chegar. O ponto de pedido é o nível em que você dispara a compra para que a reposição chegue antes da prateleira esvaziar."
+        },
+        {
+          "type": "math",
+          "expression": "Ponto\\ de\\ Pedido = (Consumo\\ Di\\acute{a}rio \\times Prazo\\ de\\ Entrega) + Estoque\\ de\\ Seguran\\tilde{c}a"
+        },
+        {
+          "type": "heading",
+          "text": "Estoque de segurança: o colchão"
+        },
+        {
+          "type": "paragraph",
+          "text": "Se tudo fosse previsível, bastava consumo × prazo. Mas o fornecedor atrasa e a semana boa vende mais que a média. O estoque de segurança cobre essas duas variações — e é ele que separa um controle que funciona de um que quebra no primeiro imprevisto."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "UM JEITO SIMPLES DE DIMENSIONAR",
+          "items": [
+            "Pegue o pior mês de venda do último ano, não a média",
+            "Veja o maior atraso que aquele fornecedor já te deu",
+            "Estoque de segurança = consumo do pior cenário × maior atraso já visto",
+            "Item classe A merece colchão maior; item C, quase nenhum"
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "consumoMes",
+              "label": "Consumo médio no mês (unidades)",
+              "type": "number",
+              "placeholder": "300"
+            },
+            {
+              "id": "entrega",
+              "label": "Prazo de entrega (dias)",
+              "type": "number",
+              "placeholder": "20"
+            },
+            {
+              "id": "atraso",
+              "label": "Maior atraso já visto (dias)",
+              "type": "number",
+              "placeholder": "7"
+            },
+            {
+              "id": "pico",
+              "label": "Quanto o melhor mês supera a média (%)",
+              "type": "percentage",
+              "placeholder": "30"
+            }
+          ],
+          "formula": "if (!(consumoMes > 0)) { return { aviso: 'Informe quantas unidades você vende por mês.' }; } const diario = consumoMes / 30; const seguranca = Math.ceil(diario * atraso + diario * (pico / 100) * entrega); const ponto = Math.ceil(diario * entrega + seguranca); return { ponto, seguranca, diario, diasProtegido: diario > 0 ? seguranca / diario : 0 };",
+          "resultLabel": "Seu ponto de pedido",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "ponto",
+              "label": "Comprar quando chegar em (un.)",
+              "format": "number"
+            },
+            {
+              "key": "seguranca",
+              "label": "Estoque de segurança (un.)",
+              "format": "number"
+            },
+            {
+              "key": "diario",
+              "label": "Consumo por dia (un.)",
+              "format": "number"
+            },
+            {
+              "key": "diasProtegido",
+              "label": "Dias de proteção extra",
+              "format": "number"
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Na Roupa Bonita: 10 peças por dia, entrega em 20 dias, atraso de até 7 e pico de 30%. Ponto de pedido em 200 + 130 = 330 peças."
+        },
+        {
+          "type": "quiz",
+          "question": "Por que o ponto de pedido não pode ser zero?",
+          "options": [
+            "Porque o sistema não aceita",
+            "Porque a mercadoria leva dias para chegar — comprar no zero garante prateleira vazia",
+            "Porque o fornecedor exige pedido mínimo"
+          ],
+          "correct": 1,
+          "explanation": "Entre o pedido e a entrega existe um prazo. Se você só compra quando acabou, fica sem produto exatamente durante esse prazo — e a venda perdida nesse intervalo não aparece em nenhum relatório."
+        }
+      ]
+    },
+    {
+      "id": "lote",
+      "shortTitle": "Quanto comprar",
+      "kicker": "MÓDULO 08 · LOTE ECONÔMICO",
+      "title": "Quanto comprar de cada vez",
+      "summary": "Comprar muito trava dinheiro. Comprar pouco multiplica frete e pedido. Existe um meio-termo, e ele se calcula.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Toda compra tem dois custos que puxam para lados opostos. Fazer o pedido custa dinheiro — frete, tempo de alguém, conferência. Manter a mercadoria também custa — dinheiro parado, espaço, perda. Comprar em lotes grandes barateia o primeiro e encarece o segundo."
+        },
+        {
+          "type": "comparison",
+          "columns": [
+            {
+              "label": "Lotes grandes, poucas compras",
+              "tone": "neutral",
+              "items": [
+                "Menos frete e menos pedidos no ano",
+                "Costuma render desconto por volume",
+                "Muito dinheiro parado",
+                "Mais risco de encalhe e perda"
+              ]
+            },
+            {
+              "label": "Lotes pequenos, compras frequentes",
+              "tone": "neutral",
+              "items": [
+                "Pouco dinheiro parado",
+                "Reage rápido a mudança de demanda",
+                "Frete e burocracia se multiplicam",
+                "Perde desconto de volume"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "O lote econômico de compra"
+        },
+        {
+          "type": "paragraph",
+          "text": "A fórmula do LEC acha o tamanho de pedido em que a soma dos dois custos é a menor possível. Ela vem da década de 1910 e continua útil justamente por ser simples."
+        },
+        {
+          "type": "math",
+          "expression": "LEC = \\sqrt{\\frac{2 \\times D \\times C_p}{C_m}}"
+        },
+        {
+          "type": "paragraph",
+          "text": "Onde D é a demanda anual em unidades, Cp é o custo de fazer um pedido (frete + tempo + conferência) e Cm é o custo de manter uma unidade em estoque por um ano."
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "demanda",
+              "label": "Demanda anual (unidades)",
+              "type": "number",
+              "placeholder": "3600"
+            },
+            {
+              "id": "custoPedido",
+              "label": "Custo de fazer um pedido (R$)",
+              "type": "currency",
+              "placeholder": "180"
+            },
+            {
+              "id": "custoManter",
+              "label": "Custo de manter 1 unidade por ano (R$)",
+              "type": "currency",
+              "placeholder": "9"
+            }
+          ],
+          "formula": "if (!(demanda > 0) || !(custoManter > 0)) { return { aviso: 'Informe a demanda anual e o custo de manter uma unidade por ano.' }; } const lec = Math.sqrt((2 * demanda * custoPedido) / custoManter); if (!isFinite(lec) || lec <= 0) { return { aviso: 'Confira os valores: o resultado não fez sentido.' }; } const pedidos = demanda / lec; return { lec: Math.round(lec), pedidos, intervalo: 365 / pedidos, custoAnual: (demanda / lec) * custoPedido + (lec / 2) * custoManter };",
+          "resultLabel": "Seu lote econômico",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "lec",
+              "label": "Comprar por vez (un.)",
+              "format": "number"
+            },
+            {
+              "key": "pedidos",
+              "label": "Pedidos por ano",
+              "format": "number"
+            },
+            {
+              "key": "intervalo",
+              "label": "Dias entre pedidos",
+              "format": "number"
+            },
+            {
+              "key": "custoAnual",
+              "label": "Custo total anual",
+              "format": "currency"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "O LEC É UM PONTO DE PARTIDA, NÃO UMA ORDEM",
+          "items": [
+            "Ele supõe demanda estável — em produto sazonal, ajuste na mão",
+            "Se o fornecedor tem pedido mínimo, o mínimo manda",
+            "Desconto por volume pode compensar comprar mais que o LEC: compare os dois cenários",
+            "Produto perecível ou de moda tem prazo de validade que a fórmula não enxerga"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "O frete por pedido dobrou. O que acontece com o lote econômico?",
+          "options": [
+            "Diminui, para gastar menos",
+            "Aumenta — vale a pena comprar mais de cada vez para fazer menos pedidos",
+            "Não muda"
+          ],
+          "correct": 1,
+          "explanation": "O custo do pedido está no numerador da raiz. Se pedir ficou mais caro, o ponto de equilíbrio se desloca para lotes maiores e menos frequentes. O inverso também vale: frete grátis empurra para compras menores e mais frequentes."
+        }
+      ]
+    },
+    {
+      "id": "custo-manter",
+      "shortTitle": "Custo de manter",
+      "kicker": "MÓDULO 09 · CUSTO REAL",
+      "title": "Quanto custa manter estoque",
+      "summary": "O preço de compra é só uma parte. Manter mercadoria parada tem um custo anual que quase ninguém calcula.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Pergunte a um lojista quanto custa o estoque dele e ele dirá o valor de compra. Mas manter aquilo parado durante um ano consome dinheiro em quatro frentes, e a soma costuma surpreender."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "De onde vem o custo",
+            "Quanto costuma pesar ao ano"
+          ],
+          "rows": [
+            [
+              "Capital parado — o que esse dinheiro renderia, ou o juro que você paga por não tê-lo",
+              "10% a 20%"
+            ],
+            [
+              "Espaço — aluguel, energia, prateleira, organização",
+              "2% a 5%"
+            ],
+            [
+              "Perda — quebra, furto, vencimento, avaria",
+              "1% a 5%"
+            ],
+            [
+              "Obsolescência — o que sai de moda ou de linha e vira liquidação",
+              "2% a 10%"
+            ],
+            [
+              "Total típico",
+              "15% a 40%"
+            ]
+          ],
+          "caption": "Por isso um estoque de R$ 27.000 pode custar de R$ 4.000 a R$ 10.800 por ano"
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "estoque",
+              "label": "Estoque médio (R$)",
+              "type": "currency",
+              "placeholder": "27000"
+            },
+            {
+              "id": "capital",
+              "label": "Custo do capital ao ano (%)",
+              "type": "percentage",
+              "placeholder": "14"
+            },
+            {
+              "id": "espaco",
+              "label": "Espaço e operação (%)",
+              "type": "percentage",
+              "placeholder": "3"
+            },
+            {
+              "id": "perda",
+              "label": "Perda e avaria (%)",
+              "type": "percentage",
+              "placeholder": "2"
+            },
+            {
+              "id": "obsoleto",
+              "label": "Obsolescência e liquidação (%)",
+              "type": "percentage",
+              "placeholder": "5"
+            }
+          ],
+          "formula": "if (!(estoque > 0)) { return { aviso: 'Informe o estoque médio.' }; } const taxa = capital + espaco + perda + obsoleto; const anual = estoque * (taxa / 100); return { anual, mensal: anual / 12, taxa };",
+          "resultLabel": "O que o seu estoque custa",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "anual",
+              "label": "Custo por ano",
+              "format": "currency"
+            },
+            {
+              "key": "mensal",
+              "label": "Custo por mês",
+              "format": "currency"
+            },
+            {
+              "key": "taxa",
+              "label": "Taxa total",
+              "format": "percentage"
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Na Roupa Bonita, 24% sobre R$ 27.000 são R$ 6.480 por ano — R$ 540 por mês, mais que o contador e a internet somados."
+        },
+        {
+          "type": "callout",
+          "tone": "success",
+          "title": "O LADO BOM DESSA CONTA",
+          "items": [
+            "Ela transforma \"reduzir estoque\" em dinheiro concreto",
+            "Cada R$ 1.000 a menos parado economiza cerca de R$ 240 por ano",
+            "Reduzir o PME de 76 para 50 dias libera R$ 9.247 e ainda corta R$ 2.219 de custo anual",
+            "Sem vender uma peça a mais, sem cortar um funcionário"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Vale a pena comprar um lote grande com 5% de desconto se ele dobra o seu estoque por um ano?",
+          "options": [
+            "Sempre — desconto é desconto",
+            "Não necessariamente: se manter custa 24% ao ano, o desconto de 5% não paga o custo extra",
+            "Sim, se o fornecedor for bom"
+          ],
+          "correct": 1,
+          "explanation": "Esse é o cálculo que quase ninguém faz. Um desconto de 5% que obriga a carregar a mercadoria por muito mais tempo pode sair mais caro que pagar o preço cheio e comprar de novo daqui a dois meses."
+        }
+      ]
+    },
+    {
+      "id": "ruptura",
+      "shortTitle": "Ruptura e sobra",
+      "kicker": "MÓDULO 10 · CONTROLE",
+      "title": "Ruptura, excesso e a conta que não fecha",
+      "summary": "Faltar custa venda, sobrar custa caixa — e o estoque do sistema quase nunca é o da prateleira.",
+      "content": [
+        {
+          "type": "heading",
+          "text": "Ruptura: a venda que você nunca vê"
+        },
+        {
+          "type": "paragraph",
+          "text": "Quando falta produto, o cliente não reclama: ele compra em outro lugar. Essa venda não entra em relatório nenhum, e é por isso que ruptura é o prejuízo mais subestimado do varejo."
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "diasSem",
+              "label": "Dias sem o produto no mês",
+              "type": "number",
+              "placeholder": "5"
+            },
+            {
+              "id": "vendaDia",
+              "label": "Venda média por dia daquele item (R$)",
+              "type": "currency",
+              "placeholder": "340"
+            },
+            {
+              "id": "margem",
+              "label": "Margem de contribuição (%)",
+              "type": "percentage",
+              "placeholder": "53"
+            }
+          ],
+          "formula": "const perdido = diasSem * vendaDia; const margemPerdida = perdido * (margem / 100); return { perdido, margemPerdida, ano: margemPerdida * 12 };",
+          "resultLabel": "O custo da falta",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "perdido",
+              "label": "Faturamento perdido no mês",
+              "format": "currency"
+            },
+            {
+              "key": "margemPerdida",
+              "label": "Margem perdida no mês",
+              "format": "currency"
+            },
+            {
+              "key": "ano",
+              "label": "Se repetir todo mês, no ano",
+              "format": "currency"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Excesso: o dinheiro que não volta"
+        },
+        {
+          "type": "paragraph",
+          "text": "Do outro lado, a peça que não vende há seis meses não é estoque: é prejuízo adiado. Cada mês que ela fica ali, você paga o custo de manter e ela perde valor de mercado."
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "A MATEMÁTICA DESCONFORTÁVEL DO ENCALHE",
+          "items": [
+            "Uma peça de R$ 36 parada há um ano já consumiu cerca de R$ 8,60 em custo de manter",
+            "Liquidar a R$ 40 hoje costuma ser melhor que esperar vender a R$ 100 daqui a um ano",
+            "O dinheiro que volta compra mercadoria que gira",
+            "Segurar preço de item morto é apego, não estratégia"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Acuracidade: o estoque que existe de verdade"
+        },
+        {
+          "type": "paragraph",
+          "text": "De nada adianta calcular PME, ponto de pedido e lote econômico se o número no sistema não bate com a prateleira. Acuracidade é o percentual de itens em que o sistema acerta."
+        },
+        {
+          "type": "math",
+          "expression": "Acuracidade = \\frac{Itens\\ Corretos}{Itens\\ Contados} \\times 100"
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "contados",
+              "label": "Itens contados no inventário",
+              "type": "number",
+              "placeholder": "120"
+            },
+            {
+              "id": "corretos",
+              "label": "Itens em que o sistema acertou",
+              "type": "number",
+              "placeholder": "102"
+            }
+          ],
+          "formula": "if (!(contados > 0)) { return { aviso: 'Informe quantos itens você contou.' }; } if (corretos > contados) { return { aviso: 'Os itens corretos não podem passar do total contado.' }; } const acuracidade = (corretos / contados) * 100; const leitura = acuracidade >= 95 ? 'Bom: dá para confiar nos indicadores.' : acuracidade >= 90 ? 'Atenção: arrume antes de decidir compra pelo sistema.' : 'Crítico: os indicadores estão sendo calculados sobre dados errados.'; return { acuracidade, divergentes: contados - corretos, leitura };",
+          "resultLabel": "Sua acuracidade de estoque",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "acuracidade",
+              "label": "Acuracidade",
+              "format": "percentage"
+            },
+            {
+              "key": "divergentes",
+              "label": "Itens divergentes",
+              "format": "number"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "accordion",
+          "items": [
+            {
+              "title": "Preciso parar a loja para fazer inventário?",
+              "text": "Não. A contagem cíclica é melhor: conte os itens classe A toda semana, os B todo mês e os C uma vez por semestre. Some alguns minutos por dia e você nunca mais precisa do inventário geral de fim de ano."
+            },
+            {
+              "title": "O sistema sempre erra para menos. Por quê?",
+              "text": "Quase sempre por três causas: venda registrada com o código errado, perda não baixada e devolução que voltou para a prateleira sem entrar no sistema. Achar qual das três domina resolve a maior parte da divergência."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "A acuracidade do estoque é 78%. Vale a pena calcular o ponto de pedido?",
+          "options": [
+            "Sim, é melhor que nada",
+            "Não adianta: o cálculo sai certo sobre um número errado, e vai mandar comprar a hora errada",
+            "Sim, desde que use estoque médio"
+          ],
+          "correct": 1,
+          "explanation": "Com 22% dos itens divergentes, o sistema vai dizer que tem produto quando não tem — e o ponto de pedido nunca dispara. Arrumar a contagem vem antes de qualquer indicador."
+        }
+      ]
+    },
+    {
+      "id": "diagnostico",
+      "shortTitle": "Seu estoque",
+      "kicker": "MÓDULO 11 · DIAGNÓSTICO",
+      "title": "O diagnóstico do seu estoque",
+      "summary": "Tudo o que você calculou, aplicado de uma vez aos seus números.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Agora é a sua vez. Preencha com os números do seu negócio e veja, de uma vez, quanto dinheiro está parado, em quantos dias ele volta e quanto isso está te custando."
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "medio",
+              "label": "Estoque médio (R$)",
+              "type": "currency",
+              "placeholder": "27000"
+            },
+            {
+              "id": "cmvMes",
+              "label": "CMV de um mês (R$)",
+              "type": "currency",
+              "placeholder": "10800"
+            },
+            {
+              "id": "pmp",
+              "label": "Prazo do fornecedor (dias)",
+              "type": "number",
+              "placeholder": "45"
+            },
+            {
+              "id": "custoManter",
+              "label": "Custo de manter ao ano (%)",
+              "type": "percentage",
+              "placeholder": "24"
+            }
+          ],
+          "formula": "if (!(cmvMes > 0)) { return { aviso: 'Informe o CMV de um mês para o diagnóstico.' }; } const cmvAno = cmvMes * 12; const giro = medio > 0 ? cmvAno / medio : 0; if (giro <= 0) { return { aviso: 'Informe o estoque médio para calcular o giro.' }; } const pme = 365 / giro; const custo = medio * (custoManter / 100); const idealPME = Math.max(pmp, 30); const estoqueIdeal = (cmvAno / 365) * idealPME; return { pme, giro, custo, descoberto: pme - pmp, liberaria: Math.max(0, medio - estoqueIdeal) };",
+          "resultLabel": "Seu diagnóstico",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "pme",
+              "label": "PME (dias)",
+              "format": "number"
+            },
+            {
+              "key": "giro",
+              "label": "Giros por ano",
+              "format": "number"
+            },
+            {
+              "key": "descoberto",
+              "label": "Dias bancando com dinheiro seu",
+              "format": "number"
+            },
+            {
+              "key": "custo",
+              "label": "Custo de manter ao ano",
+              "format": "currency"
+            },
+            {
+              "key": "liberaria",
+              "label": "Liberaria ao girar no prazo do fornecedor",
+              "format": "currency"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "COMO LER O RESULTADO",
+          "items": [
+            "PME muito acima do seu setor: há dinheiro parado a mais",
+            "Dias bancando positivo: você financia o fornecedor; negativo: ele financia você",
+            "A última linha é o caixa que voltaria se o seu estoque girasse no mesmo prazo em que você paga"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "As três alavancas, em ordem de facilidade"
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Liquide o que não gira",
+              "text": "Liste o que não vende há 6 meses e transforme em dinheiro, mesmo com desconto. É o ganho mais rápido e o que menos exige do resto."
+            },
+            {
+              "title": "Ajuste a compra dos itens A",
+              "text": "São 20% dos itens e 80% do dinheiro. Ponto de pedido e lote econômico aplicados só neles já mudam o total."
+            },
+            {
+              "title": "Negocie prazo com o fornecedor",
+              "text": "Cada dia a mais de prazo é um dia a menos bancando o estoque com dinheiro seu. Volume concentrado em menos fornecedores costuma destravar isso."
+            },
+            {
+              "title": "Só então mexa no mix",
+              "text": "Cortar linha inteira é a decisão mais lenta e mais arriscada. Deixe por último, e com a curva ABC na mão."
+            }
+          ]
+        },
+        {
+          "type": "accordion",
+          "items": [
+            {
+              "title": "De quanto em quanto tempo eu refaço essas contas?",
+              "text": "PME e giro, todo mês, junto com o fechamento. Curva ABC, a cada seis meses. Ponto de pedido dos itens A, sempre que o fornecedor mudar o prazo de entrega."
+            },
+            {
+              "title": "Meu PME é alto mas eu vendo bem. Tem problema?",
+              "text": "Tem, mas é um problema de caixa, não de venda. Você pode estar lucrativo no papel e apertado no banco — e é exatamente essa a ponte para o curso de capital de giro."
+            },
+            {
+              "title": "E se eu não tenho sistema de estoque?",
+              "text": "Uma planilha com data, item, entrada, saída e saldo já permite tudo o que foi visto aqui. O que não dá é decidir compra de cabeça: a memória sempre superestima o que vende e esquece o que encalha."
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Estoque não é um problema de depósito. É um problema de caixa que por acaso tem forma de mercadoria."
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "Calcular o PME e o giro do seu negócio",
+            "Montar a curva ABC e separar os itens A",
+            "Listar o que não gira há mais de 6 meses e decidir o que fazer",
+            "Definir o ponto de pedido dos itens A",
+            "Comparar o seu PME com o prazo que o fornecedor te dá"
+          ]
+        }
+      ]
+    }
+  ]
+}

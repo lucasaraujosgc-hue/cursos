@@ -1,0 +1,2005 @@
+{
+  "slug": "precificar-comercio",
+  "courseName": "Como Precificar no Comércio e na Revenda",
+  "description": "Para quem compra pronto e revende. Calcule o preço a partir do CMV, embuta imposto, taxa de cartão e margem, e descubra quanto precisa girar por mês — acompanhando uma loja de roupas da etiqueta do fornecedor à etiqueta da vitrine.",
+  "leadCapture": "end",
+  "modules": [
+    {
+      "id": "problema",
+      "shortTitle": "Cobrar errado",
+      "kicker": "MÓDULO 01 · O PROBLEMA",
+      "title": "Quanto sua empresa perde por cobrar errado?",
+      "summary": "Duas empresas parecidas, destinos opostos — e os três erros que colocam a maioria no lado errado.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Duas empresas podem vender o mesmo tipo de produto, no mesmo bairro, para o mesmo público — e terminar o ano em situações completamente opostas. A diferença quase nunca está em quem vende mais. Está em quem sabe, de fato, quanto custa vender."
+        },
+        {
+          "type": "heading",
+          "text": "Duas empresas, dois destinos"
+        },
+        {
+          "type": "comparison",
+          "columns": [
+            {
+              "label": "Empresa A",
+              "tone": "negative",
+              "items": [
+                "Vende muito, o caixa parece sempre cheio",
+                "Cresceu rápido, abriu uma segunda unidade",
+                "Nunca calculou o preço mínimo de verdade",
+                "Cada venda, no fim das contas, dava prejuízo",
+                "Quebrou em menos de 2 anos"
+              ]
+            },
+            {
+              "label": "Empresa B",
+              "tone": "positive",
+              "items": [
+                "Vende menos que a concorrência",
+                "Cresce devagar, mas sem sustos",
+                "Sabe exatamente quanto cada venda precisa cobrir",
+                "Cada venda deixa uma margem real no caixa",
+                "Está no mercado há mais de 8 anos, lucrando todo mês"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Vender muito não é a mesma coisa que lucrar. Uma empresa pode estar cheia de clientes e, ainda assim, estar afundando — porque cada venda custa mais do que arrecada."
+        },
+        {
+          "type": "stats",
+          "items": [
+            {
+              "value": "R$ 2",
+              "label": "de prejuízo por venda",
+              "hint": "parece pouco..."
+            },
+            {
+              "value": "1.000",
+              "label": "vendas no mês",
+              "hint": "...multiplique"
+            },
+            {
+              "value": "−R$ 2.000",
+              "label": "no fim do mês",
+              "hint": "vendendo bem"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Por que isso acontece"
+        },
+        {
+          "type": "paragraph",
+          "text": "A Empresa A não é administrada por gente incompetente. Na maioria dos casos, o erro é simples e silencioso: o preço foi definido no chute, olhando o concorrente, ou cobrindo só os ingredientes — sem contar aluguel, imposto, salário e o lucro que o dono precisa para viver disso."
+        },
+        {
+          "type": "list",
+          "items": [
+            "R$ 2 de prejuízo por venda parece pouco — até você multiplicar por 1.000 vendas no mês",
+            "Quanto mais a Empresa A cresce vendendo no preço errado, mais rápido ela quebra",
+            "A Empresa B não é mais sortuda: ela só fez a conta antes de definir o preço"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Uma empresa vende muito, o caixa vive cheio e ela cresce rápido. Isso prova que ela dá lucro?",
+          "options": [
+            "Sim — caixa cheio é sinal de lucro",
+            "Não — ela pode estar perdendo dinheiro em cada venda",
+            "Só dá para saber olhando o faturamento anual"
+          ],
+          "correct": 1,
+          "explanation": "Caixa cheio mostra movimento, não resultado. Se cada venda sai abaixo do custo total, vender mais só acelera o prejuízo — é exatamente o que aconteceu com a Empresa A."
+        },
+        {
+          "type": "heading",
+          "text": "Os três erros clássicos"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Precificar por instinto, sem calcular gastos reais",
+            "Copiar o preço da concorrência sem saber a estrutura dela",
+            "Baixar o preço para 'ganhar' o cliente, corroendo a margem",
+            "Esquecer que aluguel, imposto e salário também precisam sair de cada venda"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Preço baixo demais não atrai clientes fiéis. Atrai clientes que vão embora assim que aparecer algo mais barato."
+        },
+        {
+          "type": "quiz",
+          "question": "Seu concorrente vende o mesmo produto por R$ 80. Copiar esse preço é seguro?",
+          "options": [
+            "Sim, se ele está no mercado é porque o preço funciona",
+            "Não — a estrutura de custo dele pode ser completamente diferente da sua",
+            "Sim, desde que você cubra o custo da matéria-prima"
+          ],
+          "correct": 1,
+          "explanation": "Ele pode ter aluguel menor, comprar em volume maior, estar em outro regime tributário — ou estar perdendo dinheiro sem saber. O preço dele resolve a conta dele, não a sua."
+        },
+        {
+          "type": "callout",
+          "title": "O QUE ESTE CURSO VAI RESOLVER",
+          "items": [
+            "Descobrir se o seu preço atual está, de fato, cobrindo tudo que ele precisa cobrir",
+            "Aprender a calcular o preço mínimo antes de pensar em desconto ou promoção",
+            "Entender por que 'vender mais' não resolve um preço calculado errado",
+            "Sair com uma fórmula própria, aplicada ao seu negócio, não só a exemplos"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Este curso é feito para quem compra pronto e revende. Ao longo dele você vai acompanhar a loja Roupa Bonita do primeiro gasto até o preço final — e, no último módulo, vai montar o preço do seu próprio negócio."
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "Anotar o preço que você cobra hoje pelo seu produto ou serviço principal",
+            "Anotar, de cabeça, se você sabe quanto sobra de lucro real em cada venda",
+            "Guardar essas duas respostas — vamos comparar com o preço calculado no fim do curso"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "custo-despesa",
+      "shortTitle": "Custo ou despesa?",
+      "kicker": "MÓDULO 02 · TIPOS DE GASTO",
+      "title": "Custo, despesa e investimento",
+      "summary": "Três tipos de gasto que se confundem o tempo todo — e que se comportam de forma diferente no preço.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Antes de falar de fórmulas, precisamos resolver uma confusão que trava a maioria dos empreendedores: nem todo gasto é a mesma coisa. Existem três tipos diferentes, e cada um se comporta de um jeito na hora de formar o preço."
+        },
+        {
+          "type": "heading",
+          "text": "O que é custo?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Custo é tudo aquilo que está ligado diretamente à produção do produto ou à prestação do serviço. Se você não tem esse gasto, o produto simplesmente não existe."
+        },
+        {
+          "type": "list",
+          "items": [
+            "O CMV: quanto você pagou ao fornecedor pela peça",
+            "Frete da mercadoria até a sua loja",
+            "Embalagem e sacola entregue ao cliente",
+            "Etiqueta e tag de preço",
+            "Comissão paga ao vendedor por venda"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "O que é despesa?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Despesa é o gasto necessário para manter a empresa funcionando, mas que não entra diretamente na fabricação do produto. Sem ela, a empresa não opera — mas ela não vira produto."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Aluguel do ponto comercial",
+            "Contador",
+            "Internet e telefone",
+            "Energia do escritório",
+            "Marketing e anúncios",
+            "Software de gestão"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "O que é investimento?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Investimento é um gasto feito hoje esperando retorno no futuro. Ele não é consumido numa única venda — ele fica na empresa e ajuda a gerar mais lucro depois."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Reforma da loja ou nova vitrine",
+            "Sistema de PDV e controle de estoque",
+            "Araras, provadores e mobiliário",
+            "Curso de vendas para a equipe"
+          ]
+        },
+        {
+          "type": "callout",
+          "title": "CUSTO x DESPESA x INVESTIMENTO",
+          "items": [
+            "CUSTO → Sem ele o produto não existe",
+            "DESPESA → Sem ela a empresa não funciona",
+            "INVESTIMENTO → Serve para aumentar o lucro no futuro"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Aluguel não vira camiseta. A camiseta que você comprou do fornecedor, sim. Essa é a diferença mais simples entre despesa e custo."
+        },
+        {
+          "type": "paragraph",
+          "text": "Agora um ponto importante que vai evitar confusão nos próximos módulos: mesmo custo e despesa sendo coisas diferentes na contabilidade, quando o assunto é formar o preço de venda, os dois precisam ser cobertos pelo dinheiro que entra. Por isso, nas fórmulas de precificação, vamos somar 'custos fixos' e 'despesas fixas' numa conta só, chamada de custos e despesas fixas totais. A separação conceitual importa para você entender de onde vem cada gasto — mas na hora de embutir no preço, ambos entram juntos."
+        },
+        {
+          "type": "paragraph",
+          "text": "Voltando à Roupa Bonita: o CMV, a embalagem e a comissão do vendedor são custos, porque estão ligados direto a cada peça vendida. Já aluguel, internet e contador são despesas, porque existem independente de quantas peças saírem. Se a dona reformar a vitrine, isso é investimento, porque vai ajudar a vender mais no futuro."
+        },
+        {
+          "type": "classify-exercise",
+          "items": [
+            "Aluguel da loja",
+            "CMV da peça",
+            "Contador",
+            "Sacola entregue ao cliente",
+            "Comissão do vendedor",
+            "Internet",
+            "Reforma da vitrine",
+            "Curso de vendas para a equipe",
+            "Compra do sistema de PDV",
+            "Frete da mercadoria"
+          ],
+          "categories": [
+            "Custo",
+            "Despesa",
+            "Investimento"
+          ],
+          "answerKey": {
+            "Aluguel da loja": "Despesa",
+            "CMV da peça": "Custo",
+            "Contador": "Despesa",
+            "Sacola entregue ao cliente": "Custo",
+            "Comissão do vendedor": "Custo",
+            "Internet": "Despesa",
+            "Reforma da vitrine": "Investimento",
+            "Curso de vendas para a equipe": "Investimento",
+            "Compra do sistema de PDV": "Investimento",
+            "Frete da mercadoria": "Custo"
+          }
+        },
+        {
+          "type": "quiz",
+          "question": "A loja gastou R$ 9.000 reformando a vitrine. Esse gasto entra no preço da camiseta de hoje?",
+          "options": [
+            "Sim, divida os R$ 9.000 pelas peças do mês",
+            "Não diretamente — é investimento; o que entra no preço é a depreciação dele ao longo do tempo",
+            "Não, investimento nunca aparece no preço"
+          ],
+          "correct": 1,
+          "explanation": "Jogar a reforma inteira no preço de um mês inflaria a etiqueta absurdamente. A vitrine vira custo aos poucos, pela depreciação — um valor mensal que entra junto das despesas fixas."
+        },
+        {
+          "type": "callout",
+          "title": "RESUMO DO MÓDULO",
+          "items": [
+            "Custo: sem ele o produto não existe",
+            "Despesa: sem ela a empresa não funciona, mas ela não vira produto",
+            "Investimento: gasto de hoje que aumenta o lucro no futuro",
+            "Na hora de precificar, custo e despesa fixos entram juntos na conta — mas entender a origem de cada um evita decisões erradas de corte de gasto"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fixo-variavel",
+      "shortTitle": "Fixo ou variável?",
+      "kicker": "MÓDULO 03 · CUSTOS",
+      "title": "Custo fixo e custo variável: a base do cálculo",
+      "summary": "A separação que é o coração da fórmula de preço — e por que o volume muda o custo de cada peça.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Dentro dos custos e despesas que você já aprendeu a identificar no módulo anterior, existe uma segunda separação essencial: o que é fixo e o que é variável. Essa divisão é o coração da fórmula de preço."
+        },
+        {
+          "type": "heading",
+          "text": "Custo (ou despesa) fixo"
+        },
+        {
+          "type": "paragraph",
+          "text": "É o gasto que existe todo mês, não importa se você vendeu 1 ou 1.000 unidades. Ele não sobe nem desce com o volume de vendas."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Aluguel do espaço",
+            "Salário da equipe fixa",
+            "Internet e contador",
+            "Softwares e assinaturas"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Custo variável"
+        },
+        {
+          "type": "paragraph",
+          "text": "É o gasto que muda proporcionalmente à quantidade produzida. Quanto mais você vende, mais ele cresce; quanto menos, mais ele encolhe."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Matéria-prima de cada unidade",
+            "Embalagem",
+            "Taxa de cartão por venda",
+            "Frete ou entrega por pedido"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Vamos usar a loja Roupa Bonita"
+        },
+        {
+          "type": "paragraph",
+          "text": "Para cada peça entregue, a loja Roupa Bonita gasta o seguinte — e esse gasto só existe quando há venda:"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Custo variável por peça",
+            "Valor"
+          ],
+          "rows": [
+            [
+              "CMV — o que você pagou ao fornecedor",
+              "R$ 35,00"
+            ],
+            [
+              "Embalagem",
+              "R$ 1,00"
+            ],
+            [
+              "Total por peça",
+              "R$ 36,00"
+            ]
+          ],
+          "caption": "Só existe quando há uma venda"
+        },
+        {
+          "type": "paragraph",
+          "text": "Além disso, a loja tem gastos que chegam todo mês, mesmo que não venda nada:"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Custo fixo do mês",
+            "Valor"
+          ],
+          "rows": [
+            [
+              "Aluguel",
+              "R$ 3.000"
+            ],
+            [
+              "Funcionários",
+              "R$ 5.000"
+            ],
+            [
+              "Internet",
+              "R$ 150"
+            ],
+            [
+              "Contador",
+              "R$ 400"
+            ],
+            [
+              "Total do mês",
+              "R$ 8.550"
+            ]
+          ],
+          "caption": "Existe mesmo sem nenhuma venda"
+        },
+        {
+          "type": "math",
+          "expression": "CT = CF + (CV \\times Q)",
+          "inline": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Onde CT é o Custo Total do mês, CF é o total fixo mensal, CV é o custo variável de cada unidade e Q é a quantidade vendida. Para saber quanto do custo fixo cada peça precisa carregar, dividimos o fixo pela quantidade do mês:"
+        },
+        {
+          "type": "math",
+          "expression": "CF_{unit\\acute{a}rio} = \\frac{CF}{Q}",
+          "inline": false
+        },
+        {
+          "type": "paragraph",
+          "text": "A loja Roupa Bonita vende, em média, 300 peças por mês. Isso significa que cada peça precisa carregar R$ 8.550 ÷ 300 = R$ 28,50 de custo fixo, antes de qualquer outro gasto entrar na conta."
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "custoFixoMensal",
+              "label": "Custos e Despesas Fixas do Mês (R$)",
+              "type": "currency",
+              "placeholder": "16700"
+            },
+            {
+              "id": "quantidadeMensal",
+              "label": "Quantidade Produzida/Vendida no Mês",
+              "type": "number",
+              "placeholder": "800"
+            }
+          ],
+          "formula": "if (!(quantidadeMensal > 0)) { return { aviso: 'Informe quantas unidades você produz ou vende por mês.' }; } return { resultado: custoFixoMensal / quantidadeMensal };",
+          "resultLabel": "Custo Fixo por Unidade",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "resultado",
+              "label": "Custo fixo por unidade",
+              "format": "currency"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Somando o custo fixo por peça ao custo variável, chegamos ao custo total: R$ 28,50 + R$ 36,00 = R$ 64,50. Esse é o mínimo que cada venda precisa cobrir — antes de pensar em imposto ou lucro."
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "custoVariavelUnitario",
+              "label": "Custo Variável por Unidade (R$)",
+              "type": "currency",
+              "placeholder": "24"
+            },
+            {
+              "id": "custoFixoUnitario",
+              "label": "Custo Fixo por Unidade (R$)",
+              "type": "currency",
+              "placeholder": "20.88"
+            }
+          ],
+          "formula": "custoVariavelUnitario + custoFixoUnitario",
+          "resultLabel": "Custo Total por Unidade",
+          "resultFormat": "currency"
+        },
+        {
+          "type": "paragraph",
+          "text": "Veja como o custo fixo por peça muda conforme o volume do mês sobe ou desce, sem alterar nada no que você entrega:"
+        },
+        {
+          "type": "scenario-chart",
+          "custoFixo": 8550,
+          "custoVariavelUnitario": 36,
+          "qtdMin": 150,
+          "qtdMax": 600
+        },
+        {
+          "type": "quiz",
+          "question": "A loja passou de 300 para 400 peças no mês, comprando pelo mesmo preço. O que acontece com o custo de cada peça?",
+          "options": [
+            "Aumenta, porque compra mais mercadoria",
+            "Fica igual: o CMV não mudou",
+            "Cai, porque o custo fixo se divide entre mais peças"
+          ],
+          "correct": 2,
+          "explanation": "O CMV por peça continua R$ 36. Mas o fixo sai de R$ 8.550÷300 = R$ 28,50 para R$ 8.550÷400 = R$ 21,38. Cada peça fica R$ 7,12 mais barata — só pelo giro. É por isso que, no varejo, estoque parado é caro."
+        },
+        {
+          "type": "cta",
+          "text": "Suba seus custos fixos uma vez e a calculadora passa a ratear tudo sozinha, sem planilha.",
+          "buttonLabel": "Abrir Custos Fixos",
+          "url": "https://calculadora.virgulacontabil.com.br/custos-fixos"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "Separar seus gastos em fixos e variáveis, como fizemos com a Roupa Bonita",
+            "Somar todos os custos e despesas fixas do mês",
+            "Estimar quantos peças você entrega, em média, por mês",
+            "Usar a calculadora acima para achar seu custo fixo por unidade e seu custo total"
+          ]
+        },
+        {
+          "type": "callout",
+          "title": "RESUMO DO MÓDULO",
+          "items": [
+            "Custo fixo não muda com o volume vendido",
+            "Custo variável muda proporcionalmente ao volume vendido",
+            "Custo fixo por unidade = custo fixo total ÷ quantidade produzida",
+            "Vender mais dilui o custo fixo por unidade — é uma das formas mais diretas de ganhar margem sem mudar o preço"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "impostos",
+      "shortTitle": "Impostos",
+      "kicker": "MÓDULO 04 · IMPOSTOS",
+      "title": "Como os impostos afetam o seu preço",
+      "summary": "Imposto sai do preço de venda, não do custo — e quem compra pronto e revende tem um anexo próprio.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Você não precisa virar contador para precificar bem — mas precisa entender, na prática, quais impostos existem e de onde eles tiram dinheiro. Aqui vamos direto ao ponto: sem aprofundar na legislação, apenas respondendo 'esse imposto sai de onde?'."
+        },
+        {
+          "type": "heading",
+          "text": "Os regimes e impostos mais comuns"
+        },
+        {
+          "type": "list",
+          "items": [
+            "MEI: paga um valor fixo mensal (o DAS), não um percentual sobre cada venda, válido até certo limite de faturamento anual",
+            "Simples Nacional: reúne vários impostos numa alíquota única, que varia conforme o faturamento e a atividade — geralmente entre 4% e 19% do preço de venda",
+            "Lucro Presumido: usado por empresas maiores, calcula imposto sobre uma margem de lucro presumida pelo governo, com carga tributária normalmente mais alta",
+            "ICMS: imposto estadual que incide sobre a venda de produtos físicos (mercadorias)",
+            "ISS: imposto municipal que incide sobre a prestação de serviços",
+            "PIS e COFINS: contribuições federais cobradas sobre o faturamento da empresa"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Quanto sobra depois do imposto"
+        },
+        {
+          "type": "paragraph",
+          "text": "Imagine uma empresa do Simples Nacional pagando 6% de imposto sobre suas vendas."
+        },
+        {
+          "type": "paragraph",
+          "text": "Esse desconto acontece em toda venda, o mês inteiro. Por isso o imposto precisa estar embutido no preço desde o início — e não descontado do lucro depois, como uma surpresa no fim do mês."
+        },
+        {
+          "type": "heading",
+          "text": "O erro que muda a cabeça de qualquer empresário"
+        },
+        {
+          "type": "paragraph",
+          "text": "Se você precisa receber R$ 1.000 líquidos para pagar suas contas, vender exatamente por R$ 1.000 é um erro — porque uma parte desse valor vai embora em imposto."
+        },
+        {
+          "type": "math",
+          "expression": "PV = \\frac{L\\acute{i}quido\\ Desejado}{1 - \\frac{Imposto\\%}{100}}",
+          "inline": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Com 6% de imposto, para receber R$ 1.000 líquidos de verdade, é preciso vender por R$ 1.000 ÷ (1 − 0,06) = R$ 1.063,83."
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "liquidoDesejado",
+              "label": "Valor Líquido que Você Quer Receber (R$)",
+              "type": "currency",
+              "placeholder": "1000"
+            },
+            {
+              "id": "impostoPercent",
+              "label": "Alíquota de Imposto (%)",
+              "type": "percentage",
+              "placeholder": "6"
+            }
+          ],
+          "formula": "if (impostoPercent >= 100) { return { aviso: 'Com 100% de imposto não sobraria nada da venda. Confira a alíquota informada.' }; } return { resultado: liquidoDesejado / (1 - (impostoPercent / 100)) };",
+          "resultLabel": "Preço de Venda Necessário",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "resultado",
+              "label": "Preço de Venda Necessário",
+              "format": "currency"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Qual é a sua alíquota, de verdade"
+        },
+        {
+          "type": "paragraph",
+          "text": "Se a sua empresa está no Simples Nacional, a alíquota que entra na fórmula de preço não é a da tabela. Cada faixa tem uma alíquota nominal e uma parcela a deduzir, e o que você paga sai da combinação das duas com o seu faturamento dos últimos 12 meses."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "O SEU CASO: ANEXO I",
+          "items": [
+            "Comércio cai no Anexo I do Simples Nacional, com alíquotas de 4% a 19% — as mais baixas do regime. Lojas, mercados, distribuidoras e e-commerces estão aqui."
+          ]
+        },
+        {
+          "type": "accordion",
+          "items": [
+            {
+              "title": "Anexo I — Comércio",
+              "text": "Lojas, mercados, distribuidoras, e-commerces. Alíquotas de 4% a 19%."
+            },
+            {
+              "title": "Anexo II — Indústria",
+              "text": "Fábricas, confecções, marcenarias, transformação de produtos. Alíquotas de 4,5% a 30%."
+            },
+            {
+              "title": "Anexo III — Serviços em geral",
+              "text": "Instalação, reparo, manutenção, agências de viagem, e atividades intelectuais que atingem o Fator R. Alíquotas de 6% a 33%."
+            },
+            {
+              "title": "Anexo IV — Serviços com INSS por fora",
+              "text": "Construção civil, limpeza, vigilância. O INSS patronal é pago à parte, fora do DAS. Alíquotas de 4,5% a 33%."
+            },
+            {
+              "title": "Anexo V — Serviços intelectuais",
+              "text": "TI, engenharia, arquitetura, consultoria, publicidade. De 15,5% a 30,5%, as mais altas do regime — por isso o Fator R importa tanto aqui."
+            },
+            {
+              "title": "O que é o Fator R",
+              "text": "É a folha de pagamento dos últimos 12 meses dividida pelo faturamento do mesmo período. Se der 28% ou mais, uma atividade do Anexo V passa a ser tributada pelo Anexo III, que é bem mais barato. Para quem presta serviço intelectual, essa única conta pode valer milhares de reais por ano."
+            }
+          ]
+        },
+        {
+          "type": "math",
+          "expression": "Al\\acute{i}quota\\ Efetiva = \\frac{(RBT12 \\times Nominal) - Parcela\\ a\\ Deduzir}{RBT12}"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "NA PRÁTICA",
+          "items": [
+            "Quase sempre a alíquota efetiva é bem menor que a nominal da tabela",
+            "Ela sobe conforme seu faturamento anual cresce — o preço precisa ser revisto quando isso acontece",
+            "É esse número, o efetivo, que entra na sua fórmula de preço"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Você precisa receber R$ 500 limpos por um serviço e paga 10% de imposto. Por quanto cobra?",
+          "options": [
+            "R$ 550,00",
+            "R$ 555,56",
+            "R$ 510,00"
+          ],
+          "correct": 1,
+          "explanation": "Somar 10% sobre 500 dá R$ 550 — mas aí o imposto incide sobre os R$ 550, sobrando R$ 495. A conta certa é dividir: 500 ÷ (1 − 0,10) = R$ 555,56. Confira: 10% de 555,56 = 55,56, e sobram exatamente R$ 500."
+        },
+        {
+          "type": "cta",
+          "text": "Descubra sua alíquota efetiva real e compare MEI, Simples, Presumido e Real lado a lado.",
+          "buttonLabel": "Abrir Simulador de Impostos",
+          "url": "https://calculadora.virgulacontabil.com.br/impostos"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "Confirmar com seu contador qual é a sua alíquota efetiva atual",
+            "Calcular quanto de cada venda de R$ 100 vira imposto no seu negócio",
+            "Usar a calculadora acima para descobrir o preço mínimo que garante o líquido que você precisa"
+          ]
+        },
+        {
+          "type": "callout",
+          "title": "RESUMO DO MÓDULO",
+          "items": [
+            "Todo imposto sai do preço de venda, nunca do custo",
+            "MEI paga valor fixo mensal; Simples Nacional e Lucro Presumido cobram percentual sobre a venda",
+            "Se você precisa de um valor líquido específico, use a fórmula reversa: líquido ÷ (1 − imposto%)",
+            "Confirme sua alíquota real com seu contador antes de embutir no preço"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "margem",
+      "shortTitle": "Margem de contrib.",
+      "kicker": "MÓDULO 05 · MARGEM",
+      "title": "Margem de contribuição: o que cada venda deixa",
+      "summary": "Quanto sobra de cada venda para pagar o custo fixo e virar lucro. O número mais importante do curso.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Agora que você já sabe separar custo fixo de variável e já sabe embutir imposto no preço, dá pra entender o primeiro conceito realmente estratégico da precificação: a margem de contribuição."
+        },
+        {
+          "type": "paragraph",
+          "text": "É quanto sobra de cada venda depois de descontar apenas o custo variável daquela venda — não o custo fixo, só o variável. Esse valor 'contribui' para pagar o custo fixo do mês e, depois de pago, vira lucro."
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "ATENÇÃO: A CONTA COMPLETA",
+          "items": [
+            "Não é só preço menos ingrediente",
+            "Tudo que varia com a venda entra: imposto, taxa de cartão, comissão, frete",
+            "Se você esquecer a taxa do cartão, sua margem real é menor do que você pensa"
+          ]
+        },
+        {
+          "type": "math",
+          "expression": "MC = PV - CV - Impostos - Taxas - Comiss\\tilde{o}es"
+        },
+        {
+          "type": "paragraph",
+          "text": "Onde MC é a margem de contribuição, PV é o preço de venda, CV é o custo variável da unidade, e impostos, taxas e comissões são percentuais aplicados sobre o preço de venda. É exatamente essa conta que a calculadora da Vírgula usa."
+        },
+        {
+          "type": "heading",
+          "text": "Um exemplo com todos os descontos"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Uma peça vendida por R$ 100,78",
+            "Valor"
+          ],
+          "rows": [
+            [
+              "Preço de venda",
+              "R$ 100,78"
+            ],
+            [
+              "− CMV + embalagem",
+              "− R$ 36,00"
+            ],
+            [
+              "− Imposto (8%)",
+              "− R$ 8,06"
+            ],
+            [
+              "− Taxa do cartão (3%)",
+              "− R$ 3,02"
+            ],
+            [
+              "= Margem de contribuição",
+              "R$ 53,69"
+            ]
+          ],
+          "caption": "53% do preço sobra para pagar o custo fixo e virar lucro"
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "pv",
+              "label": "Preço de venda (R$)",
+              "type": "currency",
+              "placeholder": "100,00"
+            },
+            {
+              "id": "cv",
+              "label": "Custo variável da unidade (R$)",
+              "type": "currency",
+              "placeholder": "36,00"
+            },
+            {
+              "id": "imp",
+              "label": "Impostos (%)",
+              "type": "percentage",
+              "placeholder": "8"
+            },
+            {
+              "id": "tax",
+              "label": "Taxa de cartão (%)",
+              "type": "percentage",
+              "placeholder": "3"
+            },
+            {
+              "id": "com",
+              "label": "Comissão (%)",
+              "type": "percentage",
+              "placeholder": "2"
+            }
+          ],
+          "formula": "const deducoes = pv * ((imp + tax + com) / 100); const mc = pv - cv - deducoes; const mcPerc = pv > 0 ? (mc / pv) * 100 : 0; if (pv <= 0) { return { aviso: 'Informe o preço de venda para ver a margem.' }; } if (mc <= 0) { return { aviso: 'Margem negativa ou zero: cada venda aumenta o prejuízo. Reveja preço, custo ou taxas antes de vender mais.' }; } return { mc, mcPerc, deducoes };",
+          "resultLabel": "Sua margem de contribuição",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "mc",
+              "label": "Margem por unidade",
+              "format": "currency"
+            },
+            {
+              "key": "mcPerc",
+              "label": "Margem em %",
+              "format": "percentage"
+            },
+            {
+              "key": "deducoes",
+              "label": "Impostos + taxas + comissão",
+              "format": "currency"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Imagine um produto com custo variável de R$ 30. Veja o que acontece com o lucro do mês conforme o preço de venda muda, considerando um custo fixo mensal de R$ 5.000 e uma venda de 200 unidades:"
+        },
+        {
+          "type": "comparison",
+          "columns": [
+            {
+              "label": "Preço R$ 40",
+              "tone": "negative",
+              "items": [
+                "Margem de contribuição: R$ 10 por unidade",
+                "Total do mês: R$ 2.000",
+                "Custo fixo do mês: R$ 5.000",
+                "Resultado: prejuízo de R$ 3.000"
+              ]
+            },
+            {
+              "label": "Preço R$ 50",
+              "tone": "neutral",
+              "items": [
+                "Margem de contribuição: R$ 20 por unidade",
+                "Total do mês: R$ 4.000",
+                "Custo fixo do mês: R$ 5.000",
+                "Resultado: ainda falta R$ 1.000 — quase no zero a zero"
+              ]
+            },
+            {
+              "label": "Preço R$ 60",
+              "tone": "positive",
+              "items": [
+                "Margem de contribuição: R$ 30 por unidade",
+                "Total do mês: R$ 6.000",
+                "Custo fixo do mês: R$ 5.000",
+                "Resultado: lucro de R$ 1.000"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Um aumento de R$ 20 no preço (de 40 para 60) foi a diferença entre fechar o mês no prejuízo e fechar no lucro — vendendo exatamente a mesma quantidade."
+        },
+        {
+          "type": "quiz",
+          "question": "Um produto tem margem de contribuição negativa. Vender o dobro melhora a situação?",
+          "options": [
+            "Sim — mais volume sempre ajuda a diluir custo",
+            "Não — dobra o prejuízo, porque cada venda já sai no negativo",
+            "Fica igual, só muda o giro"
+          ],
+          "correct": 1,
+          "explanation": "Margem negativa significa que a venda nem cobre o que ela mesma consome. Cada unidade vendida aumenta o buraco. Esse é o único caso em que a resposta certa é vender menos — ou arrumar o preço antes."
+        },
+        {
+          "type": "callout",
+          "title": "POR QUE ISSO IMPORTA",
+          "items": [
+            "Margem de contribuição negativa significa que cada venda aumenta o prejuízo — quanto mais vende, pior fica",
+            "É a base para calcular o ponto de equilíbrio",
+            "Comparar a margem de contribuição entre produtos ajuda a decidir onde focar o esforço de venda"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "markup",
+      "shortTitle": "Markup",
+      "kicker": "MÓDULO 06 · MARKUP",
+      "title": "Markup: do custo até o preço",
+      "summary": "O índice que transforma custo em preço já embutindo imposto, taxa e o lucro que você quer.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Markup é o índice usado para transformar o custo total em preço de venda, já embutindo despesas, impostos e a margem de lucro desejada. Você já usou essa lógica desde o Módulo 04 — agora vamos isolar o conceito."
+        },
+        {
+          "type": "math",
+          "expression": "Markup = \\frac{1}{1 - \\left(\\frac{Impostos\\% + Despesas\\% + Margem\\%}{100}\\right)}",
+          "inline": false
+        },
+        {
+          "type": "paragraph",
+          "text": "O markup é um número multiplicador. Se ele der, por exemplo, 1,35, significa que você deve multiplicar o custo por 1,35 para achar o preço de venda — o que dá exatamente o mesmo resultado da fórmula de divisão que você já usa."
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Some tudo que sai do preço, em %",
+              "text": "Imposto + taxa de cartão + comissão + a margem de lucro que você quer. Digamos 6% + 3% + 0% + 20% = 29%."
+            },
+            {
+              "title": "Subtraia de 100%",
+              "text": "100% − 29% = 71%, ou 0,71. É a fatia do preço que sobra para pagar o custo."
+            },
+            {
+              "title": "Divida o custo total por esse número",
+              "text": "Custo total de R$ 44,88 ÷ 0,71 = R$ 63,21. Esse é o preço que entrega os 20% de lucro depois de todo mundo receber a sua parte."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "O ERRO DE MULTIPLICAR",
+          "items": [
+            "Somar 29% sobre o custo (44,88 × 1,29 = R$ 57,90) parece a mesma coisa — e não é",
+            "A R$ 57,90, depois de imposto, taxa e custo, sobra menos de 15% de lucro, não 20%",
+            "Percentuais que incidem sobre o PREÇO nunca podem ser somados ao CUSTO: divida, não multiplique"
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "custoMk",
+              "label": "Custo Total do Produto (R$)",
+              "type": "currency",
+              "placeholder": "44.88"
+            },
+            {
+              "id": "somaPercentuaisMk",
+              "label": "Soma de Impostos + Despesas + Margem (%)",
+              "type": "percentage",
+              "placeholder": "26"
+            }
+          ],
+          "formula": "if (somaPercentuaisMk >= 100) { return { aviso: 'Impostos, taxas e margem somam 100% ou mais do preço: não existe preço possível. Reduza a margem desejada.' }; } return { resultado: custoMk / (1 - (somaPercentuaisMk / 100)) };",
+          "resultLabel": "Preço de Venda Final",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "resultado",
+              "label": "Preço de Venda Final",
+              "format": "currency"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Markup divisor e markup em %: não confunda"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "",
+            "Markup divisor",
+            "Markup em %"
+          ],
+          "rows": [
+            [
+              "Para que serve",
+              "Achar o preço a partir do custo",
+              "Conferir quanto você somou sobre o custo"
+            ],
+            [
+              "Conta",
+              "1 ÷ (1 − deduções)",
+              "(Preço − Custo) ÷ Custo × 100"
+            ],
+            [
+              "No exemplo",
+              "1 ÷ 0,71 = 1,41",
+              "(63,21 − 44,88) ÷ 44,88 = 41%"
+            ],
+            [
+              "Leitura",
+              "Multiplique o custo por 1,41",
+              "Você cobrou 41% acima do custo"
+            ]
+          ],
+          "caption": "São o mesmo preço, ditos de duas formas"
+        },
+        {
+          "type": "quiz",
+          "question": "Custo de R$ 50, e entre imposto, taxa e margem desejada somam 40%. Qual o preço?",
+          "options": [
+            "R$ 70,00 (somando 40% sobre o custo)",
+            "R$ 83,33 (dividindo por 0,60)",
+            "R$ 90,00"
+          ],
+          "correct": 1,
+          "explanation": "50 ÷ (1 − 0,40) = R$ 83,33. Se cobrasse R$ 70, os 40% incidiriam sobre 70 (= R$ 28), sobrando R$ 42 para um custo de R$ 50 — prejuízo de R$ 8 por venda."
+        },
+        {
+          "type": "paragraph",
+          "text": "Os dois conceitos são parentes, mas respondem perguntas diferentes. Markup parte do custo e pergunta 'por quanto eu preciso multiplicar isso para chegar no preço?'. Margem parte do preço de venda e pergunta 'quanto desse preço é, de fato, lucro?'."
+        },
+        {
+          "type": "comparison",
+          "columns": [
+            {
+              "label": "Markup · Prós",
+              "tone": "positive",
+              "items": [
+                "Rápido para precificar um produto novo, partindo só do custo",
+                "Fácil de aplicar em catálogos grandes com uma regra única",
+                "Deixa claro quanto cada real de custo 'vira' de preço"
+              ]
+            },
+            {
+              "label": "Markup · Contras",
+              "tone": "negative",
+              "items": [
+                "Não mostra sozinho se a margem de lucro real está saudável",
+                "Pode mascarar produtos com baixo custo mas baixa margem também",
+                "Fácil de confundir com soma de percentuais em cascata (o erro do Módulo 04)"
+              ]
+            },
+            {
+              "label": "Margem · Prós",
+              "tone": "positive",
+              "items": [
+                "Mostra diretamente quanto sobra de cada venda em %",
+                "Melhor para comparar a rentabilidade entre produtos diferentes",
+                "É o número que interessa para decisões de investimento e expansão"
+              ]
+            },
+            {
+              "label": "Margem · Contras",
+              "tone": "negative",
+              "items": [
+                "Sozinha, não diz por quanto vender — precisa do custo para virar preço",
+                "Pode ser confundida com markup, gerando erro de cálculo se usada na fórmula errada"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Na prática: use markup para transformar custo em preço; use margem para conferir, depois, se aquele preço realmente entrega a rentabilidade que você quer."
+        }
+      ]
+    },
+    {
+      "id": "equilibrio",
+      "shortTitle": "Ponto de equilíbrio",
+      "kicker": "MÓDULO 07 · EQUILÍBRIO",
+      "title": "Ponto de equilíbrio: quanto vender para não ter prejuízo",
+      "summary": "O número de vendas em que você para de perder dinheiro. Abaixo dele, o mês fecha no vermelho.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Agora que você sabe calcular a margem de contribuição e o markup, dá pra responder a pergunta que fecha essa parte do curso: quanto eu preciso vender por mês para pagar todas as contas?"
+        },
+        {
+          "type": "paragraph",
+          "text": "O ponto de equilíbrio é a quantidade mínima de vendas necessária para que a margem de contribuição total cubra exatamente o custo fixo — lucro zero, prejuízo zero."
+        },
+        {
+          "type": "math",
+          "expression": "PE_{(unidades)} = \\frac{Custo\\ Fixo}{Margem\\ de\\ Contribui\\tilde{c}\\tilde{a}o\\ Unit\\acute{a}ria}"
+        },
+        {
+          "type": "paragraph",
+          "text": "Repare que o divisor é a margem de contribuição completa do módulo 06 — com imposto, taxa e comissão já descontados. Usar só \"preço menos ingrediente\" faz o ponto de equilíbrio parecer menor do que é, e essa é uma das contas mais perigosas de errar."
+        },
+        {
+          "type": "paragraph",
+          "text": "Usando a Roupa Bonita: preço de R$ 100,78, custo da mercadoria de R$ 36,00, e 11% entre imposto e taxa de cartão. A margem de contribuição fica em R$ 53,69 por peça, contra um custo fixo de R$ 8.550 no mês."
+        },
+        {
+          "type": "breakeven-chart",
+          "custoFixo": 8550,
+          "custoVariavelUnitario": 36,
+          "precoVenda": 100.78
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "cf",
+              "label": "Custo fixo do mês (R$)",
+              "type": "currency",
+              "placeholder": "16700"
+            },
+            {
+              "id": "pv",
+              "label": "Preço de venda (R$)",
+              "type": "currency",
+              "placeholder": "60,65"
+            },
+            {
+              "id": "cv",
+              "label": "Custo variável da unidade (R$)",
+              "type": "currency",
+              "placeholder": "24,00"
+            },
+            {
+              "id": "ded",
+              "label": "Impostos + taxas + comissão (%)",
+              "type": "percentage",
+              "placeholder": "6"
+            }
+          ],
+          "formula": "const mc = pv - cv - (pv * (ded / 100)); if (pv <= 0) { return { aviso: 'Informe o preço de venda.' }; } if (mc <= 0) { return { aviso: 'Com esse preço a margem é zero ou negativa: não existe ponto de equilíbrio, a empresa perde dinheiro em qualquer volume.' }; } const unidades = Math.ceil(cf / mc); return { unidades, faturamento: unidades * pv, mc, porDia: Math.ceil(unidades / 26) };",
+          "resultLabel": "Seu ponto de equilíbrio",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "unidades",
+              "label": "Vendas no mês",
+              "format": "number"
+            },
+            {
+              "key": "porDia",
+              "label": "Por dia útil",
+              "format": "number"
+            },
+            {
+              "key": "faturamento",
+              "label": "Faturamento necessário",
+              "format": "currency"
+            },
+            {
+              "key": "mc",
+              "label": "Margem por unidade",
+              "format": "currency"
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Nesse cenário, a loja precisa de 160 peças por mês, cerca de 7 por dia útil só para empatar. Saber esse número muda a rotina: você para de olhar o caixa no fim do mês e passa a saber, no dia 10, se o mês vai fechar no azul."
+        },
+        {
+          "type": "quiz",
+          "question": "Custo fixo de R$ 10.000 e margem de contribuição de R$ 25 por unidade. Quantas vendas para empatar?",
+          "options": [
+            "250 unidades",
+            "400 unidades",
+            "1.000 unidades"
+          ],
+          "correct": 1,
+          "explanation": "10.000 ÷ 25 = 400 unidades. Da 401ª em diante, cada venda deixa R$ 25 de lucro de verdade — o custo fixo do mês já foi todo pago."
+        },
+        {
+          "type": "highlight",
+          "text": "Vender abaixo do ponto de equilíbrio não é 'vender pouco' — é operar no prejuízo todo santo mês."
+        },
+        {
+          "type": "cta",
+          "text": "A calculadora faz preço e ponto de equilíbrio na mesma tela, com seus custos já cadastrados.",
+          "buttonLabel": "Abrir Formação de Preço",
+          "url": "https://calculadora.virgulacontabil.com.br/formacao-preco"
+        },
+        {
+          "type": "callout",
+          "title": "RESUMO DO MÓDULO",
+          "items": [
+            "Margem de Contribuição = Preço de Venda − Custo Variável",
+            "Markup = 1 ÷ (1 − soma de percentuais ÷ 100)",
+            "Ponto de Equilíbrio = Custo Fixo ÷ Margem de Contribuição",
+            "Abaixo do ponto de equilíbrio: prejuízo. No ponto: zero a zero. Acima: lucro"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exemplo",
+      "shortTitle": "Exemplo completo",
+      "kicker": "MÓDULO 08 · PASSO A PASSO",
+      "title": "O caminho completo com a loja Roupa Bonita",
+      "summary": "Todos os módulos anteriores aplicados de ponta a ponta, num caso só.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Chegou a hora de juntar tudo o que você aprendeu nos módulos anteriores, do começo ao fim, com a Roupa Bonita. No comércio, o principal custo variável é o CMV — o Custo da Mercadoria Vendida, ou seja, o que você pagou ao fornecedor pela peça."
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Custo variável por peça",
+              "text": "CMV (o que você pagou ao fornecedor) R$ 35,00 + embalagem R$ 1,00 = R$ 36,00"
+            },
+            {
+              "title": "Custos e despesas fixas do mês",
+              "text": "Aluguel R$ 3.000 + funcionários R$ 5.000 + internet R$ 150 + contador R$ 400 = R$ 8.550"
+            },
+            {
+              "title": "Vendas mensais",
+              "text": "300 peças por mês"
+            },
+            {
+              "title": "Custo fixo por peça",
+              "text": "R$ 8.550 ÷ 300 = R$ 28,50"
+            },
+            {
+              "title": "Custo total por peça",
+              "text": "R$ 36,00 + R$ 28,50 = R$ 64,50"
+            },
+            {
+              "title": "Impostos, cartão e margem",
+              "text": "8% de imposto + 3% de cartão + 25% de margem = 36% de deduções"
+            },
+            {
+              "title": "Preço final",
+              "text": "R$ 64,50 ÷ (1 − 0,36) = R$ 100,78"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "headers": [
+            "O que compõe os R$ 100,78",
+            "Valor",
+            "% do preço"
+          ],
+          "rows": [
+            [
+              "CMV + embalagem",
+              "R$ 36,00",
+              "35,7%"
+            ],
+            [
+              "Custo fixo diluído",
+              "R$ 28,50",
+              "28,3%"
+            ],
+            [
+              "Imposto (8%)",
+              "R$ 8,06",
+              "8,0%"
+            ],
+            [
+              "Taxa de cartão (3%)",
+              "R$ 3,02",
+              "3,0%"
+            ],
+            [
+              "Lucro (25%)",
+              "R$ 25,20",
+              "25,0%"
+            ],
+            [
+              "Preço de venda",
+              "R$ 100,78",
+              "100%"
+            ]
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "cmvUnitario",
+              "label": "Custo da Mercadoria Vendida - CMV (R$)",
+              "type": "currency",
+              "placeholder": "35"
+            },
+            {
+              "id": "embalagemUnitaria",
+              "label": "Embalagem por Peça (R$)",
+              "type": "currency",
+              "placeholder": "1"
+            },
+            {
+              "id": "custoFixoMensal",
+              "label": "Custos e Despesas Fixas do Mês (R$)",
+              "type": "currency",
+              "placeholder": "8550"
+            },
+            {
+              "id": "vendasMensais",
+              "label": "Peças Vendidas por Mês",
+              "type": "number",
+              "placeholder": "300"
+            },
+            {
+              "id": "impostoPercent",
+              "label": "Imposto sobre a Venda (%)",
+              "type": "percentage",
+              "placeholder": "8"
+            },
+            {
+              "id": "cartaoPercent",
+              "label": "Taxa de Cartão (%)",
+              "type": "percentage",
+              "placeholder": "3"
+            },
+            {
+              "id": "margemPercent",
+              "label": "Margem de Lucro Desejada (%)",
+              "type": "percentage",
+              "placeholder": "25"
+            }
+          ],
+          "formula": "if (!(vendasMensais > 0)) { return { aviso: 'Informe quantas peças você vende por mês.' }; } return { resultado: (cmvUnitario + embalagemUnitaria + (custoFixoMensal / vendasMensais)) / (1 - ((impostoPercent + cartaoPercent + margemPercent) / 100)) };",
+          "resultLabel": "Preço Final da Peça",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "resultado",
+              "label": "Preço final da peça",
+              "format": "currency"
+            }
+          ]
+        },
+        {
+          "type": "breakdown-chart",
+          "total": 100.78,
+          "parts": [
+            {
+              "label": "CMV + Embalagem",
+              "value": 36,
+              "color": "#f59e0b"
+            },
+            {
+              "label": "Custo Fixo Diluído",
+              "value": 28.5,
+              "color": "#6366f1"
+            },
+            {
+              "label": "Imposto",
+              "value": 8.06,
+              "color": "#ef4444"
+            },
+            {
+              "label": "Taxa de Cartão",
+              "value": 3.02,
+              "color": "#a855f7"
+            },
+            {
+              "label": "Lucro",
+              "value": 25.2,
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "A TAXA DE CARTÃO É O ESQUECIMENTO MAIS CARO DO VAREJO",
+          "items": [
+            "Parece pouco: 3% de R$ 100 são R$ 3",
+            "Em 300 peças por mês, são R$ 900 — mais do que o contador e a internet somados",
+            "Se o parcelamento tem taxa maior, calcule com a taxa média real, não com a do débito"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mercado-mix",
+      "shortTitle": "Preço do mercado",
+      "kicker": "MÓDULO 09 · MERCADO",
+      "title": "E quando o mercado não aceita o seu preço?",
+      "summary": "Seu cálculo deu um número e o concorrente pratica outro, menor. O que fazer sem entrar no prejuízo.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Depois de calcular o preço ideal de venda, muitos empresários descobrem um problema: o mercado vende aquele mesmo produto por um valor menor. Isso acontece principalmente com produtos muito conhecidos, onde a concorrência define o preço."
+        },
+        {
+          "type": "highlight",
+          "text": "O preço ideal mostra quanto você deveria cobrar para atingir sua margem planejada. O preço de mercado mostra quanto o cliente aceita pagar."
+        },
+        {
+          "type": "heading",
+          "text": "O que fazer quando o mercado não aceita seu preço?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Você possui cinco alternativas:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Negociar um custo menor com fornecedores.",
+            "Reduzir despesas da empresa.",
+            "Diminuir sua margem de lucro naquele produto.",
+            "Aumentar a margem de outros produtos.",
+            "Parar de vender esse item caso ele comprometa o resultado da empresa."
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "A LINHA QUE VOCÊ NÃO PODE CRUZAR",
+          "items": [
+            "Vender abaixo do preço ideal reduz o lucro — é uma decisão, e pode ser válida",
+            "Vender abaixo do custo variável + impostos + taxas destrói caixa — cada venda tira dinheiro do seu bolso",
+            "A margem de contribuição do módulo 06 é o seu alarme: enquanto ela for positiva, a venda ainda ajuda a pagar o fixo"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Exemplo prático: voltando à Roupa Bonita"
+        },
+        {
+          "type": "paragraph",
+          "text": "A camiseta básica é um item muito conhecido, e a concorrência do bairro pratica um preço abaixo do que a conta da loja pede."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Descrição",
+            "Valor"
+          ],
+          "rows": [
+            [
+              "Preço ideal da camiseta básica",
+              "R$ 60,00"
+            ],
+            [
+              "Preço praticado pelo mercado",
+              "R$ 42,00"
+            ],
+            [
+              "Margem de lucro perdida por unidade",
+              "R$ 18,00"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "O preço ideal de R$ 60 já é o preço final, com CMV, custo fixo diluído, imposto, cartão e margem embutidos. Os R$ 18 de diferença saem do lucro planejado, não do custo: a R$ 42 a camiseta ainda cobre tudo que consome e ainda contribui para pagar o aluguel."
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "margemPerdida",
+              "label": "Margem de lucro perdida por unidade (R$)",
+              "type": "currency",
+              "placeholder": "18,00"
+            },
+            {
+              "id": "quantidade",
+              "label": "Quantidade vendida no mês",
+              "type": "number",
+              "placeholder": "300"
+            }
+          ],
+          "formula": "margemPerdida * quantidade",
+          "resultLabel": "Margem de lucro que deixou de ser obtida no mês",
+          "resultFormat": "currency"
+        },
+        {
+          "type": "highlight",
+          "text": "Nesse exemplo, a Roupa Bonita deixou de ganhar R$ 5.400 de lucro planejado no mês — mas continua vendendo a camiseta acima do custo total, então a operação em si não dá prejuízo."
+        },
+        {
+          "type": "heading",
+          "text": "Como recuperar essa diferença"
+        },
+        {
+          "type": "paragraph",
+          "text": "Esse lucro não precisa ser recuperado na própria camiseta. Ele pode ser distribuído entre outras peças do mix da loja, onde o mercado aceita preços maiores — vestidos, jaquetas e acessórios costumam ter menos concorrência direta de preço do que uma camiseta básica."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Item",
+            "Margem extra por unidade",
+            "Quantidade",
+            "Margem recuperada"
+          ],
+          "rows": [
+            [
+              "Vestidos",
+              "R$ 15",
+              "120",
+              "R$ 1.800"
+            ],
+            [
+              "Jaquetas",
+              "R$ 25",
+              "80",
+              "R$ 2.000"
+            ],
+            [
+              "Acessórios",
+              "R$ 10",
+              "160",
+              "R$ 1.600"
+            ],
+            [
+              "TOTAL",
+              "",
+              "",
+              "R$ 5.400"
+            ]
+          ]
+        },
+        {
+          "type": "callout",
+          "title": "Importante",
+          "items": [
+            "Você NÃO está transferindo o custo da camiseta.",
+            "Você está recuperando a margem de lucro que deixou de existir naquele produto — a margem de contribuição continua positiva, porque R$ 42 ainda cobre o custo variável e parte do fixo da peça.",
+            "O que precisa fechar é o resultado do conjunto, não o de cada item isolado."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "O ponto de equilíbrio do mix"
+        },
+        {
+          "type": "paragraph",
+          "text": "Quando a loja vende vários produtos com margens diferentes, o ponto de equilíbrio deixa de ser em unidades e passa a ser em faturamento. A conta usa a margem média ponderada do mix — a mesma que a calculadora aplica na tela de preços em lote."
+        },
+        {
+          "type": "math",
+          "expression": "PE_{(faturamento)} = \\frac{Custo\\ Fixo}{Margem\\ M\\acute{e}dia\\ Ponderada\\ (\\%)}"
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "cf",
+              "label": "Custo fixo do mês (R$)",
+              "type": "currency",
+              "placeholder": "8550"
+            },
+            {
+              "id": "fat",
+              "label": "Faturamento previsto no mês (R$)",
+              "type": "currency",
+              "placeholder": "30000"
+            },
+            {
+              "id": "mcTotal",
+              "label": "Soma das margens de contribuição (R$)",
+              "type": "currency",
+              "placeholder": "15000"
+            }
+          ],
+          "formula": "if (fat <= 0) { return { aviso: 'Informe o faturamento previsto do mês.' }; } const perc = (mcTotal / fat) * 100; if (perc <= 0) { return { aviso: 'A margem do mix é zero ou negativa: nenhum volume de vendas cobre o custo fixo. Reveja preços antes de vender mais.' }; } const pe = cf / (perc / 100); return { perc, pe, resultado: mcTotal - cf };",
+          "resultLabel": "Resultado do mix",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "perc",
+              "label": "Margem média do mix",
+              "format": "percentage"
+            },
+            {
+              "key": "pe",
+              "label": "Faturamento de equilíbrio",
+              "format": "currency"
+            },
+            {
+              "key": "resultado",
+              "label": "Lucro previsto do mês",
+              "format": "currency"
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Se o lucro previsto vier negativo, não é o preço de um produto que está errado: é o conjunto que não paga a estrutura."
+        },
+        {
+          "type": "comparison",
+          "columns": [
+            {
+              "label": "A estratégia funciona quando",
+              "tone": "positive",
+              "items": [
+                "O cliente costuma levar mais de um item",
+                "Existem produtos ou serviços complementares",
+                "Alguns itens têm valor percebido maior",
+                "Há itens com pouca comparação direta de preço"
+              ]
+            },
+            {
+              "label": "Ela NÃO funciona quando",
+              "tone": "negative",
+              "items": [
+                "Você vende um item só",
+                "Todos os preços são ditados pelo mercado",
+                "O cliente compra um item e vai embora",
+                "A margem de contribuição já é negativa"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Calcule o preço de todos os seus itens de uma vez e veja o resultado do conjunto fechado.",
+          "buttonLabel": "Abrir Preços em Lote",
+          "url": "https://calculadora.virgulacontabil.com.br/mix-preco-lote"
+        },
+        {
+          "type": "highlight",
+          "text": "Empresas lucrativas não analisam apenas o lucro de cada produto. Elas analisam o resultado do conjunto das vendas."
+        },
+        {
+          "type": "quiz",
+          "question": "Seu custo total é R$ 64 e o mercado só paga R$ 70 num produto. Vender vale a pena?",
+          "options": [
+            "Nunca — está abaixo do preço ideal de R$ 100",
+            "Pode valer: se a margem de contribuição ainda for positiva, cada venda ajuda a pagar o custo fixo",
+            "Sempre, preço de mercado manda"
+          ],
+          "correct": 1,
+          "explanation": "O preço ideal é uma meta, não um piso absoluto. O piso de verdade é a margem de contribuição positiva. A R$ 70 você ganha menos que o planejado, mas ainda contribui — desde que outros produtos do mix recuperem a diferença, que é o tema do próximo módulo."
+        }
+      ]
+    },
+    {
+      "id": "valor-obstaculos",
+      "shortTitle": "Além da conta",
+      "kicker": "MÓDULO 10 · POSICIONAMENTO",
+      "title": "O que decide o preço além da planilha",
+      "summary": "O custo define o piso. O valor percebido define o teto — e a sua cabeça costuma derrubar os dois.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Tudo o que você calculou até aqui define o seu preço mínimo — o piso abaixo do qual você opera no prejuízo. Mas o teto do seu preço não é definido pelo custo: é definido pelo valor que o cliente enxerga na sua entrega."
+        },
+        {
+          "type": "paragraph",
+          "text": "O que forma valor percebido:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Resultado que o produto ou serviço entrega (tempo economizado, dor evitada, dinheiro ganho)",
+            "Marca, reputação e prova social (avaliações, cases, autoridade)",
+            "Experiência de compra e atendimento",
+            "Exclusividade e escassez"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Um copo d'água vale R$ 2 no supermercado e R$ 15 no meio do deserto. O produto é o mesmo — o contexto muda o valor."
+        },
+        {
+          "type": "callout",
+          "title": "PERGUNTAS PARA DEFINIR VALOR",
+          "items": [
+            "Que problema real eu resolvo para o cliente?",
+            "Quanto esse problema custa para ele se não for resolvido?",
+            "O que meu concorrente não entrega e eu entrego?",
+            "Que transformação ou resultado o cliente leva para casa?"
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "O cliente nunca compra um furo de 8 mm. Ele compra o quadro pendurado na parede.",
+          "author": "Máxima clássica de marketing"
+        },
+        {
+          "type": "heading",
+          "text": "Modelos e táticas de precificação"
+        },
+        {
+          "type": "paragraph",
+          "text": "Não existe uma única forma correta de precificar. Diferentes estratégias servem para diferentes momentos do negócio e objetivos de mercado — sempre respeitando o preço mínimo que você já sabe calcular."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Preço de penetração: preço baixo inicial para ganhar mercado rápido",
+            "Preço premium: preço alto para reforçar exclusividade e qualidade",
+            "Preço por valor: baseado no resultado entregue ao cliente",
+            "Preço por assinatura: receita recorrente, previsibilidade de caixa",
+            "Preço em pacotes (bundling): combos que aumentam o ticket médio"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Dois consultores entregam o mesmo relatório. Um cobra R$ 2.000, o outro R$ 8.000. O que justifica a diferença?",
+          "options": [
+            "O mais caro está enganando o cliente",
+            "O valor percebido: prazo, garantia, reputação, acompanhamento, risco que o cliente evita",
+            "Nada — deveriam cobrar igual"
+          ],
+          "correct": 1,
+          "explanation": "O produto entregue pode ser parecido, mas o que o cliente compra é o resultado e a segurança. Quem reduz risco, responde rápido e tem histórico comprovado ocupa outra faixa de preço — legitimamente."
+        },
+        {
+          "type": "heading",
+          "text": "Os erros que sabotam o preço certo"
+        },
+        {
+          "type": "paragraph",
+          "text": "Boa parte dos empreendedores que sabem a fórmula ainda assim cobra errado — porque o preço também passa pela cabeça, não só pela calculadora."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cobrar pelo próprio bolso: É o erro de definir o preço com base no que o próprio dono pagaria, e não no que o cliente-alvo está disposto a pagar. Um empreendedor que nunca gastaria R$ 300 num corte de cabelo tende a, inconscientemente, subprecificar o próprio salão."
+        },
+        {
+          "type": "paragraph",
+          "text": "Medo de perder cliente: O medo de 'espantar' o cliente com um preço mais alto leva a descontos automáticos e preços abaixo do calculado. Na prática, esse medo custa mais caro do que perder um cliente pontual: ele corrói a margem de todas as vendas."
+        },
+        {
+          "type": "paragraph",
+          "text": "Comparar preço sem comparar valor: Quando o cliente diz 'encontrei mais barato', a resposta automática costuma ser baixar o preço — sem perguntar se o concorrente entrega a mesma coisa."
+        },
+        {
+          "type": "comparison",
+          "columns": [
+            {
+              "label": "Decisão pelo Medo",
+              "tone": "negative",
+              "items": [
+                "Desconto dado antes de qualquer objeção real",
+                "Preço definido para 'garantir' a venda a qualquer custo",
+                "Margem que encolhe a cada negociação"
+              ]
+            },
+            {
+              "label": "Decisão pelo Cálculo",
+              "tone": "positive",
+              "items": [
+                "Preço já sabe, de antemão, o quanto pode ceder sem entrar no prejuízo",
+                "Negociação com limite claro, baseado no preço mínimo calculado",
+                "Margem protegida mesmo quando o cliente pechincha"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "O preço calculado é uma proteção contra o próprio medo — quando você sabe o número mínimo, a decisão deixa de ser emocional."
+        },
+        {
+          "type": "heading",
+          "text": "Antes de aumentar o preço, olhe o custo"
+        },
+        {
+          "type": "paragraph",
+          "text": "Se o preço calculado ficou mais alto do que o mercado aceita pagar, a primeira reação costuma ser 'vou ter que cobrar mais e perder cliente'. Mas antes de mexer no preço, vale revisar se todo aquele custo é realmente necessário."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Matéria-prima ou estoque comprado em quantidade errada, gerando perda",
+            "Fornecedor mais caro que o mercado, nunca renegociado",
+            "Assinaturas e softwares que ninguém usa mais",
+            "Contratos anuais (aluguel, sistemas, fornecedores) que nunca foram revistos",
+            "Retrabalho e processos que consomem tempo de gente cara"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Reduzir R$ 500 de custo fixo mensal tem o mesmo efeito no lucro que vender bem mais — mas sem precisar convencer um único cliente novo."
+        },
+        {
+          "type": "stats",
+          "items": [
+            {
+              "value": "R$ 500",
+              "label": "de custo fixo cortado por mês",
+              "hint": "na loja"
+            },
+            {
+              "value": "10 peças",
+              "label": "que você não precisa vender",
+              "hint": "a R$ 53,69 de margem"
+            },
+            {
+              "value": "R$ 6.000",
+              "label": "no ano",
+              "hint": "sem um cliente novo"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "title": "ORDEM RECOMENDADA DE AÇÃO",
+          "items": [
+            "1. Revisar desperdício e retrabalho — é o corte mais indolor",
+            "2. Renegociar fornecedores e contratos fixos",
+            "3. Reavaliar processos que consomem tempo/custo sem gerar valor percebido",
+            "4. Só depois disso, considerar ajuste de preço — agora sobre uma base de custo mais enxuta"
+          ]
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "Listar 3 coisas que seu negócio entrega além do produto/serviço em si",
+            "Comparar com o que o concorrente mais barato não entrega",
+            "Avaliar se há espaço para precificar acima do mínimo calculado, com base nesse valor extra",
+            "Identificar em qual fase seu negócio está: validação, consolidação ou escala",
+            "Escolher uma estratégia de preço compatível com essa fase"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "desafio",
+      "shortTitle": "Seu preço",
+      "kicker": "MÓDULO 11 · DESAFIO FINAL",
+      "title": "Monte o preço do seu próprio negócio",
+      "summary": "Os mesmos passos do exemplo, agora com os seus números — e como dizer o valor sem gaguejar.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Agora é a sua vez. Esqueça os exemplos e insira os números reais do seu produto ou serviço para ver o preço final sugerido."
+        },
+        {
+          "type": "math",
+          "expression": "PV_{final} = \\frac{CV + \\frac{CF}{Q}}{1 - \\left(\\frac{Impostos\\% + Margem\\%}{100}\\right)}",
+          "inline": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Essa fórmula primeiro calcula o custo total por unidade (variável + fixo diluído pela quantidade) e depois aplica o markup divisor para embutir impostos e a margem de lucro desejada."
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "cv",
+              "label": "Custo variável da unidade (R$)",
+              "type": "currency",
+              "placeholder": "24,00"
+            },
+            {
+              "id": "cfMes",
+              "label": "Custos e despesas fixas do mês (R$)",
+              "type": "currency",
+              "placeholder": "16700"
+            },
+            {
+              "id": "qtd",
+              "label": "Quantidade vendida por mês",
+              "type": "number",
+              "placeholder": "800"
+            },
+            {
+              "id": "imp",
+              "label": "Impostos (%)",
+              "type": "percentage",
+              "placeholder": "6"
+            },
+            {
+              "id": "tax",
+              "label": "Taxas e comissões (%)",
+              "type": "percentage",
+              "placeholder": "3"
+            },
+            {
+              "id": "mrg",
+              "label": "Margem de lucro desejada (%)",
+              "type": "percentage",
+              "placeholder": "20"
+            }
+          ],
+          "formula": "if (qtd <= 0) { return { aviso: 'Informe quantas unidades você vende por mês.' }; } const deducoes = imp + tax + mrg; if (deducoes >= 100) { return { aviso: 'Impostos, taxas e margem somam 100% ou mais do preço. Nesse cenário não existe preço possível — reduza a margem desejada.' }; } const cfUnit = cfMes / qtd; const custoTotal = cv + cfUnit; const preco = custoTotal / (1 - (deducoes / 100)); const mc = preco - cv - (preco * ((imp + tax) / 100)); const pe = mc > 0 ? Math.ceil(cfMes / mc) : 0; return { preco, cfUnit, custoTotal, lucroUnit: preco * (mrg / 100), pe };",
+          "resultLabel": "O preço do seu produto ou serviço",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "preco",
+              "label": "Preço de venda",
+              "format": "currency"
+            },
+            {
+              "key": "custoTotal",
+              "label": "Custo total por unidade",
+              "format": "currency"
+            },
+            {
+              "key": "cfUnit",
+              "label": "Custo fixo por unidade",
+              "format": "currency"
+            },
+            {
+              "key": "lucroUnit",
+              "label": "Lucro por unidade",
+              "format": "currency"
+            },
+            {
+              "key": "pe",
+              "label": "Ponto de equilíbrio (un./mês)",
+              "format": "number"
+            }
+          ]
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Levante seus custos",
+              "text": "Liste todo custo variável por unidade e todo custo e despesa fixa do mês. Use a classificação do módulo 03."
+            },
+            {
+              "title": "Conte quantas unidades você vende",
+              "text": "A média real dos últimos meses. Em serviço, use a capacidade da sua agenda, não a demanda que você gostaria de ter."
+            },
+            {
+              "title": "Confirme sua alíquota",
+              "text": "A efetiva, não a da tabela. O simulador de impostos resolve isso em um minuto."
+            },
+            {
+              "title": "Some taxas e comissões",
+              "text": "Cartão, marketplace, comissão de vendedor, frete que você banca."
+            },
+            {
+              "title": "Defina a margem que você quer",
+              "text": "Não é o que sobra: é o que você decide ganhar. Comece com 15% a 25% e ajuste."
+            },
+            {
+              "title": "Rode a calculadora acima",
+              "text": "Ela devolve o preço, o custo total, o lucro por unidade e quantas vendas você precisa no mês."
+            },
+            {
+              "title": "Compare com o que você cobra hoje",
+              "text": "Aquele número que você anotou lá no módulo 01. A diferença entre os dois é o que este curso veio mostrar."
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Compare o resultado com o preço que você anotou lá no Módulo 00. Se forem diferentes, agora você sabe exatamente de onde vem a diferença."
+        },
+        {
+          "type": "heading",
+          "text": "Como apresentar seu preço sem medo"
+        },
+        {
+          "type": "paragraph",
+          "text": "De nada adianta calcular o preço certo se, na hora de falar o valor, você gagueja, se desculpa ou já oferece desconto antes de ser pedido. A forma como você comunica o preço influencia diretamente a percepção do cliente."
+        },
+        {
+          "type": "paragraph",
+          "text": "Como apresentar preço com segurança:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Fale o preço de forma direta, sem se desculpar ou justificar excessivamente",
+            "Apresente o valor entregue antes do número (contexto primeiro, preço depois)",
+            "Evite frases como 'mas posso fazer um desconto' antes mesmo da objeção",
+            "Tenha clareza do que está incluso para justificar o valor cobrado"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Quem se desculpa pelo próprio preço ensina o cliente a duvidar dele também."
+        },
+        {
+          "type": "callout",
+          "title": "LIDANDO COM OBJEÇÕES",
+          "items": [
+            "\"Está caro\" → pergunte em relação a quê, entenda a comparação",
+            "\"Encontrei mais barato\" → reforce a diferença de entrega e resultado",
+            "\"Não tenho orçamento agora\" → ofereça parcelamento, não desconto"
+          ]
+        },
+        {
+          "type": "accordion",
+          "items": [
+            {
+              "title": "De quanto em quanto tempo eu recalculo meu preço?",
+              "text": "Sempre que um custo relevante mudar (fornecedor, aluguel, folha), quando seu faturamento anual subir de faixa no Simples, e de qualquer forma a cada seis meses. Preço não é decisão de uma vez só."
+            },
+            {
+              "title": "E se eu vender vários produtos diferentes?",
+              "text": "Calcule o preço de cada um individualmente, com o custo variável de cada um, e rateie o custo fixo pela quantidade total vendida. Depois confira o resultado do conjunto, como no módulo 13."
+            },
+            {
+              "title": "Posso usar a mesma margem para tudo?",
+              "text": "Pode começar assim, mas não é o ideal. Produtos de alto giro e muita concorrência costumam ter margem menor; itens exclusivos ou de alto valor percebido sustentam margem maior. O que precisa fechar é a média do mix."
+            },
+            {
+              "title": "Meu preço deu maior que o do concorrente. E agora?",
+              "text": "Antes de baixar, confira três coisas: se o volume que você usou no cálculo é realista, se há desperdício ou custo fixo para cortar (módulo 15), e se o concorrente entrega mesmo a mesma coisa (módulo 14). Baixar o preço é a última alternativa, não a primeira."
+            },
+            {
+              "title": "Preciso de contador para isso?",
+              "text": "Para calcular o preço, não. Para confirmar sua alíquota efetiva, seu enquadramento e se o seu regime tributário é o melhor para o seu caso, sim — e é nisso que a conta costuma ter mais dinheiro em jogo."
+            }
+          ]
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "Escrever um roteiro de apresentação de preço com valor antes do número",
+            "Listar as 3 objeções mais comuns que você recebe",
+            "Preparar uma resposta segura para cada objeção, sem recorrer a desconto automático",
+            "Comparar o preço calculado aqui com o preço que você cobra hoje",
+            "Guardar esse cálculo e refazer a cada 6 meses, ou sempre que um custo fixo mudar"
+          ]
+        }
+      ]
+    }
+  ]
+}
