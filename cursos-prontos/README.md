@@ -58,6 +58,21 @@ Anexo II 4,5%, Anexo III 6%, Anexo V 15,5%) e os percentuais de presunção de
 lucro (8% comércio, 16% transporte de passageiros, 32% serviços) também valem
 uma conferida a cada mudança de legislação.
 
+## Série "Simples Nacional"
+
+| Arquivo | Curso | Módulos |
+| --- | --- | --- |
+| `reforma-tributaria-simples-nacional.json` | Reforma Tributária e o Simples Nacional | 10 |
+
+Gerado por `scripts/build-rt.mjs`, com as constantes no topo do arquivo. A
+alíquota de referência da CBS (`CBS_REF`) é uma **estimativa de estudo**, não a
+oficial — ela depende de resolução do Senado. Trocar a constante refaz todas as
+tabelas, simulações e pontos de equilíbrio do curso.
+
+Outras constantes que envelhecem: `SHARE`, que é quanto do DAS é PIS + COFINS
+em cada anexo pelas tabelas de partilha, e as reduções setoriais de 30% e 60%
+da LC 214/2025.
+
 ## Série "Como Precificar"
 
 Três cursos com a mesma estrutura, um para cada tipo de negócio. Cada um usa

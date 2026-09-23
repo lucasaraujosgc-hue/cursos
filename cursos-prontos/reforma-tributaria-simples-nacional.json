@@ -1,0 +1,1449 @@
+{
+  "slug": "reforma-tributaria-simples-nacional",
+  "courseName": "Reforma Tributária e o Simples Nacional",
+  "description": "Como a Reforma Tributária atinge quem está no Simples Nacional, com foco na CBS. A decisão entre recolher dentro do DAS ou em guia própria, os setores com alíquota reduzida, o ponto de equilíbrio de cada caso e exemplos completos para comércio, indústria e serviços.",
+  "category": "Simples Nacional",
+  "leadCapture": "end",
+  "image": "/uploads/mue68fi2-ef784f315f68e2e6.jpg",
+  "modules": [
+    {
+      "id": "panorama-reforma",
+      "shortTitle": "Panorama do Simples",
+      "kicker": "MÓDULO 01 · CONTEXTO",
+      "title": "Reforma Tributária e o Simples Nacional: o que muda com a CBS",
+      "summary": "O cronograma oficial da Reforma para quem está no Simples, com foco na CBS, que substitui o PIS e a COFINS a partir de 2027.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "A Reforma Tributária substitui diversos tributos sobre o consumo por dois novos: a CBS, federal, e o IBS, de estados e municípios. Para as empresas do Simples Nacional, a transição segue um cronograma próprio, com regras específicas de adaptação — e uma decisão a tomar antes de 2027."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "DO QUE ESTE CURSO TRATA",
+          "items": [
+            "Só do Simples Nacional. Lucro Real e Lucro Presumido seguem cronograma e regras diferentes.",
+            "Só da CBS. O IBS entra depois e tem regras próprias.",
+            "Nenhuma alíquota aqui é definitiva: a Reforma ainda está em regulamentação.",
+            "Os números são ilustrativos e simplificados. Valide com o seu contador antes de decidir."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Linha do tempo do Simples Nacional"
+        },
+        {
+          "type": "timeline",
+          "items": [
+            {
+              "year": "2026 (ano todo)",
+              "text": "Fase de teste. O DAS continua calculado como hoje. Já aparecem alíquotas experimentais de CBS (0,9%) e IBS (0,1%) nas notas, só para calibrar os sistemas — não são cobrança real."
+            },
+            {
+              "year": "Set/2026",
+              "text": "Janela de opção: entre 1º e 30 de setembro a empresa decide se recolhe a CBS dentro do DAS (modelo unificado) ou separadamente (regime regular)."
+            },
+            {
+              "year": "Até 30/nov/2026",
+              "text": "Prazo de arrependimento: quem optou pelo regime regular pode desistir e voltar ao modelo unificado, sem custo."
+            },
+            {
+              "year": "Jan/2027",
+              "text": "A opção feita em setembro entra em vigor. As notas do Simples passam a destacar a CBS de fato pela primeira vez."
+            },
+            {
+              "year": "Mar/2027",
+              "text": "Nova janela de decisão, para escolher o regime de recolhimento do segundo semestre de 2027."
+            },
+            {
+              "year": "2027 a 2032",
+              "text": "Transição: convivência entre o sistema antigo e o novo, com redução gradual das alíquotas antigas."
+            },
+            {
+              "year": "2033",
+              "text": "Modelo novo em vigor por inteiro. Extinção definitiva do PIS, da COFINS e dos demais tributos substituídos."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "A REGRA QUE DECIDE TUDO",
+          "items": [
+            "A escolha feita em setembro de 2026 vale só para janeiro a junho de 2027",
+            "Dá para desistir do regime regular até 30 de novembro de 2026, sem penalidade",
+            "Quem não optar por nada continua automaticamente com a CBS dentro do DAS",
+            "Não decidir é uma decisão: é ficar no modelo unificado"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Setembro de 2026 é o mês da decisão. Novembro é o mês da segunda chance. Depois disso, só em março de 2027."
+        },
+        {
+          "type": "quiz",
+          "question": "A empresa não fez nada em setembro de 2026. O que acontece em janeiro de 2027?",
+          "options": [
+            "Ela é excluída do Simples Nacional",
+            "Ela continua com a CBS dentro do DAS, no modelo unificado",
+            "Ela passa automaticamente para o regime regular"
+          ],
+          "correct": 1,
+          "explanation": "O modelo unificado é o padrão: quem não se manifesta permanece nele. Para sair do DAS é preciso ato de vontade dentro da janela. Isso é uma boa notícia para a maioria — como os módulos seguintes mostram, o unificado costuma ser o mais barato."
+        }
+      ]
+    },
+    {
+      "id": "cbs-por-dentro",
+      "shortTitle": "A CBS por dentro",
+      "kicker": "MÓDULO 02 · O TRIBUTO",
+      "title": "A CBS por dentro: como ela é apurada",
+      "summary": "Antes de escolher entre os dois modelos, vale entender como a CBS funciona. É ela que muda tudo na conta do regime regular.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "A CBS é a Contribuição sobre Bens e Serviços. Ela substitui o PIS e a COFINS e é federal. O nome técnico do desenho dela é IVA: imposto sobre valor agregado. A diferença para o PIS/COFINS de hoje não está na sigla, está no crédito."
+        },
+        {
+          "type": "heading",
+          "text": "A conta da CBS, em uma linha"
+        },
+        {
+          "type": "math",
+          "expression": "CBS\\ a\\ pagar = (Al\\acute{i}quota \\times Receita) - Cr\\acute{e}ditos\\ das\\ compras"
+        },
+        {
+          "type": "paragraph",
+          "text": "Você paga sobre tudo o que vende e desconta tudo o que já foi pago de CBS no que você comprou. O resultado é que o tributo incide só sobre o valor que a sua empresa agregou. Quanto mais você compra com nota, menos sobra para pagar."
+        },
+        {
+          "type": "comparison",
+          "columns": [
+            {
+              "label": "Gera crédito de CBS",
+              "tone": "positive",
+              "items": [
+                "Mercadoria e insumo comprados de empresa do regime regular, com nota",
+                "Frete contratado de transportadora com nota",
+                "Energia, água, internet e telefone da empresa, com nota",
+                "Aluguel com nota fiscal emitida por PJ",
+                "Software, licença e serviço técnico com nota"
+              ]
+            },
+            {
+              "label": "Não gera crédito",
+              "tone": "negative",
+              "items": [
+                "Folha de pagamento — o maior custo de quem presta serviço",
+                "Compra de pessoa física, sem nota",
+                "Aluguel pago a pessoa física sem documento fiscal",
+                "Compra de fornecedor do Simples no modelo unificado (crédito quase nulo)",
+                "Bem de uso pessoal do sócio"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "A FOLHA É O DIVISOR DE ÁGUAS",
+          "items": [
+            "Salário, pró-labore e encargos não geram nenhum crédito de CBS",
+            "Quem tem a folha como principal custo fica sem o que abater",
+            "Por isso contabilidade, consultoria, educação e saúde são os setores que mais sofrem no regime regular",
+            "E por isso comércio e indústria, que compram muito com nota, sofrem menos"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Duas mudanças operacionais que vêm junto"
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "O imposto vai destacado na nota",
+              "text": "O valor da CBS aparece separado do preço, como já acontece com o IPI. O cliente vê exatamente quanto de tributo está pagando — e quanto de crédito vai tomar."
+            },
+            {
+              "title": "O recolhimento tende a ser no momento do pagamento",
+              "text": "É o split payment: o sistema separa a parte do tributo na própria liquidação financeira da venda. Quem vende deixa de receber o valor cheio para recolher depois."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "O QUE ISSO MUDA NO SEU CAIXA",
+          "items": [
+            "Hoje você recebe a venda inteira e paga o DAS no dia 20 do mês seguinte",
+            "Com o split payment, a parcela do tributo não passa pelo seu caixa",
+            "Quem se acostumou a usar o dinheiro do imposto como capital de giro perde esse fôlego",
+            "Isso vale para quem está no regime regular; no modelo unificado o DAS continua como é hoje"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Um escritório com R$ 30.000 de receita e R$ 20.000 de folha tem quanto de crédito de CBS sobre a folha?",
+          "options": [
+            "Crédito integral sobre os R$ 20.000",
+            "Nenhum — folha de pagamento não gera crédito de CBS",
+            "Metade, porque parte é encargo"
+          ],
+          "correct": 1,
+          "explanation": "Salário não é uma compra de bem ou serviço tributada pela CBS, então não há imposto anterior para creditar. É a razão aritmética de quem vive de mão de obra ser o mais penalizado no regime regular — e o módulo de serviços mostra o tamanho disso."
+        }
+      ]
+    },
+    {
+      "id": "hibrido-vs-regular",
+      "shortTitle": "No DAS ou fora",
+      "kicker": "MÓDULO 03 · DECISÃO ESTRATÉGICA",
+      "title": "CBS no DAS ou fora do DAS: como escolher",
+      "summary": "As duas formas de recolher a CBS no Simples, o que muda na guia em cada uma, e por que a conta raramente é tão simples quanto parece.",
+      "content": [
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "O NÚMERO 9,21% É DE ESTUDO, NÃO É A ALÍQUOTA OFICIAL",
+          "items": [
+            "Ele saiu da Resolução CGIBS nº 14/2026, que usou 27,91% (18,70% de IBS mais 9,21% de CBS) só para calcular o orçamento do próprio Comitê",
+            "A alíquota real depende de cálculo da Receita, homologação do TCU e resolução do Senado",
+            "Use como referência para dimensionar a decisão, nunca como valor confirmado",
+            "Todas as simulações deste curso refazem a conta sozinhas se o número mudar"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "No Simples Nacional existem duas formas de recolher a CBS: dentro do DAS, no modelo unificado, ou separadamente, no regime regular. A diferença não é só quanto imposto a empresa paga — é como a guia muda e quanto crédito a empresa consegue repassar ao cliente PJ."
+        },
+        {
+          "type": "heading",
+          "text": "Modelo 1 — CBS dentro do DAS"
+        },
+        {
+          "type": "paragraph",
+          "text": "A empresa mantém tudo na guia única. A partir de 2027 a CBS substitui o PIS e a COFINS dentro da própria composição do DAS, mas a carga total não muda: a alíquota efetiva é recalculada para manter o valor. Só troca o nome do tributo por dentro."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "QUANTO DO DAS JÁ É PIS + COFINS HOJE",
+          "items": [
+            "Pelas tabelas de partilha de 2026: cerca de 15,50% no Anexo I, 14,00% no Anexo II e 15,60% no Anexo III",
+            "Isso equivale a mais ou menos 1 a 1,5 ponto percentual da receita bruta",
+            "Bem menos que os 9,21% usados nas simulações do regime regular",
+            "É essa fatia pequena que vira \"CBS\" dentro do DAS no modelo unificado"
+          ]
+        },
+        {
+          "type": "breakdown-chart",
+          "total": 3000,
+          "parts": [
+            {
+              "label": "IRPJ + CSLL + CPP (estimativa)",
+              "value": 1515
+            },
+            {
+              "label": "ICMS",
+              "value": 1020
+            },
+            {
+              "label": "CBS — substitui PIS + COFINS (15,5% do DAS)",
+              "value": 465
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Exemplo: empresa do Anexo I com R$ 50.000,00 de receita mensal e alíquota efetiva de 6%, ou seja, DAS de R$ 3.000,00. A única mudança visível na guia é o nome — \"PIS/COFINS\" vira \"CBS\" — e o total continua R$ 3.000,00."
+        },
+        {
+          "type": "heading",
+          "text": "Modelo 2 — CBS fora do DAS"
+        },
+        {
+          "type": "paragraph",
+          "text": "Aqui a mudança é estrutural. O PIS e a COFINS saem do DAS, que passa a trazer só IRPJ, CSLL, CPP e ICMS ou ISS. Em paralelo, a empresa apura e paga a CBS em guia própria, aplicando a alíquota sobre a receita e descontando os créditos das compras com nota."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "A conta do Modelo 2",
+            "Valor"
+          ],
+          "rows": [
+            [
+              "DAS reduzido, sem a fatia de PIS/COFINS",
+              "R$ 2.535,00"
+            ],
+            [
+              "CBS bruta (9,21% sobre R$ 50.000,00)",
+              "R$ 4.605,00"
+            ],
+            [
+              "Crédito sobre compras de R$ 25.000,00",
+              "− R$ 2.302,50"
+            ],
+            [
+              "CBS líquida em guia própria",
+              "R$ 2.302,50"
+            ],
+            [
+              "Total do Modelo 2",
+              "R$ 4.837,50"
+            ]
+          ],
+          "caption": "Contra R$ 3.000,00 do Modelo 1 — R$ 1.837,50 a mais por mês"
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "RESULTADO DO EXEMPLO",
+          "items": [
+            "Modelo 1: R$ 3.000,00 por mês, numa guia só",
+            "Modelo 2: R$ 2.535,00 de DAS mais R$ 2.302,50 de CBS = R$ 4.837,50",
+            "Mesmo com metade das compras gerando crédito, o Modelo 2 sai R$ 1.837,50 mais caro",
+            "O motivo é aritmético: 9,21% de saída contra pouco mais de 1 ponto que já estava embutido no DAS"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "O que muda na guia de quem fica no modelo unificado a partir de 2027?",
+          "options": [
+            "O valor sobe, porque a CBS é maior que o PIS/COFINS",
+            "Só o nome do tributo dentro da composição do DAS — o total continua igual",
+            "Passa a haver duas guias"
+          ],
+          "correct": 1,
+          "explanation": "A alíquota efetiva do DAS é recalculada para manter a carga total. O contribuinte que não optar por nada vai notar a diferença na descrição da guia e na nota fiscal, não no valor a pagar."
+        }
+      ]
+    },
+    {
+      "id": "peso-do-credito",
+      "shortTitle": "O peso do crédito",
+      "kicker": "MÓDULO 04 · A CONTA",
+      "title": "O crédito é quem decide a conta",
+      "summary": "No regime regular ninguém paga a alíquota cheia. Quanto se paga de verdade depende de uma única variável: quanto você compra com nota.",
+      "content": [
+        {
+          "type": "heading",
+          "text": "A CBS efetiva quase nunca é a alíquota cheia"
+        },
+        {
+          "type": "paragraph",
+          "text": "No regime regular a empresa não paga a alíquota cheia sobre a receita: paga sobre a receita menos o crédito das compras. Quanto maior a proporção de compras com nota, menor a CBS efetiva."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Compras com nota, em % da receita",
+            "CBS efetiva sobre a receita"
+          ],
+          "rows": [
+            [
+              "0%",
+              "9,21%"
+            ],
+            [
+              "20%",
+              "7,37%"
+            ],
+            [
+              "40%",
+              "5,53%"
+            ],
+            [
+              "55%",
+              "4,14%"
+            ],
+            [
+              "70%",
+              "2,76%"
+            ],
+            [
+              "90%",
+              "0,92%"
+            ]
+          ],
+          "caption": "Usando 9,21% como referência de estudo"
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "receita",
+              "label": "Receita mensal (R$)",
+              "type": "currency",
+              "placeholder": "50000"
+            },
+            {
+              "id": "aliqDas",
+              "label": "Alíquota efetiva do DAS (%)",
+              "type": "percentage",
+              "placeholder": "6"
+            },
+            {
+              "id": "anexo",
+              "label": "O seu anexo",
+              "type": "select",
+              "options": [
+                "Anexo I — comércio",
+                "Anexo II — indústria",
+                "Anexo III — serviços"
+              ]
+            },
+            {
+              "id": "compras",
+              "label": "Compras com nota fiscal por mês (R$)",
+              "type": "currency",
+              "placeholder": "25000"
+            },
+            {
+              "id": "aliqCbs",
+              "label": "Alíquota de CBS de referência (%)",
+              "type": "percentage",
+              "placeholder": "9.21"
+            }
+          ],
+          "formula": "if (!(receita > 0)) { return { aviso: 'Informe a sua receita mensal.' }; } const share = anexo === 'Anexo II — indústria' ? 0.14 : anexo === 'Anexo III — serviços' ? 0.156 : 0.155; const das = receita * (aliqDas / 100); const fatia = das * share; const dasReduzido = das - fatia; const bruta = receita * (aliqCbs / 100); const credito = compras * (aliqCbs / 100); const liquida = Math.max(0, bruta - credito); const modelo2 = dasReduzido + liquida; const diferenca = modelo2 - das; const equilibrio = aliqCbs > 0 ? ((aliqCbs / 100 - fatia / receita) / (aliqCbs / 100)) * 100 : 0; const leitura = diferenca <= 0 ? 'Neste cenário o regime regular sai mais barato — e ainda dá crédito cheio ao cliente PJ.' : 'Neste cenário o modelo unificado sai mais barato. O regime regular só empataria com mais compras com nota.'; return { modelo1: das, dasReduzido, liquida, modelo2, diferenca, equilibrio, leitura };",
+          "resultLabel": "Modelo 1 × Modelo 2",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "modelo1",
+              "label": "Modelo 1 — DAS único",
+              "format": "currency"
+            },
+            {
+              "key": "dasReduzido",
+              "label": "Modelo 2 — DAS reduzido",
+              "format": "currency"
+            },
+            {
+              "key": "liquida",
+              "label": "Modelo 2 — CBS em guia própria",
+              "format": "currency"
+            },
+            {
+              "key": "modelo2",
+              "label": "Modelo 2 — total",
+              "format": "currency"
+            },
+            {
+              "key": "diferenca",
+              "label": "Diferença (positivo = mais caro fora do DAS)",
+              "format": "currency"
+            },
+            {
+              "key": "equilibrio",
+              "label": "Compras com nota para empatar (% da receita)",
+              "format": "percentage"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "comparison",
+          "columns": [
+            {
+              "label": "CBS no DAS — modelo unificado",
+              "tone": "positive",
+              "items": [
+                "Uma guia só, sem apuração separada",
+                "Carga total igual à de hoje",
+                "Crédito repassado ao cliente PJ é pequeno, de 1 a 1,5% da venda",
+                "Indicado quando as compras com nota são baixas frente à receita"
+              ]
+            },
+            {
+              "label": "CBS fora do DAS — regime regular",
+              "tone": "negative",
+              "items": [
+                "Duas guias: DAS reduzido mais guia própria de CBS",
+                "Exige nota fiscal em praticamente toda compra",
+                "Crédito repassado ao cliente PJ é o valor cheio, hoje estimado em 9,21%",
+                "Só tende a compensar com compras perto de 85 a 90% da receita — salvo se a sua atividade tiver redução de alíquota, o que o módulo 4 mostra"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "success",
+          "title": "A REGRA DA DESISTÊNCIA",
+          "items": [
+            "Dá para optar pelo regime regular em setembro e desistir até 30 de novembro, sem penalidade",
+            "Isso permite testar a decisão com dados reais antes de ela valer",
+            "Depois de novembro, a próxima chance de mudar é em março de 2027",
+            "Na dúvida, o caminho conservador é ficar no unificado: ele é o padrão e o mais barato na maioria dos casos"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Por que o Modelo 2 costuma sair mais caro mesmo com bastante crédito?",
+          "options": [
+            "Porque o DAS não diminui ao sair a CBS",
+            "Porque a alíquota de saída é muito maior que a fatia de PIS/COFINS que já estava embutida no DAS",
+            "Porque o regime regular cobra uma taxa adicional"
+          ],
+          "correct": 1,
+          "explanation": "O DAS diminui, sim — mas só da fatia de PIS/COFINS, que é pouco mais de 1 ponto da receita. Em troca entra uma alíquota de saída de 9,21%. Para essa troca empatar, o crédito precisa devorar quase toda a alíquota nova, e isso exige comprar com nota quase tanto quanto se fatura."
+        }
+      ]
+    },
+    {
+      "id": "reducoes",
+      "shortTitle": "Alíquotas reduzidas",
+      "kicker": "MÓDULO 05 · REDUÇÕES",
+      "title": "Os setores com alíquota reduzida",
+      "summary": "A lei prevê descontos de 30%, 60% e até alíquota zero para certas atividades. Para o Simples, isso só importa num caso — e nesse caso muda tudo.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "A LC 214/2025 não aplica a mesma alíquota a todo mundo. Alguns setores têm redução, outros têm alíquota zero, outros ainda têm regime próprio. Antes de olhar a lista, é preciso entender quando isso te alcança."
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "A REGRA QUE QUASE NINGUÉM EXPLICA",
+          "items": [
+            "No modelo unificado, a redução setorial NÃO muda o seu DAS: ele continua pelas tabelas do Simples",
+            "A redução vale para quem apura CBS pelo regime regular",
+            "Ou seja: ela só entra na sua conta se você optar pelo Modelo 2",
+            "E é justamente aí que ela pode virar a decisão — é o que o módulo 5 calcula"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Redução de 60%"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Grupo",
+            "Exemplos"
+          ],
+          "rows": [
+            [
+              "Saúde",
+              "Serviços de saúde, dispositivos médicos e de acessibilidade, medicamentos"
+            ],
+            [
+              "Educação",
+              "Ensino infantil, fundamental, médio, técnico e superior"
+            ],
+            [
+              "Alimentação",
+              "Alimentos destinados ao consumo humano fora da cesta básica"
+            ],
+            [
+              "Higiene e limpeza",
+              "Produtos de higiene pessoal e limpeza de consumo popular"
+            ],
+            [
+              "Agropecuária",
+              "Produtos in natura, insumos agropecuários e aquícolas"
+            ],
+            [
+              "Transporte coletivo",
+              "Rodoviário, ferroviário, hidroviário e metroviário de passageiros"
+            ],
+            [
+              "Cultura e imprensa",
+              "Produções artísticas, culturais, jornalísticas e desportivas nacionais"
+            ]
+          ],
+          "caption": "Com desconto de 60%, a alíquota de referência cai de 9,21% para 3,68%"
+        },
+        {
+          "type": "heading",
+          "text": "Redução de 30%"
+        },
+        {
+          "type": "paragraph",
+          "text": "Aplica-se aos serviços prestados por profissionais de profissão regulamentada, quando prestados pessoalmente pelo profissional. A lista inclui advogado, contabilista, engenheiro, arquiteto, administrador, economista, médico veterinário, químico, estatístico, técnico industrial e técnico agrícola, entre outros."
+        },
+        {
+          "type": "stats",
+          "items": [
+            {
+              "value": "9,21%",
+              "label": "alíquota de referência",
+              "hint": "sem redução"
+            },
+            {
+              "value": "6,45%",
+              "label": "com redução de 30%",
+              "hint": "profissão regulamentada"
+            },
+            {
+              "value": "3,68%",
+              "label": "com redução de 60%",
+              "hint": "saúde, educação, alimentos"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Alíquota zero"
+        },
+        {
+          "type": "callout",
+          "tone": "success",
+          "title": "ONDE A CBS É ZERO",
+          "items": [
+            "Cesta Básica Nacional de Alimentos",
+            "Produtos hortícolas, frutas e ovos",
+            "Medicamentos e dispositivos de acessibilidade previstos em lista específica",
+            "Serviços de educação superior no âmbito do Prouni"
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "DUAS COISAS PARA NÃO CONFUNDIR",
+          "items": [
+            "Alíquota zero não é isenção: você continua contribuinte e continua tomando crédito das compras",
+            "Quem vende com alíquota reduzida também repassa crédito menor ao cliente — a redução corta dos dois lados",
+            "Setores como combustíveis, serviços financeiros, planos de saúde, imóveis, hotelaria, bares e restaurantes têm regime específico, com regras próprias",
+            "A lista definitiva é por item e por atividade: confirme o enquadramento do seu CNAE com o contador"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Uma clínica do Simples fica no modelo unificado. A redução de 60% da saúde reduz o DAS dela?",
+          "options": [
+            "Reduz, o DAS cai 60%",
+            "Não reduz nada: no modelo unificado o DAS segue as tabelas do Simples",
+            "Reduz só a parte de ISS"
+          ],
+          "correct": 1,
+          "explanation": "A redução é da alíquota de CBS do regime regular. Quem fica no DAS continua pagando pela tabela do anexo, como sempre. A redução só aparece na conta de quem apura CBS por fora — e é por isso que, para esses setores, o Modelo 2 merece ser calculado de verdade em vez de descartado de cara."
+        }
+      ]
+    },
+    {
+      "id": "quando-compensa",
+      "shortTitle": "Quando compensa",
+      "kicker": "MÓDULO 06 · O PONTO DE VIRADA",
+      "title": "Quando a redução vira a conta",
+      "summary": "Sem redução, o regime regular exige quase 90% de compras com nota para empatar. Com redução, esse número despenca.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "O ponto de equilíbrio é a fatia de compras com nota, em relação à receita, que faz os dois modelos custarem o mesmo. Ele depende de duas coisas: a fatia de PIS/COFINS que já está no seu DAS e a alíquota de saída da sua atividade. Reduzir a alíquota de saída derruba o ponto de equilíbrio."
+        },
+        {
+          "type": "math",
+          "expression": "Equil\\acute{i}brio = \\frac{Sa\\acute{i}da - PIS/COFINS\\ no\\ DAS}{Cr\\acute{e}dito}"
+        },
+        {
+          "type": "paragraph",
+          "text": "Em palavras: a sua alíquota de saída, menos a fatia de PIS/COFINS que já está embutida no DAS, dividida pela alíquota do crédito que os seus fornecedores destacam. Baixar a primeira — que é o que a redução setorial faz — derruba o resultado inteiro."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Situação",
+            "Alíquota de saída",
+            "Compras com nota para empatar"
+          ],
+          "rows": [
+            [
+              "Sem redução",
+              "9,21%",
+              "88,1%"
+            ],
+            [
+              "Profissão regulamentada (−30%)",
+              "6,45%",
+              "58,1%"
+            ],
+            [
+              "Saúde, educação, alimentos (−60%)",
+              "3,68%",
+              "28,1%"
+            ]
+          ],
+          "caption": "Calculado sobre um Anexo III com alíquota efetiva de 7% — o do escritório do módulo 8"
+        },
+        {
+          "type": "highlight",
+          "text": "Sem redução, o escritório precisaria comprar 88% da receita com nota para empatar, o que é impossível para quem vive de folha. Com a redução de 30%, o alvo cai para 58%. Com 60%, para 28%."
+        },
+        {
+          "type": "heading",
+          "text": "Uma clínica, com a redução de 60%"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Clínica do Anexo III",
+            "Valor"
+          ],
+          "rows": [
+            [
+              "Receita mensal",
+              "R$ 35.000,00"
+            ],
+            [
+              "DAS hoje (7%)",
+              "R$ 2.450,00"
+            ],
+            [
+              "DAS reduzido, sem PIS/COFINS",
+              "R$ 2.067,80"
+            ],
+            [
+              "CBS bruta com redução de 60% (3,68%)",
+              "R$ 1.289,40"
+            ],
+            [
+              "Crédito sobre insumos de R$ 6.000,00",
+              "− R$ 552,60"
+            ],
+            [
+              "CBS líquida",
+              "R$ 736,80"
+            ],
+            [
+              "Modelo 2 — total",
+              "R$ 2.804,60"
+            ],
+            [
+              "Modelo 1 — total",
+              "R$ 2.450,00"
+            ],
+            [
+              "Diferença",
+              "+R$ 354,60"
+            ]
+          ],
+          "caption": "Mesmo com a redução, o unificado segue à frente neste volume de insumos"
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "receita",
+              "label": "Receita mensal (R$)",
+              "type": "currency",
+              "placeholder": "35000"
+            },
+            {
+              "id": "aliqDas",
+              "label": "Alíquota efetiva do DAS (%)",
+              "type": "percentage",
+              "placeholder": "7"
+            },
+            {
+              "id": "anexo",
+              "label": "O seu anexo",
+              "type": "select",
+              "options": [
+                "Anexo III — serviços",
+                "Anexo I — comércio",
+                "Anexo II — indústria"
+              ]
+            },
+            {
+              "id": "reducao",
+              "label": "A sua atividade tem redução?",
+              "type": "select",
+              "options": [
+                "Não tem redução",
+                "Profissão regulamentada (−30%)",
+                "Saúde, educação, alimentos (−60%)",
+                "Alíquota zero"
+              ]
+            },
+            {
+              "id": "compras",
+              "label": "Compras com nota fiscal por mês (R$)",
+              "type": "currency",
+              "placeholder": "4000"
+            },
+            {
+              "id": "aliqCbs",
+              "label": "Alíquota de CBS de referência (%)",
+              "type": "percentage",
+              "placeholder": "9.21"
+            }
+          ],
+          "formula": "if (!(receita > 0)) { return { aviso: 'Informe a sua receita mensal.' }; } const share = anexo === 'Anexo II — indústria' ? 0.14 : anexo === 'Anexo I — comércio' ? 0.155 : 0.156; const corte = reducao === 'Profissão regulamentada (−30%)' ? 0.3 : reducao === 'Saúde, educação, alimentos (−60%)' ? 0.6 : reducao === 'Alíquota zero' ? 1 : 0; const saida = aliqCbs * (1 - corte); const das = receita * (aliqDas / 100); const fatia = das * share; const dasReduzido = das - fatia; const bruta = receita * (saida / 100); const credito = compras * (aliqCbs / 100); const liquida = Math.max(0, bruta - credito); const modelo2 = dasReduzido + liquida; const diferenca = modelo2 - das; const equilibrio = aliqCbs > 0 ? ((saida / 100 - fatia / receita) / (aliqCbs / 100)) * 100 : 0; const alvo = equilibrio <= 0 ? 'Nenhuma: a sua alíquota de saída já é menor que a fatia embutida no DAS.' : equilibrio > 100 ? 'Acima de 100% da receita, o que na prática é inalcançável.' : equilibrio.toFixed(1) + '% da receita, ou ' + (receita * equilibrio / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + ' por mês.'; return { saida, modelo1: das, modelo2, diferenca, equilibrio, alvo };",
+          "resultLabel": "O seu ponto de equilíbrio",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "saida",
+              "label": "A sua alíquota de saída",
+              "format": "percentage"
+            },
+            {
+              "key": "modelo1",
+              "label": "Modelo 1 — DAS único",
+              "format": "currency"
+            },
+            {
+              "key": "modelo2",
+              "label": "Modelo 2 — total",
+              "format": "currency"
+            },
+            {
+              "key": "diferenca",
+              "label": "Diferença (positivo = mais caro fora do DAS)",
+              "format": "currency"
+            },
+            {
+              "key": "equilibrio",
+              "label": "Equilíbrio (% da receita)",
+              "format": "percentage"
+            },
+            {
+              "key": "alvo",
+              "label": "Quanto você precisaria comprar com nota",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "QUEM TALVEZ COMPENSE OLHAR COM CARINHO",
+          "items": [
+            "Atacado, distribuidora e revenda de baixo valor agregado: compras já perto de 90% da receita",
+            "Clínica, laboratório e escola que vendem para empresa e têm redução de 60%",
+            "Profissional regulamentado com carteira majoritariamente PJ e redução de 30%",
+            "Quem vende com alíquota zero e compra tributado: acumula crédito em vez de pagar",
+            "Indústria com insumo muito pesado na receita e cliente PJ exigente por crédito"
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "QUEM QUASE CERTAMENTE NÃO COMPENSA",
+          "items": [
+            "Serviço intensivo em mão de obra sem redução: a folha não gera crédito",
+            "Qualquer negócio com a maior parte das vendas para consumidor final",
+            "Comércio com margem gorda e compras abaixo de 60% da receita",
+            "Quem não tem estrutura para apurar e declarar uma guia a mais todo mês"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Uma padaria vende muito item de cesta básica, com alíquota zero, e compra insumo tributado. O que acontece no regime regular?",
+          "options": [
+            "Ela paga a alíquota cheia mesmo assim",
+            "Ela fica com crédito acumulado, porque tem crédito na compra e pouca ou nenhuma CBS na venda",
+            "Ela não pode optar pelo regime regular"
+          ],
+          "correct": 1,
+          "explanation": "Alíquota zero na saída não anula o crédito da entrada. Quem compra tributado e vende a zero acumula crédito — e é a situação mais favorável que existe no regime regular. Vale calcular caso a caso, porque a proporção de itens com alíquota zero raramente é 100%."
+        }
+      ]
+    },
+    {
+      "id": "impacto-comercio",
+      "shortTitle": "Impacto no Comércio",
+      "kicker": "MÓDULO 07 · SETOR",
+      "title": "Exemplo real: o impacto da CBS no Comércio",
+      "summary": "Uma loja de materiais de construção do Anexo I, e o que muda no resultado dela em cada modelo.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Uma loja de materiais de construção optante pelo Simples, Anexo I, fatura R$ 40.000,00 por mês. Vende 60% para consumidor final e 40% para empresas — pedreiros, construtoras, revendedores. O custo da mercadoria é R$ 22.000,00, ou 55% da receita, tudo com nota fiscal."
+        },
+        {
+          "type": "heading",
+          "text": "Cenário A — CBS no DAS"
+        },
+        {
+          "type": "paragraph",
+          "text": "Com alíquota efetiva de 8%, o DAS é R$ 3.200,00 e não muda com a Reforma. Pela tabela de partilha do Anexo I, PIS e COFINS são 15,5% do DAS: a fatia que vira CBS é R$ 496,00, ou 1,24% da receita. O cliente PJ que comprar R$ 1.000,00 leva R$ 12,40 de crédito."
+        },
+        {
+          "type": "heading",
+          "text": "Cenário B — CBS fora do DAS"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Linha",
+            "Valor"
+          ],
+          "rows": [
+            [
+              "Receita bruta mensal",
+              "R$ 40.000,00"
+            ],
+            [
+              "Custo da mercadoria, com crédito",
+              "R$ 22.000,00"
+            ],
+            [
+              "CBS bruta (9,21% sobre a receita)",
+              "R$ 3.684,00"
+            ],
+            [
+              "Crédito de CBS sobre as compras",
+              "− R$ 2.026,20"
+            ],
+            [
+              "CBS líquida a pagar",
+              "R$ 1.657,80"
+            ],
+            [
+              "DAS reduzido, sem PIS/COFINS",
+              "R$ 2.704,00"
+            ],
+            [
+              "Despesas operacionais",
+              "R$ 8.800,00"
+            ],
+            [
+              "Margem líquida mensal",
+              "R$ 4.838,20"
+            ]
+          ],
+          "caption": "A CBS líquida representa 4,14% da receita, não 9,21% — é o crédito trabalhando"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "RESULTADO DA SIMULAÇÃO",
+          "items": [
+            "Modelo 1: R$ 3.200,00 por mês · crédito ao cliente PJ de 1,24% da venda",
+            "Modelo 2: R$ 2.704,00 de DAS mais R$ 1.657,80 de CBS = R$ 4.361,80 · crédito de 9,21%",
+            "Diferença: R$ 1.161,80 a mais por mês, ou 36% mais caro",
+            "Ponto de equilíbrio: as compras precisariam chegar a 86,5% da receita"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "No comércio com margem normal, sair do DAS não compensa em custo tributário — mas pode compensar comercialmente, se os clientes PJ valorizarem o crédito cheio mais do que você paga a mais por ele."
+        },
+        {
+          "type": "heading",
+          "text": "O mesmo setor, com margem apertada"
+        },
+        {
+          "type": "paragraph",
+          "text": "Agora uma distribuidora, também Anexo I, com R$ 100.000,00 de receita e R$ 90.000,00 de custo de mercadoria — 90% da receita, praticamente tudo com nota de fornecedor."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Linha",
+            "Valor"
+          ],
+          "rows": [
+            [
+              "Receita bruta mensal",
+              "R$ 100.000,00"
+            ],
+            [
+              "Custo da mercadoria, com crédito",
+              "R$ 90.000,00"
+            ],
+            [
+              "CBS bruta (9,21%)",
+              "R$ 9.210,00"
+            ],
+            [
+              "Crédito de CBS sobre as compras",
+              "− R$ 8.289,00"
+            ],
+            [
+              "CBS líquida a pagar",
+              "R$ 921,00"
+            ],
+            [
+              "DAS reduzido",
+              "R$ 6.760,00"
+            ],
+            [
+              "Modelo 2 — total",
+              "R$ 7.681,00"
+            ],
+            [
+              "Modelo 1 — total",
+              "R$ 8.000,00"
+            ]
+          ],
+          "caption": "Aqui o Modelo 2 sai R$ 319,00 mais barato por mês"
+        },
+        {
+          "type": "callout",
+          "tone": "success",
+          "title": "POR QUE A DISTRIBUIDORA VIRA O JOGO",
+          "items": [
+            "As compras equivalem a 90% da receita, acima do equilíbrio de 86,5%",
+            "A CBS líquida cai para R$ 921,00, ou 0,92% da receita",
+            "Economia de R$ 319,00 por mês, ou R$ 3.828,00 no ano",
+            "E o cliente PJ passa a receber 9,21% de crédito em vez de 1,24%"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "A regra prática do comércio: margem apertada e compras perto de 85 a 90% da receita — atacado, distribuição, revenda de baixo valor agregado — tendem a se beneficiar do Modelo 2. Margem maior tende a pagar mais fora do DAS."
+        },
+        {
+          "type": "classify-exercise",
+          "items": [
+            "Compra de mercadoria de fornecedor com nota fiscal eletrônica",
+            "Aluguel do ponto comercial pago sem documento fiscal",
+            "Frete contratado de transportadora com CNPJ e nota fiscal",
+            "Compra de mercadoria de um fornecedor pessoa física, sem nota",
+            "Conta de energia elétrica da loja com nota fiscal",
+            "Salário e encargos dos vendedores"
+          ],
+          "categories": [
+            "Gera crédito de CBS",
+            "Não gera crédito de CBS"
+          ],
+          "answerKey": {
+            "Compra de mercadoria de fornecedor com nota fiscal eletrônica": "Gera crédito de CBS",
+            "Aluguel do ponto comercial pago sem documento fiscal": "Não gera crédito de CBS",
+            "Frete contratado de transportadora com CNPJ e nota fiscal": "Gera crédito de CBS",
+            "Compra de mercadoria de um fornecedor pessoa física, sem nota": "Não gera crédito de CBS",
+            "Conta de energia elétrica da loja com nota fiscal": "Gera crédito de CBS",
+            "Salário e encargos dos vendedores": "Não gera crédito de CBS"
+          }
+        },
+        {
+          "type": "quiz",
+          "question": "Duas lojas do Anexo I, mesma receita. A que tem margem menor tende a se dar melhor em qual modelo?",
+          "options": [
+            "No unificado, porque paga menos imposto de qualquer jeito",
+            "No regime regular, porque margem menor significa compras maiores e mais crédito",
+            "Dá no mesmo, margem não entra na conta"
+          ],
+          "correct": 1,
+          "explanation": "Margem menor é o outro lado de custo de mercadoria maior — e custo de mercadoria com nota é exatamente o que vira crédito. Por isso atacado e distribuição atravessam o ponto de equilíbrio com naturalidade, enquanto o varejo de margem gorda quase nunca chega lá."
+        }
+      ]
+    },
+    {
+      "id": "impacto-industria",
+      "shortTitle": "Impacto na Indústria",
+      "kicker": "MÓDULO 08 · SETOR",
+      "title": "Exemplo real: o impacto da CBS na Indústria",
+      "summary": "Uma pequena indústria de móveis planejados do Anexo II, e o efeito da CBS no resultado dela.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Uma indústria de móveis planejados, Anexo II, fatura R$ 60.000,00 por mês. Compra madeira, ferragens e insumos com nota — R$ 33.000,00, ou 55% da receita — e vende principalmente para lojas e revendedores."
+        },
+        {
+          "type": "heading",
+          "text": "Cenário A — CBS no DAS"
+        },
+        {
+          "type": "paragraph",
+          "text": "Com alíquota efetiva de 8,5%, o DAS é R$ 5.100,00 e não muda. No Anexo II, PIS e COFINS são 14% do DAS: a fatia que vira CBS é R$ 714,00, ou 1,19% da receita — que é o crédito que o cliente PJ leva."
+        },
+        {
+          "type": "heading",
+          "text": "Cenário B — CBS fora do DAS"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Linha",
+            "Valor"
+          ],
+          "rows": [
+            [
+              "Receita bruta mensal",
+              "R$ 60.000,00"
+            ],
+            [
+              "Custo dos insumos, com crédito",
+              "R$ 33.000,00"
+            ],
+            [
+              "CBS bruta (9,21% sobre a receita)",
+              "R$ 5.526,00"
+            ],
+            [
+              "Crédito de CBS sobre as compras",
+              "− R$ 3.039,30"
+            ],
+            [
+              "CBS líquida a pagar",
+              "R$ 2.486,70"
+            ],
+            [
+              "DAS reduzido, sem PIS/COFINS",
+              "R$ 4.386,00"
+            ],
+            [
+              "Despesas operacionais (folha, aluguel, energia)",
+              "R$ 12.000,00"
+            ],
+            [
+              "Margem líquida mensal",
+              "R$ 8.127,30"
+            ]
+          ],
+          "caption": "O crédito derruba a CBS de 9,21% para 4,14% da receita"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "RESULTADO DA SIMULAÇÃO",
+          "items": [
+            "Modelo 1: R$ 5.100,00 por mês · crédito ao cliente PJ de 1,19%",
+            "Modelo 2: R$ 4.386,00 mais R$ 2.486,70 = R$ 6.872,70 · crédito de 9,21%",
+            "Diferença: R$ 1.772,70 a mais por mês, ou 35% mais caro",
+            "Ponto de equilíbrio: compras de 87,1% da receita"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Na indústria, o volume de insumos com nota derruba bastante a CBS líquida — de 9,21% para 4,14% da receita — mas ainda fica acima do custo do modelo unificado. A pergunta vira: vale gerar um crédito 8 vezes maior para o cliente?"
+        },
+        {
+          "type": "quiz",
+          "question": "O que faria essa indústria atravessar o ponto de equilíbrio de 87%?",
+          "options": [
+            "Aumentar o preço de venda",
+            "Ter insumo muito mais pesado na receita, como acontece em indústria de transformação de baixa margem",
+            "Contratar mais funcionários"
+          ],
+          "correct": 1,
+          "explanation": "Aumentar preço aumenta a CBS de saída e afasta o equilíbrio. Contratar aumenta a folha, que não gera crédito nenhum. O que aproxima do equilíbrio é insumo comprado com nota pesando mais na receita — ou uma redução de alíquota setorial, como no módulo 5."
+        }
+      ]
+    },
+    {
+      "id": "impacto-servicos",
+      "shortTitle": "Impacto em Serviços",
+      "kicker": "MÓDULO 09 · SETOR",
+      "title": "Exemplo real: o impacto da CBS em Serviços",
+      "summary": "Um escritório de contabilidade do Anexo III — o setor onde a conta do regime regular é mais dura, e onde a redução de 30% mais muda.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Um escritório de contabilidade optante pelo Simples, Anexo III com Fator R acima de 28%, fatura R$ 35.000,00 por mês. A despesa principal é a folha, que não gera crédito. Os insumos que geram crédito — software, aluguel com nota, material — somam R$ 4.000,00, ou 11% da receita."
+        },
+        {
+          "type": "heading",
+          "text": "Cenário A — CBS no DAS"
+        },
+        {
+          "type": "paragraph",
+          "text": "Com alíquota efetiva de 7%, o DAS é R$ 2.450,00. No Anexo III, PIS e COFINS são 15,6% do DAS: a fatia que vira CBS é R$ 382,20, ou 1,09% da receita."
+        },
+        {
+          "type": "heading",
+          "text": "Cenário B — CBS fora do DAS, sem redução"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Linha",
+            "Valor"
+          ],
+          "rows": [
+            [
+              "Receita bruta mensal",
+              "R$ 35.000,00"
+            ],
+            [
+              "CBS bruta (9,21% sobre a receita)",
+              "R$ 3.223,50"
+            ],
+            [
+              "Crédito sobre insumos de R$ 4.000,00",
+              "− R$ 368,40"
+            ],
+            [
+              "CBS líquida a pagar",
+              "R$ 2.855,10"
+            ],
+            [
+              "DAS reduzido, sem PIS/COFINS",
+              "R$ 2.067,80"
+            ],
+            [
+              "Despesas operacionais (folha, aluguel, softwares)",
+              "R$ 15.000,00"
+            ],
+            [
+              "Margem líquida mensal",
+              "R$ 15.077,10"
+            ]
+          ],
+          "caption": "Quase não há crédito porque quase não há compra com nota — a folha domina"
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "RESULTADO SEM A REDUÇÃO",
+          "items": [
+            "Modelo 1: R$ 2.450,00 por mês",
+            "Modelo 2: R$ 2.067,80 mais R$ 2.855,10 = R$ 4.922,90",
+            "Diferença: R$ 2.472,90 a mais — o custo praticamente dobra",
+            "Ponto de equilíbrio: 88,1% da receita em compras com nota, inalcançável para quem vive de folha"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Cenário C — o mesmo escritório, com a redução de 30%"
+        },
+        {
+          "type": "paragraph",
+          "text": "Contabilidade é profissão regulamentada, e a lei prevê redução de 30% na alíquota para os serviços prestados nessa condição. A alíquota de saída cai de 9,21% para 6,45% — e a conta muda de tamanho."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "",
+            "Sem redução",
+            "Com redução de 30%"
+          ],
+          "rows": [
+            [
+              "Alíquota de saída",
+              "9,21%",
+              "6,45%"
+            ],
+            [
+              "CBS bruta",
+              "R$ 3.223,50",
+              "R$ 2.256,45"
+            ],
+            [
+              "CBS líquida",
+              "R$ 2.855,10",
+              "R$ 1.888,05"
+            ],
+            [
+              "Modelo 2 — total",
+              "R$ 4.922,90",
+              "R$ 3.955,85"
+            ],
+            [
+              "A mais que o Modelo 1",
+              "R$ 2.472,90",
+              "R$ 1.505,85"
+            ],
+            [
+              "Compras para empatar",
+              "88,1%",
+              "58,1%"
+            ]
+          ],
+          "caption": "A redução não inverte a decisão aqui, mas corta a diferença pela metade e traz o equilíbrio para o campo do possível"
+        },
+        {
+          "type": "comparison",
+          "columns": [
+            {
+              "label": "Quando pode valer sair do DAS",
+              "tone": "positive",
+              "items": [
+                "Compras com nota acima de 80 a 85% da receita, sem redução",
+                "Atividade com redução de 60%, que derruba o equilíbrio para perto de 30%",
+                "Mais da metade das vendas para PJ que exige crédito destacado",
+                "Cliente disposto a pagar mais pelo crédito maior"
+              ]
+            },
+            {
+              "label": "Quando normalmente não vale",
+              "tone": "negative",
+              "items": [
+                "Serviço intensivo em mão de obra sem redução setorial",
+                "Maior parte dos clientes é consumidor final",
+                "Poucas despesas com nota fiscal frente à receita",
+                "Sem estrutura para apurar e entregar uma obrigação a mais por mês"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Em serviços, a pergunta certa não é \"quanto vou pagar de imposto\", e sim \"o crédito extra que meu cliente PJ ganha compensa o que eu pago a mais por ele — e a minha atividade tem redução?\"."
+        },
+        {
+          "type": "quiz",
+          "question": "A redução de 30% fez o equilíbrio do escritório cair de 88% para 58%. Isso já resolve?",
+          "options": [
+            "Resolve: agora compensa sair do DAS",
+            "Não por si só — ele compra 11% da receita com nota, ainda longe de 58%",
+            "Não muda nada, a redução é irrelevante"
+          ],
+          "correct": 1,
+          "explanation": "A redução corta a diferença quase pela metade e traz o alvo para o campo do possível, mas o escritório continua longe dele. Ela muda o cálculo de quem tem insumo relevante — uma clínica com equipamento e material, por exemplo — não de quem só tem folha."
+        }
+      ]
+    },
+    {
+      "id": "sua-conta",
+      "shortTitle": "Faça a sua conta",
+      "kicker": "MÓDULO 10 · DESAFIO FINAL",
+      "title": "Faça a conta da sua empresa",
+      "summary": "Tudo o que você viu, aplicado aos números do seu cliente, em uma tela.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Preencha com os dados reais. O resultado mostra quanto custa cada modelo, de quanto é a diferença, qual seria o ponto de equilíbrio e quanto de crédito o cliente PJ recebe em cada caminho."
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "receita",
+              "label": "Receita mensal (R$)",
+              "type": "currency",
+              "placeholder": "40000"
+            },
+            {
+              "id": "aliqDas",
+              "label": "Alíquota efetiva do DAS (%)",
+              "type": "percentage",
+              "placeholder": "8"
+            },
+            {
+              "id": "anexo",
+              "label": "O seu anexo",
+              "type": "select",
+              "options": [
+                "Anexo I — comércio",
+                "Anexo II — indústria",
+                "Anexo III — serviços"
+              ]
+            },
+            {
+              "id": "reducao",
+              "label": "Redução de alíquota da atividade",
+              "type": "select",
+              "options": [
+                "Não tem redução",
+                "Profissão regulamentada (−30%)",
+                "Saúde, educação, alimentos (−60%)",
+                "Alíquota zero"
+              ]
+            },
+            {
+              "id": "compras",
+              "label": "Compras com nota fiscal por mês (R$)",
+              "type": "currency",
+              "placeholder": "22000"
+            },
+            {
+              "id": "pctPJ",
+              "label": "Vendas para PJ do regime regular (%)",
+              "type": "percentage",
+              "placeholder": "40"
+            },
+            {
+              "id": "aliqCbs",
+              "label": "Alíquota de CBS de referência (%)",
+              "type": "percentage",
+              "placeholder": "9.21"
+            }
+          ],
+          "formula": "if (!(receita > 0)) { return { aviso: 'Informe a receita mensal da empresa.' }; } if (!(aliqCbs > 0)) { return { aviso: 'Informe a alíquota de CBS que você quer usar como referência.' }; } const share = anexo === 'Anexo II — indústria' ? 0.14 : anexo === 'Anexo III — serviços' ? 0.156 : 0.155; const corte = reducao === 'Profissão regulamentada (−30%)' ? 0.3 : reducao === 'Saúde, educação, alimentos (−60%)' ? 0.6 : reducao === 'Alíquota zero' ? 1 : 0; const saida = aliqCbs * (1 - corte); const das = receita * (aliqDas / 100); const fatia = das * share; const dasReduzido = das - fatia; const bruta = receita * (saida / 100); const credito = compras * (aliqCbs / 100); const liquida = Math.max(0, bruta - credito); const modelo2 = dasReduzido + liquida; const diferenca = modelo2 - das; const equilibrio = ((saida / 100 - fatia / receita) / (aliqCbs / 100)) * 100; const comprasHoje = (compras / receita) * 100; const creditoUnificado = (fatia / receita) * 100; const vendasPJ = receita * (pctPJ / 100); const ganhoCliente = vendasPJ * ((saida - creditoUnificado) / 100); let leitura; if (diferenca <= 0) { leitura = 'O regime regular sai mais barato E dá mais crédito ao cliente. Vale simular com o contador antes da janela.'; } else if (comprasHoje >= equilibrio - 5) { leitura = 'Você está na beira do equilíbrio: pequenas mudanças no volume de compras com nota viram a decisão.'; } else { leitura = 'O modelo unificado sai mais barato. Só compensaria sair se o crédito extra valer, comercialmente, mais que a diferença.'; } return { saida, modelo1: das, modelo2, diferenca, anual: diferenca * 12, equilibrio, comprasHoje, ganhoCliente, leitura };",
+          "resultLabel": "O seu diagnóstico",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "saida",
+              "label": "A sua alíquota de saída",
+              "format": "percentage"
+            },
+            {
+              "key": "modelo1",
+              "label": "Modelo 1 — DAS único",
+              "format": "currency"
+            },
+            {
+              "key": "modelo2",
+              "label": "Modelo 2 — DAS reduzido + CBS",
+              "format": "currency"
+            },
+            {
+              "key": "diferenca",
+              "label": "Diferença por mês",
+              "format": "currency"
+            },
+            {
+              "key": "anual",
+              "label": "Diferença no ano",
+              "format": "currency"
+            },
+            {
+              "key": "comprasHoje",
+              "label": "Suas compras com nota hoje (% da receita)",
+              "format": "percentage"
+            },
+            {
+              "key": "equilibrio",
+              "label": "Equilíbrio necessário (% da receita)",
+              "format": "percentage"
+            },
+            {
+              "key": "ganhoCliente",
+              "label": "Crédito a mais que os clientes PJ ganhariam",
+              "format": "currency"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "COMO LER O SEU RESULTADO",
+          "items": [
+            "Diferença negativa: o regime regular é mais barato — caso raro, mas existe em atacado e em atividade com redução",
+            "Compras hoje bem abaixo do equilíbrio: fique no unificado e não perca tempo",
+            "Compras perto do equilíbrio: simule de novo com a alíquota oficial quando ela sair, ainda dá tempo em março",
+            "Crédito a mais alto e cliente PJ exigente: aí a decisão deixa de ser tributária e vira comercial"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "O roteiro da decisão"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "Levantar a receita bruta dos últimos 12 meses e a alíquota efetiva atual do DAS",
+            "Mapear o percentual de compras com nota fiscal sobre a receita — é o dado que mais pesa",
+            "Conferir se a atividade tem redução de 30%, 60% ou alíquota zero",
+            "Separar as vendas entre PJ do regime regular, PJ do Simples e consumidor final",
+            "Rodar a simulação com a alíquota de referência e também com cenários mais baixos",
+            "Decidir dentro da janela de setembro, lembrando que dá para desistir até 30 de novembro"
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "O QUE ESTA CONTA NÃO INCLUI",
+          "items": [
+            "O custo de apurar e declarar a CBS todo mês, que no regime regular é obrigação nova",
+            "O efeito do split payment no capital de giro",
+            "O IBS, que entra depois e tem regras próprias",
+            "A alíquota oficial, que ainda depende de resolução do Senado"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Não decidir é decidir ficar no DAS. Para a maioria das empresas do Simples, essa é a resposta certa — e o valor deste curso é você conseguir provar isso com número, em vez de torcer."
+        }
+      ]
+    }
+  ]
+}
