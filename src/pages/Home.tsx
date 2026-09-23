@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../components/Logo';
+import SerieCarrossel from '../components/SerieCarrossel';
 import { agrupaPorSerie } from '../lib/grupos';
 
 type CourseOverview = {
@@ -11,6 +12,43 @@ type CourseOverview = {
   category?: string;
   moduleCount: number;
 };
+
+function CardCurso({ course }: { course: CourseOverview }) {
+  return (
+    <Link
+      to={`/${course.slug}`}
+      className="bg-card border border-border rounded-xl overflow-hidden flex flex-col h-full hover:border-primary/50 transition-colors shadow-sm hover:shadow-md active:scale-[0.99]"
+    >
+      {course.image && (
+        <img
+          src={course.image}
+          alt=""
+          loading="lazy"
+          className="w-full aspect-[16/9] object-cover bg-secondary"
+        />
+      )}
+      <div className="p-5 sm:p-6 flex flex-col flex-1">
+        <div className="text-xs font-semibold uppercase tracking-wider text-accent mb-3">
+          {course.moduleCount} {course.moduleCount === 1 ? 'Módulo' : 'Módulos'} · leitura rápida
+        </div>
+        <h3 className="text-[22px] sm:text-2xl font-serif text-primary mb-3 leading-snug">
+          {course.courseName}
+        </h3>
+        {/* O clamp precisa de um <p> que não seja item de flex: como item, o
+            display vira bloco e o corte sai no meio da linha, sem reticências. */}
+        <div className="flex-1">
+          <p className="text-[15px] text-muted-foreground leading-relaxed line-clamp-4">
+            {course.description}
+          </p>
+        </div>
+        <div className="mt-6 pt-4 border-t border-border flex items-center justify-between text-primary font-semibold text-[15px] group">
+          Começar agora
+          <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+        </div>
+      </div>
+    </Link>
+  );
+}
 
 export default function Home() {
   const [courses, setCourses] = useState<CourseOverview[]>([]);
@@ -79,39 +117,18 @@ export default function Home() {
                     </p>
                   </div>
                 )}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                  {grupo.cursos.map(course => (
-              <Link
-                key={course.slug}
-                to={`/${course.slug}`}
-                className="bg-card border border-border rounded-xl overflow-hidden flex flex-col hover:border-primary/50 transition-colors shadow-sm hover:shadow-md active:scale-[0.99]"
-              >
-                {course.image && (
-                  <img
-                    src={course.image}
-                    alt=""
-                    loading="lazy"
-                    className="w-full aspect-[16/9] object-cover bg-secondary"
-                  />
+                {grupo.cursos.length === 1 ? (
+                  // Um card sozinho numa faixa fica estranho: sem vizinho, não há o que rolar.
+                  <div className="max-w-[420px]">
+                    <CardCurso course={grupo.cursos[0]} />
+                  </div>
+                ) : (
+                  <SerieCarrossel rotulo={grupo.nome}>
+                    {grupo.cursos.map(course => (
+                      <CardCurso key={course.slug} course={course} />
+                    ))}
+                  </SerieCarrossel>
                 )}
-                <div className="p-5 sm:p-6 flex flex-col flex-1">
-                <div className="text-xs font-semibold uppercase tracking-wider text-accent mb-3">
-                  {course.moduleCount} {course.moduleCount === 1 ? 'Módulo' : 'Módulos'} · leitura rápida
-                </div>
-                <h3 className="text-[22px] sm:text-2xl font-serif text-primary mb-3 leading-snug">
-                  {course.courseName}
-                </h3>
-                <p className="text-[15px] text-muted-foreground flex-1 leading-relaxed line-clamp-4">
-                  {course.description}
-                </p>
-                <div className="mt-6 pt-4 border-t border-border flex items-center justify-between text-primary font-semibold text-[15px] group">
-                  Começar agora
-                  <span className="transform group-hover:translate-x-1 transition-transform">→</span>
-                </div>
-                </div>
-              </Link>
-                  ))}
-                </div>
               </section>
             ))}
           </div>
