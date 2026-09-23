@@ -12,8 +12,8 @@ import {
  * ships a legend plus a table view of the same numbers (the relief rule).
  */
 const SERIES = {
-  views: { key: 'views', label: 'Acessos', color: '#2a78d6' },
-  visitors: { key: 'visitors', label: 'Visitantes', color: '#eb6834' },
+  visitors: { key: 'visitors', label: 'Pessoas', color: '#2a78d6' },
+  views: { key: 'views', label: 'Aberturas', color: '#eb6834' },
   leads: { key: 'leads', label: 'Leads', color: '#1baf7a' },
 } as const;
 
@@ -33,7 +33,13 @@ type Stats = {
     leads: number;
     funnel: { index: number; title: string; visitors: number; pctOfStart: number }[];
   }[];
-  sources: { source: string; views: number; visitors: number; leads: number }[];
+  sources: {
+    source: string;
+    via: 'etiqueta' | 'referência' | 'direto';
+    views: number;
+    visitors: number;
+    leads: number;
+  }[];
 };
 
 const toISODate = (d: Date) => d.toISOString().slice(0, 10);
@@ -135,21 +141,21 @@ export default function StatsPanel() {
     const lines: string[] = [];
 
     lines.push(esc('Acessos por dia'));
-    lines.push(['Data', 'Acessos', 'Visitantes', 'Conclusões', 'Leads'].map(esc).join(','));
+    lines.push(['Data', 'Pessoas', 'Aberturas', 'Conclusões', 'Leads'].map(esc).join(','));
     stats.daily.forEach((d) =>
-      lines.push([fullDate(d.date), d.views, d.visitors, d.completions, d.leads].map(esc).join(','))
+      lines.push([fullDate(d.date), d.visitors, d.views, d.completions, d.leads].map(esc).join(','))
     );
 
     lines.push('');
     lines.push(esc('Por curso'));
-    lines.push(['Curso', 'Link', 'Acessos', 'Visitantes', 'Conclusões', '% conclusão', 'Módulo médio', 'Leads'].map(esc).join(','));
+    lines.push(['Curso', 'Link', 'Pessoas', 'Aberturas', 'Conclusões', '% conclusão', 'Módulo médio', 'Leads'].map(esc).join(','));
     stats.courses.forEach((c) =>
-      lines.push([c.courseName, `/${c.slug}`, c.views, c.visitors, c.completions, `${c.completionRate}%`, c.averageDepth, c.leads].map(esc).join(','))
+      lines.push([c.courseName, `/${c.slug}`, c.visitors, c.views, c.completions, `${c.completionRate}%`, c.averageDepth, c.leads].map(esc).join(','))
     );
 
     lines.push('');
     lines.push(esc('Até que módulo chegaram'));
-    lines.push(['Curso', 'Módulo', 'Título', 'Visitantes', '% de quem começou'].map(esc).join(','));
+    lines.push(['Curso', 'Módulo', 'Título', 'Pessoas', '% de quem começou'].map(esc).join(','));
     stats.courses.forEach((c) =>
       c.funnel.forEach((f) =>
         lines.push([c.courseName, f.index + 1, f.title, f.visitors, `${f.pctOfStart}%`].map(esc).join(','))
@@ -158,8 +164,10 @@ export default function StatsPanel() {
 
     lines.push('');
     lines.push(esc('Origem do tráfego'));
-    lines.push(['Origem', 'Acessos', 'Visitantes', 'Leads'].map(esc).join(','));
-    stats.sources.forEach((s) => lines.push([s.source, s.views, s.visitors, s.leads].map(esc).join(',')));
+    lines.push(['Origem', 'Como foi identificada', 'Pessoas', 'Aberturas', 'Leads'].map(esc).join(','));
+    stats.sources.forEach((s) =>
+      lines.push([s.source, s.via, s.visitors, s.views, s.leads].map(esc).join(','))
+    );
 
     const blob = new Blob(['﻿' + lines.join('\n')], { type: 'text/csv;charset=utf-8' });
     const url = URL.createObjectURL(blob);
@@ -186,7 +194,7 @@ export default function StatsPanel() {
         </button>
       </div>
       <p className="text-sm text-muted-foreground mb-6">
-        Conta todo mundo que abre um curso, tenha se cadastrado ou não.
+        Conta todo mundo que abre um curso, tenha se cadastrado ou não. "Pessoas" conta cada uma uma vez só, por mais vezes que ela volte.
       </p>
 
       {/* Filters, in one row above the charts */}
@@ -219,8 +227,21 @@ export default function StatsPanel() {
         <div className="space-y-8">
           {/* Headline numbers */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-            <StatTile value={stats.totals.views} label="Acessos" hint="cursos abertos no período" />
-            <StatTile value={stats.totals.visitors} label="Visitantes" hint="navegadores diferentes" />
+            <StatTile
+              value={stats.totals.visitors}
+              label="Pessoas"
+              hint="cada uma contada uma vez, por mais que volte"
+            />
+            <StatTile
+              value={stats.totals.views}
+              label="Aberturas"
+              hint={
+                stats.totals.visitors > 0
+                  ? `${(Math.round((stats.totals.views / stats.totals.visitors) * 10) / 10)
+                      .toLocaleString('pt-BR')} por pessoa, em média`
+                  : 'cursos abertos no período'
+              }
+            />
             <StatTile value={stats.totals.completions} label="Conclusões" hint="chegaram ao último módulo" />
             <StatTile value={stats.totals.leads} label="Leads" hint="deixaram contato" />
           </div>
@@ -248,8 +269,8 @@ export default function StatsPanel() {
                   <thead className="text-muted-foreground border-b border-border">
                     <tr>
                       <th className="py-2 pr-4 font-medium">Data</th>
-                      <th className="py-2 px-4 font-medium text-right">Acessos</th>
-                      <th className="py-2 px-4 font-medium text-right">Visitantes</th>
+                      <th className="py-2 px-4 font-medium text-right">Pessoas</th>
+                      <th className="py-2 px-4 font-medium text-right">Aberturas</th>
                       <th className="py-2 px-4 font-medium text-right">Conclusões</th>
                       <th className="py-2 pl-4 font-medium text-right">Leads</th>
                     </tr>
@@ -258,8 +279,8 @@ export default function StatsPanel() {
                     {stats.daily.filter((d) => d.views || d.leads || d.completions).map((d) => (
                       <tr key={d.date}>
                         <td className="py-2 pr-4">{fullDate(d.date)}</td>
-                        <td className="py-2 px-4 text-right tabular-nums">{d.views}</td>
                         <td className="py-2 px-4 text-right tabular-nums">{d.visitors}</td>
+                        <td className="py-2 px-4 text-right tabular-nums">{d.views}</td>
                         <td className="py-2 px-4 text-right tabular-nums">{d.completions}</td>
                         <td className="py-2 pl-4 text-right tabular-nums">{d.leads}</td>
                       </tr>
@@ -327,8 +348,8 @@ export default function StatsPanel() {
                       </div>
                       <div className="grid grid-cols-2 sm:grid-cols-5 gap-x-4 gap-y-3">
                         {[
-                          { v: course.views, l: 'Acessos' },
-                          { v: course.visitors, l: 'Visitantes' },
+                          { v: course.visitors, l: 'Pessoas' },
+                          { v: course.views, l: 'Aberturas' },
                           { v: course.completions, l: 'Conclusões' },
                           { v: `${course.completionRate}%`, l: 'Conclusão' },
                           { v: course.leads, l: 'Leads' },
@@ -393,8 +414,9 @@ export default function StatsPanel() {
           <section>
             <h2 className="font-serif text-xl text-primary mb-1">De onde vieram</h2>
             <p className="text-[13px] text-muted-foreground mb-4">
-              Vem da etiqueta <code className="font-mono">utm_source</code> no link. "direto" é quem chegou sem
-              etiqueta — link na bio, digitado ou compartilhado.
+              Primeiro a etiqueta <code className="font-mono">utm_source</code> do link; sem ela, o site que
+              trouxe a pessoa. "Direto" é só quem chegou sem nenhum dos dois — link digitado, salvo nos
+              favoritos ou aberto por um app que não informa a origem.
             </p>
             <div className="rounded-xl border border-border bg-card overflow-hidden">
               <div className="overflow-x-auto">
@@ -402,8 +424,8 @@ export default function StatsPanel() {
                   <thead className="bg-secondary/50 text-muted-foreground border-b border-border">
                     <tr>
                       <th className="p-3 font-medium">Origem</th>
-                      <th className="p-3 font-medium text-right">Acessos</th>
-                      <th className="p-3 font-medium text-right">Visitantes</th>
+                      <th className="p-3 font-medium text-right">Pessoas</th>
+                      <th className="p-3 font-medium text-right">Aberturas</th>
                       <th className="p-3 font-medium text-right">Leads</th>
                       <th className="p-3 font-medium text-right">Conversão</th>
                     </tr>
@@ -411,9 +433,16 @@ export default function StatsPanel() {
                   <tbody className="divide-y divide-border">
                     {stats.sources.map((s) => (
                       <tr key={s.source}>
-                        <td className="p-3 font-medium text-foreground">{s.source}</td>
-                        <td className="p-3 text-right tabular-nums">{s.views}</td>
+                        <td className="p-3 font-medium text-foreground">
+                          {s.source}
+                          {s.via === 'referência' && (
+                            <span className="ml-2 text-[11px] font-normal text-muted-foreground">
+                              por referência
+                            </span>
+                          )}
+                        </td>
                         <td className="p-3 text-right tabular-nums">{s.visitors}</td>
+                        <td className="p-3 text-right tabular-nums">{s.views}</td>
                         <td className="p-3 text-right tabular-nums">{s.leads}</td>
                         <td className="p-3 text-right tabular-nums text-muted-foreground">
                           {s.visitors > 0 ? `${Math.round((s.leads / s.visitors) * 1000) / 10}%` : '—'}

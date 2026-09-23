@@ -247,10 +247,87 @@ export type Stats = {
   };
   daily: { date: string; views: number; visitors: number; completions: number; leads: number }[];
   courses: CourseStats[];
-  sources: { source: string; views: number; visitors: number; leads: number }[];
+  sources: {
+    source: string;
+    /** Como a origem foi determinada: etiqueta utm, domínio que referenciou, ou nenhum dos dois. */
+    via: "etiqueta" | "referência" | "direto";
+    views: number;
+    visitors: number;
+    leads: number;
+  }[];
 };
 
 const pct = (part: number, whole: number) => (whole > 0 ? Math.round((part / whole) * 1000) / 10 : 0);
+
+/* ------------------------------------------------------------------ */
+/* Origem do acesso                                                    */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Domínios que valem mais pelo nome do que pela URL. A chave é o fim do host,
+ * então "l.instagram.com" e "instagram.com" caem os dois em "instagram".
+ */
+const CONHECIDOS: [string, string][] = [
+  ["instagram.com", "instagram"],
+  ["facebook.com", "facebook"],
+  ["fb.me", "facebook"],
+  ["whatsapp.com", "whatsapp"],
+  ["wa.me", "whatsapp"],
+  ["t.me", "telegram"],
+  ["telegram.org", "telegram"],
+  ["youtube.com", "youtube"],
+  ["youtu.be", "youtube"],
+  ["linkedin.com", "linkedin"],
+  ["lnkd.in", "linkedin"],
+  ["tiktok.com", "tiktok"],
+  ["x.com", "x"],
+  ["twitter.com", "x"],
+  ["t.co", "x"],
+  ["bing.com", "bing"],
+  ["duckduckgo.com", "duckduckgo"],
+  ["mail.google.com", "e-mail"],
+  ["outlook.com", "e-mail"],
+  ["outlook.live.com", "e-mail"],
+];
+
+/** Host de uma URL, sem "www." e em minúsculas. Vazio se não for URL. */
+function host(url: string): string {
+  try {
+    return new URL(url).host.toLowerCase().replace(/^www\./, "");
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * De onde veio o acesso, em ordem de confiança:
+ *
+ *  1. a etiqueta utm_source do link, quando existe — é a única que você controla;
+ *  2. o domínio que referenciou, traduzido para um nome legível;
+ *  3. "direto", que é o que sobra: link digitado, salvo, ou app que não passa
+ *     referência nenhuma.
+ *
+ * O segundo caso é o que faz diferença na prática: sem ele, todo acesso vindo
+ * do Instagram sem etiqueta cai em "direto" e a origem real se perde.
+ */
+export function origemDoEvento(ev: { utmSource?: string; referrer?: string }): {
+  origem: string;
+  via: "etiqueta" | "referência" | "direto";
+} {
+  const utm = (ev.utmSource || "").trim();
+  if (utm) return { origem: utm.toLowerCase(), via: "etiqueta" };
+
+  const h = host(ev.referrer || "");
+  if (!h) return { origem: "direto", via: "direto" };
+
+  for (const [dominio, nome] of CONHECIDOS) {
+    if (h === dominio || h.endsWith(`.${dominio}`)) return { origem: nome, via: "referência" };
+  }
+  // Busca do Google tem dezenas de domínios de país: google.com.br, google.pt...
+  if (/^google\./.test(h) || h.endsWith(".google.com")) return { origem: "google", via: "referência" };
+
+  return { origem: h, via: "referência" };
+}
 
 /* ------------------------------------------------------------------ */
 /* Visitantes, um por um                                               */
@@ -307,7 +384,7 @@ export function listaVisitas(
         totalModulos: curso?.modules?.length || 0,
         concluiu: false,
         // A atribuição fica a do primeiro evento: é a origem que trouxe a pessoa.
-        utmSource: ev.utmSource || "direto",
+        utmSource: origemDoEvento(ev).origem,
         utmCampaign: ev.utmCampaign,
         utmContent: ev.utmContent,
         referrer: ev.referrer,
@@ -379,21 +456,27 @@ export function summarise(
     return entry;
   };
 
-  const sources = new Map<string, { views: number; visitors: Set<string>; leads: number }>();
-  const ensureSource = (name: string) => {
+  const sources = new Map<
+    string,
+    { via: "etiqueta" | "referência" | "direto"; views: number; visitors: Set<string>; leads: number }
+  >();
+  const ensureSource = (name: string, via: "etiqueta" | "referência" | "direto") => {
     let entry = sources.get(name);
     if (!entry) {
-      entry = { views: 0, visitors: new Set(), leads: 0 };
+      entry = { via, views: 0, visitors: new Set(), leads: 0 };
       sources.set(name, entry);
     }
+    // "instagram" pode chegar pelos dois caminhos. Basta um acesso etiquetado
+    // para a origem deixar de ser um palpite sobre o domínio que referenciou.
+    if (via === "etiqueta") entry.via = "etiqueta";
     return entry;
   };
 
   for (const ev of events) {
     const day = daily.get(dayKey(ev.timestamp));
     const course = ensureCourse(ev.courseSlug);
-    // An empty utm_source is direct traffic (link in bio, typed, shared).
-    const source = ensureSource(ev.utmSource || "direto");
+    const { origem, via } = origemDoEvento(ev);
+    const source = ensureSource(origem, via);
 
     // Leads are folded into this stream with a synthetic id so they land on the
     // same timeline; they are not browsers, so they never count as visitors.
@@ -526,9 +609,15 @@ export function summarise(
       })),
     courses: courseStats,
     sources: [...sources.entries()]
-      .map(([source, s]) => ({ source, views: s.views, visitors: s.visitors.size, leads: s.leads }))
+      .map(([source, s]) => ({
+        source,
+        via: s.via,
+        views: s.views,
+        visitors: s.visitors.size,
+        leads: s.leads,
+      }))
       .filter((s) => s.views > 0 || s.leads > 0)
-      .sort((a, b) => b.views - a.views),
+      .sort((a, b) => b.visitors - a.visitors || b.views - a.views),
   };
 }
 

@@ -29,13 +29,24 @@ function readAttribution(): Attribution {
     /* sessionStorage can be unavailable in private mode — attribution is optional. */
   }
 
+  // Referência do próprio site não é origem: quando a pessoa vai da home para
+  // um curso, o referrer é a home. Guardar isso apagaria a origem de verdade,
+  // que foi capturada no primeiro acesso da sessão.
+  let externo: string | undefined;
+  try {
+    const ref = document.referrer;
+    if (ref && new URL(ref).host !== window.location.host) externo = ref;
+  } catch {
+    /* referrer malformado: trata como ausente */
+  }
+
   const params = new URLSearchParams(window.location.search);
   const attribution: Attribution = {
     utmSource: params.get('utm_source') || undefined,
     utmMedium: params.get('utm_medium') || undefined,
     utmCampaign: params.get('utm_campaign') || undefined,
     utmContent: params.get('utm_content') || undefined,
-    referrer: document.referrer || undefined,
+    referrer: externo,
   };
 
   try {
