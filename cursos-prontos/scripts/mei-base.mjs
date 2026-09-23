@@ -49,3 +49,22 @@ export function grava(arquivo, curso) {
     )}`
   );
 }
+
+/* ---------------------------------------------------------------------- *
+ * Reforma tributária (EC 132/2023 + LC 214/2025)
+ *
+ * TUDO AQUI ESTÁ EM TRANSIÇÃO. As alíquotas de referência só são fixadas por
+ * resolução do Senado, e o cronograma pode ser alterado por lei. Conferir
+ * antes de publicar e a cada virada de ano.
+ * ---------------------------------------------------------------------- */
+
+export const ANO_TESTE = 2026;
+export const CBS_TESTE = 0.9;
+export const IBS_TESTE = 0.1;
+
+export const ANO_CBS = 2027;
+export const ANO_IBS_INICIO = 2029;
+export const ANO_IBS_PLENO = 2033;
+
+/** Teto da soma das alíquotas de referência de IBS e CBS previsto na LC 214. */
+export const ALIQUOTA_TETO = 26.5;

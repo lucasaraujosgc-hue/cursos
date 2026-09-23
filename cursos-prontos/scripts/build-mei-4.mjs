@@ -1,0 +1,819 @@
+import {
+  LIMITE, DAS_COMERCIO, DAS_SERVICO,
+  ANO_TESTE, CBS_TESTE, IBS_TESTE, ANO_CBS, ANO_IBS_INICIO, ANO_IBS_PLENO,
+  ALIQUOTA_TETO,
+  brl, brlCheio, num, grava,
+} from './mei-base.mjs';
+
+/*
+ * Curso 4 da série do MEI: a reforma tributária.
+ *
+ * O eixo do curso é um só: a reforma não muda o DAS do MEI, muda o CRÉDITO
+ * de quem compra dele. Por isso quem vende para pessoa física quase não sente
+ * e quem vende para empresa do regime normal sente muito.
+ *
+ * Silvana (bolos): 90% das vendas para pessoa física  → pouco impacto
+ * Rogério (ar-condicionado): 70% para empresa         → muito impacto
+ *
+ * ATENÇÃO: cronograma e alíquotas vêm de mei-base.mjs e estão em transição.
+ */
+
+const FAT_R = 6000;
+const PCT_PJ_R = 70;
+const FAT_PJ_R = FAT_R * (PCT_PJ_R / 100);
+
+/* Numa compra de R$ 1.000 a um fornecedor do regime regular, o cliente PJ
+ * recupera a alíquota em crédito. Comprando do MEI, quase nada. */
+const COMPRA = 1000;
+const CREDITO = COMPRA * (ALIQUOTA_TETO / 100);
+const CUSTO_LIQUIDO = COMPRA - CREDITO;
+
+const modules = [
+  /* ------------------------------------------------------------- 1 */
+  {
+    id: 'o-que-e',
+    shortTitle: 'O que é a reforma',
+    kicker: 'MÓDULO 01 · O DESENHO',
+    title: 'A reforma em uma página',
+    summary: 'Cinco tributos viram dois. A ideia é simples; o que muda para você está num detalhe só.',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'A reforma tributária do consumo troca cinco tributos por dois. PIS, Cofins e IPI, que são federais, viram a CBS. ICMS, que é do estado, e ISS, que é do município, viram o IBS. O nome disso no resto do mundo é IVA — imposto sobre valor agregado. Aqui virou um IVA duplo, porque a União ficou com um e os estados e municípios com o outro.',
+      },
+      {
+        type: 'stats',
+        items: [
+          { value: '5 → 2', label: 'tributos sobre consumo', hint: 'CBS federal e IBS estadual/municipal' },
+          { value: `${num(ALIQUOTA_TETO, 1)}%`, label: 'é o teto das duas somadas', hint: 'previsto na lei que regulamenta' },
+          { value: String(ANO_IBS_PLENO), label: 'quando termina a transição', hint: 'a mudança é lenta de propósito' },
+        ],
+      },
+      { type: 'heading', text: 'As três ideias por trás' },
+      {
+        type: 'callout',
+        tone: 'info',
+        title: 'O QUE O NOVO SISTEMA TENTA CONSERTAR',
+        items: [
+          'Não cumulatividade plena: o imposto pago na compra vira crédito integral na venda',
+          'Cobrança no destino: o imposto fica onde o cliente está, não onde o fornecedor está',
+          'Transparência: o valor do imposto aparece destacado na nota, separado do preço',
+          'Menos regimes especiais e menos diferença entre produto e serviço',
+        ],
+      },
+      {
+        type: 'highlight',
+        text: 'Para o MEI, o ponto da reforma não é a alíquota nem o nome do imposto. É a palavra crédito — e é ela que este curso vai destrinchar.',
+      },
+      {
+        type: 'callout',
+        tone: 'warning',
+        title: 'ANTES DE SEGUIR, UM AVISO HONESTO',
+        items: [
+          'A reforma está em transição e as regras ainda estão sendo detalhadas',
+          'As alíquotas de referência dependem de resolução do Senado e ainda podem mudar',
+          'O que este curso traz é o desenho do sistema e o efeito prático sobre o MEI',
+          'Para decisão concreta sobre o seu caso, confirme com um contador na data da decisão',
+        ],
+      },
+      {
+        type: 'quiz',
+        question: 'O que a CBS substitui?',
+        options: [
+          'O ICMS e o ISS',
+          'O PIS, a Cofins e o IPI — os tributos federais sobre consumo',
+          'O imposto de renda',
+        ],
+        correct: 1,
+        explanation: 'CBS é federal e substitui os federais. IBS é de estados e municípios e substitui o ICMS estadual e o ISS municipal. Imposto de renda, CSLL e contribuição previdenciária ficam fora da reforma do consumo — não mudam nada aqui.',
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------- 2 */
+  {
+    id: 'alfabeto',
+    shortTitle: 'CBS, IBS e IS',
+    kicker: 'MÓDULO 02 · AS SIGLAS',
+    title: 'CBS, IBS e IS: quem é quem',
+    summary: 'Três siglas novas. Duas você vai ver na nota; a terceira provavelmente nunca.',
+    content: [
+      {
+        type: 'table',
+        headers: ['Sigla', 'De quem é', 'Substitui'],
+        rows: [
+          ['CBS', 'União', 'PIS, Cofins e IPI'],
+          ['IBS', 'Estados e municípios', 'ICMS e ISS'],
+          ['IS', 'União', 'Nada — é um imposto novo'],
+        ],
+        caption: 'CBS e IBS são o coração da reforma; o IS é um adicional específico',
+      },
+      { type: 'heading', text: 'O Imposto Seletivo' },
+      {
+        type: 'paragraph',
+        text: 'O IS ficou conhecido como "imposto do pecado". Ele incide sobre produtos considerados prejudiciais à saúde ou ao meio ambiente — cigarro, bebida alcoólica, bebida açucarada, alguns veículos, extração mineral. Não é um imposto geral: se você não trabalha com esses itens, ele não te alcança.',
+      },
+      {
+        type: 'comparison',
+        columns: [
+          {
+            label: 'O que muda de verdade para o MEI',
+            tone: 'negative',
+            items: [
+              'O crédito que o seu cliente PJ consegue aproveitar',
+              'A comparação de preço entre você e um concorrente do regime normal',
+              'A decisão de continuar no DAS fixo ou recolher por fora',
+            ],
+          },
+          {
+            label: 'O que não muda',
+            tone: 'positive',
+            items: [
+              'O valor do seu DAS continua fixo',
+              'O limite de faturamento continua o mesmo',
+              'A declaração anual e o relatório mensal continuam',
+              'A sua aposentadoria e os seus benefícios continuam iguais',
+            ],
+          },
+        ],
+      },
+      {
+        type: 'highlight',
+        text: 'Se você vende bolo, conserto ou aula, o Imposto Seletivo não é problema seu. Guarde a atenção para o crédito.',
+      },
+      {
+        type: 'quiz',
+        question: 'Você é MEI e vende salgados. O Imposto Seletivo te atinge?',
+        options: [
+          'Sim, incide sobre todo alimento',
+          'Não — ele é específico para itens como cigarro, bebida alcoólica e bebida açucarada',
+          'Sim, a partir de 2027',
+        ],
+        correct: 1,
+        explanation: 'O IS tem lista fechada, pensada para desestimular consumo específico. Alimento comum, serviço e comércio em geral ficam de fora. Para a esmagadora maioria dos MEIs, ele é só uma sigla a mais no noticiário.',
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------- 3 */
+  {
+    id: 'cronograma',
+    shortTitle: 'A linha do tempo',
+    kicker: 'MÓDULO 03 · CRONOGRAMA',
+    title: 'A transição vai até 2033',
+    summary: 'Nada muda de uma vez. Saber em que ano cada coisa entra evita susto e evita pânico antecipado.',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'A reforma foi desenhada para entrar devagar, justamente para dar tempo de todo mundo se ajustar. São quase dez anos de transição, com dois sistemas convivendo no meio do caminho.',
+      },
+      {
+        type: 'timeline',
+        items: [
+          { year: String(ANO_TESTE), text: `Ano de teste. CBS de ${num(CBS_TESTE, 1)}% e IBS de ${num(IBS_TESTE, 1)}%, com mecanismo de compensação. Serve para testar sistema e nota fiscal, não para arrecadar.` },
+          { year: String(ANO_CBS), text: 'A CBS entra para valer e PIS e Cofins são extintos. O Imposto Seletivo começa. O IPI é zerado, com exceção da Zona Franca de Manaus.' },
+          { year: '2028', text: 'Ano de estabilização da CBS. O IBS segue em alíquota de teste.' },
+          { year: `${ANO_IBS_INICIO} a 2032`, text: 'Transição do IBS. A cada ano o ICMS e o ISS caem um degrau e o IBS sobe na mesma medida.' },
+          { year: String(ANO_IBS_PLENO), text: 'ICMS e ISS deixam de existir. O sistema novo passa a valer inteiro.' },
+        ],
+      },
+      {
+        type: 'callout',
+        tone: 'info',
+        title: 'O QUE ISSO SIGNIFICA PARA O SEU PLANEJAMENTO',
+        items: [
+          'Você não precisa tomar nenhuma decisão de uma vez',
+          'O ano que mais pesa para quem vende a empresa é o da entrada da CBS',
+          'Até lá dá tempo de testar preço, conversar com cliente e simular cenário',
+          'Quem se prepara com um ano de antecedência não precisa mudar nada às pressas',
+        ],
+      },
+      {
+        type: 'highlight',
+        text: 'A reforma não é um susto de um dia. É uma virada anunciada com anos de antecedência — e essa antecedência é a sua vantagem.',
+      },
+      {
+        type: 'quiz',
+        question: 'O que o ano de teste muda no bolso do MEI?',
+        options: [
+          'Aumenta o DAS',
+          'Nada no valor do DAS — ele serve para testar sistemas e notas fiscais',
+          'Obriga o MEI a sair do Simples',
+        ],
+        correct: 1,
+        explanation: 'O ano de teste existe para os sistemas de emissão e apuração serem rodados de verdade antes de valerem. O DAS do MEI continua fixo e calculado do mesmo jeito. O que você deve fazer neste período é conferir se o seu emissor de nota está atualizado.',
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------- 4 */
+  {
+    id: 'simples-fica',
+    shortTitle: 'O MEI continua',
+    kicker: 'MÓDULO 04 · A BOA NOTÍCIA',
+    title: 'O MEI não acaba com a reforma',
+    summary: 'Essa é a pergunta que mais aparece, e a resposta é curta: não acaba.',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'Circula muito conteúdo dizendo que o MEI vai acabar, que o DAS vai virar percentual, que o limite some. Nada disso está na reforma. O Simples Nacional foi mantido expressamente, e o MEI, que é um regime dentro dele, também.',
+      },
+      {
+        type: 'callout',
+        tone: 'success',
+        title: 'O QUE FOI MANTIDO',
+        items: [
+          'O Simples Nacional continua existindo como regime',
+          'O MEI continua recolhendo tudo num DAS de valor fixo',
+          `O limite de faturamento continua sendo o do Simples — hoje ${brlCheio(LIMITE)} para o MEI`,
+          'A guia única, a declaração anual e a dispensa de contabilidade continuam',
+        ],
+      },
+      {
+        type: 'callout',
+        tone: 'warning',
+        title: 'O QUE MUDA MESMO ASSIM',
+        items: [
+          'Dentro do DAS, as parcelas de PIS, Cofins, ICMS e ISS passam a se chamar CBS e IBS',
+          'O valor total do DAS não muda por causa disso',
+          'Mas a nota que você emite passa a informar essas parcelas de forma destacada',
+          'E é esse destaque que define quanto crédito o seu cliente consegue tomar',
+        ],
+      },
+      {
+        type: 'highlight',
+        text: 'O MEI continua igual por dentro. O que muda é como o mercado enxerga o MEI por fora — e isso é assunto do próximo módulo.',
+      },
+      {
+        type: 'accordion',
+        items: [
+          {
+            title: 'Vou precisar de contador por causa da reforma?',
+            text: 'Para a rotina do MEI, não: a guia continua única e a declaração continua anual. Vale uma consulta pontual se você vende muito para empresa, porque aí existe uma escolha a fazer — é o tema do módulo 8.',
+          },
+          {
+            title: 'O DAS vai aumentar?',
+            text: 'A reforma não mexe no valor do DAS. O que reajusta o DAS todo ano continua sendo o salário mínimo, porque a maior parte dele é a sua contribuição previdenciária. Isso é anterior à reforma e independe dela.',
+          },
+          {
+            title: 'Preciso mudar o meu sistema de nota fiscal?',
+            text: 'Os emissores oficiais estão sendo atualizados pelos próprios órgãos. Se você emite pelo aplicativo MEI ou pelo portal da prefeitura, a atualização chega sozinha. O que vale fazer é emitir uma nota de teste quando o novo layout entrar e conferir se saiu certo.',
+          },
+        ],
+      },
+      {
+        type: 'quiz',
+        question: 'A reforma acaba com o Simples Nacional?',
+        options: [
+          'Acaba, a partir de 2033',
+          'Não — o Simples foi mantido, e o MEI junto com ele',
+          'Acaba só para serviços',
+        ],
+        correct: 1,
+        explanation: 'A manutenção do Simples está no próprio texto da reforma. O que a reforma criou foi uma escolha nova para quem está no Simples, não o fim do regime. Conteúdo dizendo o contrário costuma estar vendendo alguma coisa.',
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------- 5 */
+  {
+    id: 'credito',
+    shortTitle: 'A palavra crédito',
+    kicker: 'MÓDULO 05 · O CONCEITO',
+    title: 'Crédito: a palavra que muda tudo',
+    summary: 'Se você entender só um módulo deste curso, que seja este.',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'No sistema novo, toda empresa do regime regular paga imposto sobre o que vende e desconta o imposto que veio embutido no que comprou. Esse desconto é o crédito. Na prática, ela só paga sobre o valor que ela mesma agregou.',
+      },
+      { type: 'heading', text: 'Como funciona na compra' },
+      {
+        type: 'steps',
+        items: [
+          { title: 'Uma empresa compra R$ 1.000 de um fornecedor do regime regular', text: `Na nota vem destacado o imposto. Com alíquota de ${num(ALIQUOTA_TETO, 1)}%, são ${brl(CREDITO)}.` },
+          { title: 'Esse valor vira crédito para ela', text: 'Ele é abatido do imposto que ela vai pagar sobre as próprias vendas.' },
+          { title: 'O custo real da compra foi menor que o preço', text: `Ela pagou ${brl(COMPRA)}, recuperou ${brl(CREDITO)}, então o custo efetivo foi ${brl(CUSTO_LIQUIDO)}.` },
+          { title: 'Agora repita a conta comprando de um MEI', text: 'O MEI recolhe tudo num DAS fixo, de valor muito baixo. O crédito que ele transfere é quase zero — e o custo efetivo da compra fica perto do preço cheio.' },
+        ],
+      },
+      {
+        type: 'table',
+        headers: ['Empresa compra R$ 1.000 de...', 'Crédito que recebe', 'Custo real'],
+        rows: [
+          ['Fornecedor do regime regular', brl(CREDITO), brl(CUSTO_LIQUIDO)],
+          ['MEI', 'quase nada', `perto de ${brl(COMPRA)}`],
+        ],
+        caption: 'Mesmo preço na etiqueta, custos muito diferentes para quem compra',
+      },
+      {
+        type: 'highlight',
+        text: `Para uma empresa do regime regular, comprar ${brl(COMPRA)} de um MEI pode custar o mesmo que comprar ${brl(COMPRA / (1 - ALIQUOTA_TETO / 100))} de um fornecedor comum. O preço não mudou; o crédito mudou.`,
+      },
+      {
+        type: 'callout',
+        tone: 'danger',
+        title: 'POR QUE ISSO NÃO É UM DETALHE',
+        items: [
+          'Não é uma penalidade contra o MEI: é a lógica do IVA funcionando',
+          'Quem está fora do sistema de crédito não tem crédito para transferir',
+          'O MEI paga pouquíssimo imposto — e por isso tem pouquíssimo crédito para passar adiante',
+          'A vantagem do regime é real; o efeito colateral, na venda para empresa, também',
+        ],
+      },
+      {
+        type: 'quiz',
+        question: 'Por que o MEI transfere pouco crédito?',
+        options: [
+          'Porque a lei proíbe o MEI de gerar crédito',
+          'Porque o crédito é proporcional ao imposto efetivamente recolhido — e o DAS do MEI é baixíssimo',
+          'Porque o MEI não emite nota fiscal',
+        ],
+        correct: 1,
+        explanation: `Não é proibição, é aritmética. O crédito acompanha o imposto que foi realmente pago na etapa anterior. Se o MEI recolhe ${brl(DAS_SERVICO)} no mês inteiro, não há de onde tirar centenas de reais de crédito por venda.`,
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------- 6 */
+  {
+    id: 'cliente-pj',
+    shortTitle: 'Se você vende a PJ',
+    kicker: 'MÓDULO 06 · O IMPACTO',
+    title: 'Se você vende para empresa, leia com calma',
+    summary: 'Aqui está o impacto real da reforma sobre o MEI. E ele tem tamanho calculável.',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'Rogério conserta ar-condicionado. Setenta por cento do faturamento dele vem de loja, escritório e condomínio — clientes que são pessoa jurídica no regime regular. É exatamente o perfil que mais sente a reforma.',
+      },
+      {
+        type: 'stats',
+        items: [
+          { value: brl(FAT_R), label: 'Rogério fatura por mês', hint: 'manutenção de ar-condicionado' },
+          { value: `${PCT_PJ_R}%`, label: 'vem de empresa', hint: `ou ${brl(FAT_PJ_R)} por mês` },
+          { value: `${num(ALIQUOTA_TETO, 1)}%`, label: 'é o crédito que o cliente perde', hint: 'comprando dele em vez de um concorrente' },
+        ],
+      },
+      { type: 'heading', text: 'A conversa que vai acontecer' },
+      {
+        type: 'paragraph',
+        text: 'O cliente PJ de Rogério vai fazer a conta que o módulo anterior mostrou e vai descobrir que comprar dele custa mais caro do que a etiqueta diz. A partir daí existem três desfechos possíveis, e vale conhecer os três antes de a conversa começar.',
+      },
+      {
+        type: 'comparison',
+        columns: [
+          {
+            label: 'Os desfechos ruins',
+            tone: 'negative',
+            items: [
+              'O cliente troca por um fornecedor do regime regular',
+              'O cliente pede desconto equivalente ao crédito perdido',
+              'O cliente concentra compras em quem dá crédito e deixa você para o eventual',
+            ],
+          },
+          {
+            label: 'Os desfechos bons',
+            tone: 'positive',
+            items: [
+              'O seu preço já é bem mais baixo e absorve a diferença',
+              'O que você entrega não tem substituto fácil na região',
+              'Você passa a recolher por fora e volta a dar crédito cheio',
+              'Você redireciona esforço para clientes pessoa física',
+            ],
+          },
+        ],
+      },
+      {
+        type: 'calculator',
+        fields: [
+          { id: 'preco', label: 'Quanto você cobra do cliente PJ (R$)', type: 'currency', placeholder: '1000' },
+          { id: 'aliquota', label: 'Alíquota estimada de IBS + CBS (%)', type: 'percentage', placeholder: String(ALIQUOTA_TETO) },
+        ],
+        formula:
+          "if (!(preco > 0)) { return { aviso: 'Informe quanto você cobra desse cliente.' }; } if (aliquota >= 100) { return { aviso: 'A alíquota precisa ser menor que 100%.' }; } const credito = preco * (aliquota / 100); const custoConcorrente = preco - credito; const equivalente = preco / (1 - aliquota / 100); const descontoPct = aliquota; return { credito, custoConcorrente, equivalente, descontoPct };",
+        resultLabel: 'Como o seu cliente PJ enxerga o seu preço',
+        resultFormat: 'object',
+        resultFields: [
+          { key: 'credito', label: 'Crédito que ele deixa de tomar', format: 'currency' },
+          { key: 'custoConcorrente', label: 'Custo real dele comprando do concorrente', format: 'currency' },
+          { key: 'equivalente', label: 'O seu preço equivale, para ele, a', format: 'currency' },
+          { key: 'descontoPct', label: 'Desconto que igualaria a conta', format: 'percentage' },
+        ],
+      },
+      {
+        type: 'callout',
+        tone: 'warning',
+        title: 'ANTES DE ENTRAR EM PÂNICO, TRÊS PONDERAÇÕES',
+        items: [
+          'A conta só vale para cliente PJ do regime regular — cliente do Simples não toma esse crédito',
+          'O MEI costuma cobrar bem menos que uma empresa maior, e essa diferença já compensa parte do efeito',
+          'A transição é longa: o efeito cheio não chega de uma vez',
+          'Serviço muito específico ou muito local tem menos substituto, e aí o crédito pesa menos na decisão',
+        ],
+      },
+      {
+        type: 'quiz',
+        question: 'O cliente de Rogério também é MEI. Ele vai reclamar do crédito?',
+        options: [
+          'Vai, todo cliente PJ reclama',
+          'Não — quem está no Simples ou no MEI não aproveita esse crédito de qualquer forma',
+          'Vai, mas só a partir de 2033',
+        ],
+        correct: 1,
+        explanation: 'O crédito só serve para quem apura IBS e CBS pelo regime regular. Cliente MEI, cliente do Simples e pessoa física não têm o que fazer com ele. Por isso o primeiro passo é separar a sua carteira: quanto do seu faturamento vem de empresa do regime normal?',
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------- 7 */
+  {
+    id: 'cliente-pf',
+    shortTitle: 'Se você vende a PF',
+    kicker: 'MÓDULO 07 · O ALÍVIO',
+    title: 'Se você vende para pessoa física, respire',
+    summary: 'A maior parte dos MEIs está aqui — e para essa maioria a reforma quase não muda nada.',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'Silvana faz bolos por encomenda. Quase tudo o que ela vende vai para gente comum: aniversário, casamento, encomenda de fim de semana. Pessoa física não apura imposto e não toma crédito de nada. Para ela, o efeito do módulo anterior simplesmente não existe.',
+      },
+      {
+        type: 'table',
+        headers: ['Quem compra de você', 'Aproveita crédito?', 'Efeito da reforma'],
+        rows: [
+          ['Pessoa física', 'Não', 'Praticamente nenhum'],
+          ['Outro MEI', 'Não', 'Praticamente nenhum'],
+          ['Empresa do Simples', 'Não', 'Praticamente nenhum'],
+          ['Empresa do regime regular', 'Sim', 'É aqui que o efeito aparece'],
+        ],
+        caption: 'Só a última linha muda o jogo — e só ela precisa da sua atenção',
+      },
+      {
+        type: 'highlight',
+        text: 'A maioria esmagadora dos MEIs vende para consumidor final. Para essa maioria, a reforma é notícia de jornal, não mudança de vida.',
+      },
+      {
+        type: 'calculator',
+        fields: [
+          { id: 'faturamento', label: 'Faturamento do mês (R$)', type: 'currency', placeholder: '5200' },
+          { id: 'pctRegular', label: 'Quanto vem de empresa do regime regular (%)', type: 'percentage', placeholder: '10' },
+          { id: 'aliquota', label: 'Alíquota estimada de IBS + CBS (%)', type: 'percentage', placeholder: String(ALIQUOTA_TETO) },
+        ],
+        formula:
+          "if (!(faturamento > 0)) { return { aviso: 'Informe quanto você fatura por mês.' }; } const exposto = faturamento * (pctRegular / 100); const protegido = faturamento - exposto; const risco = exposto * (aliquota / 100); const pesoNoTotal = (risco / faturamento) * 100; const leitura = pctRegular < 15 ? 'Exposição baixa: a reforma quase não muda o seu jogo.' : pctRegular < 40 ? 'Exposição média: vale conversar com os clientes PJ antes da virada.' : 'Exposição alta: leia de novo o módulo 6 e considere a escolha do módulo 8.'; return { exposto, protegido, risco, pesoNoTotal, leitura };",
+        resultLabel: 'A sua exposição à reforma',
+        resultFormat: 'object',
+        resultFields: [
+          { key: 'protegido', label: 'Faturamento que não sente nada', format: 'currency' },
+          { key: 'exposto', label: 'Faturamento exposto ao efeito', format: 'currency' },
+          { key: 'risco', label: 'Valor em disputa por mês', format: 'currency' },
+          { key: 'pesoNoTotal', label: 'Quanto isso pesa no seu total', format: 'percentage' },
+          { key: 'leitura', label: 'Leitura', format: 'text' },
+        ],
+      },
+      {
+        type: 'callout',
+        tone: 'success',
+        title: 'O QUE AINDA VALE FAZER, MESMO VENDENDO SÓ PARA PF',
+        items: [
+          'Conferir se o seu emissor de nota fiscal está atualizado quando o layout mudar',
+          'Acompanhar o seu mix: se a fatia de clientes PJ crescer, o quadro muda',
+          'Ignorar conteúdo alarmista — a maior parte dele não separa PF de PJ',
+          'Guardar a atenção para o que realmente afeta o seu bolso: preço e limite de faturamento',
+        ],
+      },
+      {
+        type: 'quiz',
+        question: 'Silvana vende 90% para pessoa física. Qual a atitude certa?',
+        options: [
+          'Sair do MEI antes de 2027',
+          'Seguir normalmente, acompanhando só a atualização do emissor de nota',
+          'Aumentar o preço em 26,5%',
+        ],
+        correct: 1,
+        explanation: 'Mudar de regime por causa de um efeito que atinge 10% do faturamento seria trocar um problema pequeno por um grande. A conta dela é a de sempre: preço, custo e limite. A reforma entra na lista de coisas para acompanhar, não de coisas para resolver.',
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------- 8 */
+  {
+    id: 'a-escolha',
+    shortTitle: 'A escolha nova',
+    kicker: 'MÓDULO 08 · A DECISÃO',
+    title: 'A escolha que a reforma criou',
+    summary: 'Ficar no DAS fixo ou recolher IBS e CBS por fora. Cada caminho tem um preço.',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'A reforma previu que quem está no Simples possa optar por recolher o IBS e a CBS pelo regime regular, por fora da guia única, continuando no Simples para o resto. Quem faz isso volta a transferir crédito cheio ao cliente — e passa a ter as obrigações de quem está no regime regular.',
+      },
+      {
+        type: 'comparison',
+        columns: [
+          {
+            label: 'Ficar só no DAS',
+            tone: 'positive',
+            items: [
+              'Guia única, valor fixo, simplicidade total',
+              'Sem apuração mensal e sem contador obrigatório',
+              'Imposto baixíssimo',
+              'Mas o cliente PJ do regime regular quase não toma crédito',
+            ],
+          },
+          {
+            label: 'Recolher IBS e CBS por fora',
+            tone: 'neutral',
+            items: [
+              'O cliente PJ volta a tomar crédito cheio',
+              'Você também passa a tomar crédito das suas compras',
+              'Em troca: apuração mensal, escrituração e mais obrigação',
+              'E imposto a pagar bem maior que o DAS de hoje',
+            ],
+          },
+        ],
+      },
+      {
+        type: 'callout',
+        tone: 'danger',
+        title: 'A TROCA É PESADA — FAÇA A CONTA ANTES',
+        items: [
+          'Sair do recolhimento simplificado é trocar um valor fixo baixo por um percentual sobre o faturamento',
+          'Só compensa se o ganho com os clientes PJ for maior que o imposto a mais e o custo de conformidade',
+          'Para quem vende pouco a empresa, quase nunca compensa',
+          'Esta é a decisão do curso que mais pede contador: não decida por conta própria',
+        ],
+      },
+      {
+        type: 'calculator',
+        fields: [
+          { id: 'faturamento', label: 'Faturamento mensal (R$)', type: 'currency', placeholder: String(FAT_R) },
+          { id: 'pctRegular', label: 'Quanto vem de empresa do regime regular (%)', type: 'percentage', placeholder: String(PCT_PJ_R) },
+          { id: 'aliquota', label: 'Alíquota estimada de IBS + CBS (%)', type: 'percentage', placeholder: String(ALIQUOTA_TETO) },
+          { id: 'dasHoje', label: 'DAS de MEI hoje (R$)', type: 'currency', placeholder: String(DAS_SERVICO.toFixed(2)) },
+          { id: 'contador', label: 'Custo mensal de contabilidade (R$)', type: 'currency', placeholder: '400' },
+        ],
+        formula:
+          "if (!(faturamento > 0)) { return { aviso: 'Informe quanto você fatura por mês.' }; } if (aliquota >= 100) { return { aviso: 'A alíquota precisa ser menor que 100%.' }; } const imposto = faturamento * (aliquota / 100); const custoPorFora = imposto + contador; const aMais = custoPorFora - dasHoje; const ganho = faturamento * (pctRegular / 100) * (aliquota / 100); const saldo = ganho - aMais; const leitura = saldo >= 0 ? 'Na estimativa, recolher por fora se paga. Confirme com contador antes de optar.' : 'Na estimativa, ficar no DAS continua bem melhor — o custo extra supera o ganho de crédito.'; return { imposto, custoPorFora, aMais, ganho, saldo, leitura };",
+        resultLabel: 'DAS fixo × recolher por fora',
+        resultFormat: 'object',
+        resultFields: [
+          { key: 'imposto', label: 'IBS + CBS por mês', format: 'currency' },
+          { key: 'custoPorFora', label: 'Custo total recolhendo por fora', format: 'currency' },
+          { key: 'aMais', label: 'Quanto a mais do que o DAS', format: 'currency' },
+          { key: 'ganho', label: 'Valor do crédito devolvido ao cliente', format: 'currency' },
+          { key: 'saldo', label: 'Saldo da troca', format: 'currency' },
+          { key: 'leitura', label: 'Leitura', format: 'text' },
+        ],
+      },
+      {
+        type: 'highlight',
+        text: 'Mesmo vendendo quase tudo para empresa, a conta raramente fecha a favor de sair do DAS. O imposto do MEI é baixo demais para que a troca compense.',
+      },
+      {
+        type: 'callout',
+        tone: 'info',
+        title: 'AS REGRAS DESSA OPÇÃO AINDA ESTÃO SENDO DETALHADAS',
+        items: [
+          'Prazos, forma de manifestar a opção e efeitos práticos vêm em normas complementares',
+          'O que já está claro é a lógica da troca: mais crédito ao cliente, mais imposto e mais obrigação para você',
+          'Use a calculadora acima para dimensionar, não para decidir',
+          'Na hora da decisão, confirme as regras vigentes com um contador',
+        ],
+      },
+      {
+        type: 'quiz',
+        question: 'Quando faz sentido considerar recolher IBS e CBS por fora?',
+        options: [
+          'Sempre, para dar crédito ao cliente',
+          'Quando quase todo o faturamento vem de empresa do regime regular e o ganho supera o imposto a mais',
+          'Nunca, é proibido para o MEI',
+        ],
+        correct: 1,
+        explanation: 'É uma conta de comparação, não uma regra. O imposto do MEI é tão baixo que a troca precisa de um ganho muito grande do outro lado para valer. Para quem vende a consumidor final, ela nunca faz sentido.',
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------- 9 */
+  {
+    id: 'preco',
+    shortTitle: 'E o seu preço?',
+    kicker: 'MÓDULO 09 · PREÇO',
+    title: 'O que fazer com o preço',
+    summary: 'Existem três caminhos, e o pior deles é não escolher nenhum.',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'Se parte da sua carteira é empresa do regime regular, em algum momento a conversa de preço vai aparecer. Chegar nela com uma posição pensada é muito diferente de ser pego de surpresa no meio de uma negociação.',
+      },
+      {
+        type: 'steps',
+        items: [
+          { title: 'Caminho 1: não mexer no preço', text: 'Funciona quando o que você entrega tem pouco substituto, quando o seu preço já é muito menor que o da concorrência maior, ou quando o cliente valoriza a relação acima da conta. É o caminho mais comum e mais tranquilo.' },
+          { title: 'Caminho 2: dar desconto ao cliente PJ', text: 'Você absorve parte da diferença para manter o cliente. Só faça depois de calcular a sua margem: desconto que come a margem inteira é venda que não vale a pena.' },
+          { title: 'Caminho 3: mudar de carteira', text: 'Redirecionar esforço comercial para pessoa física e para clientes do Simples, onde o crédito não pesa. Para muitos MEIs esse é o caminho mais rentável — e dá para começar hoje.' },
+        ],
+      },
+      {
+        type: 'calculator',
+        fields: [
+          { id: 'preco', label: 'Preço atual para o cliente PJ (R$)', type: 'currency', placeholder: '1000' },
+          { id: 'custoDireto', label: 'Custo direto desse trabalho (R$)', type: 'currency', placeholder: '420' },
+          { id: 'desconto', label: 'Desconto que você pensa em dar (%)', type: 'percentage', placeholder: '10' },
+        ],
+        formula:
+          "if (!(preco > 0)) { return { aviso: 'Informe o preço atual desse cliente.' }; } if (desconto >= 100) { return { aviso: 'Um desconto de 100% ou mais não faz sentido.' }; } const margemHoje = preco - custoDireto; const precoNovo = preco * (1 - desconto / 100); const margemNova = precoNovo - custoDireto; const perdaPct = margemHoje > 0 ? ((margemHoje - margemNova) / margemHoje) * 100 : 0; const leitura = margemNova <= 0 ? 'Com esse desconto o trabalho passa a dar prejuízo. Melhor perder o cliente do que trabalhar de graça.' : perdaPct > 50 ? 'O desconto come mais da metade da sua margem: pense no caminho 3 antes.' : 'A margem sobrevive ao desconto. Confira se sobra o suficiente para a sua retirada.'; return { margemHoje, precoNovo, margemNova, perdaPct, leitura };",
+        resultLabel: 'O que o desconto faz com a sua margem',
+        resultFormat: 'object',
+        resultFields: [
+          { key: 'margemHoje', label: 'Margem de hoje', format: 'currency' },
+          { key: 'precoNovo', label: 'Preço com desconto', format: 'currency' },
+          { key: 'margemNova', label: 'Margem depois do desconto', format: 'currency' },
+          { key: 'perdaPct', label: 'Quanto da margem foi embora', format: 'percentage' },
+          { key: 'leitura', label: 'Leitura', format: 'text' },
+        ],
+      },
+      {
+        type: 'callout',
+        tone: 'warning',
+        title: 'O ERRO A EVITAR',
+        items: [
+          'Dar desconto linear para toda a carteira por causa de um efeito que só atinge parte dela',
+          'Cliente pessoa física não ganha crédito nenhum — não há motivo para baixar o preço dele',
+          'Desconto se dá cliente a cliente, com a conta feita',
+          'E sempre comparando com a alternativa: perder aquele cliente e usar o tempo em outro',
+        ],
+      },
+      {
+        type: 'highlight',
+        text: 'Antes de baixar preço para segurar um cliente PJ, calcule quanto tempo ele consome. Às vezes o cliente que dá trabalho é justamente o que está pedindo desconto.',
+      },
+      {
+        type: 'quiz',
+        question: 'O cliente PJ pede 26% de desconto por causa do crédito. Qual a primeira coisa a fazer?',
+        options: [
+          'Conceder, para não perder o cliente',
+          'Calcular o que sobra da sua margem com esse desconto antes de responder qualquer coisa',
+          'Recusar de imediato',
+        ],
+        correct: 1,
+        explanation: 'A resposta certa depende de um número que só você tem: a sua margem naquele trabalho. Se sobra pouco, o desconto transforma o cliente em prejuízo. Se sobra bastante, pode valer. Sem a conta, qualquer resposta é chute.',
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------- 10 */
+  {
+    id: 'calendario',
+    shortTitle: 'O que fazer agora',
+    kicker: 'MÓDULO 10 · PRÁTICA',
+    title: 'O que fazer em cada etapa',
+    summary: 'Nenhum item desta lista é urgente. Todos são fáceis. É assim que se atravessa uma transição.',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'A reforma não pede nenhuma decisão imediata do MEI. O que ela pede é acompanhamento. Esta é a lista do que vale fazer, na ordem, sem pressa.',
+      },
+      {
+        type: 'checklist',
+        items: [
+          'Separar a sua carteira: quanto do faturamento vem de pessoa física, quanto vem de empresa',
+          'Dentro dos clientes empresa, identificar quais estão no regime regular e quais estão no Simples',
+          'Conferir, quando o layout da nota mudar, se o seu emissor está atualizado',
+          'Emitir uma nota de teste e conferir se os campos novos saíram preenchidos',
+          'Conversar com os clientes PJ maiores antes da virada, não depois',
+          'Refazer a conta de exposição uma vez por ano, porque o seu mix de clientes muda',
+        ],
+      },
+      { type: 'heading', text: 'Quando cada coisa importa' },
+      {
+        type: 'table',
+        headers: ['Etapa', 'O que fazer'],
+        rows: [
+          ['Enquanto durar o ano de teste', 'Só acompanhar. Conferir emissor de nota.'],
+          ['No ano em que a CBS entra', 'Conversar com clientes PJ. Revisar preço dessa fatia.'],
+          ['Durante a transição do IBS', 'Refazer a conta de exposição todo ano.'],
+          ['A qualquer momento', 'Crescer a fatia de clientes que não dependem de crédito.'],
+        ],
+        caption: 'Nada aqui exige decisão de uma vez',
+      },
+      {
+        type: 'callout',
+        tone: 'info',
+        title: 'O SINAL DE QUE CHEGOU A HORA DE SENTAR COM UM CONTADOR',
+        items: [
+          'Mais da metade do seu faturamento vem de empresa do regime regular',
+          'Um cliente grande te procurou para falar de crédito ou de desconto',
+          'Você está perto do limite do MEI e vai ter que sair de qualquer forma',
+          'Nos três casos, uma consulta pontual resolve — não precisa de mensalidade',
+        ],
+      },
+      {
+        type: 'highlight',
+        text: 'Transição longa é uma vantagem para quem acompanha e uma armadilha para quem ignora. O custo de acompanhar é uma hora por ano.',
+      },
+      {
+        type: 'quiz',
+        question: 'Qual a primeira tarefa desta lista?',
+        options: [
+          'Trocar de regime tributário',
+          'Separar a carteira entre pessoa física e empresa, e dentro das empresas separar regime regular de Simples',
+          'Aumentar o preço',
+        ],
+        correct: 1,
+        explanation: 'Todas as outras decisões dependem desse número. Sem saber quanto do seu faturamento está exposto, qualquer movimento é no escuro — e a maioria dos MEIs descobre, ao fazer essa conta, que a exposição é bem menor do que imaginava.',
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------- 11 */
+  {
+    id: 'diagnostico',
+    shortTitle: 'Seu diagnóstico',
+    kicker: 'MÓDULO 11 · DESAFIO FINAL',
+    title: 'Quanto a reforma afeta o seu negócio',
+    summary: 'Tudo o que você viu, aplicado à sua carteira de clientes.',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'Preencha com a sua realidade. Em um resultado você vê quanto do seu faturamento está exposto, qual o tamanho do efeito e o que faz sentido fazer a respeito.',
+      },
+      {
+        type: 'calculator',
+        fields: [
+          { id: 'faturamento', label: 'Faturamento mensal (R$)', type: 'currency', placeholder: '5200' },
+          { id: 'pctPF', label: 'Vendas para pessoa física (%)', type: 'percentage', placeholder: '60' },
+          { id: 'pctSimples', label: 'Vendas para MEI e empresas do Simples (%)', type: 'percentage', placeholder: '20' },
+          { id: 'pctRegular', label: 'Vendas para empresa do regime regular (%)', type: 'percentage', placeholder: '20' },
+          { id: 'aliquota', label: 'Alíquota estimada de IBS + CBS (%)', type: 'percentage', placeholder: String(ALIQUOTA_TETO) },
+        ],
+        formula:
+          "if (!(faturamento > 0)) { return { aviso: 'Informe quanto você fatura por mês.' }; } const soma = pctPF + pctSimples + pctRegular; if (Math.abs(soma - 100) > 1) { return { aviso: 'Os três percentuais precisam somar 100%. Hoje somam ' + soma.toFixed(0) + '%.' }; } if (aliquota >= 100) { return { aviso: 'A alíquota precisa ser menor que 100%.' }; } const protegido = faturamento * ((pctPF + pctSimples) / 100); const exposto = faturamento * (pctRegular / 100); const risco = exposto * (aliquota / 100); const pesoNoTotal = (risco / faturamento) * 100; const noAno = risco * 12; let leitura; if (pctRegular < 15) { leitura = 'Exposição baixa. A reforma é assunto de acompanhar, não de resolver. Siga cuidando de preço e limite.'; } else if (pctRegular < 40) { leitura = 'Exposição média. Converse com os seus clientes PJ antes da virada e tenha uma posição de preço pronta.'; } else if (pctRegular < 70) { leitura = 'Exposição alta. Vale simular a opção do módulo 8 com um contador e começar a diversificar a carteira.'; } else { leitura = 'Exposição muito alta. O seu negócio é B2B: leve isso a um contador ainda este ano.'; } return { protegido, exposto, risco, noAno, pesoNoTotal, leitura };",
+        resultLabel: 'A sua exposição',
+        resultFormat: 'object',
+        resultFields: [
+          { key: 'protegido', label: 'Faturamento que não sente nada', format: 'currency' },
+          { key: 'exposto', label: 'Faturamento exposto', format: 'currency' },
+          { key: 'risco', label: 'Valor em disputa por mês', format: 'currency' },
+          { key: 'noAno', label: 'No ano', format: 'currency' },
+          { key: 'pesoNoTotal', label: 'Peso no seu faturamento total', format: 'percentage' },
+          { key: 'leitura', label: 'Leitura', format: 'text' },
+        ],
+      },
+      {
+        type: 'callout',
+        tone: 'info',
+        title: 'COMO LER O SEU RESULTADO',
+        items: [
+          'O "valor em disputa" não é dinheiro que você vai perder: é o tamanho da conversa de preço que pode aparecer',
+          'Peso abaixo de 5% do faturamento: não muda nenhuma decisão sua',
+          'Peso entre 5% e 15%: merece uma conversa com os clientes maiores',
+          'Peso acima de 15%: merece uma simulação com contador antes da entrada da CBS',
+        ],
+      },
+      {
+        type: 'highlight',
+        text: 'A conclusão que a maioria dos MEIs chega fazendo essa conta é a mesma: a exposição é menor do que o noticiário sugere, e o que continua decidindo o negócio é o preço.',
+      },
+      {
+        type: 'accordion',
+        items: [
+          {
+            title: 'Qual a relação deste curso com os outros da série?',
+            text: 'O curso 1 mostra como manter o MEI em dia, o 2 trata do limite de faturamento, o 3 do dinheiro — preço, retirada e aposentadoria. Este é o de contexto: o que muda no país e o quanto disso chega até você. Se você fez a conta aqui e a exposição deu baixa, o curso 3 continua sendo o mais útil para o seu bolso.',
+          },
+          {
+            title: 'Vi um vídeo dizendo que o MEI vai pagar 26,5%. Procede?',
+            text: 'Não. Essa é a alíquota do regime regular, de quem apura IBS e CBS por fora. O MEI continua com a guia única de valor fixo. A confusão nasce de conteúdo que não separa os regimes — e ela circula muito.',
+          },
+          {
+            title: 'E se as regras mudarem depois deste curso?',
+            text: 'Muito provavelmente vão, em detalhe. Por isso o curso foi escrito em torno da lógica do sistema, que é estável, e não de artigos específicos. Confirme datas, alíquotas e a forma da opção do módulo 8 com um contador na data da sua decisão.',
+          },
+        ],
+      },
+      {
+        type: 'checklist',
+        items: [
+          'Carteira separada entre pessoa física, Simples e regime regular',
+          'Exposição calculada e anotada',
+          'Posição de preço definida para os clientes PJ maiores',
+          'Emissor de nota fiscal conferido',
+          'Data marcada para refazer esta conta daqui a um ano',
+        ],
+      },
+    ],
+  },
+];
+
+grava('mei-reforma-tributaria.json', {
+  slug: 'mei-reforma-tributaria',
+  courseName: 'O MEI e a Reforma Tributária',
+  description:
+    'O que muda de verdade para quem é MEI. CBS, IBS e Imposto Seletivo sem sigla solta, a linha do tempo da transição, por que o Simples e o MEI continuam existindo e o único ponto que realmente mexe com você: o crédito que o seu cliente empresa deixa de tomar.',
+  category: 'MEI sem Sufoco',
+  leadCapture: 'end',
+  modules,
+});

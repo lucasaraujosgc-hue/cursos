@@ -19,6 +19,7 @@ manutenção de ar-condicionado (serviços, DAS com ISS).
 | `mei-na-pratica.json` | MEI na Prática: Abrir e Manter em Dia | 11 |
 | `mei-limite.json` | O Limite do MEI: Quanto Faturar e o Que Fazer ao Passar | 11 |
 | `mei-dinheiro.json` | O Dinheiro do MEI: Preço, Retirada e Aposentadoria | 11 |
+| `mei-reforma-tributaria.json` | O MEI e a Reforma Tributária | 11 |
 
 ### ⚠️ Estes três têm valores que mudam todo ano
 
@@ -29,8 +30,8 @@ está escrito à mão no texto**: todos saem de um único arquivo,
 ```bash
 cd cursos-prontos/scripts
 # edite as constantes no topo de mei-base.mjs
-node build-mei-1.mjs && node build-mei-2.mjs && node build-mei-3.mjs
-node valida.mjs mei-na-pratica.json   # e os outros dois
+for f in build-mei-*.mjs; do node "$f"; done
+node valida.mjs mei-na-pratica.json   # e os outros três
 mv mei-*.json ..
 ```
 
@@ -43,6 +44,14 @@ fórmula de calculadora e avisa se alguma devolve um campo sem rótulo ou se um
 | `SALARIO_MINIMO` | Portaria de reajuste de janeiro. O DAS é 5% dele. |
 | `LIMITE` | Art. 18-A da LC 123. Há projetos para elevá-lo. |
 | `LIMITE_CAMINHONEIRO` | Limite próprio do MEI caminhoneiro. |
+| `ALIQUOTA_TETO` | Teto de IBS + CBS. As alíquotas de referência dependem de resolução do Senado. |
+| `ANO_TESTE`, `ANO_CBS`, `ANO_IBS_INICIO`, `ANO_IBS_PLENO` | Cronograma da reforma. Pode ser alterado por lei. |
+
+O curso da reforma tributária é o mais perecível dos quatro, porque trata de
+um sistema ainda em transição. Ele foi escrito em torno da **lógica** do
+regime (crédito, IVA dual, cobrança no destino), que é estável, e não de
+artigos e percentuais específicos — mas ainda assim vale reler o módulo 8, que
+é o que mais depende de normas complementares, antes de cada republicação.
 
 As alíquotas da primeira faixa do Simples usadas nos exemplos (Anexo I 4%,
 Anexo II 4,5%, Anexo III 6%, Anexo V 15,5%) e os percentuais de presunção de
