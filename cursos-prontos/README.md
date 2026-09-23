@@ -8,6 +8,47 @@ no ar é o `data/courses.json` (ou o Postgres, quando `DATABASE_URL` está
 configurado). Esta pasta serve como biblioteca versionada — se um curso for
 alterado ou removido por engano no painel, dá para recuperar daqui.
 
+## Série "MEI sem Sufoco"
+
+Três cursos encadeados com os mesmos dois personagens: **Silvana**, que faz
+bolos por encomenda (comércio/indústria, DAS com ICMS), e **Rogério**, que faz
+manutenção de ar-condicionado (serviços, DAS com ISS).
+
+| Arquivo | Curso | Módulos |
+| --- | --- | --- |
+| `mei-na-pratica.json` | MEI na Prática: Abrir e Manter em Dia | 11 |
+| `mei-limite.json` | O Limite do MEI: Quanto Faturar e o Que Fazer ao Passar | 11 |
+| `mei-dinheiro.json` | O Dinheiro do MEI: Preço, Retirada e Aposentadoria | 11 |
+
+### ⚠️ Estes três têm valores que mudam todo ano
+
+Salário mínimo, DAS e limite de faturamento são reajustados. **Nenhum deles
+está escrito à mão no texto**: todos saem de um único arquivo,
+`scripts/mei-base.mjs`. Para atualizar a série inteira:
+
+```bash
+cd cursos-prontos/scripts
+# edite as constantes no topo de mei-base.mjs
+node build-mei-1.mjs && node build-mei-2.mjs && node build-mei-3.mjs
+node valida.mjs mei-na-pratica.json   # e os outros dois
+mv mei-*.json ..
+```
+
+O `valida.mjs` confere se todo bloco usado existe na plataforma, roda cada
+fórmula de calculadora e avisa se alguma devolve um campo sem rótulo ou se um
+`shortTitle` ficou longo demais para o chip do celular.
+
+| Constante | O que conferir |
+| --- | --- |
+| `SALARIO_MINIMO` | Portaria de reajuste de janeiro. O DAS é 5% dele. |
+| `LIMITE` | Art. 18-A da LC 123. Há projetos para elevá-lo. |
+| `LIMITE_CAMINHONEIRO` | Limite próprio do MEI caminhoneiro. |
+
+As alíquotas da primeira faixa do Simples usadas nos exemplos (Anexo I 4%,
+Anexo II 4,5%, Anexo III 6%, Anexo V 15,5%) e os percentuais de presunção de
+lucro (8% comércio, 16% transporte de passageiros, 32% serviços) também valem
+uma conferida a cada mudança de legislação.
+
 ## Série "Como Precificar"
 
 Três cursos com a mesma estrutura, um para cada tipo de negócio. Cada um usa

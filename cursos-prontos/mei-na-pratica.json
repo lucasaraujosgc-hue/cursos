@@ -1,0 +1,1226 @@
+{
+  "slug": "mei-na-pratica",
+  "courseName": "MEI na Prática: Abrir e Manter em Dia",
+  "description": "Do CNPJ ao dia 20. Entenda o que o MEI te dá e o que ele cobra, quem pode abrir, como o DAS é formado, o que fazer todo mês, quando a nota fiscal é obrigatória, como entregar a declaração anual e o que acontece se você atrasar.",
+  "category": "MEI sem Sufoco",
+  "leadCapture": "end",
+  "modules": [
+    {
+      "id": "o-que-e",
+      "shortTitle": "O que é o MEI",
+      "kicker": "MÓDULO 01 · O BÁSICO",
+      "title": "O que o MEI te dá — e o que ele cobra",
+      "summary": "Antes de abrir, entenda o que você está comprando por menos de cem reais por mês.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "MEI é o Microempreendedor Individual: um jeito simplificado de ter empresa no Brasil. Você ganha um CNPJ, paga um valor fixo por mês e, em troca, fica em dia com a Receita, com a prefeitura e com o INSS. É o regime mais barato que existe — e também o mais limitado."
+        },
+        {
+          "type": "stats",
+          "items": [
+            {
+              "value": "R$ 82,05",
+              "label": "por mês no comércio",
+              "hint": "valor fixo, não depende do que você fatura"
+            },
+            {
+              "value": "R$ 81.000",
+              "label": "de teto por ano",
+              "hint": "média de R$ 6.750 por mês"
+            },
+            {
+              "value": "1",
+              "label": "empregado, no máximo",
+              "hint": "e só um"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "O que vem junto"
+        },
+        {
+          "type": "callout",
+          "tone": "success",
+          "title": "O QUE O CNPJ DE MEI RESOLVE",
+          "items": [
+            "Você pode emitir nota fiscal e vender para empresa",
+            "Você contribui para o INSS e passa a ter direito a benefícios",
+            "Você pode abrir conta bancária de pessoa jurídica e usar maquininha com taxa de PJ",
+            "Você sai da informalidade sem contratar contador e sem declaração mensal complicada"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "O que você abre mão"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "OS LIMITES QUE VÊM NO PACOTE",
+          "items": [
+            "Não pode faturar mais que R$ 81.000 no ano",
+            "Não pode ter mais de um empregado",
+            "Não pode ser sócio, titular ou administrador de outra empresa",
+            "Só pode exercer as atividades que estão na lista oficial de ocupações"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "O MEI não é uma empresa menor. É uma empresa com regras próprias — e quem trata como \"quase informal\" é quem toma susto depois."
+        },
+        {
+          "type": "quiz",
+          "question": "Você faturou zero neste mês. Paga o DAS?",
+          "options": [
+            "Não, sem faturamento não há imposto",
+            "Paga sim — o valor é fixo e a maior parte dele é a sua contribuição ao INSS",
+            "Paga metade"
+          ],
+          "correct": 1,
+          "explanation": "O DAS do MEI não é percentual sobre a venda: é um valor fixo mensal. Mês sem faturar também vence, porque o grosso dele é o INSS que garante a sua aposentadoria e os seus benefícios. Deixar de pagar quebra a contagem de carência."
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "Descobrir se a sua atividade está na lista de ocupações permitidas",
+            "Conferir se você já não é sócio de alguma empresa",
+            "Estimar quanto você fatura por ano hoje"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quem-pode",
+      "shortTitle": "Quem pode ser MEI",
+      "kicker": "MÓDULO 02 · REQUISITOS",
+      "title": "Quem pode e quem não pode ser MEI",
+      "summary": "São poucas travas, mas cada uma delas invalida o registro inteiro — inclusive retroativamente.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Abrir MEI leva minutos e o sistema não confere quase nada na hora. A conferência vem depois, por cruzamento de dados, e aí o desenquadramento é retroativo: você volta a ser tributado como empresa normal desde o começo. Por isso vale checar as travas antes."
+        },
+        {
+          "type": "comparison",
+          "columns": [
+            {
+              "label": "Pode ser MEI",
+              "tone": "positive",
+              "items": [
+                "Quem exerce uma das ocupações da lista oficial",
+                "Quem tem no máximo um empregado",
+                "Quem é empregado com carteira em outra empresa (com ressalvas no INSS)",
+                "Aposentado por idade ou por tempo de contribuição",
+                "Estrangeiro com visto permanente"
+              ]
+            },
+            {
+              "label": "Não pode ser MEI",
+              "tone": "negative",
+              "items": [
+                "Sócio, titular ou administrador de outra empresa",
+                "Servidor público federal em atividade",
+                "Aposentado por invalidez",
+                "Quem tem mais de um estabelecimento",
+                "Profissão regulamentada: médico, advogado, contador, engenheiro, psicólogo e afins"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "A TRAVA QUE MAIS PEGA GENTE",
+          "items": [
+            "Ser sócio de outra empresa, mesmo que ela esteja parada e sem faturar",
+            "Empresa inativa continua registrada, e o sistema enxerga o CPF como sócio",
+            "Muita gente descobre anos depois, quando o desenquadramento chega retroativo",
+            "Antes de abrir, consulte o seu CPF no portal da Receita e veja em quais empresas ele aparece"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Profissão regulamentada"
+        },
+        {
+          "type": "paragraph",
+          "text": "A regra é direta: se a profissão tem conselho de classe e exige registro para ser exercida, ela está fora do MEI. Isso vale para médico, dentista, advogado, contador, engenheiro, arquiteto, psicólogo, nutricionista, veterinário, jornalista, corretor de imóveis e outros. Nesses casos o caminho é abrir uma ME e cair no Simples Nacional."
+        },
+        {
+          "type": "accordion",
+          "items": [
+            {
+              "title": "Sou CLT. Posso abrir MEI?",
+              "text": "Pode. O impedimento não existe na lei do MEI. O cuidado é outro: a contribuição que você paga como MEI não soma com a do emprego para aumentar a sua aposentadoria, porque as duas incidem sobre bases diferentes. E, se você for demitido, receber pelo CNPJ pode ser interpretado como manutenção de renda e afetar o seguro-desemprego."
+            },
+            {
+              "title": "Recebo Bolsa Família ou BPC. Abrir MEI faz perder?",
+              "text": "Não automaticamente, mas muda a conta. O faturamento do CNPJ entra na avaliação de renda familiar do programa. No BPC, que exige renda por pessoa abaixo de um quarto do salário mínimo, qualquer renda declarada pesa muito. Vale simular antes com o assistente social do CRAS."
+            },
+            {
+              "title": "Posso ter dois CNPJs de MEI?",
+              "text": "Não. Um CPF, um MEI. E o MEI só pode ter um estabelecimento — se você quiser abrir um segundo ponto, já está fora do enquadramento."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Você tem 1% de uma empresa que nunca funcionou e está sem movimento há anos. Pode abrir MEI?",
+          "options": [
+            "Pode, já que a empresa não fatura",
+            "Não pode — ser sócio de qualquer empresa impede o MEI, mesmo que ela esteja parada",
+            "Pode, se a participação for menor que 5%"
+          ],
+          "correct": 1,
+          "explanation": "A lei fala em participação, não em faturamento nem em tamanho da cota. Empresa parada continua existindo no registro. O caminho é dar baixa na sociedade antes de abrir o MEI — ou escolher outro enquadramento."
+        }
+      ]
+    },
+    {
+      "id": "atividades",
+      "shortTitle": "A sua atividade",
+      "kicker": "MÓDULO 03 · OCUPAÇÃO",
+      "title": "A atividade define o seu imposto",
+      "summary": "Comércio, indústria e serviço pagam DAS diferente. Escolher errado custa pouco por mês e muito no fim.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Quando você abre o MEI, escolhe uma ocupação principal e até quinze secundárias, todas de uma lista oficial. Cada ocupação está ligada a um CNAE, e o CNAE diz se você é comércio, indústria ou serviço. Essa classificação muda o valor do seu DAS e muda quem cobra o seu imposto: o estado ou a prefeitura."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Tipo de atividade",
+            "O que compõe o DAS",
+            "Total por mês"
+          ],
+          "rows": [
+            [
+              "Comércio ou indústria",
+              "INSS R$ 81,05 + ICMS R$ 1,00",
+              "R$ 82,05"
+            ],
+            [
+              "Serviços",
+              "INSS R$ 81,05 + ISS R$ 5,00",
+              "R$ 86,05"
+            ],
+            [
+              "Comércio e serviços juntos",
+              "INSS R$ 81,05 + ICMS R$ 1,00 + ISS R$ 5,00",
+              "R$ 87,05"
+            ]
+          ],
+          "caption": "Valores com o salário mínimo de R$ 1.621,00 — mudam em janeiro"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "COMO OS NOSSOS DOIS EXEMPLOS SE ENQUADRAM",
+          "items": [
+            "Silvana faz bolos e doces por encomenda: produz e vende, então é comércio/indústria e paga R$ 82,05",
+            "Rogério faz manutenção de ar-condicionado: vende trabalho, então é serviço e paga R$ 86,05",
+            "Quem faz as duas coisas — vende peça e também instala — declara as duas e paga os dois acréscimos",
+            "Eles vão te acompanhar até o fim da série"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Cadastre tudo o que você faz"
+        },
+        {
+          "type": "paragraph",
+          "text": "O erro mais comum não é escolher a atividade errada: é cadastrar só uma. Se você conserta ar-condicionado e também vende o aparelho, precisa das duas ocupações. Emitir nota de uma atividade que não está no seu cadastro é irregularidade, e a prefeitura costuma travar a emissão antes mesmo de você perceber."
+        },
+        {
+          "type": "classify-exercise",
+          "items": [
+            "Vender roupas que você compra de fornecedor",
+            "Cortar cabelo",
+            "Fabricar velas artesanais e vender",
+            "Consertar celular",
+            "Fazer bolo por encomenda",
+            "Dar aula de reforço"
+          ],
+          "categories": [
+            "Comércio ou indústria",
+            "Serviço"
+          ],
+          "answerKey": {
+            "Vender roupas que você compra de fornecedor": "Comércio ou indústria",
+            "Cortar cabelo": "Serviço",
+            "Fabricar velas artesanais e vender": "Comércio ou indústria",
+            "Consertar celular": "Serviço",
+            "Fazer bolo por encomenda": "Comércio ou indústria",
+            "Dar aula de reforço": "Serviço"
+          }
+        },
+        {
+          "type": "highlight",
+          "text": "Regra prática: se no fim sobra um objeto na mão do cliente, é comércio ou indústria. Se sobra um trabalho feito, é serviço."
+        },
+        {
+          "type": "quiz",
+          "question": "Rogério começou a vender também os aparelhos que instala, mas não mexeu no cadastro. Qual o problema?",
+          "options": [
+            "Nenhum, a atividade principal continua a mesma",
+            "Ele está faturando numa atividade que não consta no CNPJ — e o DAS dele também deveria incluir o ICMS",
+            "Ele precisa abrir um segundo CNPJ"
+          ],
+          "correct": 1,
+          "explanation": "Vender mercadoria é comércio, e comércio entra com ICMS no DAS. Sem a ocupação cadastrada, a nota de venda não bate com o CNPJ e o valor recolhido fica a menor. O ajuste é simples e gratuito: alterar os dados no Portal do Empreendedor e passar a pagar R$ 87,05."
+        }
+      ]
+    },
+    {
+      "id": "abertura",
+      "shortTitle": "Abrir o CNPJ",
+      "kicker": "MÓDULO 04 · ABERTURA",
+      "title": "Abrir o CNPJ: o passo a passo real",
+      "summary": "É de graça e sai na hora. O que dá trabalho vem depois — e quase ninguém avisa.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "O registro do MEI é gratuito e feito pelo Portal do Empreendedor ou pelo aplicativo MEI. Leva poucos minutos e o CNPJ sai na mesma hora. Quem cobra por isso está vendendo um serviço que o governo dá de graça."
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Tenha a conta gov.br em nível prata ou ouro",
+              "text": "Sem isso o portal não deixa concluir. O nível sobe pelo aplicativo, com reconhecimento facial ou validação por banco."
+            },
+            {
+              "title": "Separe CPF, título de eleitor ou recibo do último IR",
+              "text": "O sistema pede um dos dois para confirmar identidade. Se você nunca declarou, use o título."
+            },
+            {
+              "title": "Escolha as ocupações",
+              "text": "Uma principal e até quinze secundárias. Cadastre tudo o que você realmente faz."
+            },
+            {
+              "title": "Informe o endereço do negócio",
+              "text": "Pode ser a sua casa. Se for, marque a opção certa — isso muda o licenciamento na prefeitura."
+            },
+            {
+              "title": "Emita o CCMEI",
+              "text": "É o Certificado da Condição de Microempreendedor Individual: o documento que prova que a sua empresa existe. Guarde o PDF."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "O QUE NÃO ACABA NO PORTAL",
+          "items": [
+            "Inscrição municipal e alvará: dependem da prefeitura, e algumas exigem vistoria",
+            "Inscrição estadual: só para quem é comércio ou indústria, em alguns estados",
+            "Conta bancária PJ: leva alguns dias e pede o CCMEI",
+            "Cadastro para emitir nota fiscal de serviço: quase sempre é na prefeitura, à parte"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "A primeira conta vence rápido"
+        },
+        {
+          "type": "paragraph",
+          "text": "O DAS começa a ser devido já no mês da abertura. Se você abriu dia 28, o DAS daquele mês vence no dia 20 do mês seguinte — cheio, sem proporção. Não existe DAS pela metade: o valor é fixo desde o primeiro mês."
+        },
+        {
+          "type": "accordion",
+          "items": [
+            {
+              "title": "Preciso de contador para abrir?",
+              "text": "Não. O MEI é dispensado de contabilidade formal por lei, e a abertura é autoatendimento. Contador entra quando a conta fica maior: ao passar do limite, ao contratar alguém, ao planejar a saída do MEI. Para abrir, não."
+            },
+            {
+              "title": "Posso usar o endereço da minha casa?",
+              "text": "Na maior parte dos municípios sim, desde que a atividade não incomode a vizinhança nem exija estrutura específica. Marcar corretamente que o local é residencial evita exigência de alvará que não se aplica ao seu caso."
+            },
+            {
+              "title": "Abri e desisti. Como fecho?",
+              "text": "A baixa também é gratuita e feita no mesmo portal. Mas atenção: a baixa não apaga dívida. Os DAS não pagos migram para o seu CPF e continuam cobráveis. Feche em dia."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Silvana abriu o MEI no dia 25 de março. Qual o primeiro DAS dela?",
+          "options": [
+            "O de abril, proporcional aos dias de março",
+            "O de março, valor cheio de R$ 82,05, com vencimento no dia 20 de abril",
+            "Só a partir do primeiro mês em que faturar"
+          ],
+          "correct": 1,
+          "explanation": "O DAS é mensal e integral desde o mês da abertura, mesmo que a empresa tenha nascido no último dia do mês e não tenha faturado nada. Quem abre no fim do mês costuma perder esse primeiro vencimento sem perceber."
+        },
+        {
+          "type": "cta",
+          "text": "A abertura é gratuita e sai na hora no portal oficial do governo.",
+          "buttonLabel": "Abrir o Portal do Empreendedor",
+          "url": "https://www.gov.br/empresas-e-negocios/pt-br/empreendedor"
+        }
+      ]
+    },
+    {
+      "id": "das",
+      "shortTitle": "O DAS por dentro",
+      "kicker": "MÓDULO 05 · O IMPOSTO",
+      "title": "O DAS por dentro: para onde vai o seu dinheiro",
+      "summary": "É o imposto mais simples do país, e mesmo assim quase ninguém sabe o que está pagando.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "DAS é o Documento de Arrecadação do Simples Nacional. No MEI ele tem uma característica que não existe em nenhum outro regime: o valor não depende do quanto você vende. É fixo. Você pode faturar zero ou o teto do ano inteiro que o boleto é o mesmo."
+        },
+        {
+          "type": "heading",
+          "text": "De onde sai o valor"
+        },
+        {
+          "type": "math",
+          "expression": "DAS = (5\\% \\times Sal\\acute{a}rio\\ M\\acute{i}nimo) + ICMS\\ e/ou\\ ISS"
+        },
+        {
+          "type": "paragraph",
+          "text": "Os 5% do salário mínimo são a sua contribuição previdenciária — hoje R$ 81,05. É a maior parte do boleto, e é ela que garante aposentadoria, auxílio-doença e salário-maternidade. O resto é imposto de verdade: R$ 1,00 de ICMS para quem vende mercadoria e R$ 5,00 de ISS para quem presta serviço."
+        },
+        {
+          "type": "breakdown-chart",
+          "total": 86.05000000000001,
+          "parts": [
+            {
+              "label": "INSS — a sua aposentadoria",
+              "value": 81.05000000000001
+            },
+            {
+              "label": "ISS — imposto do município",
+              "value": 5
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "De cada R$ 86,05 que um MEI de serviço paga, R$ 81,05 voltam para ele em forma de benefício. O imposto propriamente dito são R$ 5,00."
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "salario",
+              "label": "Salário mínimo vigente (R$)",
+              "type": "currency",
+              "placeholder": "1621"
+            },
+            {
+              "id": "tipo",
+              "label": "A sua atividade",
+              "type": "select",
+              "options": [
+                "Serviços",
+                "Comércio ou indústria",
+                "As duas coisas"
+              ]
+            },
+            {
+              "id": "faturamentoMes",
+              "label": "Quanto você fatura por mês (R$)",
+              "type": "currency",
+              "placeholder": "5200"
+            }
+          ],
+          "formula": "if (!(salario > 0)) { return { aviso: 'Informe o salário mínimo em vigor.' }; } const inss = salario * 0.05; const extra = tipo === 'Serviços' ? 5 : tipo === 'Comércio ou indústria' ? 1 : 6; const das = inss + extra; const ano = das * 12; const peso = faturamentoMes > 0 ? (das / faturamentoMes) * 100 : 0; return { inss, extra, das, ano, peso };",
+          "resultLabel": "O seu DAS",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "inss",
+              "label": "INSS (5% do mínimo)",
+              "format": "currency"
+            },
+            {
+              "key": "extra",
+              "label": "ICMS e/ou ISS",
+              "format": "currency"
+            },
+            {
+              "key": "das",
+              "label": "DAS por mês",
+              "format": "currency"
+            },
+            {
+              "key": "ano",
+              "label": "Total no ano",
+              "format": "currency"
+            },
+            {
+              "key": "peso",
+              "label": "Quanto pesa no seu faturamento",
+              "format": "percentage"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "success",
+          "title": "POR QUE ISSO É BARATO DE VERDADE",
+          "items": [
+            "Uma ME de serviço no Simples paga, na primeira faixa, 6% sobre o faturamento — em R$ 5.200 por mês seriam R$ 312",
+            "O MEI, no mesmo faturamento, paga R$ 86,05",
+            "E ainda está incluída a contribuição previdenciária do titular, que na ME é um custo à parte",
+            "É por isso que vale tanto a pena ficar no MEI enquanto couber"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "O salário mínimo sobe em janeiro. O que acontece com o seu DAS?",
+          "options": [
+            "Nada, o valor é fixo por lei",
+            "Sobe junto, porque a maior parte dele é 5% do salário mínimo",
+            "Sobe só se você faturar mais"
+          ],
+          "correct": 1,
+          "explanation": "Todo janeiro o DAS é reajustado na mesma proporção do salário mínimo. Os centavos de ICMS e ISS continuam fixos; o que se move é a parte do INSS. Por isso vale reconferir o valor no começo do ano em vez de repetir o boleto anterior."
+        }
+      ]
+    },
+    {
+      "id": "rotina",
+      "shortTitle": "A rotina do mês",
+      "kicker": "MÓDULO 06 · ROTINA",
+      "title": "A rotina do mês: são três coisas",
+      "summary": "Manter um MEI em dia dá menos trabalho do que parece. O problema é não saber quais são as três coisas.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Muita gente acha que ser MEI é complicado porque nunca viu a lista completa do que precisa ser feito. Ela é curta. São três tarefas no mês e uma no ano — e duas das três levam menos de cinco minutos."
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Pagar o DAS até o dia 20",
+              "text": "O boleto sai no aplicativo MEI ou no portal. Dá para pagar por PIX, débito automático ou código de barras. Se o dia 20 cair em fim de semana ou feriado, vence no próximo dia útil."
+            },
+            {
+              "title": "Preencher o Relatório Mensal de Receitas Brutas",
+              "text": "Uma folha por mês com quanto você faturou, separando venda de mercadoria e prestação de serviço. Não se envia a lugar nenhum: guarda-se por cinco anos."
+            },
+            {
+              "title": "Guardar as notas que você emitiu e as que recebeu",
+              "text": "As que você emitiu comprovam a receita. As de compra comprovam o custo e servem se a Receita perguntar de onde veio a mercadoria."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "O RELATÓRIO MENSAL NÃO É BUROCRACIA À TOA",
+          "items": [
+            "É ele que prova o seu faturamento se a Receita questionar",
+            "É ele que alimenta a declaração anual, a DASN-SIMEI",
+            "É ele que te avisa, mês a mês, se você está perto do limite do ano",
+            "Sem ele, o único registro do seu faturamento é o extrato bancário — e ali entra dinheiro que não é receita"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "O relatório na prática"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Mês",
+            "Venda de mercadoria",
+            "Prestação de serviço",
+            "Total do mês",
+            "Acumulado no ano"
+          ],
+          "rows": [
+            [
+              "Janeiro",
+              "R$ 4.800",
+              "R$ 0",
+              "R$ 4.800",
+              "R$ 4.800"
+            ],
+            [
+              "Fevereiro",
+              "R$ 5.100",
+              "R$ 0",
+              "R$ 5.100",
+              "R$ 9.900"
+            ],
+            [
+              "Março",
+              "R$ 6.400",
+              "R$ 0",
+              "R$ 6.400",
+              "R$ 16.300"
+            ],
+            [
+              "Abril",
+              "R$ 4.500",
+              "R$ 0",
+              "R$ 4.500",
+              "R$ 20.800"
+            ]
+          ],
+          "caption": "O relatório da Silvana — a última coluna é a que importa acompanhar"
+        },
+        {
+          "type": "highlight",
+          "text": "A coluna do acumulado é o seu painel de controle. É ela que diz, em maio, se você vai bater o limite em novembro."
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "acumulado",
+              "label": "Quanto você já faturou no ano (R$)",
+              "type": "currency",
+              "placeholder": "20800"
+            },
+            {
+              "id": "meses",
+              "label": "Quantos meses já se passaram",
+              "type": "number",
+              "placeholder": "4"
+            }
+          ],
+          "formula": "if (!(meses > 0)) { return { aviso: 'Informe quantos meses do ano já se passaram.' }; } const media = acumulado / meses; const projecao = media * 12; const limite = 81000; const sobra = limite - acumulado; const mesesQueFaltam = 12 - meses; const podePorMes = mesesQueFaltam > 0 ? sobra / mesesQueFaltam : 0; const leitura = projecao > limite ? 'No ritmo de hoje você passa do limite antes de dezembro. O curso 2 desta série mostra o que fazer.' : 'No ritmo de hoje você fecha o ano dentro do limite.'; return { media, projecao, sobra, podePorMes, leitura };",
+          "resultLabel": "A sua projeção do ano",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "media",
+              "label": "Média por mês até aqui",
+              "format": "currency"
+            },
+            {
+              "key": "projecao",
+              "label": "Projeção para o ano",
+              "format": "currency"
+            },
+            {
+              "key": "sobra",
+              "label": "Quanto ainda cabe no limite",
+              "format": "currency"
+            },
+            {
+              "key": "podePorMes",
+              "label": "Por mês, até dezembro",
+              "format": "currency"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Você não emitiu nenhuma nota no mês, só vendeu para pessoa física no PIX. Precisa preencher o relatório?",
+          "options": [
+            "Não, sem nota não há o que relatar",
+            "Precisa — o relatório registra toda a receita, com ou sem nota fiscal",
+            "Só se passar de mil reais"
+          ],
+          "correct": 1,
+          "explanation": "O relatório é de receita bruta, não de notas emitidas. Venda para pessoa física costuma ser dispensada de nota, mas continua sendo faturamento e conta para o limite do ano. Quem só anota o que tem nota descobre tarde demais que estourou."
+        }
+      ]
+    },
+    {
+      "id": "nota-fiscal",
+      "shortTitle": "Nota fiscal",
+      "kicker": "MÓDULO 07 · NOTA FISCAL",
+      "title": "Nota fiscal: quando é obrigatória",
+      "summary": "A regra é mais simples do que a fama dela. Depende de quem está comprando.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "O MEI tem uma regra de nota fiscal que confunde muita gente, porque ela não olha para o valor nem para a atividade: olha para quem compra."
+        },
+        {
+          "type": "comparison",
+          "columns": [
+            {
+              "label": "Venda para empresa (PJ)",
+              "tone": "negative",
+              "items": [
+                "Nota fiscal é obrigatória, sempre",
+                "Não importa o valor",
+                "A empresa que compra precisa dela para lançar o custo",
+                "Sem nota, ela normalmente não paga"
+              ]
+            },
+            {
+              "label": "Venda para pessoa física (PF)",
+              "tone": "positive",
+              "items": [
+                "A emissão é dispensada",
+                "Mas se o cliente pedir, você é obrigado a emitir",
+                "Muita gente emite sempre, por organização",
+                "A receita conta para o limite do mesmo jeito"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "DISPENSADA NÃO É O MESMO QUE PROIBIDA",
+          "items": [
+            "Você pode emitir nota para pessoa física quando quiser",
+            "Emitir sempre facilita o controle: o relatório mensal sai pronto",
+            "E evita a suspeita de que o dinheiro na conta não é receita declarada",
+            "O custo de emitir é zero"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Como emitir"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "O que você vende",
+            "Qual nota",
+            "Onde emite"
+          ],
+          "rows": [
+            [
+              "Serviço",
+              "NFS-e",
+              "Aplicativo MEI ou portal da NFS-e nacional, de graça"
+            ],
+            [
+              "Mercadoria para PJ",
+              "NF-e (modelo 55)",
+              "Sistema da Secretaria da Fazenda do seu estado"
+            ],
+            [
+              "Mercadoria no balcão",
+              "NFC-e ou cupom",
+              "Depende do estado — alguns dispensam o MEI"
+            ]
+          ],
+          "caption": "A nota de serviço é a mais simples: sai no celular, pelo app do MEI"
+        },
+        {
+          "type": "accordion",
+          "items": [
+            {
+              "title": "Preciso de certificado digital?",
+              "text": "Para a nota de serviço pelo app MEI, não: a autenticação é pela conta gov.br. Para nota de mercadoria, alguns estados exigem certificado. Vale consultar a Sefaz do seu estado antes de comprar um."
+            },
+            {
+              "title": "Errei a nota. Como corrijo?",
+              "text": "Nota de serviço normalmente se cancela no mesmo sistema, dentro de um prazo curto — costuma ser o mesmo mês. Passado o prazo, o caminho é emitir uma nota de ajuste ou pedir ao município. Confira sempre valor e CNPJ do tomador antes de confirmar."
+            },
+            {
+              "title": "O cliente PJ pediu para eu não emitir nota, em troca de pagar mais. Vale?",
+              "text": "Não. Para você o risco é grande e o ganho é pequeno: a receita entra na sua conta do mesmo jeito e vira movimentação sem lastro. Para a empresa, é despesa sem comprovante. Se ela insiste nisso, é um sinal sobre como ela trata os próprios compromissos."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Rogério fez uma manutenção de R$ 180 para uma loja. Precisa emitir nota?",
+          "options": [
+            "Não, o valor é baixo",
+            "Precisa — quem comprou foi uma empresa, e para PJ a nota é sempre obrigatória",
+            "Só se a loja pedir"
+          ],
+          "correct": 1,
+          "explanation": "Valor não entra na regra. O que define é o comprador: pessoa jurídica, nota obrigatória, mesmo que seja um conserto de R$ 20. Para pessoa física é dispensada — a não ser que ela peça."
+        }
+      ]
+    },
+    {
+      "id": "dasn",
+      "shortTitle": "Declaração anual",
+      "kicker": "MÓDULO 08 · DASN-SIMEI",
+      "title": "A declaração anual que quase todo mundo esquece",
+      "summary": "Uma tela, dois campos, prazo até 31 de maio. E multa para quem deixa passar.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "A DASN-SIMEI é a Declaração Anual do Simples Nacional para o MEI. Ela informa quanto você faturou no ano anterior. Não gera imposto: o imposto você já pagou mês a mês no DAS. É só prestação de contas — e é obrigatória mesmo para quem faturou zero."
+        },
+        {
+          "type": "stats",
+          "items": [
+            {
+              "value": "31 de maio",
+              "label": "prazo todo ano",
+              "hint": "sobre o ano anterior"
+            },
+            {
+              "value": "2 campos",
+              "label": "é tudo o que ela pede",
+              "hint": "receita de comércio e de serviço"
+            },
+            {
+              "value": "R$ 50",
+              "label": "multa mínima por atraso",
+              "hint": "com redução de 50% se pagar logo"
+            }
+          ]
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Some o ano inteiro no seu relatório mensal",
+              "text": "Total de venda de mercadoria de um lado, total de prestação de serviço do outro. Se você preencheu o relatório todo mês, já está pronto."
+            },
+            {
+              "title": "Entre no portal do Simples Nacional",
+              "text": "Opção \"DASN-SIMEI\". Login pelo CNPJ e código de acesso ou pela conta gov.br."
+            },
+            {
+              "title": "Informe os dois valores",
+              "text": "E responda se teve empregado no ano."
+            },
+            {
+              "title": "Transmita e guarde o recibo",
+              "text": "O recibo é a prova de que você declarou. Guarde junto com os relatórios mensais."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "O QUE ACONTECE SE VOCÊ NÃO DECLARAR",
+          "items": [
+            "Multa de 2% ao mês sobre os tributos do ano, com mínimo de R$ 50",
+            "Se declarar espontaneamente, mesmo atrasado, a multa cai pela metade",
+            "O CNPJ fica irregular e você não consegue emitir o CCMEI atualizado",
+            "Anos seguidos sem declarar e sem pagar levam à exclusão do SIMEI e à dívida ativa"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "A DASN não cobra imposto novo. Ela só conta o que você já fez. Quem tem o relatório mensal em dia resolve em cinco minutos."
+        },
+        {
+          "type": "accordion",
+          "items": [
+            {
+              "title": "Faturei zero o ano todo. Preciso declarar?",
+              "text": "Precisa. Declara-se zero. A obrigação é de declarar, não de ter faturado. Empresa sem movimento que não declara acumula multa e acaba excluída."
+            },
+            {
+              "title": "Abri o MEI em setembro. Declaro o ano todo?",
+              "text": "Declara só o que faturou desde a abertura. E atenção ao limite: no ano de abertura ele é proporcional aos meses de existência da empresa — o curso 2 desta série mostra essa conta."
+            },
+            {
+              "title": "Dei baixa no MEI. Ainda preciso declarar?",
+              "text": "Sim, e o prazo é mais curto: a declaração de baixa vence no mês seguinte ao encerramento. Muita gente fecha o CNPJ, esquece a declaração e descobre a multa quando vai abrir outra empresa."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Você pagou os doze DAS do ano certinho. Ainda precisa entregar a DASN?",
+          "options": [
+            "Não, o pagamento já é a declaração",
+            "Precisa — pagar e declarar são obrigações diferentes",
+            "Só se tiver faturado acima da metade do limite"
+          ],
+          "correct": 1,
+          "explanation": "O DAS é o recolhimento; a DASN é a informação. A Receita precisa dos dois para fechar a conta do ano. É a confusão mais comum entre MEIs, e a que mais gera multa de R$ 50 boba."
+        }
+      ]
+    },
+    {
+      "id": "atraso",
+      "shortTitle": "Atrasei o DAS",
+      "kicker": "MÓDULO 09 · DÍVIDA",
+      "title": "Atrasei o DAS. E agora?",
+      "summary": "A multa é pequena. O que machuca é o que o atraso faz com os seus benefícios.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Atrasar o DAS não fecha a sua empresa de imediato e a multa é modesta. Mas o efeito colateral é sério e quase ninguém explica: mês não pago é mês que não conta para o INSS. E a carência de benefício conta meses, não reais."
+        },
+        {
+          "type": "heading",
+          "text": "A conta do atraso"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "O que incide",
+            "Quanto"
+          ],
+          "rows": [
+            [
+              "Multa",
+              "0,33% por dia de atraso, limitada a 20%"
+            ],
+            [
+              "Juros",
+              "Taxa Selic acumulada, mais 1% no mês do pagamento"
+            ],
+            [
+              "Na prática",
+              "Alguns reais por boleto atrasado"
+            ]
+          ],
+          "caption": "Por isso o problema do atraso não é financeiro"
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "O QUE O ATRASO CUSTA DE VERDADE",
+          "items": [
+            "Mês em atraso não conta como carência para auxílio-doença nem para salário-maternidade",
+            "Se você adoecer com meses em aberto, o benefício pode ser negado mesmo com anos de MEI",
+            "A dívida acumulada vai para a Dívida Ativa da União e entra no seu CPF",
+            "CNPJ com débito não emite certidão negativa — e sem ela você perde contrato com empresa e com órgão público"
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "valorDas",
+              "label": "Valor do DAS (R$)",
+              "type": "currency",
+              "placeholder": "86.05"
+            },
+            {
+              "id": "meses",
+              "label": "Quantos meses em aberto",
+              "type": "number",
+              "placeholder": "6"
+            },
+            {
+              "id": "jurosMes",
+              "label": "Juros estimados ao mês (%)",
+              "type": "percentage",
+              "placeholder": "1"
+            }
+          ],
+          "formula": "if (!(meses > 0)) { return { aviso: 'Informe quantos meses estão em aberto.' }; } const principal = valorDas * meses; const multa = principal * 0.2; const juros = principal * (jurosMes / 100) * (meses / 2); const total = principal + multa + juros; const leitura = meses >= 12 ? 'Mais de um ano em aberto: além da dívida, a carência dos seus benefícios está interrompida.' : 'Regularize antes de precisar de algum benefício do INSS.'; return { principal, multa, juros, total, leitura };",
+          "resultLabel": "Quanto custa regularizar",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "principal",
+              "label": "DAS em aberto",
+              "format": "currency"
+            },
+            {
+              "key": "multa",
+              "label": "Multa (teto de 20%)",
+              "format": "currency"
+            },
+            {
+              "key": "juros",
+              "label": "Juros estimados",
+              "format": "currency"
+            },
+            {
+              "key": "total",
+              "label": "Total estimado",
+              "format": "currency"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "COMO REGULARIZAR",
+          "items": [
+            "Emita o DAS em atraso no próprio aplicativo: ele já vem com multa e juros calculados",
+            "Se forem muitos meses, existe parcelamento em até 60 vezes, com parcela mínima",
+            "Pague primeiro os meses mais antigos: são os que prescrevem e os que travam a carência",
+            "Depois de quitar, confira no CNIS se os meses entraram como contribuição"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Silvana tem oito meses de DAS em aberto e precisou se afastar por doença. O que acontece?",
+          "options": [
+            "Nada, ela é MEI há cinco anos e já tem direito",
+            "O auxílio pode ser negado: os meses em aberto não contam para a carência, e ela precisa estar em dia na data do afastamento",
+            "Ela recebe metade do benefício"
+          ],
+          "correct": 1,
+          "explanation": "É exatamente aqui que o atraso machuca. O INSS olha a qualidade de segurado e a carência no momento do fato. Meses em aberto não contam — e pagar depois de adoecer não recompõe o direito daquele momento. Regularizar é sempre antes."
+        }
+      ]
+    },
+    {
+      "id": "empregado",
+      "shortTitle": "Contratar alguém",
+      "kicker": "MÓDULO 10 · EMPREGADO",
+      "title": "O MEI pode ter um empregado. Quanto custa?",
+      "summary": "Um, só um, e com salário definido em lei. A conta é menor do que a fama, mas não é só o salário.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "O MEI pode contratar um empregado — e apenas um. O salário não é livre: tem que ser um salário mínimo ou o piso da categoria, o que for maior. Acima disso, você sai do enquadramento."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "O que você paga",
+            "Quanto",
+            "Sobre o quê"
+          ],
+          "rows": [
+            [
+              "Salário",
+              "R$ 1.621,00",
+              "ou o piso da categoria, se for maior"
+            ],
+            [
+              "INSS patronal",
+              "R$ 48,63 (3%)",
+              "alíquota reduzida, exclusiva do MEI"
+            ],
+            [
+              "FGTS",
+              "R$ 129,68 (8%)",
+              "depositado todo mês"
+            ],
+            [
+              "Custo mensal direto",
+              "R$ 1.799,31",
+              "sem contar 13º e férias"
+            ]
+          ],
+          "caption": "A alíquota patronal do MEI é 3%; numa ME comum seria 20%"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "O QUE NÃO APARECE NO CUSTO MENSAL",
+          "items": [
+            "O 13º salário: mais um salário por ano, mais FGTS e INSS sobre ele",
+            "As férias com um terço a mais",
+            "Vale-transporte, se o empregado usar",
+            "Na média do ano, o custo real fica perto de 1,33 salário por mês"
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "salario",
+              "label": "Salário do empregado (R$)",
+              "type": "currency",
+              "placeholder": "1621"
+            },
+            {
+              "id": "transporte",
+              "label": "Vale-transporte por mês (R$)",
+              "type": "currency",
+              "placeholder": "0"
+            }
+          ],
+          "formula": "if (!(salario > 0)) { return { aviso: 'Informe o salário do empregado.' }; } const inss = salario * 0.03; const fgts = salario * 0.08; const mensal = salario + inss + fgts + transporte; const decimo = (salario + inss + fgts) / 12; const ferias = (salario * 1.3333 * 1.11) / 12; const real = mensal + decimo + ferias; return { mensal, decimo, ferias, real };",
+          "resultLabel": "O custo de ter um empregado",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "mensal",
+              "label": "Sai do caixa todo mês",
+              "format": "currency"
+            },
+            {
+              "key": "decimo",
+              "label": "Provisão do 13º",
+              "format": "currency"
+            },
+            {
+              "key": "ferias",
+              "label": "Provisão de férias + 1/3",
+              "format": "currency"
+            },
+            {
+              "key": "real",
+              "label": "Custo real por mês",
+              "format": "currency"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "AS OBRIGAÇÕES QUE VÊM JUNTO",
+          "items": [
+            "Registrar o empregado no eSocial antes do primeiro dia de trabalho",
+            "Enviar a folha mensal pelo eSocial e gerar a guia DAE, que junta INSS e FGTS num boleto só",
+            "Controlar ponto, férias e afastamentos",
+            "Aqui, sim, vale ter um contador: o custo dele costuma ser menor que o de um erro trabalhista"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Você quer pagar R$ 2.500 para um ajudante muito bom. Pode?",
+          "options": [
+            "Pode, o limite é só de quantidade",
+            "Não como MEI: o salário do empregado tem que ser o mínimo ou o piso da categoria",
+            "Pode, se ele for registrado como autônomo"
+          ],
+          "correct": 1,
+          "explanation": "Pagar acima do piso descaracteriza o enquadramento do MEI. Se o trabalho vale mais que isso, o caminho é virar ME — onde não há teto de salário nem de quantidade de funcionários. Registrar como autônomo alguém que trabalha com subordinação e horário é falso autônomo, e isso vira processo."
+        }
+      ]
+    },
+    {
+      "id": "diagnostico",
+      "shortTitle": "Seu MEI está em dia?",
+      "kicker": "MÓDULO 11 · DIAGNÓSTICO",
+      "title": "O seu MEI está em dia?",
+      "summary": "Tudo o que você viu, virado em uma conferência de cinco minutos.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Agora é a sua vez. Responda com os seus números e veja, de uma vez, quanto você está pagando, quanto ainda cabe no limite e o que precisa ser regularizado."
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "salario",
+              "label": "Salário mínimo vigente (R$)",
+              "type": "currency",
+              "placeholder": "1621"
+            },
+            {
+              "id": "tipo",
+              "label": "A sua atividade",
+              "type": "select",
+              "options": [
+                "Serviços",
+                "Comércio ou indústria",
+                "As duas coisas"
+              ]
+            },
+            {
+              "id": "faturamentoAno",
+              "label": "Faturamento acumulado no ano (R$)",
+              "type": "currency",
+              "placeholder": "48000"
+            },
+            {
+              "id": "meses",
+              "label": "Meses já decorridos",
+              "type": "number",
+              "placeholder": "8"
+            },
+            {
+              "id": "emAberto",
+              "label": "DAS em aberto (quantos meses)",
+              "type": "number",
+              "placeholder": "0"
+            }
+          ],
+          "formula": "if (!(salario > 0) || !(meses > 0)) { return { aviso: 'Informe o salário mínimo e quantos meses do ano já se passaram.' }; } const extra = tipo === 'Serviços' ? 5 : tipo === 'Comércio ou indústria' ? 1 : 6; const das = salario * 0.05 + extra; const noAno = das * 12; const limite = 81000; const projecao = (faturamentoAno / meses) * 12; const folga = limite - faturamentoAno; const carga = faturamentoAno > 0 ? (das * meses / faturamentoAno) * 100 : 0; const divida = das * emAberto; const leitura = emAberto > 0 ? 'Há DAS em aberto: regularize antes de precisar de qualquer benefício do INSS.' : projecao > limite ? 'Em dia com o DAS, mas o faturamento projetado passa do limite. Veja o curso 2 desta série.' : 'MEI em dia e faturamento dentro do limite.'; return { das, noAno, projecao, folga, carga, divida, leitura };",
+          "resultLabel": "O seu diagnóstico",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "das",
+              "label": "DAS por mês",
+              "format": "currency"
+            },
+            {
+              "key": "noAno",
+              "label": "Imposto total no ano",
+              "format": "currency"
+            },
+            {
+              "key": "projecao",
+              "label": "Faturamento projetado do ano",
+              "format": "currency"
+            },
+            {
+              "key": "folga",
+              "label": "Quanto ainda cabe no limite",
+              "format": "currency"
+            },
+            {
+              "key": "carga",
+              "label": "Carga tributária sobre o faturamento",
+              "format": "percentage"
+            },
+            {
+              "key": "divida",
+              "label": "DAS em aberto",
+              "format": "currency"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "COMO LER O SEU RESULTADO",
+          "items": [
+            "Carga tributária acima de 5%: o seu faturamento está baixo para o custo fixo do MEI — o problema é preço, não imposto",
+            "Carga abaixo de 1%: você está aproveitando bem o regime; cuide para não estourar o limite",
+            "Folga negativa: você já passou do teto. O curso 2 desta série explica o que acontece agora",
+            "DAS em aberto maior que zero: essa é a sua prioridade, acima de qualquer outra"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "A conferência dos cinco minutos"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "Todos os DAS do ano pagos, sem nenhum mês em aberto",
+            "Relatório mensal de receitas preenchido até o mês passado",
+            "DASN-SIMEI do ano anterior entregue, com recibo guardado",
+            "Ocupações do CNPJ batendo com tudo o que você realmente faz",
+            "Conta bancária de PJ separada da conta pessoal",
+            "Faturamento acumulado conferido contra o limite do ano"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "MEI dá pouco trabalho, mas dá trabalho todo mês. Quem separa quinze minutos por mês nunca precisa de um dia inteiro para regularizar."
+        },
+        {
+          "type": "accordion",
+          "items": [
+            {
+              "title": "Qual o próximo passo depois deste curso?",
+              "text": "Se o seu faturamento está crescendo, o curso 2 desta série — o limite do MEI — é o mais urgente: ele mostra o que acontece ao passar dos R$ 81.000 e como planejar a virada sem levar susto. Se a sua dúvida é quanto cobrar e quanto tirar para você, vá para o curso 3."
+            },
+            {
+              "title": "Preciso mesmo de conta bancária PJ?",
+              "text": "A lei não obriga, mas separar é o que torna tudo possível: o relatório mensal sai do extrato, a comprovação de renda para financiamento fica limpa, e você para de confundir o dinheiro da empresa com o seu. Conta PJ de MEI costuma ser gratuita."
+            },
+            {
+              "title": "Vale a pena contratar um contador sendo MEI?",
+              "text": "Para a rotina, não: o regime foi desenhado para você tocar sozinho. Vale nos momentos de virada — contratar empregado, chegar perto do limite, sair do MEI, resolver dívida antiga. É consulta pontual, não mensalidade."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

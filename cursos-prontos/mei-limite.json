@@ -1,0 +1,1391 @@
+{
+  "slug": "mei-limite",
+  "courseName": "O Limite do MEI: Quanto Faturar e o Que Fazer ao Passar",
+  "description": "Os R$ 81.000 por ano explicados de verdade: o que conta como faturamento, por que a média mensal engana, o limite proporcional de quem abre no meio do ano, a tolerância de 20% e o desenquadramento retroativo — com a conta de quanto custa cada cenário.",
+  "category": "MEI sem Sufoco",
+  "leadCapture": "end",
+  "modules": [
+    {
+      "id": "o-limite",
+      "shortTitle": "O limite",
+      "kicker": "MÓDULO 01 · O TETO",
+      "title": "R$ 81.000 por ano: o que entra nessa conta",
+      "summary": "O número todo mundo sabe. O que conta como faturamento é onde a maioria erra.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "O MEI pode faturar até R$ 81.000 por ano-calendário. É receita bruta: tudo o que entra pela venda, sem descontar custo, imposto, taxa de maquininha nem frete. É o valor cheio da venda."
+        },
+        {
+          "type": "stats",
+          "items": [
+            {
+              "value": "R$ 81.000",
+              "label": "no ano",
+              "hint": "receita bruta, sem descontar nada"
+            },
+            {
+              "value": "R$ 6.750",
+              "label": "de média por mês",
+              "hint": "média, não teto mensal"
+            },
+            {
+              "value": "R$ 251.600",
+              "label": "para o MEI caminhoneiro",
+              "hint": "exceção prevista em lei"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "O que conta e o que não conta"
+        },
+        {
+          "type": "comparison",
+          "columns": [
+            {
+              "label": "Conta para o limite",
+              "tone": "negative",
+              "items": [
+                "Venda com nota fiscal",
+                "Venda sem nota para pessoa física",
+                "Recebimento por PIX, dinheiro ou maquininha",
+                "O valor bruto da venda, antes da taxa do cartão",
+                "Frete que você cobrou do cliente"
+              ]
+            },
+            {
+              "label": "Não conta",
+              "tone": "positive",
+              "items": [
+                "Empréstimo que entrou na conta",
+                "Dinheiro seu que você depositou na empresa",
+                "Venda cancelada e devolvida",
+                "Rendimento de aplicação da pessoa física"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "O ERRO QUE MAIS ESTOURA LIMITE SEM AVISO",
+          "items": [
+            "Contar só o que tem nota fiscal e esquecer a venda no PIX para pessoa física",
+            "Contar o líquido da maquininha em vez do bruto da venda",
+            "Numa taxa de 3%, quem vende R$ 80.000 recebe R$ 77.600 — mas o que conta são os R$ 80.000",
+            "Quem se guia pelo extrato bancário subestima o faturamento todo mês"
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "vendaBruta",
+              "label": "Quanto você vendeu no ano (R$)",
+              "type": "currency",
+              "placeholder": "80000"
+            },
+            {
+              "id": "taxaCartao",
+              "label": "Taxa média da maquininha (%)",
+              "type": "percentage",
+              "placeholder": "3"
+            }
+          ],
+          "formula": "const taxa = vendaBruta * (taxaCartao / 100); const liquido = vendaBruta - taxa; const limite = 81000; const folga = limite - vendaBruta; const leitura = folga < 0 ? 'Pelo valor bruto você já passou do limite, mesmo que o extrato mostre menos.' : 'Dentro do limite — e lembre que o que conta é a linha de cima, não a de baixo.'; return { vendaBruta, taxa, liquido, folga, leitura };",
+          "resultLabel": "Bruto × líquido",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "vendaBruta",
+              "label": "O que conta para o limite",
+              "format": "currency"
+            },
+            {
+              "key": "taxa",
+              "label": "Ficou com a maquininha",
+              "format": "currency"
+            },
+            {
+              "key": "liquido",
+              "label": "O que caiu na sua conta",
+              "format": "currency"
+            },
+            {
+              "key": "folga",
+              "label": "Folga no limite",
+              "format": "currency"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Você vendeu R$ 1.000 no cartão e recebeu R$ 970 depois da taxa. Quanto conta para o limite?",
+          "options": [
+            "R$ 970, que foi o que entrou",
+            "R$ 1.000 — o limite olha a receita bruta, antes de qualquer desconto",
+            "Depende se foi crédito ou débito"
+          ],
+          "correct": 1,
+          "explanation": "Receita bruta é o valor da venda. A taxa da maquininha é uma despesa sua, não um desconto na receita. Quem controla pelo extrato vai achar que faturou menos do que faturou — e a diferença, ao longo do ano, dá vários milhares."
+        }
+      ]
+    },
+    {
+      "id": "media-nao-teto",
+      "shortTitle": "Média, não teto",
+      "kicker": "MÓDULO 02 · O MÊS",
+      "title": "R$ 6.750 é média, não teto mensal",
+      "summary": "Faturar o dobro num mês não é problema. O que importa é só o total de janeiro a dezembro.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Existe uma confusão grande aqui. O limite do MEI é anual: R$ 81.000 de janeiro a dezembro. Os R$ 6.750 por mês são só a divisão por doze — uma referência de ritmo, não uma regra. Nenhuma lei proíbe faturar R$ 20.000 em dezembro."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Mês",
+            "Silvana faturou",
+            "Acumulado"
+          ],
+          "rows": [
+            [
+              "Agosto",
+              "R$ 6.400",
+              "R$ 50.500"
+            ],
+            [
+              "Setembro",
+              "R$ 8.400",
+              "R$ 58.900"
+            ],
+            [
+              "Outubro",
+              "R$ 6.800",
+              "R$ 65.700"
+            ],
+            [
+              "Novembro",
+              "R$ 8.500",
+              "R$ 74.200"
+            ],
+            [
+              "Dezembro",
+              "R$ 13.800",
+              "R$ 88.000"
+            ]
+          ],
+          "caption": "Negócio sazonal: dezembro sozinho vale dois meses normais"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "O QUE A SAZONALIDADE MUDA",
+          "items": [
+            "Confeitaria, presente, roupa e turismo concentram faturamento em poucos meses",
+            "Nesses casos, a média mensal engana: metade do ano parece folgada e não é",
+            "O acompanhamento tem que ser pelo acumulado, nunca pela média",
+            "Quem projeta em julho usando a média de janeiro a junho subestima o ano inteiro"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "A pergunta certa nunca é \"quanto posso faturar este mês?\". É \"quanto já faturei no ano, e quanto ainda cabe até dezembro?\"."
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "acumulado",
+              "label": "Faturado no ano até agora (R$)",
+              "type": "currency",
+              "placeholder": "53000"
+            },
+            {
+              "id": "mesesRestantes",
+              "label": "Meses que faltam até dezembro",
+              "type": "number",
+              "placeholder": "2"
+            }
+          ],
+          "formula": "const limite = 81000; const sobra = limite - acumulado; if (sobra <= 0) { return { sobra: 0, porMes: 0, leitura: 'Você já passou do limite. Os próximos módulos mostram o que acontece a partir daqui.' }; } if (!(mesesRestantes > 0)) { return { aviso: 'Informe quantos meses faltam até dezembro.' }; } const porMes = sobra / mesesRestantes; return { sobra, porMes, leitura: 'Esse é o teto médio dos meses que faltam para fechar o ano dentro do limite.' };",
+          "resultLabel": "Quanto ainda cabe",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "sobra",
+              "label": "Cabe ainda no ano",
+              "format": "currency"
+            },
+            {
+              "key": "porMes",
+              "label": "Por mês, até dezembro",
+              "format": "currency"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Silvana faturou R$ 13.800 só em dezembro, o dobro de um mês normal. Ela estourou alguma regra mensal?",
+          "options": [
+            "Sim, passou dos R$ 6.750 do mês",
+            "Não existe teto mensal — só importa o total do ano",
+            "Sim, e ela precisa avisar a Receita"
+          ],
+          "correct": 1,
+          "explanation": "Não existe teto mensal: o mês forte, sozinho, não infringe nada. O que importa é o total. E o total dela fechou em R$ 88.000 — acima do limite. Guarde esse número: é o caso que o módulo 5 vai destrinchar."
+        }
+      ]
+    },
+    {
+      "id": "ano-de-abertura",
+      "shortTitle": "Abriu no meio do ano",
+      "kicker": "MÓDULO 03 · PROPORCIONAL",
+      "title": "Abriu no meio do ano? O limite é proporcional",
+      "summary": "É a regra que mais pega quem abriu o MEI em agosto e achou que tinha o ano inteiro de folga.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "No primeiro ano, o limite não é R$ 81.000. Ele é proporcional aos meses em que a empresa existiu, contando o mês da abertura como mês cheio, mesmo que você tenha aberto no dia 30."
+        },
+        {
+          "type": "math",
+          "expression": "Limite\\ proporcional = R\\$\\,6.750 \\times meses\\ de\\ atividade"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cada mês de existência vale R$ 6.750,00. Abriu em setembro? São quatro meses — setembro, outubro, novembro e dezembro — e o seu teto naquele ano é R$ 27.000,00."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Mês de abertura",
+            "Meses no ano",
+            "Limite daquele ano"
+          ],
+          "rows": [
+            [
+              "Janeiro",
+              "12",
+              "R$ 81.000,00"
+            ],
+            [
+              "Abril",
+              "9",
+              "R$ 60.750,00"
+            ],
+            [
+              "Julho",
+              "6",
+              "R$ 40.500,00"
+            ],
+            [
+              "Setembro",
+              "4",
+              "R$ 27.000,00"
+            ],
+            [
+              "Dezembro",
+              "1",
+              "R$ 6.750,00"
+            ]
+          ],
+          "caption": "No ano seguinte o limite volta a ser os R$ 81.000 cheios"
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "POR QUE ISSO PEGA TANTA GENTE",
+          "items": [
+            "Quem abre no segundo semestre costuma estar vendendo bem — foi por isso que formalizou",
+            "Abriu em setembro e faturou R$ 30.000 até dezembro? Passou: o teto era R$ 27.000,00",
+            "E passou em mais de 20%, o que significa desenquadramento retroativo à data de abertura",
+            "A descoberta costuma vir só na declaração anual, em maio do ano seguinte"
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "mesAbertura",
+              "label": "Mês em que você abriu (1 = janeiro)",
+              "type": "number",
+              "placeholder": "9"
+            },
+            {
+              "id": "faturado",
+              "label": "Faturado desde a abertura (R$)",
+              "type": "currency",
+              "placeholder": "24000"
+            }
+          ],
+          "formula": "if (!(mesAbertura >= 1) || mesAbertura > 12) { return { aviso: 'Informe o mês da abertura, de 1 a 12.' }; } const meses = 13 - Math.round(mesAbertura); const limite = 6750 * meses; const folga = limite - faturado; const excesso = Math.max(0, -folga); const pct = limite > 0 ? (excesso / limite) * 100 : 0; const leitura = excesso === 0 ? 'Dentro do limite proporcional.' : pct <= 20 ? 'Passou, mas dentro da tolerância de 20%: você continua MEI até dezembro e desenquadra em janeiro.' : 'Passou de 20%: o desenquadramento retroage à data de abertura.'; return { meses, limite, folga, excesso, pct, leitura };",
+          "resultLabel": "O seu limite do primeiro ano",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "meses",
+              "label": "Meses de atividade",
+              "format": "number"
+            },
+            {
+              "key": "limite",
+              "label": "Limite proporcional",
+              "format": "currency"
+            },
+            {
+              "key": "folga",
+              "label": "Folga (ou excesso, se negativo)",
+              "format": "currency"
+            },
+            {
+              "key": "excesso",
+              "label": "Quanto passou",
+              "format": "currency"
+            },
+            {
+              "key": "pct",
+              "label": "Excesso sobre o limite",
+              "format": "percentage"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Abrir o MEI em outubro para faturar a alta de fim de ano é a receita mais comum de desenquadramento no primeiro ano."
+        },
+        {
+          "type": "quiz",
+          "question": "Rogério abriu o MEI em 30 de julho. Quantos meses contam para o limite dele naquele ano?",
+          "options": [
+            "Cinco, porque julho quase não teve empresa",
+            "Seis — o mês da abertura conta cheio, mesmo tendo sido no último dia",
+            "Doze, o limite é sempre anual"
+          ],
+          "correct": 1,
+          "explanation": "Julho, agosto, setembro, outubro, novembro e dezembro: seis meses. O teto dele naquele ano foi R$ 40.500,00. A proporção conta meses inteiros, não dias."
+        }
+      ]
+    },
+    {
+      "id": "acompanhar",
+      "shortTitle": "Acompanhar o ano",
+      "kicker": "MÓDULO 04 · CONTROLE",
+      "title": "Como saber, em maio, se você vai estourar",
+      "summary": "A diferença entre planejar e levar susto é uma coluna numa planilha.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Quem descobre que passou do limite em maio do ano seguinte, na declaração, já perdeu todas as opções. Quem descobre em junho do próprio ano ainda tem seis meses para decidir o que fazer. A diferença é só acompanhar o acumulado."
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Anote o faturamento todo mês, no mesmo dia",
+              "text": "Pode ser no relatório mensal obrigatório mesmo. O que importa é a regularidade."
+            },
+            {
+              "title": "Mantenha uma coluna de acumulado",
+              "text": "Soma corrida do ano. É ela que responde a pergunta que importa."
+            },
+            {
+              "title": "Projete todo trimestre",
+              "text": "Acumulado dividido pelos meses decorridos, vezes doze. Se a projeção passar do limite, você tem tempo de agir."
+            },
+            {
+              "title": "Se o negócio for sazonal, projete pelo ano anterior",
+              "text": "A média dos meses fracos não prevê dezembro. Use a proporção que o ano passado teve."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Quando",
+            "Acumulado",
+            "Projeção do ano",
+            "Situação"
+          ],
+          "rows": [
+            [
+              "Fim de março",
+              "R$ 16.300",
+              "R$ 65.200",
+              "Confortável"
+            ],
+            [
+              "Fim de junho",
+              "R$ 36.800",
+              "R$ 73.600",
+              "Atenção"
+            ],
+            [
+              "Fim de setembro",
+              "R$ 58.900",
+              "R$ 78.533",
+              "Perto do teto"
+            ],
+            [
+              "Fim de novembro",
+              "R$ 74.200",
+              "R$ 80.945",
+              "Dezembro decide"
+            ],
+            [
+              "Fechou o ano em",
+              "R$ 88.000",
+              "—",
+              "Passou"
+            ]
+          ],
+          "caption": "A projeção linear disse \"cabe\" o ano inteiro — e o dezembro forte passou por cima dela"
+        },
+        {
+          "type": "highlight",
+          "text": "Repare no que aconteceu com a Silvana: a projeção nunca acusou o estouro, porque ela divide por igual um ano que não é igual. Em negócio sazonal, a projeção linear é otimista por construção."
+        },
+        {
+          "type": "callout",
+          "tone": "success",
+          "title": "O QUE DÁ PARA FAZER QUANDO VOCÊ VÊ CHEGANDO",
+          "items": [
+            "Segurar entregas grandes para janeiro, jogando a receita para o ano seguinte",
+            "Combinar com o cliente o faturamento parcelado por etapa entregue",
+            "Aceitar passar e preparar a virada para ME com antecedência, que é a escolha mais comum",
+            "O que não dá é decidir em janeiro sobre um ano que já fechou"
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "UM CUIDADO IMPORTANTE",
+          "items": [
+            "Postergar receita é legítimo quando a entrega também é postergada",
+            "Entregar em dezembro e faturar em janeiro para não estourar limite é outra coisa",
+            "A data da receita acompanha a data do fato gerador, não a sua conveniência",
+            "Na dúvida, prefira passar do limite e desenquadrar direito"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Em junho a projeção aponta R$ 92.000 para o ano. Qual a melhor atitude?",
+          "options": [
+            "Parar de vender em outubro",
+            "Começar agora a preparar a virada para ME, porque ainda há seis meses para organizar",
+            "Não fazer nada e resolver em janeiro"
+          ],
+          "correct": 1,
+          "explanation": "Parar de vender é destruir o negócio para economizar imposto — quase nunca compensa. E deixar para janeiro tira todas as opções. Seis meses são suficientes para escolher o regime, ajustar preço e preparar o caixa para uma carga maior."
+        }
+      ]
+    },
+    {
+      "id": "ate-20",
+      "shortTitle": "Passou até 20%",
+      "kicker": "MÓDULO 05 · TOLERÂNCIA",
+      "title": "Passou até 20%: o cenário mais leve",
+      "summary": "Entre R$ 81.000 e R$ 97.200 existe uma faixa de tolerância — e ela muda tudo.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "A lei prevê uma tolerância de 20%. Se o seu faturamento ficar entre R$ 81.000 e R$ 97.200, você continua MEI até 31 de dezembro daquele ano e só sai do regime em 1º de janeiro do ano seguinte. É o cenário confortável."
+        },
+        {
+          "type": "stats",
+          "items": [
+            {
+              "value": "R$ 97.200",
+              "label": "é o teto da tolerância",
+              "hint": "R$ 81.000 mais 20%"
+            },
+            {
+              "value": "1º de janeiro",
+              "label": "quando você vira ME",
+              "hint": "sem efeito retroativo"
+            },
+            {
+              "value": "R$ 88.000",
+              "label": "foi o ano da Silvana",
+              "hint": "excesso de 8,6%"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "O ano da Silvana"
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Ela fechou o ano em R$ 88.000",
+              "text": "Excesso de R$ 7.000 sobre o limite, ou 8,6% — dentro da tolerância."
+            },
+            {
+              "title": "Continuou MEI até 31 de dezembro",
+              "text": "Pagou os doze DAS normalmente, sem nenhuma cobrança extra durante o ano."
+            },
+            {
+              "title": "Em janeiro, pagou o DAS complementar sobre o excesso",
+              "text": "Só sobre os R$ 7.000 que passaram, na alíquota do Simples: R$ 280 no Anexo I do comércio."
+            },
+            {
+              "title": "E virou ME a partir de 1º de janeiro",
+              "text": "Do ano seguinte em diante, DAS calculado sobre o faturamento, não mais fixo."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "headers": [
+            "O que ela pagou",
+            "Valor"
+          ],
+          "rows": [
+            [
+              "12 DAS de MEI durante o ano",
+              "R$ 984,60"
+            ],
+            [
+              "DAS complementar sobre R$ 7.000",
+              "R$ 280,00"
+            ],
+            [
+              "Total do ano",
+              "R$ 1.264,60"
+            ],
+            [
+              "Carga sobre R$ 88.000 faturados",
+              "1,44%"
+            ]
+          ],
+          "caption": "Mesmo estourando o limite, a carga do ano ficou abaixo de 1,5%"
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "faturamento",
+              "label": "Faturamento do ano (R$)",
+              "type": "currency",
+              "placeholder": "88000"
+            },
+            {
+              "id": "anexo",
+              "label": "A sua atividade",
+              "type": "select",
+              "options": [
+                "Comércio (Anexo I, 4%)",
+                "Serviço (Anexo III, 6%)"
+              ]
+            }
+          ],
+          "formula": "const limite = 81000; const excesso = faturamento - limite; if (excesso <= 0) { return { excesso: 0, pct: 0, complementar: 0, leitura: 'Dentro do limite: nada a complementar.' }; } const pct = (excesso / limite) * 100; if (pct > 20) { return { excesso, pct, complementar: 0, leitura: 'Passou de 20%: não é caso de complementar. O próximo módulo mostra o que acontece.' }; } const aliq = anexo === 'Comércio (Anexo I, 4%)' ? 0.04 : 0.06; const complementar = excesso * aliq; return { excesso, pct, complementar, leitura: 'Dentro da tolerância: você continua MEI até dezembro e paga só esse complemento em janeiro.' };",
+          "resultLabel": "O seu DAS complementar",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "excesso",
+              "label": "Quanto passou do limite",
+              "format": "currency"
+            },
+            {
+              "key": "pct",
+              "label": "Excesso sobre o limite",
+              "format": "percentage"
+            },
+            {
+              "key": "complementar",
+              "label": "DAS complementar a pagar",
+              "format": "currency"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "COMO SE PAGA ESSE COMPLEMENTO",
+          "items": [
+            "A guia é gerada no PGDAS-D, o sistema do Simples Nacional, na competência de janeiro",
+            "Incide só sobre o excesso, não sobre o faturamento todo",
+            "Usa a alíquota da primeira faixa do anexo da sua atividade",
+            "É aqui que vale uma consulta pontual com contador, para não errar o anexo"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Silvana passou R$ 7.000 do limite. Ela precisa fechar a empresa?",
+          "options": [
+            "Precisa, MEI que estoura é cancelado",
+            "Não — ela vira ME em 1º de janeiro, mesma empresa e mesmo CNPJ, só muda o regime",
+            "Precisa abrir um CNPJ novo"
+          ],
+          "correct": 1,
+          "explanation": "Desenquadrar não é fechar. O CNPJ é o mesmo, os clientes são os mesmos, a atividade é a mesma. O que muda é como o imposto é calculado: em vez de valor fixo, passa a ser percentual sobre o faturamento."
+        }
+      ]
+    },
+    {
+      "id": "acima-20",
+      "shortTitle": "Passou de 20%",
+      "kicker": "MÓDULO 06 · RETROATIVO",
+      "title": "Passou de 20%: a conta volta para janeiro",
+      "summary": "Aqui a régua muda. O desenquadramento retroage e o ano inteiro é recalculado.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Acima de R$ 97.200, a tolerância acaba. O desenquadramento passa a valer desde 1º de janeiro do próprio ano do excesso — e não do ano seguinte. Na prática, é como se você nunca tivesse sido MEI naquele ano."
+        },
+        {
+          "type": "comparison",
+          "columns": [
+            {
+              "label": "Até 20% — R$ 88.000",
+              "tone": "positive",
+              "items": [
+                "Continua MEI até 31 de dezembro",
+                "Vira ME em 1º de janeiro do ano seguinte",
+                "Paga complemento só sobre o excesso",
+                "No caso da Silvana: R$ 280,00"
+              ]
+            },
+            {
+              "label": "Acima de 20% — R$ 105.000",
+              "tone": "negative",
+              "items": [
+                "Deixa de ser MEI desde 1º de janeiro daquele mesmo ano",
+                "O ano inteiro é recalculado como ME no Simples",
+                "Os DAS de MEI pagos viram crédito, mas não cobrem a diferença",
+                "No caso do Rogério: cerca de R$ 5.267,40 de uma vez"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "A conta do Rogério"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Item",
+            "Valor"
+          ],
+          "rows": [
+            [
+              "Faturamento do ano",
+              "R$ 105.000"
+            ],
+            [
+              "Excesso sobre o limite (29,6%)",
+              "R$ 24.000"
+            ],
+            [
+              "Simples devido no ano (Anexo III, 6%)",
+              "R$ 6.300,00"
+            ],
+            [
+              "DAS de MEI já pagos no ano",
+              "− R$ 1.032,60"
+            ],
+            [
+              "Diferença a pagar",
+              "R$ 5.267,40"
+            ]
+          ],
+          "caption": "Sem contar multa e juros pelo atraso das competências do ano"
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "O QUE VEM JUNTO COM O RETROATIVO",
+          "items": [
+            "Multa e juros sobre cada competência do ano, porque os DAS venceram nas datas originais",
+            "Obrigação de entregar as declarações do Simples de todo o ano, mês a mês",
+            "Se houver empregado, a folha também precisa ser refeita nas alíquotas de ME",
+            "A regularização quase sempre exige contador — aqui não dá para fazer sozinho"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "A diferença entre R$ 88.000 e R$ 105.000 de faturamento não é de R$ 17.000. É a diferença entre um complemento de R$ 280,00 e um acerto retroativo de milhares de reais."
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "faturamento",
+              "label": "Faturamento do ano (R$)",
+              "type": "currency",
+              "placeholder": "105000"
+            },
+            {
+              "id": "anexo",
+              "label": "A sua atividade",
+              "type": "select",
+              "options": [
+                "Serviço (Anexo III, 6%)",
+                "Comércio (Anexo I, 4%)"
+              ]
+            },
+            {
+              "id": "dasPagos",
+              "label": "DAS de MEI pagos no ano (R$)",
+              "type": "currency",
+              "placeholder": "1032.60"
+            }
+          ],
+          "formula": "const limite = 81000; const excesso = faturamento - limite; if (excesso <= limite * 0.2) { return { excesso: Math.max(0, excesso), simples: 0, diferenca: 0, leitura: 'Este caso não é de retroativo: veja o módulo anterior, da tolerância de 20%.' }; } const aliq = anexo === 'Comércio (Anexo I, 4%)' ? 0.04 : 0.06; const simples = faturamento * aliq; const diferenca = Math.max(0, simples - dasPagos); return { excesso, simples, diferenca, leitura: 'Esse é o valor de principal. Some multa e juros de cada competência do ano.' };",
+          "resultLabel": "A conta do desenquadramento retroativo",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "excesso",
+              "label": "Quanto passou do limite",
+              "format": "currency"
+            },
+            {
+              "key": "simples",
+              "label": "Simples devido sobre o ano todo",
+              "format": "currency"
+            },
+            {
+              "key": "diferenca",
+              "label": "Diferença a pagar",
+              "format": "currency"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Rogério só descobriu o excesso em maio, na declaração anual. Isso melhora ou piora a situação?",
+          "options": [
+            "Melhora, porque ele avisou espontaneamente",
+            "Piora: as competências do ano anterior já venceram, então a diferença vem com multa e juros de até dezessete meses",
+            "Não muda nada"
+          ],
+          "correct": 1,
+          "explanation": "O desenquadramento retroage a janeiro, e cada mês daquele ano tinha uma data de vencimento própria. Descobrir dezessete meses depois significa multa e juros contados desde lá. É exatamente por isso que o acompanhamento do módulo 4 vale tanto."
+        }
+      ]
+    },
+    {
+      "id": "depois-do-mei",
+      "shortTitle": "Quanto custa depois",
+      "kicker": "MÓDULO 07 · A CONTA NOVA",
+      "title": "Quanto custa o imposto depois do MEI",
+      "summary": "Sair do MEI não é uma catástrofe. Mas é bom saber o tamanho do degrau antes de pisar nele.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Ao sair do MEI, você vira microempresa e cai no Simples Nacional. O imposto deixa de ser fixo e passa a ser um percentual sobre o faturamento, definido pelo anexo da sua atividade. Na primeira faixa, até R$ 180.000 por ano, as alíquotas são as mais baixas de todas."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Atividade",
+            "Anexo",
+            "Alíquota na 1ª faixa"
+          ],
+          "rows": [
+            [
+              "Comércio, revenda",
+              "Anexo I",
+              "4,00%"
+            ],
+            [
+              "Indústria",
+              "Anexo II",
+              "4,50%"
+            ],
+            [
+              "Serviços em geral",
+              "Anexo III",
+              "6,00%"
+            ],
+            [
+              "Serviços com folha baixa",
+              "Anexo V",
+              "15,50%"
+            ]
+          ],
+          "caption": "O que separa o Anexo III do V é o Fator R: quanto a folha pesa no faturamento"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "O QUE MAIS PESA NÃO É O DAS",
+          "items": [
+            "O pró-labore do titular passa a ser obrigatório, com 11% de INSS sobre ele",
+            "A contabilidade passa a ser obrigatória: mensalidade de contador todo mês",
+            "A declaração passa a ser mensal, pelo PGDAS-D, e não mais anual",
+            "Somando tudo, o degrau real é maior que a diferença de alíquota"
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "faturamentoMes",
+              "label": "Faturamento por mês (R$)",
+              "type": "currency",
+              "placeholder": "8000"
+            },
+            {
+              "id": "anexo",
+              "label": "A sua atividade",
+              "type": "select",
+              "options": [
+                "Serviço (Anexo III, 6%)",
+                "Comércio (Anexo I, 4%)",
+                "Indústria (Anexo II, 4,5%)"
+              ]
+            },
+            {
+              "id": "proLabore",
+              "label": "Pró-labore que você vai se pagar (R$)",
+              "type": "currency",
+              "placeholder": "1621"
+            },
+            {
+              "id": "contador",
+              "label": "Mensalidade do contador (R$)",
+              "type": "currency",
+              "placeholder": "400"
+            }
+          ],
+          "formula": "const aliq = anexo === 'Comércio (Anexo I, 4%)' ? 0.04 : anexo === 'Indústria (Anexo II, 4,5%)' ? 0.045 : 0.06; const das = faturamentoMes * aliq; const inss = proLabore * 0.11; const total = das + inss + contador; const carga = faturamentoMes > 0 ? (total / faturamentoMes) * 100 : 0; const comoMei = anexo === 'Serviço (Anexo III, 6%)' ? 86.05000000000001 : 82.05000000000001; const degrau = total - comoMei; return { das, inss, contador, total, carga, degrau };",
+          "resultLabel": "O seu custo como ME",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "das",
+              "label": "DAS do Simples",
+              "format": "currency"
+            },
+            {
+              "key": "inss",
+              "label": "INSS sobre o pró-labore",
+              "format": "currency"
+            },
+            {
+              "key": "contador",
+              "label": "Contador",
+              "format": "currency"
+            },
+            {
+              "key": "total",
+              "label": "Custo total por mês",
+              "format": "currency"
+            },
+            {
+              "key": "carga",
+              "label": "Sobre o faturamento",
+              "format": "percentage"
+            },
+            {
+              "key": "degrau",
+              "label": "A mais do que você pagava como MEI",
+              "format": "currency"
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "O degrau não é o fim do mundo, mas ele existe e precisa caber no seu preço. Quem vira ME sem mexer no preço perde margem em silêncio."
+        },
+        {
+          "type": "quiz",
+          "question": "Qual o maior erro de quem acabou de virar ME?",
+          "options": [
+            "Escolher o anexo errado",
+            "Continuar cobrando o mesmo preço de quando era MEI, sem embutir a nova carga",
+            "Trocar de banco"
+          ],
+          "correct": 1,
+          "explanation": "O anexo se corrige com um contador. O preço, não: cada venda feita com o preço antigo é margem que não volta. Antes de virar, refaça o preço com a carga nova — é a conta do curso 3 desta série."
+        }
+      ]
+    },
+    {
+      "id": "mei-ou-me",
+      "shortTitle": "MEI ou ME?",
+      "kicker": "MÓDULO 08 · COMPARAÇÃO",
+      "title": "MEI ou ME: a comparação em reais",
+      "summary": "Existe um ponto do faturamento em que continuar MEI deixa de ser só mais barato e passa a ser inviável.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Enquanto você cabe no MEI, ele ganha de qualquer outro regime — não é nem perto. A questão nunca é \"qual é melhor\", é \"até quando eu caibo\"."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Faturamento no ano",
+            "Como MEI (serviço)",
+            "Como ME (Anexo III)",
+            "Diferença"
+          ],
+          "rows": [
+            [
+              "R$ 40.000",
+              "R$ 1.032,60",
+              "R$ 2.400,00",
+              "R$ 1.367,40"
+            ],
+            [
+              "R$ 60.000",
+              "R$ 1.032,60",
+              "R$ 3.600,00",
+              "R$ 2.567,40"
+            ],
+            [
+              "R$ 81.000",
+              "R$ 1.032,60",
+              "R$ 4.860,00",
+              "R$ 3.827,40"
+            ],
+            [
+              "R$ 120.000",
+              "não cabe",
+              "R$ 7.200,00",
+              "—"
+            ]
+          ],
+          "caption": "Só o DAS, sem contar pró-labore nem contador — que só existem na coluna da ME"
+        },
+        {
+          "type": "callout",
+          "tone": "success",
+          "title": "POR QUE VALE TANTO FICAR NO MEI ENQUANTO COUBER",
+          "items": [
+            "No teto do limite, o MEI paga R$ 1.032,60 de imposto no ano inteiro",
+            "Uma ME no mesmo faturamento pagaria R$ 4.860,00 só de DAS",
+            "E ainda teria pró-labore com INSS e contabilidade obrigatória",
+            "A economia paga muito tempo de planejamento para a virada"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Quando vale sair antes de ser obrigado"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "SITUAÇÕES EM QUE O MEI DEIXA DE SERVIR",
+          "items": [
+            "Você precisa de mais de um empregado",
+            "Você quer um sócio, o que o MEI não permite",
+            "Os seus clientes PJ exigem porte maior ou certidões que você não consegue",
+            "A sua atividade saiu da lista de ocupações permitidas",
+            "Você quer abrir uma segunda unidade"
+          ]
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "faturamentoAno",
+              "label": "Faturamento anual (R$)",
+              "type": "currency",
+              "placeholder": "75000"
+            },
+            {
+              "id": "anexo",
+              "label": "A sua atividade",
+              "type": "select",
+              "options": [
+                "Serviço (Anexo III, 6%)",
+                "Comércio (Anexo I, 4%)"
+              ]
+            },
+            {
+              "id": "dasMei",
+              "label": "DAS de MEI por mês (R$)",
+              "type": "currency",
+              "placeholder": "86.05"
+            }
+          ],
+          "formula": "const limite = 81000; const aliq = anexo === 'Comércio (Anexo I, 4%)' ? 0.04 : 0.06; const comoMei = dasMei * 12; const comoMe = faturamentoAno * aliq; const economia = comoMe - comoMei; const cabe = faturamentoAno <= limite; const leitura = cabe ? 'Você ainda cabe no MEI, e ele é muito mais barato. Fique enquanto der.' : 'Você já não cabe no MEI: a comparação aqui é só para dimensionar o degrau.'; return { comoMei, comoMe, economia, leitura };",
+          "resultLabel": "MEI × ME no seu faturamento",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "comoMei",
+              "label": "Imposto no ano como MEI",
+              "format": "currency"
+            },
+            {
+              "key": "comoMe",
+              "label": "Imposto no ano como ME",
+              "format": "currency"
+            },
+            {
+              "key": "economia",
+              "label": "O que o MEI te economiza por ano",
+              "format": "currency"
+            },
+            {
+              "key": "leitura",
+              "label": "Leitura",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Faturando R$ 70.000 no ano, vale sair do MEI por conta própria para \"crescer\"?",
+          "options": [
+            "Vale, ME passa mais credibilidade",
+            "Não: no MEI o imposto do ano inteiro é menor que um mês de DAS de ME nesse faturamento",
+            "Vale, porque o limite está perto"
+          ],
+          "correct": 1,
+          "explanation": "Credibilidade se constrói com nota fiscal e entrega, e o MEI emite nota igual. Sair antes da hora é trocar R$ 1.032,60 por ano por alguns milhares, sem ganhar nada em troca. Saia quando o limite ou a operação obrigarem."
+        }
+      ]
+    },
+    {
+      "id": "planejar",
+      "shortTitle": "Planejar a virada",
+      "kicker": "MÓDULO 09 · PLANEJAMENTO",
+      "title": "Planejar a virada em vez de levar susto",
+      "summary": "Seis meses de antecedência transformam um problema fiscal numa decisão de negócio.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Passar do limite é sinal de que o negócio deu certo. O estrago não vem do crescimento: vem de ser pego de surpresa por ele. Quem vê chegando faz seis coisas, e nenhuma delas é urgente."
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Refaça o preço com a carga nova",
+              "text": "Se o imposto vai de quase zero para 6%, esse ponto tem que estar no preço antes da virada, não depois."
+            },
+            {
+              "title": "Escolha o anexo com um contador",
+              "text": "Serviço pode cair no Anexo III ou no V, e a diferença é de quase dez pontos. O que decide é o Fator R — o peso da folha no faturamento."
+            },
+            {
+              "title": "Decida o seu pró-labore",
+              "text": "Ele passa a ser obrigatório e define o seu INSS. É também o que separa o seu dinheiro do dinheiro da empresa."
+            },
+            {
+              "title": "Contrate a contabilidade antes de precisar",
+              "text": "Entrar no Simples já com tudo organizado custa menos que regularizar depois."
+            },
+            {
+              "title": "Separe caixa para o primeiro trimestre",
+              "text": "A carga nova começa no primeiro mês, e o faturamento leva um tempo para acompanhar."
+            },
+            {
+              "title": "Avise os clientes PJ",
+              "text": "Muda o tipo de nota e podem mudar retenções. É melhor combinar antes da primeira fatura."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "danger",
+          "title": "O QUE NÃO FAZER",
+          "items": [
+            "Abrir um segundo CNPJ no nome de um parente para dividir o faturamento — isso é fraude e é rastreável",
+            "Parar de emitir nota nos últimos meses do ano",
+            "Deixar de declarar o faturamento real na DASN",
+            "Qualquer uma dessas coisas troca um imposto de alguns milhares por um problema criminal"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Estourar o limite com planejamento custa a diferença de imposto. Estourar sem planejamento custa a diferença mais multa, juros, honorários de regularização e meses de sono."
+        },
+        {
+          "type": "accordion",
+          "items": [
+            {
+              "title": "Posso voltar a ser MEI depois?",
+              "text": "Pode, desde que o faturamento do ano anterior volte a caber no limite e você atenda de novo a todos os requisitos. O reenquadramento é feito em janeiro, no portal do Simples Nacional. Não é automático: você precisa pedir."
+            },
+            {
+              "title": "E se eu for MEI e o excesso foi um contrato único, que não vai se repetir?",
+              "text": "A regra não olha se foi pontual. Se passou, passou. O que dá para fazer, no ano seguinte, é voltar ao MEI caso o faturamento normalize — mas o ano do excesso será tributado como ME."
+            },
+            {
+              "title": "Vale mais faturar menos para continuar MEI?",
+              "text": "Quase nunca. Recusar R$ 20.000 de venda para economizar alguns milhares de imposto é destruir margem para poupar carga. A conta só fecha em casos muito específicos de margem baixíssima — e aí o problema é o preço, não o regime."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Qual o melhor momento para conversar com um contador sobre a virada?",
+          "options": [
+            "Em maio do ano seguinte, quando a declaração acusar",
+            "Assim que a projeção do ano apontar acima do limite — normalmente por volta de junho",
+            "Só quando a Receita notificar"
+          ],
+          "correct": 1,
+          "explanation": "Em junho ainda dá para ajustar preço, escolher anexo, organizar a folha e preparar o caixa. Em maio do ano seguinte, tudo o que sobra é calcular multa. A mesma conversa, no momento certo, custa uma fração."
+        }
+      ]
+    },
+    {
+      "id": "como-desenquadrar",
+      "shortTitle": "Como desenquadrar",
+      "kicker": "MÓDULO 10 · O PROCESSO",
+      "title": "Como se faz o desenquadramento",
+      "summary": "O processo é online e gratuito. O que confunde são os prazos e os dois sistemas diferentes.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Desenquadrar do SIMEI é um ato formal, feito no Portal do Simples Nacional. Em alguns casos ele é automático, feito pelo próprio sistema; em outros, a comunicação é sua — e o prazo importa."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Motivo",
+            "Quem comunica",
+            "Prazo",
+            "A partir de quando vale"
+          ],
+          "rows": [
+            [
+              "Excesso até 20%",
+              "Você",
+              "Janeiro do ano seguinte",
+              "1º de janeiro do ano seguinte"
+            ],
+            [
+              "Excesso acima de 20%",
+              "Você",
+              "Até o mês seguinte ao excesso",
+              "1º de janeiro do ano do excesso"
+            ],
+            [
+              "Contratou o 2º empregado",
+              "Você",
+              "Até o mês seguinte",
+              "Mês seguinte ao fato"
+            ],
+            [
+              "Virou sócio de empresa",
+              "Você",
+              "Até o mês seguinte",
+              "Mês seguinte ao fato"
+            ],
+            [
+              "Atividade saiu da lista",
+              "Sistema",
+              "—",
+              "Conforme a resolução"
+            ]
+          ],
+          "caption": "Comunicar fora do prazo não anula o desenquadramento: só acrescenta multa"
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "title": "Entre no Portal do Simples Nacional",
+              "text": "Área do SIMEI, opção \"Desenquadramento do SIMEI\". Login por certificado ou código de acesso."
+            },
+            {
+              "title": "Informe o motivo e a data de efeito",
+              "text": "É aqui que a tolerância de 20% muda tudo: ela define se a data é 1º de janeiro deste ano ou do ano que vem."
+            },
+            {
+              "title": "Confirme a opção pelo Simples Nacional como ME",
+              "text": "Desenquadrar do SIMEI não te tira do Simples: você continua nele, só que na condição de microempresa."
+            },
+            {
+              "title": "Comece a declarar pelo PGDAS-D",
+              "text": "Todo mês, até o dia 20. É a declaração que gera o DAS calculado sobre o faturamento."
+            },
+            {
+              "title": "Entregue a DASN-SIMEI do último ano de MEI",
+              "text": "Ela ainda é devida, referente ao período em que você era MEI."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "AS TRÊS CONFUSÕES MAIS COMUNS",
+          "items": [
+            "Achar que desenquadrar do SIMEI é sair do Simples Nacional — não é, são coisas diferentes",
+            "Achar que o CNPJ muda — não muda, é o mesmo número, mesma empresa",
+            "Achar que o desenquadramento cancela a DASN daquele ano — não cancela"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Desenquadrar do SIMEI significa sair do Simples Nacional?",
+          "options": [
+            "Sim, você vai para o Lucro Presumido",
+            "Não: você sai do regime de valor fixo do MEI e continua no Simples, agora como microempresa",
+            "Sim, e precisa abrir outro CNPJ"
+          ],
+          "correct": 1,
+          "explanation": "SIMEI é o sistema de recolhimento em valor fixo dentro do Simples Nacional. Sair dele te leva para o cálculo normal do Simples, por faixa de faturamento. Só sairia do Simples quem ultrapassasse R$ 4,8 milhões por ano ou tivesse impedimento específico."
+        }
+      ]
+    },
+    {
+      "id": "sua-conta",
+      "shortTitle": "Faça a sua conta",
+      "kicker": "MÓDULO 11 · DESAFIO FINAL",
+      "title": "Faça a sua conta do ano",
+      "summary": "Tudo o que você viu, aplicado aos seus números, em uma tela.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Preencha com o seu faturamento real. Em um resultado você vê se cabe no limite, quanto ainda pode faturar, em qual cenário você cai se passar e quanto isso custaria."
+        },
+        {
+          "type": "calculator",
+          "fields": [
+            {
+              "id": "acumulado",
+              "label": "Faturado no ano até agora (R$)",
+              "type": "currency",
+              "placeholder": "58900"
+            },
+            {
+              "id": "meses",
+              "label": "Meses já decorridos",
+              "type": "number",
+              "placeholder": "9"
+            },
+            {
+              "id": "anexo",
+              "label": "A sua atividade",
+              "type": "select",
+              "options": [
+                "Serviço (Anexo III, 6%)",
+                "Comércio (Anexo I, 4%)"
+              ]
+            },
+            {
+              "id": "dasMei",
+              "label": "DAS de MEI por mês (R$)",
+              "type": "currency",
+              "placeholder": "86.05"
+            }
+          ],
+          "formula": "if (!(meses > 0)) { return { aviso: 'Informe quantos meses do ano já se passaram.' }; } const limite = 81000; const aliq = anexo === 'Comércio (Anexo I, 4%)' ? 0.04 : 0.06; const projecao = (acumulado / meses) * 12; const folga = limite - acumulado; const restantes = Math.max(0, 12 - meses); const porMes = restantes > 0 ? Math.max(0, folga) / restantes : 0; const excesso = Math.max(0, projecao - limite); const pct = (excesso / limite) * 100; let cenario, custo; if (excesso === 0) { cenario = 'Dentro do limite: nada muda.'; custo = 0; } else if (pct <= 20) { cenario = 'Tolerância de 20%: continua MEI até dezembro, vira ME em janeiro.'; custo = excesso * aliq; } else { cenario = 'Acima de 20%: desenquadramento retroativo a 1º de janeiro deste ano.'; custo = Math.max(0, projecao * aliq - dasMei * 12); } return { projecao, folga, porMes, excesso, pct, custo, cenario };",
+          "resultLabel": "O seu ano",
+          "resultFormat": "object",
+          "resultFields": [
+            {
+              "key": "projecao",
+              "label": "Projeção do ano",
+              "format": "currency"
+            },
+            {
+              "key": "folga",
+              "label": "Quanto ainda cabe no limite",
+              "format": "currency"
+            },
+            {
+              "key": "porMes",
+              "label": "Por mês, até dezembro",
+              "format": "currency"
+            },
+            {
+              "key": "excesso",
+              "label": "Excesso projetado",
+              "format": "currency"
+            },
+            {
+              "key": "pct",
+              "label": "Excesso sobre o limite",
+              "format": "percentage"
+            },
+            {
+              "key": "custo",
+              "label": "Custo estimado do excesso",
+              "format": "currency"
+            },
+            {
+              "key": "cenario",
+              "label": "Em qual cenário você cai",
+              "format": "text"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "COMO LER O SEU RESULTADO",
+          "items": [
+            "Excesso zero: continue acompanhando o acumulado todo mês, principalmente se o seu negócio for sazonal",
+            "Excesso até 20%: você tem o ano inteiro para se preparar, e a conta de janeiro é pequena",
+            "Excesso acima de 20%: procure um contador agora, ainda dentro do ano — cada mês de atraso acrescenta multa e juros",
+            "O custo estimado é só o principal: não inclui multa, juros nem honorários"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "O seu plano, em ordem"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "Somar o faturamento bruto do ano, incluindo vendas sem nota",
+            "Conferir se você usou o valor bruto da maquininha, não o líquido",
+            "Projetar o ano considerando a sazonalidade do seu negócio",
+            "Se a projeção passar do limite, marcar conversa com contador ainda neste semestre",
+            "Refazer o preço com a carga de ME antes de virar, não depois",
+            "Repetir esta conta a cada três meses"
+          ]
+        },
+        {
+          "type": "highlight",
+          "text": "Passar do limite do MEI não é fracasso: é o negócio crescendo. O que custa caro é descobrir isso só em maio do ano seguinte."
+        },
+        {
+          "type": "accordion",
+          "items": [
+            {
+              "title": "Qual a relação deste curso com os outros da série?",
+              "text": "O curso 1 mostra como manter o MEI em dia; este mostra até onde ele vai; e o curso 3 mostra o dinheiro — quanto cobrar, quanto tirar para você e o que os 5% do DAS compram em benefício. Se você está perto do limite, o 3 é o próximo: é ele que refaz o seu preço."
+            },
+            {
+              "title": "Minha projeção passa, mas o ano tem meses fracos pela frente. Confio nela?",
+              "text": "A projeção linear serve para negócio estável. Se o seu tem sazonalidade forte, use a proporção do ano anterior: veja quanto por cento do ano passado aconteceu até este mesmo mês e aplique ao seu acumulado de hoje. Dá uma estimativa bem mais fiel."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { Block } from '../types';
 
 // Charts (recharts) and formulas (KaTeX) are the two heavy dependencies here.
@@ -479,12 +479,36 @@ export const AccordionBlock = ({ block }: { block: any }) => {
   );
 };
 
-export const TableBlock = ({ block }: { block: any }) => (
+export const TableBlock = ({ block }: { block: any }) => {
+  const rolagemRef = useRef<HTMLDivElement>(null);
+  const [rola, setRola] = useState(false);
+  const colunas = block.headers?.length ?? 0;
+
+  // Largura mínima proporcional ao número de colunas. Uma mínima fixa fazia
+  // até a tabela de duas colunas rolar, e num celular de 390px isso escondia
+  // justamente a coluna do valor — a que a tabela existe para mostrar.
+  const larguraMinima = colunas > 2 ? Math.min(560, colunas * 130) : undefined;
+
+  // Só avisa para arrastar quando a tabela realmente não cabe.
+  useEffect(() => {
+    const el = rolagemRef.current;
+    if (!el) return;
+    const mede = () => setRola(el.scrollWidth > el.clientWidth + 4);
+    mede();
+    const observer = new ResizeObserver(mede);
+    observer.observe(el);
+    // A tabela também: o container é sempre da largura da tela, então quando a
+    // fonte termina de carregar e as colunas crescem, só ela muda de tamanho.
+    if (el.firstElementChild) observer.observe(el.firstElementChild);
+    return () => observer.disconnect();
+  }, [colunas, block.rows?.length]);
+
+  return (
   <figure className="mt-8">
     <div className="rounded-xl border border-border bg-card overflow-hidden shadow-sm">
       {/* Narrow screens scroll the table sideways rather than squashing the columns. */}
-      <div className="overflow-x-auto -webkit-overflow-scrolling-touch">
-        <table className="w-full min-w-[480px] text-left border-collapse">
+      <div ref={rolagemRef} className="overflow-x-auto -webkit-overflow-scrolling-touch">
+        <table className="w-full text-left border-collapse" style={larguraMinima ? { minWidth: larguraMinima } : undefined}>
           <thead className="bg-secondary/50">
             <tr>
               {block.headers.map((h: string, i: number) => (
@@ -508,19 +532,16 @@ export const TableBlock = ({ block }: { block: any }) => (
         </table>
       </div>
     </div>
-    {block.caption && (
-      <figcaption className="mt-2 text-[13px] text-muted-foreground sm:hidden">
-        {block.caption} · arraste a tabela para o lado
+    {(block.caption || rola) && (
+      <figcaption className="mt-2 text-[13px] text-muted-foreground">
+        {block.caption
+          ? rola ? `${block.caption} · arraste a tabela para o lado` : block.caption
+          : 'Arraste a tabela para o lado'}
       </figcaption>
     )}
-    {block.caption && (
-      <figcaption className="mt-2 text-[13px] text-muted-foreground hidden sm:block">{block.caption}</figcaption>
-    )}
-    {!block.caption && (
-      <figcaption className="mt-2 text-[13px] text-muted-foreground sm:hidden">Arraste a tabela para o lado</figcaption>
-    )}
   </figure>
-);
+  );
+};
 
 export const StepsBlock = ({ block }: { block: any }) => (
   <ol className="mt-8 space-y-3">
